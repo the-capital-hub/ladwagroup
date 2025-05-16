@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export default function Navbar() {
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-white px-10">
-			<div className="container flex h-16 items-center justify-between">
+			<div className="flex h-16 items-center justify-between">
 				<div className="flex items-center">
 					<Link href="/" className="flex items-center">
 						<span className="text-xl font-bold text-teal-700">LADWA</span>

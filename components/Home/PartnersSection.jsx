@@ -2,16 +2,25 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Logo1 from "@/public/images/logos/amazon-pay.png";
+import Logo2 from "@/public/images/logos/zoom.png";
+import Logo3 from "@/public/images/logos/asus.png";
+import Logo4 from "@/public/images/logos/oracle.png";
+import Logo5 from "@/public/images/logos/siemens.png";
+import Logo6 from "@/public/images/logos/sony.png";
+import Logo7 from "@/public/images/logos/stripe.png";
+import Logo8 from "@/public/images/logos/uber.png";
 
 export default function PartnersSection() {
 	const partners = [
-		"rudderstack",
-		"atlassian",
-		"zapler",
-		"quantum",
-		"sentry",
-		"appfire",
-		"pennylane",
+		{ image: Logo1.src, name: "Amazon Pay" },
+		{ image: Logo2.src, name: "Zoom" },
+		{ image: Logo3.src, name: "ASUS" },
+		{ image: Logo4.src, name: "Oracle" },
+		{ image: Logo5.src, name: "Siemens" },
+		{ image: Logo6.src, name: "Sony" },
+		{ image: Logo7.src, name: "Stripe" },
+		{ image: Logo8.src, name: "Uber" },
 	];
 
 	const fadeIn = {
@@ -56,8 +65,8 @@ export default function PartnersSection() {
 							variants={fadeIn}
 						>
 							<Image
-								src={`/placeholder.svg?height=30&width=120&text=${partner}`}
-								alt={partner}
+								src={partner.image}
+								alt={partner.name}
 								width={120}
 								height={30}
 							/>

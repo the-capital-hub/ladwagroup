@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-
 // Main component imports
 import HeroSection from "@/components/Home/HeroSection.jsx";
 import AboutSection from "@/components/Home/AboutSection.jsx";
@@ -26,31 +23,9 @@ import ReflectiveSignageImg from "@/public/images/home/ReflectiveSignageImg.png"
 import PreSalesSection from "@/components/Home/PreSalesSection";
 
 export default function HomePage() {
-	const fadeIn = {
-		hidden: {
-			opacity: 0,
-			y: 20,
-		},
-		visible: {
-			opacity: 1,
-			y: 0,
-		},
-	};
-	const staggerContainer = {
-		hidden: {
-			opacity: 0,
-		},
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.2,
-			},
-		},
-	};
 	return (
 		<div className="flex flex-col min-h-screen">
 			<HeroSection videoImg={VideoImg} />
-			{/* Partners Section */}
 			<PartnersSection />
 			<AboutSection ladwaExpImg={LadwaExpImg} />
 			<StatsSection />

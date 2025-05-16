@@ -63,12 +63,13 @@ export default function HeroSection({ videoImg }) {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.4 }}
 				>
-					<div className="relative h-[300px] md:h-[80dvh] w-4xl">
+					<div className="relative">
 						<Image
 							src={videoImg.src || "/placeholder.svg"}
 							alt="Safety workers"
-							fill
-							className="object-contain"
+							width={1000}
+							height={600}
+							className="object-contain w-full h-full"
 						/>
 						<div className="w-full h-full absolute inset-0 flex items-center justify-center">
 							<div className="bg-teal-700 rounded-full p-3 cursor-pointer">
