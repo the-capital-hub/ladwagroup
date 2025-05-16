@@ -39,7 +39,7 @@ export default function PartnersSection() {
 	};
 
 	return (
-		<section className="py-12 bg-white">
+		<section className="py-6 md:py-12 bg-white">
 			<div className="pb-6 shadow-lg">
 				<motion.h2
 					className="text-center text-xl font-medium text-gray-700 mb-8"
@@ -52,7 +52,7 @@ export default function PartnersSection() {
 				</motion.h2>
 
 				<motion.div
-					className="flex flex-wrap justify-center items-center gap-8 md:gap-12"
+					className="flex flex-wrap justify-center items-center gap-4 md:gap-12"
 					variants={staggerContainer}
 					initial="hidden"
 					whileInView="visible"
@@ -69,6 +69,7 @@ export default function PartnersSection() {
 								alt={partner.name}
 								width={120}
 								height={30}
+								className="object-contain w-20 h-16 md:w-32 md:h-24"
 							/>
 						</motion.div>
 					))}
