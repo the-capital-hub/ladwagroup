@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function AboutSection({ ladwaExpImg }) {
 	return (
 		<section className="py-16 bg-gray-50">
-			<div className="max-w-[90%] mx-auto px-10">
+			<div className=" lg:max-w-[90%] mx-auto px-10">
 				<div className="flex flex-col md:flex-row gap-12 items-center">
 					<motion.div
 						className="md:w-1/2 relative"

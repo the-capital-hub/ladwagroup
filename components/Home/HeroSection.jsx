@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function HeroSection({ videoImg }) {
 	return (
 		<section className="bg-gradient-to-b from-gray-50 to-white py-12">
-			<div className="container mx-auto px-4">
+			<div className="container mx-auto px-10">
 				<div className="flex flex-col items-center text-center mb-12">
 					<motion.div
 						className="inline-block px-4 py-1 rounded-full bg-teal-50 text-teal-700 text-sm font-medium mb-6"

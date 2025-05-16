@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function ContactFormSection({ constructionImg }) {
 	return (
 		<section className="py-16 bg-white">
-			<div className="container mx-auto px-4">
+			<div className="container mx-auto px-10">
 				<div className="max-w-5xl mx-auto">
 					<motion.div
 						className="bg-white shadow-xl rounded-lg overflow-hidden"

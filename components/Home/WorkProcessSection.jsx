@@ -36,7 +36,7 @@ export default function WorkProcessCircularSection() {
 
 	return (
 		<section className="pt-16 bg-white">
-			<div className="container mx-auto px-4">
+			<div className="container mx-auto px-10">
 				<motion.div
 					className="text-center mb-16"
 					initial={{ opacity: 0, y: 20 }}
