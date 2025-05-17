@@ -106,7 +106,7 @@ export default function AboutPage() {
 								companies, health care, utilities and government.
 							</p>
 						</div>
-						<div className="md:w-1/2 p-0 !h-[80dvh]">
+						<div className="md:w-1/2 p-0 md:!h-[80dvh]">
 							<Image
 								src={AboutUsImg.src}
 								alt="About Us Image"
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
 				{/* Mission and Vision */}
 				<motion.div
-					className="flex flex-col md:flex-row gap-8 !h-[85dvh] px-10"
+					className="flex flex-col md:flex-row gap-8 md:!h-[85dvh] px-10"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
@@ -182,7 +182,7 @@ export default function AboutPage() {
 
 				{/* Management Team */}
 				<motion.div
-					className="mb-16"
+					className="mb-16 mt-10 md:mt-0"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.3 }}
@@ -190,59 +190,7 @@ export default function AboutPage() {
 					<h2 className="text-3xl font-bold text-center mb-12">
 						Top Management
 					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-						{/* Management 1 */}
-						{/* <div className="flex flex-col items-center">
-							<div className="relative w-48 h-48 mb-4">
-								<div className="absolute inset-0 bg-teal-100 rounded-full"></div>
-								<div className="absolute inset-4 overflow-hidden rounded-full border-4 border-teal-200">
-									<Image
-										src="/placeholder.svg?height=160&width=160"
-										alt="Sunil Ladwa"
-										width={160}
-										height={160}
-										className="rounded-full"
-									/>
-								</div>
-								<div className="absolute top-0 left-0 flex space-x-1">
-									<div className="w-2 h-2 rounded-full bg-red-500"></div>
-									<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-									<div className="w-2 h-2 rounded-full bg-green-500"></div>
-								</div>
-							</div>
-							<h3 className="text-lg font-bold">Sunil Ladwa</h3>
-							<p className="text-teal-700">Director- Business Development</p>
-							<a href="#" className="text-blue-600 mt-2">
-								<Linkedin className="h-5 w-5" />
-							</a>
-						</div> */}
-
-						{/* Management 2 */}
-						{/* <div className="flex flex-col items-center">
-							<div className="relative w-48 h-48 mb-4">
-								<div className="absolute inset-0 bg-teal-100 rounded-full"></div>
-								<div className="absolute inset-4 overflow-hidden rounded-full border-4 border-teal-200">
-									<Image
-										src="/placeholder.svg?height=160&width=160"
-										alt="Sumithra Ladwa"
-										width={160}
-										height={160}
-										className="rounded-full"
-									/>
-								</div>
-								<div className="absolute top-0 left-0 flex space-x-1">
-									<div className="w-2 h-2 rounded-full bg-red-500"></div>
-									<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-									<div className="w-2 h-2 rounded-full bg-green-500"></div>
-								</div>
-							</div>
-							<h3 className="text-lg font-bold">Sumithra Ladwa</h3>
-							<p className="text-teal-700">Director- Admin & HR</p>
-							<a href="#" className="text-blue-600 mt-2">
-								<Linkedin className="h-5 w-5" />
-							</a>
-						</div> */}
-
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl md:mx-auto mx-6">
 						{founders.map((member, index) => (
 							<TeamMemberCard key={index} member={member} index={index} />
 						))}
@@ -256,85 +204,7 @@ export default function AboutPage() {
 					transition={{ duration: 0.5, delay: 0.4 }}
 				>
 					<h2 className="text-3xl font-bold text-center mb-12">Our Team</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-						{/* Team Member 1 */}
-						{/* <div className="flex flex-col items-center">
-							<div className="relative w-40 h-40 mb-4">
-								<div className="absolute inset-0 bg-teal-100 rounded-full"></div>
-								<div className="absolute inset-3 overflow-hidden rounded-full border-4 border-teal-200">
-									<Image
-										src="/placeholder.svg?height=140&width=140"
-										alt="Chethan Kumar M"
-										width={140}
-										height={140}
-										className="rounded-full"
-									/>
-								</div>
-								<div className="absolute top-0 left-0 flex space-x-1">
-									<div className="w-2 h-2 rounded-full bg-red-500"></div>
-									<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-									<div className="w-2 h-2 rounded-full bg-green-500"></div>
-								</div>
-							</div>
-							<h3 className="text-lg font-bold">Chethan Kumar M</h3>
-							<p className="text-gray-600">Inventory specialist</p>
-							<a href="#" className="text-blue-600 mt-2">
-								<Linkedin className="h-5 w-5" />
-							</a>
-						</div> */}
-
-						{/* Team Member 2 */}
-						{/* <div className="flex flex-col items-center">
-							<div className="relative w-40 h-40 mb-4">
-								<div className="absolute inset-0 bg-teal-100 rounded-full"></div>
-								<div className="absolute inset-3 overflow-hidden rounded-full border-4 border-teal-200">
-									<Image
-										src="/placeholder.svg?height=140&width=140"
-										alt="Nagraj"
-										width={140}
-										height={140}
-										className="rounded-full"
-									/>
-								</div>
-								<div className="absolute top-0 left-0 flex space-x-1">
-									<div className="w-2 h-2 rounded-full bg-red-500"></div>
-									<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-									<div className="w-2 h-2 rounded-full bg-green-500"></div>
-								</div>
-							</div>
-							<h3 className="text-lg font-bold">Nagraj</h3>
-							<p className="text-gray-600">Asst Manager - Sales</p>
-							<a href="#" className="text-blue-600 mt-2">
-								<Linkedin className="h-5 w-5" />
-							</a>
-						</div> */}
-
-						{/* Team Member 3 */}
-						{/* <div className="flex flex-col items-center">
-							<div className="relative w-40 h-40 mb-4">
-								<div className="absolute inset-0 bg-teal-100 rounded-full"></div>
-								<div className="absolute inset-3 overflow-hidden rounded-full border-4 border-teal-200">
-									<Image
-										src="/placeholder.svg?height=140&width=140"
-										alt="Deepak"
-										width={140}
-										height={140}
-										className="rounded-full"
-									/>
-								</div>
-								<div className="absolute top-0 left-0 flex space-x-1">
-									<div className="w-2 h-2 rounded-full bg-red-500"></div>
-									<div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-									<div className="w-2 h-2 rounded-full bg-green-500"></div>
-								</div>
-							</div>
-							<h3 className="text-lg font-bold">Deepak</h3>
-							<p className="text-gray-600">Customer support executive</p>
-							<a href="#" className="text-blue-600 mt-2">
-								<Linkedin className="h-5 w-5" />
-							</a>
-						</div> */}
-
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl  md:mx-auto mx-6">
 						{teamMembers.map((member, index) => (
 							<TeamMemberCard key={index} member={member} index={index} />
 						))}

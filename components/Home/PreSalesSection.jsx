@@ -34,7 +34,7 @@ export default function PreSalesSection() {
 						>
 							<div className="flex flex-col md:flex-row">
 								{/* Left content with number and text */}
-								<div className="w-full md:w-1/2 pr-4 relative rounded-l-full border-2 border-dashed border-teal-600 border-r-transparent">
+								<div className="w-full h-[160px] md:w-1/2 pr-4 relative rounded-l-full border-2 border-dashed border-teal-600 sm:border-r-transparent">
 									<div className="h-full flex items-center">
 										{/* Dotted circle with number */}
 										<div className="relative">
@@ -46,7 +46,7 @@ export default function PreSalesSection() {
 										</div>
 
 										{/* Text below the line */}
-										<div className="pl-20 mt-3">
+										<div className="sm:pl-20 mt-3">
 											<p className="text-gray-700 text-xl font-bold">
 												Get the BOQ / Requirements from the clients
 											</p>
@@ -120,7 +120,7 @@ export default function PreSalesSection() {
 						>
 							<div className="flex flex-col items-center md:flex-row">
 								{/* Left content with number and text */}
-								<div className="w-full h-[160px] md:w-1/2 pr-4 relative rounded-l-full border-2 border-dashed border-teal-600 border-r-transparent">
+								<div className="w-full h-[160px] md:w-1/2 pr-4 relative rounded-l-full border-2 border-dashed border-teal-600 sm:border-r-transparent">
 									<div className="h-full flex items-center">
 										{/* Dotted circle with number */}
 										<div className="relative">
@@ -132,7 +132,7 @@ export default function PreSalesSection() {
 										</div>
 
 										{/* Text below the line */}
-										<div className="pl-12 mt-3">
+										<div className="sm:pl-12 mt-3">
 											<p className="text-gray-700 text-xl font-bold">
 												Meet with clients & Projects consultant to give inputs
 												based on our experience.

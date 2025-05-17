@@ -29,7 +29,7 @@ export default function ContactUsPage() {
 
 	return (
 		<div className="flex flex-col min-h-screen">
-			<div className="container mx-auto py-8 px-4">
+			<div className="container mx-auto py-8 px-10">
 				<motion.div
 					className="text-center mb-8"
 					initial={{ opacity: 0, y: 20 }}

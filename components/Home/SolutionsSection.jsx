@@ -263,12 +263,12 @@ export default function SolutionsSection({
 								alt="Safety Professional"
 								width={150}
 								height={150}
-								className="rounded-full object-cover w-40 h-40"
+								className="rounded-full object-cover w-52 h-52"
 							/>
 						</div>
 					</motion.div>
 
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
 						{solutions.map((solution, index) => (
 							<motion.div
 								key={index}

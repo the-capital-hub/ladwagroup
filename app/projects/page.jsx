@@ -77,7 +77,7 @@ export default function ProjectsPage() {
 											</div>
 										</div>
 									</div>
-									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700  rounded-r-3xl">
+									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700 rounded-l-3xl sm:rounded-l-none  rounded-r-3xl">
 										<h3 className="text-3xl font-bold mb-2">
 											Vaishnavi Tech Park Parking Safety Works by LAD
 										</h3>
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
 											</div>
 										</div>
 									</div>
-									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700  rounded-r-3xl">
+									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700 rounded-l-3xl sm:rounded-l-none  rounded-r-3xl">
 										<h3 className="text-3xl font-bold mb-2">
 											Solar Energy Implementation at Green Valley Residential
 											Complex
@@ -148,7 +148,7 @@ export default function ProjectsPage() {
 											</div>
 										</div>
 									</div>
-									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700  rounded-r-3xl">
+									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700 rounded-l-3xl sm:rounded-l-none rounded-r-3xl">
 										<h3 className="text-3xl font-bold mb-2">
 											Smart Water Management System for Urban City
 										</h3>
@@ -183,7 +183,7 @@ export default function ProjectsPage() {
 											</div>
 										</div>
 									</div>
-									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700  rounded-r-3xl">
+									<div className="w-full text-white p-6 flex flex-col justify-center bg-teal-700 rounded-l-3xl sm:rounded-l-none rounded-r-3xl">
 										<h3 className="text-3xl font-bold mb-2">
 											Revamp of City Park Recreational Facilities
 										</h3>
