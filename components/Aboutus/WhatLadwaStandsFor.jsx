@@ -15,27 +15,27 @@ const WhatLadwaStandsFor = () => {
                 <div className=' p-6 lg:p-8 xl:p-12'>
                     <div className='space-y-6 lg:space-y-8'>
                         <div className='border-b border-black pb-3 '>
-                            <h2 className={`text-black text-xl sm:text-2xl lg:text-[30px] font-medium ${manrope.className}`}>
+                            <h2 className={`text-black text-xl sm:text-2xl items-center gap-2 flex lg:text-[32px] font-medium ${manrope.className}`}>
                                 <span className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold '>L</span>eadership in safety innovation
                             </h2>
                         </div>
                         <div className='border-b border-black pb-3'>
-                        <h2 className={`text-black text-xl sm:text-2xl lg:text-[30px] font-medium ${manrope.className}`}>
+                        <h2 className={`text-black text-xl sm:text-2xl items-center flex gap-2 lg:text-[32px] font-medium ${manrope.className}`}>
                         <span className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl'>A</span>ssurance of quality and compliance
                             </h2>
                         </div>
                         <div className='border-b border-black pb-3'>
-                        <h2 className={`text-black text-xl sm:text-2xl lg:text-[30px] font-medium ${manrope.className}`}>
+                        <h2 className={`text-black text-xl sm:text-2xl items-center flex gap-2 lg:text-[32px] font-medium ${manrope.className}`}>
                         <span className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl'>D</span>ependability in every solution
                             </h2>
                         </div>
                         <div className='border-b border-black pb-3'>
-                        <h2 className={`text-black text-xl sm:text-2xl lg:text-[30px] font-medium ${manrope.className}`}>
+                        <h2 className={`text-black text-xl sm:text-2xl items-center flex gap-2 lg:text-[32px] font-medium ${manrope.className}`}>
                         <span className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl'>W</span>orldwide reach with Indian roots
                             </h2>
                         </div>
                         <div className='border-b border-black pb-3'>
-                        <h2 className={`text-black text-xl sm:text-2xl lg:text-[32px] font-medium ${manrope.className}`}>
+                        <h2 className={`text-black text-xl sm:text-2xl items-center flex gap-2 lg:text-[32px] font-medium ${manrope.className}`}>
                         <span className='text-4xl sm:text-5xl lg:text-6xl xl:text-7xl'>A</span>ccountability to people and planet
                             </h2>
                         </div>

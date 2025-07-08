@@ -31,7 +31,7 @@ export default function ContactUsPage() {
 		<div className="flex flex-col min-h-screen">
 			<div className="container mx-auto py-8 px-10">
 				<motion.div
-					className="text-center mb-8"
+					className="text-center mb-8 "
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
@@ -43,14 +43,14 @@ export default function ContactUsPage() {
 				</motion.div>
 
 				<motion.div
-					className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden"
+					className="max-w-4xl mx-auto border-2 border-[#097362] p-2 bg-white rounded-2xl shadow-md overflow-hidden"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.2 }}
 				>
 					<div className="flex flex-col md:flex-row">
 						{/* Contact Information */}
-						<div className="bg-teal-700 text-white p-8 md:w-2/5">
+						<div className="bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-2xl text-white p-8 md:w-2/5">
 							<h2 className="text-xl font-bold mb-4">Contact Information</h2>
 							<p className="mb-8 text-teal-100">
 								Say something to start a live chat!
@@ -66,7 +66,7 @@ export default function ContactUsPage() {
 									<p>demo@gmail.com</p>
 								</div>
 								<div className="flex items-start">
-									<MapPin className="h-5 w-5 mr-4 mt-1" />
+									<MapPin size={40} className=" mr-4 mt-1" />
 									<p>
 										132 Dartmouth Street Boston, Massachusetts 02156 United
 										States
@@ -170,7 +170,7 @@ export default function ContactUsPage() {
 								<div className="flex justify-end">
 									<Button
 										type="submit"
-										className="bg-teal-700 hover:bg-teal-800"
+										className="bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800"
 									>
 										Send Message
 									</Button>

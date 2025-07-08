@@ -118,7 +118,7 @@ const TopManagement = () => {
                     </div>
 
                     <div className="text-center">
-                        <button className="bg-teal-600 cursor-pointer hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 shadow-lg hover:shadow-xl">
+                        <button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] cursor-pointer hover:bg-teal-700 text-white px-8 py-3 rounded-full font-medium transition-colors duration-200 shadow-lg hover:shadow-xl">
                             See all team members
                         </button>
                     </div>
