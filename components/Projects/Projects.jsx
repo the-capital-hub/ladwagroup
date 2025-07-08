@@ -35,7 +35,7 @@ const Project1 = () => {
     }
 
     return (
-        <div className={`${outfit.className} w-full max-w-full bg-gray-50 py-12 px-4 relative`}>
+        <div className={`${outfit.className} w-full max-w-full  py-12 px-4 relative`}>
             <div className='max-w-7xl mx-auto'>
                 <h1 className='text-[64px] font-bold text-center mb-8'>Projects</h1>
                 <div className='flex flex-col lg:flex-row items-start gap-8 mb-12'>
