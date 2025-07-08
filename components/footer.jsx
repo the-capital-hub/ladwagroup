@@ -1,132 +1,156 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Facebook, Twitter, Instagram, Github } from "lucide-react";
-import AppStore from "@/public/images/footer/AppStore.png";
-import GooglePlay from "@/public/images/footer/GooglePlay.png";
+import { Globe } from "lucide-react";
 
 export default function Footer() {
+	const footerSections = [
+		{
+			title: "Pricing",
+			links: [
+				"Use Cases",
+				"Support",
+				"Engage",
+				"Convert",
+				"Company Size",
+				"Mid-Market / Enterprise",
+				"Small Business",
+				"Early Stage",
+			],
+		},
+		{
+			title: "Features",
+			links: [
+				"Business Messenger",
+				"Customizable bots",
+				"Automated answers",
+				"Product Tours",
+				"Outbound Messages",
+				"Inbox",
+				"Help Center Articles",
+				"Apps + Integrations",
+				"Customer data",
+				"Live Chat",
+				"Mobile Apps",
+				"Mobile Carousels",
+				"Series",
+				"Transactional Messaging",
+				"Surveys",
+				"Switch",
+				"SMS",
+			],
+		},
+		{
+			title: "Resources",
+			links: [
+				"Blog",
+				"Watch a Demo",
+				"Glossary",
+				"Academy",
+				"Webinars",
+				"Product Changes",
+				"App Store",
+				"Docs",
+				"Developers",
+				"Status",
+				"Security",
+				"Books and Guides",
+				"Support ROI Calculator",
+				"Services",
+			],
+		},
+		{
+			title: "Company",
+			links: [
+				"About",
+				"Customers",
+				"Community Forum",
+				"Careers",
+				"Newsroom",
+				"App Partner Program",
+				"Service Partner Program",
+				"Contact Us",
+				"Terms",
+				"Privacy",
+			],
+		},
+		{
+			title: "Industries",
+			links: ["Financial Services", "E-commerce", "Education", "Healthcare"],
+		},
+	];
+
+	const languages = [
+		"English (United States)",
+		"German",
+		"Spanish",
+		"French",
+		"Portuguese (Brazil)",
+	];
+
+	const bottomLinks = [
+		"Terms",
+		"Privacy",
+		"Status",
+		"Security",
+		"Do not share my personal information",
+	];
+
 	return (
-		<footer className="bg-teal-700 text-white">
-			<div className="container mx-auto py-12 px-10">
-				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-					<div>
-						<h3 className="text-lg font-semibold mb-4">Company</h3>
-						<ul className="space-y-2">
-							<li>
-								<Link href="/about" className="hover:underline">
-									About
-								</Link>
-							</li>
-							<li>
-								<Link href="/features" className="hover:underline">
-									Features
-								</Link>
-							</li>
-							<li>
-								<Link href="/works" className="hover:underline">
-									Works
-								</Link>
-							</li>
-							<li>
-								<Link href="/career" className="hover:underline">
-									Career
-								</Link>
-							</li>
-						</ul>
-					</div>
-					<div>
-						<h3 className="text-lg font-semibold mb-4">Help</h3>
-						<ul className="space-y-2">
-							<li>
-								<Link href="/support" className="hover:underline">
-									Customer Support
-								</Link>
-							</li>
-							<li>
-								<Link href="/delivery" className="hover:underline">
-									Delivery Details
-								</Link>
-							</li>
-							<li>
-								<Link href="/terms" className="hover:underline">
-									Terms & Conditions
-								</Link>
-							</li>
-							<li>
-								<Link href="/privacy" className="hover:underline">
-									Privacy Policy
-								</Link>
-							</li>
-						</ul>
-					</div>
-					<div>
-						<h3 className="text-lg font-semibold mb-4">Resources</h3>
-						<ul className="space-y-2">
-							<li>
-								<Link href="/ebooks" className="hover:underline">
-									Free eBooks
-								</Link>
-							</li>
-							<li>
-								<Link href="/tutorials" className="hover:underline">
-									Development Tutorial
-								</Link>
-							</li>
-							<li>
-								<Link href="/blog" className="hover:underline">
-									How to - Blog
-								</Link>
-							</li>
-							<li>
-								<Link href="/youtube" className="hover:underline">
-									Youtube Playlist
-								</Link>
-							</li>
-						</ul>
-					</div>
-					<div>
-						<h3 className="text-lg font-semibold mb-4">Install App</h3>
-						<div className="space-y-4">
-							<Link href="#" className="block">
-								<Image
-									src={AppStore.src}
-									alt="App Store"
-									width={170}
-									height={50}
-									className="rounded-lg"
-								/>
-							</Link>
-							<Link href="#" className="block">
-								<Image
-									src={GooglePlay.src}
-									alt="Google Play"
-									width={170}
-									height={50}
-									className="rounded-lg"
-								/>
-							</Link>
+		<footer className="bg-gradient-to-b from-teal-50 to-teal-400 text-gray-800 font-semibold">
+			<div className="container mx-auto px-10 py-16">
+				{/* Main footer content */}
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
+					{footerSections.map((section, index) => (
+						<div key={index}>
+							<h3 className="font-bold text-gray-900 mb-4">{section.title}</h3>
+							<ul className="space-y-2">
+								{section.links.map((link, linkIndex) => (
+									<li key={linkIndex}>
+										<Link
+											href="#"
+											className="text-gray-700 hover:text-gray-900 text-sm transition-colors duration-200"
+										>
+											{link}
+										</Link>
+									</li>
+								))}
+							</ul>
 						</div>
+					))}
+				</div>
+
+				{/* Language selector */}
+				<div className="mb-8">
+					<div className="flex items-center space-x-2 mb-4">
+						<Globe className="w-5 h-5 text-gray-700" />
+						<span className="font-semibold text-gray-900">
+							Choose your language
+						</span>
+					</div>
+					<div className="flex flex-wrap gap-4">
+						{languages.map((language, index) => (
+							<Link
+								key={index}
+								href="#"
+								className="text-gray-700 hover:text-gray-900 text-sm transition-colors duration-200"
+							>
+								{language}
+							</Link>
+						))}
 					</div>
 				</div>
-				<div className="mt-12 pt-8 border-t border-teal-600">
-					<div className="flex flex-col md:flex-row justify-between items-center">
-						<p className="text-sm">
-							© Copyright 2022. All Rights Reserved by LADWA
-						</p>
-						<div className="flex space-x-4 mt-4 md:mt-0">
-							<Link href="#" className="hover:text-teal-300">
-								<Twitter className="h-5 w-5" />
+
+				{/* Bottom links */}
+				<div className="pt-8 border-t border-teal-300">
+					<div className="flex flex-wrap gap-6">
+						{bottomLinks.map((link, index) => (
+							<Link
+								key={index}
+								href="#"
+								className="text-gray-700 hover:text-gray-900 text-sm transition-colors duration-200"
+							>
+								{link}
 							</Link>
-							<Link href="#" className="hover:text-teal-300">
-								<Facebook className="h-5 w-5" />
-							</Link>
-							<Link href="#" className="hover:text-teal-300">
-								<Instagram className="h-5 w-5" />
-							</Link>
-							<Link href="#" className="hover:text-teal-300">
-								<Github className="h-5 w-5" />
-							</Link>
-						</div>
+						))}
 					</div>
 				</div>
 			</div>
