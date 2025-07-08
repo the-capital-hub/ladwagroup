@@ -7,64 +7,74 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import LadwaLogo from "@/public/images/LadwaLogo.png";
+import { Outfit } from "next/font/google";
+import { useRouter } from "next/navigation";
+
+
+const outfit = Outfit({
+    variable: "--font-outfit",
+    subsets: ["latin"],
+});
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const pathname = usePathname();
-
+	const navigate = useRouter();
 	// Close mobile menu when changing route
 	useEffect(() => {
 		setIsMenuOpen(false);
 	}, [pathname]);
 
+
+
 	// Function to determine if a link is active
 	const isActive = (path) => {
 		return pathname === path
-			? "text-teal-700 font-semibold"
+			? "text-black font-semibold"
 			: "text-gray-600 hover:text-teal-700";
 	};
 
 	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-white px-4 md:px-10">
-			<div className="flex h-16 items-center justify-between">
+		<header className="sticky top-0  z-50 w-full  bg-white px-4 md:px-10">
+			<div className={`${outfit.className} flex h-16 items-center mx-auto max-w-7xl w-full justify-between`}>
 				<div className="flex items-center">
 					<Link href="/" className="flex items-center">
-						{/* <span className="text-xl font-bold text-teal-700">LADWA</span> */}
-						<Image
+						<span className="text-xl font-bold text-black">LADWA</span>
+						{/* <Image
 							src={LadwaLogo.src}
 							alt="Ladwa Logo"
 							width={50}
 							height={50}
-						/>
+						/> */}
 					</Link>
 				</div>
 
 				{/* Desktop Navigation */}
 				<nav className="hidden md:flex items-center gap-6">
-					<Link href="/" className={`text-sm font-medium ${isActive("/")}`}>
+					<Link href="/" className={`text-sm font-medium ${isActive("/")} cursor-pointer`}>
 						Home
 					</Link>
 					<Link
 						href="/projects"
-						className={`text-sm font-medium ${isActive("/projects")}`}
+						className={`text-sm font-medium ${isActive("/projects")} cursor-pointer`}
 					>
 						Projects
 					</Link>
-					<Link
+					{/* <Link
 						href="/solutions"
 						className={`text-sm font-medium ${isActive("/solutions")}`}
 					>
 						Solutions
-					</Link>
+					</Link> */}
 					<Link
 						href="/about"
-						className={`text-sm font-medium ${isActive("/about")}`}
+						className={`text-sm font-medium ${isActive("/about")} cursor-pointer`}
 					>
 						About
 					</Link>
 					<Link
 						href="/contact-us"
-						className={`text-sm font-medium ${isActive("/contact-us")}`}
+						className={`text-sm font-medium ${isActive("/contact-us")} cursor-pointer`}
 					>
 						Contact Us
 					</Link>
@@ -72,13 +82,13 @@ export default function Navbar() {
 
 				{/* Desktop Auth Controls */}
 				<div className="hidden md:flex items-center gap-4">
-					<Link
+					{/* <Link
 						href="/login"
 						className={`text-sm font-medium ${isActive("/login")}`}
 					>
 						Log in
-					</Link>
-					<Button className="bg-teal-700 hover:bg-teal-800">Get started</Button>
+					</Link> */}
+					<Button  onClick={() => {navigate.push('/contact-us')}} className="cursor-pointer bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800">Contact Us</Button>
 				</div>
 
 				{/* Mobile Menu Button */}
@@ -97,7 +107,7 @@ export default function Navbar() {
 
 			{/* Mobile Menu Dropdown */}
 			{isMenuOpen && (
-				<div className="md:hidden bg-white py-4 px-4 border-t">
+				<div className="md:hidden bg-white py-4 px-4 ">
 					<nav className="flex flex-col space-y-4">
 						<Link href="/" className={`text-sm font-medium ${isActive("/")}`}>
 							Home
@@ -108,12 +118,12 @@ export default function Navbar() {
 						>
 							Projects
 						</Link>
-						<Link
+						{/* <Link
 							href="/solutions"
 							className={`text-sm font-medium ${isActive("/solutions")}`}
 						>
 							Solutions
-						</Link>
+						</Link> */}
 						<Link
 							href="/about"
 							className={`text-sm font-medium ${isActive("/about")}`}
@@ -128,15 +138,15 @@ export default function Navbar() {
 						</Link>
 
 						{/* Auth links for mobile */}
-						<div className="pt-4 border-t flex flex-col space-y-4">
-							<Link
+						<div className="pt-4  flex flex-col space-y-4">
+							{/* <Link
 								href="/login"
 								className={`text-sm font-medium ${isActive("/login")}`}
 							>
 								Log in
-							</Link>
-							<Button className="bg-teal-700 hover:bg-teal-800 w-full">
-								Get started
+							</Link> */}
+							<Button onClick={() => {navigate.push('/contact-us')}} className="rounded-full bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-800 w-full">
+								Contact Us
 							</Button>
 						</div>
 					</nav>
