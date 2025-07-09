@@ -4,6 +4,19 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { Manrope,Outfit } from "next/font/google";
+
+const manrope = Manrope({
+    variable: "--font-manrope",
+	subsets: ["latin"],
+})
+
+const outfit = Outfit({
+    variable:"--font-outfit",
+    subsets:["latin"]
+
+})
+
 export default function CoreValues() {
 	const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -58,25 +71,19 @@ export default function CoreValues() {
 	return (
 		<section className="py-10 bg-gray-50">
 			<div className="px-10">
-				<motion.div
-					className="text-center mb-16"
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-				>
-					<h2 className="text-4xl font-bold text-gray-900 mb-4">
+				<div className="text-left mb-16">
+					<h2 className="text-[64px] font-bold text-gray-900 mb-4">
 						Our Core Values
 					</h2>
-					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+					<p className={`${manrope.className} text-xl text-gray-600 max-w-3xl`}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
 						massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
 						sit amet.
 					</p>
-				</motion.div>
+				</div>
 
 				<motion.div
-					className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12"
+					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-12"
 					variants={containerVariants}
 					initial="hidden"
 					whileInView="visible"
@@ -85,56 +92,85 @@ export default function CoreValues() {
 					{values.map((value, index) => (
 						<motion.div
 							key={index}
-							className="bg-gradient-to-br from-cyan-50 to-teal-50 p-8 rounded-2xl border-2 border-teal-200 cursor-pointer transition-all duration-300 min-h-[280px] flex flex-col justify-between"
+							className={`bg-gradient-to-b from-[#EEFFFD] to-[#fff] p-6 lg:p-8 rounded-2xl border-2 border-teal-200 cursor-pointer transition-all duration-500 min-h-[300px] lg:min-h-[350px] flex flex-col ${
+								hoveredCard === index 
+									? 'col-span-1 sm:col-span-2 lg:col-span-1' 
+									: 'col-span-1'
+							}`}
 							variants={cardVariants}
 							onHoverStart={() => setHoveredCard(index)}
 							onHoverEnd={() => setHoveredCard(null)}
-							whileHover={{ scale: 1.05 }}
-							transition={{ duration: 0.2 }}
+							animate={{
+								scale: hoveredCard !== null && hoveredCard !== index ? 0.95 : 1,
+								opacity: hoveredCard !== null && hoveredCard !== index ? 0.7 : 1,
+							}}
+							transition={{ duration: 0.3 }}
 						>
-							<div className={`h-full flex flex-col justify-between ${hoveredCard === index ? "gap-0" : " gap-12"} text-center`}>
-								<motion.div
-									className="text-6xl font-bold mb-4 text-teal-600"
-									animate={{
-										scale: hoveredCard === index ? 0.8 : 1,
-										opacity: hoveredCard === index ? 0.7 : 1,
-									}}
-									transition={{ duration: 0.2 }}
-								>
-									{value.number}
-								</motion.div>
-
-								<motion.h3
-									className="text-xl font-bold text-teal-600 mb-4"
-									animate={{
-										fontSize: hoveredCard === index ? "1.125rem" : "2.25rem",
-										rotate: hoveredCard === index ? 0 : 90,
-									}}
-									transition={{ duration: 0.2 }}
-								>
-									{value.title}
-								</motion.h3>
-
-								<motion.div
-									initial={{ opacity: 0, height: 0 }}
-									animate={{
-										opacity: hoveredCard === index ? 1 : 0,
-										height: hoveredCard === index ? "auto" : 0,
-									}}
-									transition={{ duration: 0.3 }}
-									className="overflow-hidden"
-								>
-									<p className="text-gray-600 mb-4 text-sm leading-relaxed">
-										{value.description}
-									</p>
-									<Button
-										size="sm"
-										className="bg-teal-600 hover:bg-teal-700 text-white rounded-full"
+							{hoveredCard !== index && (
+								<div className={` ${outfit.className} flex flex-col items-center justify-center h-full text-center`}>
+									<motion.div
+										className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold text-black mb-4"
+										initial={{ scale: 1, opacity: 1 }}
 									>
-										Know More
-									</Button>
+										{value.number}
+									</motion.div>
+
+									<motion.h3
+										className="text-[1.5rem] sm:text-[2rem] lg:text-[2.25rem] font-bold text-black/30 writing-mode-vertical"
+										style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+										initial={{ rotate: 0 }}
+									>
+										{value.title}
+									</motion.h3>
+								</div>
+							)}
+
+							{hoveredCard === index && (
+								<motion.div
+									className="flex flex-col h-full"
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.3 }}
+								>
+									
+									<div className={`${outfit.className} flex items-center gap-4 mb-6`}>
+										<motion.div
+											className="text-[38px] font-bold text-[#1F9885]"
+											initial={{ scale: 1 }}
+											animate={{ scale: 0.8 }}
+											transition={{ duration: 0.2 }}
+										>
+											{value.number}
+										</motion.div>
+
+										<motion.h3
+											className="text-[1.125rem] font-bold text-teal-600"
+											initial={{ fontSize: "2.25rem" }}
+											animate={{ fontSize: "1.125rem" }}
+											transition={{ duration: 0.2 }}
+										>
+											{value.title}
+										</motion.h3>
+									</div>
+
+									<motion.div
+										className="flex-1 flex flex-col justify-between"
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.3, delay: 0.1 }}
+									>
+										<p className={`${manrope.className} text-gray-600 mb-4 text-sm leading-relaxed`}>
+											{value.description}
+										</p>
+										<Button
+											size="sm"
+											className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full self-start"
+										>
+											Know More
+										</Button>
+									</motion.div>
 								</motion.div>
-							</div>
+							)}
 						</motion.div>
 					))}
 				</motion.div>
@@ -146,7 +182,7 @@ export default function CoreValues() {
 					viewport={{ once: true }}
 					transition={{ duration: 0.6, delay: 0.4 }}
 				>
-					<Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full">
+					<Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-8 py-3 rounded-full">
 						View All
 					</Button>
 				</motion.div>

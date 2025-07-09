@@ -70,7 +70,7 @@ const TopManagement = () => {
                         <Image
                             src={member.image}
                             alt={member.name}
-                            className="lg:w-[20vw] lg:h-[43vh] w-[50vw] h-[50vh] rounded-full object-cover border-[12px] border-[#097362]/30 shadow-md filter grayscale"
+                            className="lg:w-[20vw] lg:h-[43vh] w-[25vw] h-[30vh] rounded-full object-cover border-[12px] border-[#097362]/30 shadow-md filter grayscale"
                         />
                     </div>
                 </div>

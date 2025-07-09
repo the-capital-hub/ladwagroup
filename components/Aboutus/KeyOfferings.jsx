@@ -75,11 +75,11 @@ const KeyOfferings = () => {
       </div>
 
       <div className="relative">
-        <div className="hidden lg:grid grid-cols-3 gap-8 mb-8">
+        <div className="hidden lg:grid grid-cols-3 gap-8 mb-20">
           {/* Top Row */}
-          <div className="flex flex-col items-center gap-12">
+          <div className="flex flex-col items-center gap-12 ">
             <h3 className={`text-lg lg:text-[26px] ${manrope.className} font-bold text-[#222D39]  text-center mb-2`}>Road Safety<br/> Equipment</h3>
-            <div className="w-[15vw] h-[25vh]  bg-white shadow-lg border-[#097362] rounded-b-full border-t-6 flex items-center justify-center mb-4">
+            <div className="w-[15vw] h-[25vh]  bg-white shadow-lg border-[#097362] rounded-b-full border-t-6 flex items-center justify-center ">
               <Image src={img1} alt="Road Safety Equipment" width={80}  />
             </div>
             <span className={`${manrope.className} text-4xl md:text-[60px] font-bold text-gray-400`}>01</span>
@@ -104,8 +104,8 @@ const KeyOfferings = () => {
         </div>
 
         {/* Bottom Row */}
-        <div className="hidden lg:grid grid-cols-3 gap-8">
-          <div className="flex flex-col items-center gap-5">
+        <div className="hidden lg:grid grid-cols-3 gap-8 ">
+          <div className="flex flex-col items-center gap-5 mt-6">
             <span className={`${manrope.className} text-4xl md:text-[60px] font-bold text-gray-400`}>04</span>
             <div className="w-[15vw] h-[25vh] bg-white shadow-lg border-b-6 border-[#097362] rounded-t-full flex items-center justify-center mb-4">
               <Image src={img4} alt="Traffic Management" width={80} />

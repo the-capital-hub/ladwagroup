@@ -52,7 +52,7 @@ const CoreValues = () => {
           {values.map((value, index) => (
             <div 
               key={index}
-              className="md:bg-white/30 bg-[#A7DED5]/20 rounded-2xl p-6 shadow-lg border-2 border-[#A7DED5]"
+              className="md:bg-white/50 bg-white/50 rounded-2xl p-6 shadow-lg border-2 border-[#A7DED5]"
             >
               <div className="mb-4">
                 <span className="text-5xl font-bold text-black">{value.number}</span>
