@@ -63,6 +63,7 @@ export default function VisionMission() {
 					</p>
 
 					<Button
+						onClick={() => {navigate.push('/contact-us')}}
 						size="sm"
 						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] text-white rounded-full"
 					>

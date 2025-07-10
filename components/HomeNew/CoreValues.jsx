@@ -184,6 +184,7 @@ export default function CoreValues() {
                     </p>
                     <Button
                       size="sm"
+					  onClick={() => {navigate.push('/contact-us')}}
                       className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full self-start"
                     >
                       Know More
@@ -202,7 +203,7 @@ export default function CoreValues() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-8 py-3 rounded-full">
+          <Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-8 py-3 rounded-full">
             View All
           </Button>
         </motion.div>

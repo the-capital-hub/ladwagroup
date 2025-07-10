@@ -47,7 +47,7 @@ export default function ContactFormSection({ constructionImg }) {
 											className="w-full p-3 bg-gray-100 rounded-md"
 										/>
 									</div>
-									<Button className="w-full bg-teal-700 hover:bg-teal-800">
+									<Button onClick={() => {navigate.push('/contact-us')}} className="w-full bg-teal-700 hover:bg-teal-800">
 										SUBMIT NOW
 									</Button>
 								</form>

@@ -208,7 +208,7 @@ export default function SectorsSection() {
 							</p>
 						</div>
 						<div className="flex justify-between">
-							<Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
+							<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
 								Know More
 							</Button>
 							<img src={Logo6.src} />
@@ -229,7 +229,7 @@ export default function SectorsSection() {
 							government procurement agency — LADWA is your strategic ally for
 							compliant, innovative, and scalable EHS products.
 						</p>
-						<Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
+						<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
 							Know More
 						</Button>
 					</motion.div>
@@ -270,7 +270,8 @@ export default function SectorsSection() {
 
 				{/* Centered button */}
 				<div className="flex justify-center relative z-10">
-					<Button
+					<Button 
+						onClick={() => {navigate.push('/contact-us')}}
 						size="sm"
 						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full"
 					>

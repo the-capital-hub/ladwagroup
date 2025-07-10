@@ -151,7 +151,7 @@ export default function WhyLadwaSection() {
 				</div>
 
 				<div className="flex justify-center mt-8 md:mt-12">
-					<Button className="bg-teal-700 hover:bg-teal-800">
+					<Button onClick={() => {navigate.push('/contact-us')}} className="bg-teal-700 hover:bg-teal-800">
 						GET STARTED
 						<ArrowRight className="ml-2 h-4 w-4" />
 					</Button>
