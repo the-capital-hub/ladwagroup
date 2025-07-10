@@ -11,6 +11,14 @@ import {
 	Logo11,
 	Logo12,
 } from "@/public/images/NewHome";
+import ball from "@/public/images/NewHome/3d ball.png";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+const inter = Inter ({
+	variable:"--font-inter",
+    subsets:["latin"]
+
+ })
 
 export default function SectorsSection() {
 	const sectors = [
@@ -74,65 +82,114 @@ export default function SectorsSection() {
 	};
 
 	return (
-		<section className="py-10 bg-gradient-to-br from-teal-50 to-cyan-50">
-			<div className="px-10">
+		<section className={`relative p-1 w-full  max-w-7xl mx-auto rounded-3xl bg-gradient-to-b z-10 from-[#CAFFF9] to-white`}>
+			<div className="p-10 bg-gradient-to-b  from-[#E3FFFB] to-[#C7EBFF]/80 rounded-3xl z-10 relative">
 				<motion.div
-					className="text-center mb-16"
+					className="text-center mb-16 relative z-10"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
 				>
-					<h2 className="text-6xl font-bold text-gray-900 mb-4">
+					<h2 className="text-6xl font-bold text-gray-900 mb-8">
 						Sectors we cater
 					</h2>
 				</motion.div>
 
 				<motion.div
-					className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+					className={`${inter.className} mb-16 relative z-10 border p-4 border-cyan-200 rounded-2xl `}
 					variants={containerVariants}
-					initial="hidden"
+					initial="visible"
 					whileInView="visible"
 					viewport={{ once: true }}
 				>
-					{sectors.map((sector, index) => {
-						return (
-							<motion.div
+					{/* First row - 3 items */}
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+						{sectors.slice(0, 3).map((sector, index) => (
+							<div
 								key={index}
-								className="bg-white p-6 border-2 border-teal-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
-								variants={cardVariants}
-								whileHover={{ scale: 1.05, y: -5 }}
-								transition={{ duration: 0.2 }}
+								className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full"
 							>
-								<div className="flex items-center space-x-4">
+								<motion.div
+									className="bg-gradient-to-r from-white to-[#9FFFF0] p-4 rounded-3xl"
+									variants={cardVariants}
+								>
+									<div className="flex items-center space-x-4">
+										<motion.div className="flex items-center justify-center">
+											<img
+												src={sector.icon.src}
+												className="w-12 h-12 text-teal-600"
+											/>
+										</motion.div>
+										<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+									</div>
+								</motion.div>
+							</div>
+						))}
+					</div>
+
+					{/* Second row - 2 items centered */}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 max-w-4xl mx-auto">
+						{sectors.slice(3, 5).map((sector, index) => (
+							<div
+								key={index + 3}
+								className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full"
+							>
+								<motion.div
+									className="bg-gradient-to-r from-white to-[#9FFFF0] p-4 rounded-3xl"
+									variants={cardVariants}
+								>
+									<div className="flex items-center space-x-4">
+										<motion.div className="flex items-center justify-center">
+											<img
+												src={sector.icon.src}
+												className="w-12 h-12 text-teal-600"
+											/>
+										</motion.div>
+										<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+									</div>
+								</motion.div>
+							</div>
+						))}
+					</div>
+
+					{/* Third row - 1 item centered */}
+					<div className="flex justify-center">
+						<div className="w-full max-w-md">
+							{sectors.slice(5, 6).map((sector, index) => (
+								<div
+									key={index + 5}
+									className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full"
+								>
 									<motion.div
-										className="flex items-center justify-center"
-										whileHover={{ rotate: 360 }}
-										transition={{ duration: 0.5 }}
+										className="bg-gradient-to-r from-white to-[#9FFFF0] p-4 rounded-3xl"
+										variants={cardVariants}
 									>
-										<img
-											src={sector.icon.src}
-											className="w-12 h-12 text-teal-600"
-										/>
+										<div className="flex items-center space-x-4">
+											<motion.div className="flex items-center justify-center">
+												<img
+													src={sector.icon.src}
+													className="w-12 h-12 text-teal-600"
+												/>
+											</motion.div>
+											<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+										</div>
 									</motion.div>
-									<h3 className="font-semibold text-gray-900">
-										{sector.title}
-									</h3>
 								</div>
-							</motion.div>
-						);
-					})}
+							))}
+						</div>
+					</div>
 				</motion.div>
 
 				<motion.div
-					className="grid lg:grid-cols-2 gap-12"
+					className="grid lg:grid-cols-2 gap-12 relative z-10"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6, delay: 0.3 }}
 				>
 					<motion.div
-						className="bg-white p-8 border-2 border-teal-200 rounded-2xl shadow-sm"
+						className="bg-white/60 p-8 border-2 border-teal-200 rounded-2xl shadow-sm"
 						whileHover={{ scale: 1.02 }}
 						transition={{ duration: 0.2 }}
 					>
@@ -142,16 +199,16 @@ export default function SectorsSection() {
 						<p className="text-gray-600 font-semibold mb-6">
 							LADWA is actively expanding its global footprint through:
 						</p>
-						<div className="space-y-2 text-gray-600 mb-6">
-							<p className="w-fit font-semibold p-3 bg-teal-50 border-2 border-teal-200 rounded-full">
+						<div className="space-y-2 text-black mb-6">
+							<p className="w-fit font-semibold p-3 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
 								International distributor partnerships
 							</p>
-							<p className="w-fit font-semibold p-3 bg-teal-50 border-2 border-teal-200 rounded-full">
+							<p className="w-fit font-semibold p-3 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
 								Participation in top global expos (A+A, Intersec, NSC)
 							</p>
 						</div>
 						<div className="flex justify-between">
-							<Button className="bg-teal-600 hover:bg-teal-700 text-white rounded-full">
+							<Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
 								Know More
 							</Button>
 							<img src={Logo6.src} />
@@ -159,7 +216,7 @@ export default function SectorsSection() {
 					</motion.div>
 
 					<motion.div
-						className="flex flex-col items-center justify-center bg-white border-2 border-teal-200 p-8 rounded-2xl shadow-sm"
+						className="flex flex-col items-center justify-center bg-white/60 border-2 border-teal-200 p-8 rounded-2xl shadow-sm"
 						whileHover={{ scale: 1.02 }}
 						transition={{ duration: 0.2 }}
 					>
@@ -172,7 +229,7 @@ export default function SectorsSection() {
 							government procurement agency — LADWA is your strategic ally for
 							compliant, innovative, and scalable EHS products.
 						</p>
-						<Button className="bg-teal-600 hover:bg-teal-700 text-white rounded-full">
+						<Button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
 							Know More
 						</Button>
 					</motion.div>
@@ -186,32 +243,51 @@ export default function SectorsSection() {
 					viewport={{ once: true }}
 					transition={{ duration: 0.6, delay: 0.3 }}
 				>
-					{features.map((feature, index) => {
-						return (
-							<motion.div
-								key={index}
-								className="bg-white p-6 border-2 border-teal-200 rounded-xl shadow-sm"
-								variants={cardVariants}
-								whileHover={{ scale: 1.02 }}
-								transition={{ duration: 0.2 }}
-							>
-								<h3 className="text-xl font-bold text-gray-900 mb-4">
-									{feature.title}
-								</h3>
-								<ul className="space-y-2">
-									{feature.description.map((description, descIndex) => (
-										<li
-											key={descIndex}
-											className="text-gray-600 flex items-start"
-										>
-											{description}
-										</li>
-									))}
-								</ul>
-							</motion.div>
-						);
-					})}
+					{features.map((feature, index) => (
+						<motion.div
+							key={index}
+							className="bg-white/60 p-6 border-2 border-teal-200 rounded-xl shadow-sm"
+							variants={cardVariants}
+							whileHover={{ scale: 1.02 }}
+							transition={{ duration: 0.2 }}
+						>
+							<h3 className="text-xl font-bold text-gray-900 mb-4">
+								{feature.title}
+							</h3>
+							<ul className="space-y-2">
+								{feature.description.map((description, descIndex) => (
+									<li
+										key={descIndex}
+										className="text-gray-600 text-[16px] flex items-start"
+									>
+										{description}
+									</li>
+								))}
+							</ul>
+						</motion.div>
+					))}
 				</motion.div>
+
+				{/* Centered button */}
+				<div className="flex justify-center relative z-10">
+					<Button
+						size="sm"
+						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full"
+					>
+						View all
+					</Button>
+				</div>
+			</div>
+
+			{/* 3D Ball - positioned at bottom center behind the blue container */}
+			<div className="absolute hidden lg:block -bottom-5 lg:-bottom-32 left-1/2 transform -translate-x-1/2 z-0">
+				<div className="w-[20vw] h-[20vh] md:w-[40vw] md:h-[40vh]">
+					<Image
+						src={ball}
+						alt="3D Ball"
+						className="w-full h-full object-contain"
+					/>
+				</div>
 			</div>
 		</section>
 	);
