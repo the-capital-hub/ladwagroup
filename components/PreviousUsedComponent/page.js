@@ -9,7 +9,7 @@ import SolutionsSection from "@/components/Home/SolutionsSection.jsx";
 import WorkProcessSection from "@/components/Home/WorkProcessSection.jsx";
 import TestimonialsSection from "@/components/Home/TestimonialsSection.jsx";
 import ContactFormSection from "@/components/Home/ContactFormSection.jsx";
-import PartnersSection from "@/components/Home/PartnersSection";
+import PartnersSection from "@/components/HomeNew/PartnersSection";
 
 // Images
 import VideoImg from "@/public/images/home/VideoImg.png";
