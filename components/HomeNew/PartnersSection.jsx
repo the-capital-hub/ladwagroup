@@ -1,29 +1,44 @@
 "use client";
 
 import Image from "next/image";
-import logo from "@/public/images/NewHome/partner.png"
-
+import logo from "@/public/images/NewHome/partner.png";
+import { motion } from "framer-motion";
 
 export default function PartnersSection() {
-
+	const fadeInUp = {
+		hidden: { opacity: 0, y: 30 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.6,
+				ease: "easeOut",
+			},
+		},
+	};
 
 	return (
-		<section className="py-6 md:py-12 bg-white">
-			<div className="pb-6">
-				<h2
-					className="text-center text-xl font-medium text-gray-700 mb-8"
-				>
+		<motion.section
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ once: true, amount: 0.3 }}
+			className="py-6 md:py-12 bg-white"
+		>
+			<motion.div
+				variants={fadeInUp}
+				className="pb-6"
+			>
+				<h2 className="text-center text-xl font-medium text-gray-700 mb-8">
 					Our Partners
 				</h2>
 
-				<div
+				<motion.div
+					variants={fadeInUp}
 					className="flex flex-wrap justify-center items-center gap-4 md:gap-12"
-					
 				>
-					<Image src={logo} alt= "our partners"/>
-					
-				</div>
-			</div>
-		</section>
+					<Image src={logo} alt="our partners" />
+				</motion.div>
+			</motion.div>
+		</motion.section>
 	);
 }
