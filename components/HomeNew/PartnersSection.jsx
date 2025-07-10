@@ -24,10 +24,7 @@ export default function PartnersSection() {
 			viewport={{ once: true, amount: 0.3 }}
 			className="py-6 md:py-12 bg-white"
 		>
-			<motion.div
-				variants={fadeInUp}
-				className="pb-6"
-			>
+			<motion.div variants={fadeInUp} className="pb-6">
 				<h2 className="text-center text-xl font-medium text-gray-700 mb-8">
 					Our Partners
 				</h2>
@@ -36,7 +33,11 @@ export default function PartnersSection() {
 					variants={fadeInUp}
 					className="flex flex-wrap justify-center items-center gap-4 md:gap-12"
 				>
-					<Image src={logo} alt="our partners" />
+					<Image
+						src={logo}
+						alt="our partners"
+						className="scale-[2] md:scale-100"
+					/>
 				</motion.div>
 			</motion.div>
 		</motion.section>

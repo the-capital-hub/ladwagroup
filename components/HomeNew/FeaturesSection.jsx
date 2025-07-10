@@ -67,7 +67,7 @@ export default function FeaturesSection() {
 		<section className="w-full max-w-7xl mx-auto rounded-[30px] p-1 bg-gradient-to-b from-[#A2FFF0] to-white">
 			<div className="p-10 bg-gradient-to-b from-[#BAFFF4] to-[#FFFFFF] rounded-[30px]">
 				<div className="text-center mb-16">
-					<h2 className="text-[64px] font-bold text-black mb-4">
+					<h2 className="text-3xl text-center lg:text-start lg:text-[64px] font-bold text-black mb-4">
 						What Sets LADWA Apart
 					</h2>
 					<p className="text-xl text-gray-600 max-w-3xl mx-auto">

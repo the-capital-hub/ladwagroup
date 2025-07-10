@@ -14,7 +14,8 @@ const benefits = [
 	{
 		icon: Logo2,
 		title: "Wide Export Portfolio",
-		description: "Road safety, industrial safety, PPE, emergency kits, smart traffic systems, and more.",
+		description:
+			"Road safety, industrial safety, PPE, emergency kits, smart traffic systems, and more.",
 	},
 	{
 		icon: Logo3,
@@ -60,7 +61,7 @@ const itemVariants = {
 
 export default function GlobalBuyersSection() {
 	return (
-		<section className="bg-white mx-auto relative my-24">
+		<section className="bg-white mx-auto relative lg:my-24">
 			<div className="absolute inset-0 md:flex items-center hidden justify-center">
 				<div className="w-[90%] h-[115%] bg-gradient-to-b from-[#009D84] to-white rounded-full opacity-30"></div>
 			</div>
@@ -86,7 +87,7 @@ export default function GlobalBuyersSection() {
 								className="w-28 h-28 text-white object-cover"
 								alt="Certifications"
 							/>
-							<h3 className="text-[25px] font-medium text-gray-900 mb-4">
+							<h3 className="text-3xl text-center lg:text-start lg:text-[25px] font-medium text-gray-900 mb-4">
 								International Certifications
 							</h3>
 							<p className="text-gray-600 mb-6 text-[20px] text-center">
@@ -100,8 +101,11 @@ export default function GlobalBuyersSection() {
 					</motion.div>
 
 					{/* Right Benefits List */}
-					<motion.div variants={itemVariants} className="col-span-1 lg:col-span-2">
-						<h2 className="text-[45px] font-bold text-gray-900 mb-8">
+					<motion.div
+						variants={itemVariants}
+						className="col-span-1 lg:col-span-2"
+					>
+						<h2 className="text-3xl text-center lg:text-start lg:text-[45px] font-bold text-gray-900 mb-8">
 							Why Global Buyers Choose LADWA
 						</h2>
 
@@ -122,7 +126,9 @@ export default function GlobalBuyersSection() {
 												<h4 className="font-medium text-[24px] text-gray-900 mb-2">
 													{benefit.title}
 												</h4>
-												<p className="text-gray-600 text-[16px]">{benefit.description}</p>
+												<p className="text-gray-600 text-[16px]">
+													{benefit.description}
+												</p>
 											</div>
 										</div>
 									</div>

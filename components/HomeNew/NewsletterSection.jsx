@@ -39,7 +39,7 @@ const fadeUp = {
 
 export default function NewsletterSection() {
 	return (
-		<section className="py-10 bg-white w-full max-w-7xl mx-auto my-12">
+		<section className="py-10 bg-white w-full max-w-7xl mx-auto px-10">
 			<motion.div
 				className="max-w-8xl mx-auto text-center"
 				variants={containerVariants}
@@ -48,7 +48,7 @@ export default function NewsletterSection() {
 				viewport={{ once: true, amount: 0.2 }}
 			>
 				<motion.h2
-					className="text-[64px] font-bold text-gray-900 mb-6"
+					className="text-2xl lg:text-[64px] font-bold text-gray-900 mb-6"
 					variants={fadeUp}
 				>
 					Join the LADWA Movement ( Newsletter )

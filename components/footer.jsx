@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Globe } from "lucide-react";
+import Logo from "@/public/images/LadwaLogo.png";
 
 export default function Footer() {
 	const footerSections = [
@@ -98,7 +100,20 @@ export default function Footer() {
 		<footer className="bg-gradient-to-b from-teal-50 to-teal-400 text-gray-800 font-semibold">
 			<div className="container mx-auto px-10 py-16">
 				{/* Main footer content */}
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-12">
+					{/* Logo */}
+					<div className="flex items-start justify-start mb-8">
+						{/* <Image
+						src={Logo.src}
+						className="w-28 h-auto text-white object-cover"
+						width={200}
+						height={200}
+						alt="Certifications"
+					/> */}
+						<span className="text-3xl lg:text-4xl font-bold text-teal-700">
+							LADWA
+						</span>
+					</div>
 					{footerSections.map((section, index) => (
 						<div key={index}>
 							<h3 className="font-bold text-gray-900 mb-4">{section.title}</h3>
