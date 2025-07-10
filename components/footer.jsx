@@ -6,36 +6,18 @@ export default function Footer() {
 		{
 			title: "Pricing",
 			links: [
-				"Use Cases",
-				"Support",
-				"Engage",
-				"Convert",
-				"Company Size",
-				"Mid-Market / Enterprise",
-				"Small Business",
-				"Early Stage",
+				"Product Tours",
+				"Help Center Articles",
+				"Live Chat",
+				"Surveys",
 			],
-		},
-		{
+		},{
 			title: "Features",
 			links: [
-				"Business Messenger",
-				"Customizable bots",
-				"Automated answers",
 				"Product Tours",
-				"Outbound Messages",
-				"Inbox",
 				"Help Center Articles",
-				"Apps + Integrations",
-				"Customer data",
 				"Live Chat",
-				"Mobile Apps",
-				"Mobile Carousels",
-				"Series",
-				"Transactional Messaging",
 				"Surveys",
-				"Switch",
-				"SMS",
 			],
 		},
 		{
@@ -43,17 +25,9 @@ export default function Footer() {
 			links: [
 				"Blog",
 				"Watch a Demo",
-				"Glossary",
-				"Academy",
 				"Webinars",
-				"Product Changes",
-				"App Store",
 				"Docs",
-				"Developers",
-				"Status",
 				"Security",
-				"Books and Guides",
-				"Support ROI Calculator",
 				"Services",
 			],
 		},
@@ -61,35 +35,23 @@ export default function Footer() {
 			title: "Company",
 			links: [
 				"About",
-				"Customers",
-				"Community Forum",
 				"Careers",
 				"Newsroom",
-				"App Partner Program",
-				"Service Partner Program",
 				"Contact Us",
 				"Terms",
 				"Privacy",
 			],
 		},
-		{
-			title: "Industries",
-			links: ["Financial Services", "E-commerce", "Education", "Healthcare"],
-		},
+		
 	];
 
 	const languages = [
 		"English (United States)",
-		"German",
-		"Spanish",
-		"French",
-		"Portuguese (Brazil)",
 	];
 
 	const bottomLinks = [
 		"Terms",
 		"Privacy",
-		"Status",
 		"Security",
 		"Do not share my personal information",
 	];
