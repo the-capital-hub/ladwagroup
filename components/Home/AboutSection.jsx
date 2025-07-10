@@ -61,7 +61,7 @@ export default function AboutSection({ ladwaExpImg }) {
 							Health and Environmental needs by offering need based and
 							regulatory compliance.
 						</p>
-						<Button className="bg-teal-700 hover:bg-teal-800">Read More</Button>
+						<Button onClick={() => {navigate.push('/contact-us')}} className="bg-teal-700 hover:bg-teal-800">Read More</Button>
 					</motion.div>
 				</div>
 			</div>

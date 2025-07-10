@@ -111,6 +111,7 @@ export default function HeroSection() {
               >
                 <Button
                   size="lg"
+                  onClick={() => {navigate.push('/contact-us')}}
                   className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   Get Started

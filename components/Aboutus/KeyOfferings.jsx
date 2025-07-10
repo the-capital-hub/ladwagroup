@@ -215,7 +215,7 @@ const KeyOfferings = () => {
 
         {/* View All Button */}
         <div className="flex justify-center mt-6 sm:mt-8">
-          <button className="bg-gradient-to-b from-[#097362] to-[#0FA78E] text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-lg h-10 sm:h-12 font-medium hover:bg-[#0a5a4f] transition-colors">
+          <button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-lg h-10 sm:h-12 font-medium hover:bg-[#0a5a4f] transition-colors">
             View All
           </button>
         </div>

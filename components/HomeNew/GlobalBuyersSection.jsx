@@ -93,7 +93,7 @@ export default function GlobalBuyersSection() {
 								CE, ISO, ANSI, and OSHA compliance ensures global market
 								readiness, seamless integration, and trust.
 							</p>
-							<Button className="bg-gradient-to-b from-[#097362] to-[#029981] hover:bg-teal-700 text-white rounded-full">
+							<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#029981] hover:bg-teal-700 text-white rounded-full">
 								Know More
 							</Button>
 						</div>

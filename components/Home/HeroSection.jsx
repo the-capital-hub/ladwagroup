@@ -45,11 +45,12 @@ export default function HeroSection({ videoImg }) {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.3 }}
 					>
-						<Button className="bg-teal-700 hover:bg-teal-800">
+						<Button onClick={() => {navigate.push('/contact-us')}} className="bg-teal-700 hover:bg-teal-800">
 							Get Started
 						</Button>
 						<Button
 							variant="outline"
+							onClick={() => {navigate.push('/contact-us')}}
 							className="border-teal-700 text-teal-700 hover:bg-teal-50"
 						>
 							Sign Up

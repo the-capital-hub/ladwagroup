@@ -159,7 +159,7 @@ export default function PreSalesSection() {
 				</motion.div>
 
 				<div className="flex justify-center mt-12">
-					<Button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded">
+					<Button onClick={() => {navigate.push('/contact-us')}} className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded">
 						View all
 					</Button>
 				</div>

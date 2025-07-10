@@ -19,7 +19,7 @@ export default function ProductHero() {
 						safety focus.
 					</p>
 					<div className="flex items-center gap-4">
-						<Button className="bg-green-700 hover:bg-green-800">
+						<Button onClick={() => {navigate.push('/contact-us')}} className="bg-green-700 hover:bg-green-800">
 							Shop Now <ArrowRight className="ml-2 h-4 w-4" />
 						</Button>
 						<div className="flex items-center gap-2">
