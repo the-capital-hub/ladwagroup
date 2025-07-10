@@ -1,63 +1,106 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Picture from "@/public/images/NewHome/Picture7.png";
 import { Inter, Outfit } from "next/font/google";
-const inter = Inter ({
-	variable:"--font-inter",
-    subsets:["latin"]
 
- })
- const outfit = Outfit({
-    variable:"--font-outfit",
-    subsets:["latin"]
+const inter = Inter({
+	variable: "--font-inter",
+	subsets: ["latin"],
+});
+const outfit = Outfit({
+	variable: "--font-outfit",
+	subsets: ["latin"],
+});
 
-})
+// Animation variants
+const containerVariants = {
+	hidden: {},
+	visible: {
+		transition: {
+			staggerChildren: 0.2,
+		},
+	},
+};
+const fadeUp = {
+	hidden: { opacity: 0, y: 50 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.7,
+			ease: "easeOut",
+		},
+	},
+};
 
 export default function NewsletterSection() {
 	return (
 		<section className="py-10 bg-white w-full max-w-7xl mx-auto my-12">
-			<div className="max-w-8xl mx-auto text-center">
-				<h2 className="text-[64px] font-bold text-gray-900 mb-6">
+			<motion.div
+				className="max-w-8xl mx-auto text-center"
+				variants={containerVariants}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true, amount: 0.2 }}
+			>
+				<motion.h2
+					className="text-[64px] font-bold text-gray-900 mb-6"
+					variants={fadeUp}
+				>
 					Join the LADWA Movement ( Newsletter )
-				</h2>
-				<p className={`text-[18px] text-gray-600 mb-12 max-w-5xl mx-auto ${outfit.className}`}>
+				</motion.h2>
+
+				<motion.p
+					className={`text-[18px] text-gray-600 mb-12 max-w-5xl mx-auto ${outfit.className}`}
+					variants={fadeUp}
+				>
 					Whether you're a safety officer, city planner, industry head, or
 					concerned citizen—partner with us to build a safer, smarter, and more
 					sustainable future.
-				</p>
+				</motion.p>
 
-				<div className="max-w-5xl mx-auto relative mb-12">
+				<motion.div
+					className="max-w-5xl mx-auto relative mb-12"
+					variants={fadeUp}
+				>
 					<Image
-						src={Picture.src}
+						src={Picture}
 						alt="Team collaboration"
 						width={700}
 						height={400}
 						className="w-full aspect-video rounded-[30px] mx-auto"
 					/>
-				</div>
+				</motion.div>
 
-				<h3 className={`text-2xl lg:text-[40px] font-bold text-gray-900 ${inter.className}`}>
+				<motion.h3
+					className={`text-2xl lg:text-[40px] font-bold text-gray-900 ${inter.className}`}
+					variants={fadeUp}
+				>
 					LADWA – Making the World Safer.
-				</h3>
+				</motion.h3>
 
-				{/* <div className="max-w-md mx-auto">
-						<div className="flex gap-4">
-							<Input
-								type="email"
-								placeholder="Enter your email address"
-								className="flex-1"
-							/>
-							<Button className="bg-teal-600 hover:bg-teal-700 text-white px-8">
-								Subscribe
-							</Button>
-						</div>
-						<p className="text-sm text-gray-500 mt-4">
-							Get the latest updates on safety innovations and industry
-							insights.
-						</p>
-					</div> */}
-			</div>
+				{/* Optional Subscription Form (currently commented) */}
+				{/* <motion.div className="max-w-md mx-auto mt-8" variants={fadeUp}>
+					<div className="flex gap-4">
+						<Input
+							type="email"
+							placeholder="Enter your email address"
+							className="flex-1"
+						/>
+						<Button className="bg-teal-600 hover:bg-teal-700 text-white px-8">
+							Subscribe
+						</Button>
+					</div>
+					<p className="text-sm text-gray-500 mt-4">
+						Get the latest updates on safety innovations and industry
+						insights.
+					</p>
+				</motion.div> */}
+			</motion.div>
 		</section>
 	);
 }
