@@ -1,237 +1,137 @@
-'use client'
+"use client";
 
-import React, { useEffect, useRef, useState, memo, useCallback } from 'react'
-import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import React, { useState, useEffect } from "react";
+import { ChevronUp, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
-const TextRevealCard = ({
-  text,
-  revealText,
-  className
-}) => {
-  const [widthPercentage, setWidthPercentage] = useState(0)
-  const cardRef = useRef(null)
-  const [left, setLeft] = useState(0)
-  const [localWidth, setLocalWidth] = useState(0)
-  const [isMouseOver, setIsMouseOver] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+import img from "../../public/images/aboutus/WhatLadwaImage.png";
+
+const ladwaItems = [
+  { letter: "L", meaning: "Leadership in safety innovation" },
+  { letter: "A", meaning: "Assurance of quality and compliance" },
+  { letter: "D", meaning: "Dependability in every solution" },
+  { letter: "W", meaning: "Worldwide reach with Indian roots" },
+  { letter: "A", meaning: "Accountability to people and planet" },
+];
+
+const WhatLadwaStandsFor = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const goToNext = () => {
+    setActiveIndex((prev) => (prev + 1) % ladwaItems.length);
+  };
+
+  const goToPrevious = () => {
+    setActiveIndex((prev) => (prev - 1 + ladwaItems.length) % ladwaItems.length);
+  };
+
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    
-    if (cardRef.current) {
-      const updateDimensions = () => {
-        const { left, width: localWidth } = cardRef.current.getBoundingClientRect()
-        setLeft(left)
-        setLocalWidth(localWidth)
-      }
-      
-      updateDimensions()
-      window.addEventListener('resize', updateDimensions)
-      
-      return () => {
-        window.removeEventListener('resize', checkMobile)
-        window.removeEventListener('resize', updateDimensions)
-      }
-    }
-  }, [])
-
-  const updatePosition = useCallback((clientX) => {
-    if (cardRef.current && localWidth > 0) {
-      const relativeX = clientX - left
-      const percentage = Math.max(0, Math.min(100, (relativeX / localWidth) * 100))
-      setWidthPercentage(percentage)
-    }
-  }, [left, localWidth])
-
-  const mouseMoveHandler = useCallback((event) => {
-    if (!isMobile) {
-      event.preventDefault()
-      updatePosition(event.clientX)
-    }
-  }, [isMobile, updatePosition])
-
-  const touchMoveHandler = useCallback((event) => {
-    if (isMobile && event.touches[0]) {
-      event.preventDefault()
-      updatePosition(event.touches[0].clientX)
-    }
-  }, [isMobile, updatePosition])
-
-  const mouseLeaveHandler = useCallback(() => {
-    setIsMouseOver(false)
-    if (!isMobile) {
-      setWidthPercentage(0)
-    }
-  }, [isMobile])
-
-  const mouseEnterHandler = useCallback(() => {
-    setIsMouseOver(true)
-  }, [])
-
-  const touchStartHandler = useCallback((event) => {
-    if (isMobile) {
-      setIsMouseOver(true)
-      if (event.touches[0]) {
-        updatePosition(event.touches[0].clientX)
-      }
-    }
-  }, [isMobile, updatePosition])
-
-  const touchEndHandler = useCallback(() => {
-    if (isMobile) {
-      setIsMouseOver(false)
-      setTimeout(() => {
-        setWidthPercentage(0)
-      }, 1000)
-    }
-  }, [isMobile])
-
-  const rotateDeg = (widthPercentage - 50) * 0.05 
+    const interval = setInterval(goToNext, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
-      onMouseMove={mouseMoveHandler}
-      onTouchStart={touchStartHandler}
-      onTouchEnd={touchEndHandler}
-      onTouchMove={touchMoveHandler}
-      ref={cardRef}
-      className={cn(
-        "bg-[#097362] border-2 border-[#a2fff0] w-full max-w-6xl rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-xl touch-none",
-        className
-      )}
-      style={{ touchAction: 'none' }}
-    >
-      <div className="h-32 md:h-48 relative flex items-center overflow-hidden">
-        {/* Revealed Text */}
-        <motion.div
-          style={{ width: "100%" }}
-          animate={
-            isMouseOver
-              ? {
-                  opacity: widthPercentage > 0 ? 1 : 0,
-                  clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
-                }
-              : {
-                  clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
-                }
-          }
-          transition={
-            isMouseOver 
-              ? { duration: isMobile ? 0.1 : 0 } 
-              : { duration: isMobile ? 0.6 : 0.4 }
-          }
-          className="absolute bg-[#097362] z-20 will-change-transform"
-        >
-          <p className="text-sm md:text-2xl lg:text-3xl xl:text-4xl font-black text-white text-center leading-tight px-2">
-            {revealText}
-          </p>
-        </motion.div>
+    <div className="w-full max-w-full mx-auto bg-gray-100 py-12 px-4">
+      <div className="flex flex-col lg:flex-row justify-between w-full max-w-7xl mx-auto items-start gap-8">
 
-        {/* Scratch Line */}
-        <motion.div
-          animate={{
-            left: `${widthPercentage}%`,
-            rotate: `${rotateDeg}deg`,
-            opacity: widthPercentage > 0 ? 1 : 0,
-          }}
-          transition={
-            isMouseOver 
-              ? { duration: isMobile ? 0.1 : 0 } 
-              : { duration: isMobile ? 0.6 : 0.4 }
-          }
-          className="h-32 md:h-48 w-[6px] md:w-[8px] bg-gradient-to-b from-transparent via-[#a2fff0] to-transparent absolute z-50 will-change-transform"
-        />
+        {/* Left side*/}
+        <div className="flex-1 p-4 sm:p-6 lg:p-8 mx-auto">
+          <div className="mb-4 text-center lg:text-left">
+            <h2 className="text-[28px] md:text-4xl xl:text-5xl font-bold mb-3">
+              What{" "}
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "2px #097362 "}}
+              >
+                LADWA
+              </span>{" "}
+              Stands For
+            </h2>
+          </div>
+          <div className=" rounded-3xl p-4 ">
+            <Image
+              src={img}
+              alt="Manufacturing facility"
+              className="w-full h-64 lg:h-full object-cover rounded-2xl"
+            />
+          </div>
+        </div>
 
-        <div className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)] mx-auto w-full">
-          <p className="text-3xl md:text-6xl lg:text-8xl font-black text-white text-center leading-tight opacity-20 px-2">
-            {text}
-          </p>
-          <MemoizedStars isMobile={isMobile} />
+        {/* Right side */}
+        <div className="flex-1 p-4 sm:p-6 lg:p-8 gap-14 my-12  w-full relative">
+
+          <div className="absolute right-0 lg:top-8 top-0">
+            <button
+              onClick={goToPrevious}
+         
+              className="p-2 rounded-full bg-[#097362] text-white hover:bg-teal-700 transition-colors"
+            >
+              <ChevronUp size={40} />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-2 mt-12">
+            {ladwaItems.map((item, index) => (
+              <div key={index}>
+                <div className="flex items-center gap-12">
+                  {/* Letter */}
+                  <div
+                    className={`w-12 lg:text-7xl ml-3 text-3xl font-thin ${activeIndex === index ? "text-[#097362]" : "text-gray-400"
+                      }`}
+                  >
+                    {item.letter}
+                  </div>
+
+                  <div className="flex-1 flex items-center">
+                    <AnimatePresence mode="wait">
+                      {activeIndex === index ? (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.4 }}
+                          className="lg:text-[28px] text-2xl ml-2 font-thin text-[#097362]"
+                        >
+                          {item.meaning}
+                        </motion.div>
+                      ) : (
+                        <div className="lg:text-[28px] ml-3 text-2xl font-thin text-gray-400">
+                          {item.meaning}
+                        </div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 mt-3">
+                  <div className="w-20">
+                    <hr className="border-t border-gray-300" />
+                  </div>
+                  <div className="flex-1">
+                    <hr className="border-t border-gray-300" />
+                  </div>
+                </div>
+              </div>
+            ))}
+
+
+          </div>
+
+          <div className="absolute right-0 -bottom-18 ">
+            <button
+              onClick={goToNext}
+              className="p-2 rounded-full bg-[#097362] text-white hover:bg-teal-700 transition-colors"
+            >
+              <ChevronDown size={40} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const Stars = ({ isMobile }) => {
-  const randomMove = () => Math.random() * 4 - 2
-  const randomOpacity = () => Math.random() * 0.7 + 0.3
-  const random = () => Math.random()
-  
-  const starCount = isMobile ? 60 : 120
-  
-  return (
-    <div className="absolute inset-0">
-      {[...Array(starCount)].map((_, i) => (
-        <motion.span
-          key={`star-${i}`}
-          animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
-            left: `calc(${random() * 100}% + ${randomMove()}px)`,
-            opacity: randomOpacity(),
-            scale: [1, 1.2, 0],
-          }}
-          transition={{
-            duration: random() * 15 + 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            position: "absolute",
-            top: `${random() * 100}%`,
-            left: `${random() * 100}%`,
-            width: isMobile ? `3px` : `5px`,
-            height: isMobile ? `3px` : `5px`,
-            backgroundColor: "#a2fff0",
-            borderRadius: "50%",
-            zIndex: 1,
-            opacity: 0.7,
-          }}
-          className="inline-block"
-        />
-      ))}
-    </div>
-  )
-}
-
-const MemoizedStars = memo(Stars)
-
-const WhatLadwaStandsFor = () => {
-  return (
-    <div className='w-full min-h-screen bg-white flex flex-col items-center justify-center px-4 md:px-6 py-12 md:py-20'>
-      <div className='text-center mb-8 md:mb-16'>
-        <h1 className='text-3xl md:text-6xl lg:text-7xl font-black text-black mb-4 md:mb-6'>
-          What <span className="text-[#097362] text-3xl md:text-6xl lg:text-8xl ">Ladwa </span>Stands For
-        </h1>
-        <p className='text-base md:text-lg lg:text-xl text-[#097362] opacity-60 max-w-2xl mx-auto px-4'>
-    {typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window) 
-            ? 'Touch and drag across the card' 
-            : 'Hover over the card'} to reveal the Secret.
-        </p>
-      </div>
-
-      <TextRevealCard
-        text="L • A • D • W • A"
-        revealText="Leadership, Assurance, Dependability, Worldwide, Accountability"
-        className="mx-auto"
-      />
-
-      <div className='text-center mt-8 md:mt-12'>
-        <p className='text-sm md:text-base lg:text-lg text-[#097362] opacity-60 px-4'>
-          {typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)
-            ? 'Touch and drag your finger across the card to reveal the meaning': ""}
-        </p>
-      </div>
-    </div>
-  )
-}
-
-export default WhatLadwaStandsFor
+export default WhatLadwaStandsFor;
