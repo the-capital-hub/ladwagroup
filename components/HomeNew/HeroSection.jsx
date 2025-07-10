@@ -22,7 +22,7 @@ export default function HeroSection() {
         <section className="w-full lg:min-h-screen flex items-center justify-center overflow-hidden">
             <div className="relative w-full lg:h-screen max-w-7xl ">
                 {/* Background Image Container */}
-                <div className="absolute inset-0 w-full h-full p-3 mx-auto lg:mt-5 overflow-hidden ">
+                <div className="absolute inset-0 w-full h-full lg:p-3 p-5 mx-auto lg:mt-5 overflow-hidden ">
                     <Image 
                         src={heroimg} 
                         alt="LADWA Safety Professional" 
@@ -77,13 +77,13 @@ export default function HeroSection() {
                             transition={{ duration: 1, delay: 0.3 }}
                             className="w-full max-w-4xl"
                         >
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] font-bold text-white mb-4 sm:mb-6 leading-tight">
+                            <h1 className="text-2xl md:text-5xl lg:text-[80px] font-bold text-white mb-4 sm:mb-6 leading-tight">
                                 LADWA
                                 <br />
 								<span className="font-thin">
                                 Making The World Safer.</span>
                             </h1>
-                            <p className={`text-base sm:text-lg md:text-[22px] text-gray-200 mb-6 sm:mb-8 max-w-2xl ${inter.className}`}>
+                            <p className={`text-base md:text-lg md:text-[22px] text-gray-200 mb-6 sm:mb-8 max-w-2xl ${inter.className}`}>
                                 India's Leading EHS Innovator. Trusted Globally.
                             </p>
                             <Button
