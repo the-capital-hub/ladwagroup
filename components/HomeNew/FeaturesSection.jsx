@@ -45,15 +45,8 @@ export default function FeaturesSection() {
 					<h2 className="text-[64px] font-bold text-black mb-4">
 						What Sets LADWA Apart
 					</h2>
-<<<<<<< HEAD
 					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
 						LADWA stands apart with its innovative, end-to-end EHS solutions that combine global standards with deep local expertise. Our unwavering focus on quality, sustainability, and customer success redefines safety across industries and communities.
-=======
-					<p className={`text-xl ${manrope.className} font-semibold text-[#3F3F3F] max-w-4xl mx-auto`}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-						massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
-						sit amet.
->>>>>>> a2c1b50856a5cef667fae857e33308ee4628ccb2
 					</p>
 				</div>
 

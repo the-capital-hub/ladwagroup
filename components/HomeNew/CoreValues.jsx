@@ -75,15 +75,8 @@ export default function CoreValues() {
 					<h2 className="text-[64px] font-bold text-gray-900 mb-4">
 						Our Core Values
 					</h2>
-<<<<<<< HEAD
 					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
 						At LADWA, our values are the foundation of everything we do — shaping our actions, guiding our growth, and driving our mission to make the world safer.
-=======
-					<p className={`${manrope.className} text-xl text-gray-600 max-w-3xl`}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-						massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
-						sit amet.
->>>>>>> a2c1b50856a5cef667fae857e33308ee4628ccb2
 					</p>
 				</div>
 
