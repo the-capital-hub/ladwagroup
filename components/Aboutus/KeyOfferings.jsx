@@ -69,8 +69,7 @@ const KeyOfferings = () => {
           Key Offerings
         </h2>
         <p className={`text-gray-600 max-w-5xl mx-auto text-sm sm:text-base md:text-[20px] px-2 sm:px-0 ${manrope.className}`}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisl blandit 
-          vehicula adipiscing elit. Lorem ipsum dolor sit amet.
+          At LADWA, we deliver a comprehensive suite of safety solutions designed to protect lives, assets, and environments across industries.
         </p>
       </div>
 

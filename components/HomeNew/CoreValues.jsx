@@ -12,31 +12,31 @@ export default function CoreValues() {
 			number: "01",
 			title: "Innovation",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa et amet nis blandit vel adipiscing elit. Lorem ipsum dolor sit amet.",
+				"We embrace forward-thinking ideas to develop cutting-edge EHS solutions. Innovation drives us to stay ahead in a dynamic world.",
 		},
 		{
 			number: "02",
 			title: "Reliability",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa et amet nis blandit vel adipiscing elit. Lorem ipsum dolor sit amet.",
+				"Our clients trust us for consistent performance and dependable products. We deliver on our promises — every time.",
 		},
 		{
 			number: "03",
 			title: "Customer",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa et amet nis blandit vel adipiscing elit. Lorem ipsum dolor sit amet.",
+				"Customers are at the heart of our business. We listen, adapt, and serve with unmatched dedication. Our goal is to exceed expectations and build lasting relationships.",
 		},
 		{
 			number: "04",
 			title: "Integrity",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa et amet nis blandit vel adipiscing elit. Lorem ipsum dolor sit amet.",
+				"We operate with honesty, transparency, and ethical responsibility. Integrity defines our relationships and reputation.",
 		},
 		{
 			number: "05",
 			title: "Quality First",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa et amet nis blandit vel adipiscing elit. Lorem ipsum dolor sit amet.",
+				"We prioritize quality in every detail to ensure long-lasting safety. Excellence is not a goal - it's our standard.",
 		},
 	];
 
@@ -69,9 +69,7 @@ export default function CoreValues() {
 						Our Core Values
 					</h2>
 					<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-						massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
-						sit amet.
+						At LADWA, our values are the foundation of everything we do — shaping our actions, guiding our growth, and driving our mission to make the world safer.
 					</p>
 				</motion.div>
 
