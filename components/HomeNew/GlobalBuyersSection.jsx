@@ -61,7 +61,7 @@ const itemVariants = {
 
 export default function GlobalBuyersSection() {
 	return (
-		<section className="bg-white mx-auto relative lg:my-24">
+		<section className="bg-white mx-auto relative md:my-10 my-5 ">
 			<div className="absolute inset-0 md:flex items-center hidden justify-center">
 				<div className="w-[90%] h-[115%] bg-gradient-to-b from-[#009D84] to-white rounded-full opacity-30"></div>
 			</div>
@@ -69,7 +69,7 @@ export default function GlobalBuyersSection() {
 				<div className="w-[75%] h-[95%] bg-gradient-to-b from-[#009D84] to-white border-6 border-white rounded-full opacity-40"></div>
 			</div>
 
-			<div className="p-10 relative">
+			<div className="md:p-10 p-5 relative">
 				<motion.div
 					className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center"
 					variants={containerVariants}
@@ -87,10 +87,10 @@ export default function GlobalBuyersSection() {
 								className="w-28 h-28 text-white object-cover"
 								alt="Certifications"
 							/>
-							<h3 className="text-3xl text-center lg:text-start lg:text-[25px] font-medium text-gray-900 mb-4">
+							<h3 className="md:text-2xl text-xl text-center font-medium text-black mb-4">
 								International Certifications
 							</h3>
-							<p className="text-gray-600 mb-6 text-[20px] text-center">
+							<p className="text-gray-600 mb-6 md:text-md text-sm text-center">
 								CE, ISO, ANSI, and OSHA compliance ensures global market
 								readiness, seamless integration, and trust.
 							</p>
@@ -101,11 +101,8 @@ export default function GlobalBuyersSection() {
 					</motion.div>
 
 					{/* Right Benefits List */}
-					<motion.div
-						variants={itemVariants}
-						className="col-span-1 lg:col-span-2"
-					>
-						<h2 className="text-3xl text-center lg:text-start lg:text-[45px] font-bold text-gray-900 mb-8">
+					<motion.div variants={itemVariants} className="col-span-1 lg:col-span-2">
+						<h2 className="md:text-5xl text-3xl md:text-left text-center font-bold text-black mb-8">
 							Why Global Buyers Choose LADWA
 						</h2>
 
@@ -116,19 +113,17 @@ export default function GlobalBuyersSection() {
 							{benefits.map((benefit, index) => (
 								<motion.div key={index} variants={itemVariants}>
 									<div className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full h-full">
-										<div className="flex items-center justify-center space-x-8 p-5 h-full bg-gradient-to-r from-white to-teal-200 rounded-3xl">
+										<div className="flex items-center justify-center md:space-x-5 md:p-3 p-3 space-x-4 h-full bg-gradient-to-r from-white to-teal-200 rounded-3xl">
 											<img
 												src={benefit.icon.src}
 												alt={benefit.title}
 												className="w-12 h-12 text-teal-600"
 											/>
 											<div>
-												<h4 className="font-medium text-[24px] text-gray-900 mb-2">
+												<h4 className="font-medium text-xl md:text-2xl text-gray-900 mb-2">
 													{benefit.title}
 												</h4>
-												<p className="text-gray-600 text-[16px]">
-													{benefit.description}
-												</p>
+												<p className="text-gray-600 md:text-sm text-xs">{benefit.description}</p>
 											</div>
 										</div>
 									</div>

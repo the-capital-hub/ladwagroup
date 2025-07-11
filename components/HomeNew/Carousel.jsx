@@ -45,7 +45,7 @@ const Carousel = () => {
 			className="relative w-full max-w-screen mx-auto bg-white overflow-hidden"
 		>
 			<div className="relative py-8 px-4">
-				<div className="relative flex items-center justify-center gap-5 lg:gap-12 min-h-[300px] lg:min-h-[450px] transition-all duration-300">
+				<div className="relative flex items-center justify-center gap-5 lg:gap-12 lg:min-h-[450px] transition-all duration-300">
 					{displayedImages.map((img, index) => {
 						const isCenter = index === 2;
 
@@ -96,7 +96,7 @@ const Carousel = () => {
 				</div>
 
 				{/* Ball at Bottom */}
-				<div className="absolute -bottom-5 lg:-bottom-22 left-1/2 transform -translate-x-1/2 z-0">
+				<div className="absolute -bottom-10 lg:-bottom-22 left-1/2 transform -translate-x-1/2 z-0">
 					<div className="w-[20vw] h-[20vh] md:w-[40vw] md:h-[40vh]">
 						<Image
 							src={ball}

@@ -93,7 +93,7 @@ const OurVision = () => {
     return (
         <div className='w-full max-w-full mx-auto'>
             <motion.div 
-                className='flex justify-between flex-col md:flex-row max-w-7xl mx-auto gap-6 my-12 items-center w-full px-4 md:px-6 lg:px-1'
+                className='flex justify-between flex-col md:flex-row max-w-7xl mx-auto gap-6 my-6 items-center w-full px-2 md:px-6 lg:px-1'
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -119,16 +119,16 @@ const OurVision = () => {
                         }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className='flex justify-center w-full items-center py-2 gap-3 sm:gap-4 md:gap-6 bg-gradient-to-r from-white to-[#9FFFF0] rounded-3xl md:w-[48vw] px-3 sm:px-4 flex-col sm:flex-row'>
+                        <div className='flex justify-center w-full items-center md:py-2 gap-3 md:gap-6 bg-gradient-to-r from-white to-[#9FFFF0] rounded-3xl md:w-[48vw] px-1 md:px-4 flex-col sm:flex-row'>
                             <motion.div variants={iconVariants}>
-                                <Image src={bulb} alt="abulb icon" className='w-12 h-12 sm:w-16 sm:h-16 md:w-[12vw] md:h-[10vh] flex-shrink-0'/>
+                                <Image src={bulb} alt="abulb icon" className='w-12 h-12  md:w-[12vw] md:h-[10vh] flex-shrink-0'/>
                             </motion.div>
                             <motion.div 
                                 className='text-center sm:text-left'
                                 variants={textVariants}
                             >
-                                <h1 className='text-lg sm:text-xl md:text-[24px] font-semibold mb-2'>Our Vision</h1>
-                                <p className={`text-xs sm:text-sm md:text-[16px] ${outfit.className}`}>To be the leading Indian brand with a global footprint in Environment, Health, and Safety solutions—championing innovation, setting safety standards, and shaping a world where every workplace, road, and community is safer and more sustainable.</p>
+                                <h1 className='text-lg md:text-2xl font-semibold mb-2'>Our Vision</h1>
+                                <p className={`text-xs md:text-base ${outfit.className}`}>To be the leading Indian brand with a global footprint in Environment, Health, and Safety solutions—championing innovation, setting safety standards, and shaping a world where every workplace, road, and community is safer and more sustainable.</p>
                             </motion.div>
                         </div>
                     </motion.div>

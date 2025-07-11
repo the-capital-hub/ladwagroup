@@ -39,21 +39,21 @@ export default function VisionMission() {
 	};
 
 	return (
-		<section className="py-10 bg-white w-full max-w-7xl lg:mt-12 mx-auto">
-			<div className="px-10">
+		<section className="md:py-10 py-4 bg-white w-full max-w-7xl lg:mt-12 mx-auto">
+			<div className="md:px-10 px-3">
 				<motion.div
-					className="max-w-4xl mx-auto flex flex-col justify-center items-center gap-4 text-center mb-12"
+					className="max-w-4xl mx-auto flex flex-col justify-center items-center gap-4 text-center md:mb-8 mb-4"
 					variants={containerVariants}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.3 }}
 				>
-					<h1 className="text-3xl md:text-[64px] font-bold">
+					<h1 className="text-3xl md:text-5xl font-bold">
 						Welcome to <span className="text-[#097362]">Ladwa</span>
 					</h1>
 
 					<p
-						className={`${manrope.className} leading-relaxed text-[#3F3F3F] font-semibold text-[20px]`}
+						className={`${manrope.className} leading-relaxed text-[#3F3F3F] font-semibold text-xs md:text-base`}
 					>
 						LADWA is a globally trusted brand in the Environment, Health, and
 						Safety (EHS) sector, delivering world-class products and solutions
@@ -72,7 +72,7 @@ export default function VisionMission() {
 				</motion.div>
 
 				<motion.div
-					className="w-[70vw] mx-auto"
+					className="lg:w-[70vw] mx-auto"
 					variants={containerVariants}
 					initial="hidden"
 					whileInView="visible"
@@ -91,11 +91,11 @@ export default function VisionMission() {
 									className="w-12 h-12 sm:w-16 sm:h-16 md:w-[4vw] md:h-[8vh] flex-shrink-0"
 								/>
 								<div className="text-center sm:text-left">
-									<h1 className="text-lg sm:text-xl md:text-[24px] font-semibold mb-2">
+									<h1 className="text-lg md:text-2xl font-semibold mb-2">
 										Our Vision
 									</h1>
 									<p
-										className={`text-xs sm:text-sm md:text-[16px] ${outfit.className}`}
+										className={`text-xs md:text-base ${outfit.className}`}
 									>
 										To be the leading Indian brand with a global footprint in
 										Environment, Health, and Safety solutions—championing
@@ -119,11 +119,11 @@ export default function VisionMission() {
 									className="w-12 h-12 sm:w-16 sm:h-16 md:w-[4vw] md:h-[8vh] flex-shrink-0"
 								/>
 								<div className="text-center sm:text-left">
-									<h1 className="text-lg sm:text-xl md:text-[24px] font-semibold mb-2">
+									<h1 className="text-lg  md:text-2xl font-semibold mb-2">
 										Our Mision
 									</h1>
 									<p
-										className={`text-xs sm:text-sm md:text-[16px] ${outfit.className}`}
+										className={`text-xs md:text-base ${outfit.className}`}
 									>
 										LADWA is dedicated to delivering reliable, innovative, and
 										affordable EHS solutions. We strive to safeguard lives

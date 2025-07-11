@@ -83,15 +83,15 @@ export default function SectorsSection() {
 
 	return (
 		<section className={`relative p-1 w-full  max-w-7xl mx-auto rounded-3xl bg-gradient-to-b z-10 from-[#CAFFF9] to-white`}>
-			<div className="p-10 bg-gradient-to-b  from-[#E3FFFB] to-[#C7EBFF]/80 rounded-3xl z-10 relative">
+			<div className="md:p-10 p-5 bg-gradient-to-b from-[#E3FFFB] to-[#C7EBFF]/80 backdrop-blur  rounded-3xl z-10 relative">
 				<motion.div
-					className="text-center lg:mb-16 relative z-10"
+					className="text-center md:mb-16 mb-5 relative z-10"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
 				>
-					<h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-8">
+					<h2 className="md:text-5xl text-3xl font-bold text-gray-900 md:mb-8">
 						Sectors we cater
 					</h2>
 				</motion.div>
@@ -121,7 +121,7 @@ export default function SectorsSection() {
 												className="w-12 h-12 text-teal-600"
 											/>
 										</motion.div>
-										<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+										<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
 									</div>
 								</motion.div>
 							</div>
@@ -146,7 +146,7 @@ export default function SectorsSection() {
 												className="w-12 h-12 text-teal-600"
 											/>
 										</motion.div>
-										<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+										<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
 									</div>
 								</motion.div>
 							</div>
@@ -172,7 +172,7 @@ export default function SectorsSection() {
 													className="w-12 h-12 text-teal-600"
 												/>
 											</motion.div>
-											<h3 className="font-semibold text-gray-900">{sector.title}</h3>
+											<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
 										</div>
 									</motion.div>
 								</div>
@@ -196,14 +196,14 @@ export default function SectorsSection() {
 						<h3 className="text-2xl font-bold text-gray-900 mb-4">
 							Global Strategy & Partnerships
 						</h3>
-						<p className="text-gray-600 font-semibold mb-6">
+						<p className="text-gray-600 text-sm font-semibold mb-6">
 							LADWA is actively expanding its global footprint through:
 						</p>
 						<div className="space-y-2 text-black mb-6">
-							<p className="w-fit font-semibold p-3 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
+							<p className="w-fit font-semibold md:p-3 text-sm md:text-lg p-5 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
 								International distributor partnerships
 							</p>
-							<p className="w-fit font-semibold p-3 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
+							<p className="w-fit font-semibold md:p-3 text-sm md:text-lg p-5 bg-[#097362]/10 border-b-2 border-cyan-200 rounded-full">
 								Participation in top global expos (A+A, Intersec, NSC)
 							</p>
 						</div>
@@ -224,7 +224,7 @@ export default function SectorsSection() {
 						<h3 className="text-2xl font-bold text-gray-900 mb-4">
 							Partner With LADWA
 						</h3>
-						<p className="text-gray-600 font-semibold mb-6">
+						<p className="text-gray-600 text-sm  font-semibold mb-6">
 							Whether you're an importer, distributor, EPC contractor, or
 							government procurement agency — LADWA is your strategic ally for
 							compliant, innovative, and scalable EHS products.
@@ -237,7 +237,7 @@ export default function SectorsSection() {
 
 				{/* Features cards section */}
 				<motion.div
-					className="py-10 grid grid-cols-1 lg:grid-cols-3 gap-12"
+					className="md:py-10 py-5 grid grid-cols-1 lg:grid-cols-3 gap-12"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
@@ -251,14 +251,14 @@ export default function SectorsSection() {
 							whileHover={{ scale: 1.02 }}
 							transition={{ duration: 0.2 }}
 						>
-							<h3 className="text-xl font-bold text-gray-900 mb-4">
+							<h3 className="text-xl  font-bold text-gray-900 mb-4">
 								{feature.title}
 							</h3>
 							<ul className="space-y-2">
 								{feature.description.map((description, descIndex) => (
 									<li
 										key={descIndex}
-										className="text-gray-600 text-[16px] flex items-start"
+										className="text-gray-600 md:text-base text-sm flex"
 									>
 										{description}
 									</li>

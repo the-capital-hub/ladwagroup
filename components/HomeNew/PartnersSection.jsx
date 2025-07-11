@@ -22,16 +22,16 @@ export default function PartnersSection() {
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true, amount: 0.3 }}
-			className="py-6 md:py-12 bg-white"
+			className="py-2 md:py-12 bg-white"
 		>
-			<motion.div variants={fadeInUp} className="pb-6">
-				<h2 className="text-center text-xl font-medium text-gray-700 mb-8">
+			<motion.div variants={fadeInUp} className="md:pb-6">
+				<h2 className="text-center md:text-xl text-3xl font-medium text-gray-700 md:mb-8 mb-3">
 					Our Partners
 				</h2>
 
 				<motion.div
 					variants={fadeInUp}
-					className="flex flex-wrap justify-center items-center gap-4 md:gap-12"
+					className="flex flex-wrap justify-center items-center gap-4 md:gap-12 overflow-hidden"
 				>
 					<Image
 						src={logo}

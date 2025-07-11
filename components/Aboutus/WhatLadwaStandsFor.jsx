@@ -33,13 +33,13 @@ const WhatLadwaStandsFor = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-full mx-auto bg-gray-100 py-12 px-4">
+    <div className="w-full max-w-full mx-auto bg-gray-100  px-4">
       <div className="flex flex-col lg:flex-row justify-between w-full max-w-7xl mx-auto items-start gap-8">
 
         {/* Left side*/}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8 mx-auto">
+        <div className="flex-1 p-4 ] lg:p-8 mx-auto">
           <div className="mb-4 text-center lg:text-left">
-            <h2 className="text-[28px] md:text-4xl xl:text-5xl font-bold mb-3">
+            <h2 className="text-[28px] md:text-5xl font-bold mb-3">
               What{" "}
               <span
                 className="text-transparent"
@@ -50,19 +50,19 @@ const WhatLadwaStandsFor = () => {
               Stands For
             </h2>
           </div>
-          <div className=" rounded-3xl p-4 ">
+          <div className=" rounded-3xl md:p-4 ">
             <Image
               src={img}
               alt="Manufacturing facility"
-              className="w-full h-64 lg:h-full object-cover rounded-2xl"
+              className="w-full lg:h-full object-cover rounded-2xl"
             />
           </div>
         </div>
 
         {/* Right side */}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8 gap-14 my-12  w-full relative">
+        <div className="flex-1 p-2 lg:p-8 gap-10  w-full relative">
 
-          <div className="absolute right-0 lg:top-8 top-0">
+          <div className="absolute right-0 lg:top-8 -top-12 hidden md-block">
             <button
               onClick={goToPrevious}
          
@@ -72,7 +72,7 @@ const WhatLadwaStandsFor = () => {
             </button>
           </div>
 
-          <div className="flex flex-col gap-2 mt-12">
+          <div className="flex flex-col gap-2 lg:mt-12">
             {ladwaItems.map((item, index) => (
               <div key={index}>
                 <div className="flex items-center gap-12">
@@ -93,12 +93,12 @@ const WhatLadwaStandsFor = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.4 }}
-                          className="lg:text-[28px] text-2xl ml-2 font-thin text-[#097362]"
+                          className="lg:text-3xl text-xl md:ml-2 font-thin text-[#097362]"
                         >
                           {item.meaning}
                         </motion.div>
                       ) : (
-                        <div className="lg:text-[28px] ml-3 text-2xl font-thin text-gray-400">
+                        <div className="lg:text-3xl md:ml-3 text-xl font-thin text-gray-400">
                           {item.meaning}
                         </div>
                       )}
@@ -120,7 +120,7 @@ const WhatLadwaStandsFor = () => {
 
           </div>
 
-          <div className="absolute right-0 -bottom-18 ">
+          <div className="absolute right-0 -bottom-18 hidden md:block">
             <button
               onClick={goToNext}
               className="p-2 rounded-full bg-[#097362] text-white hover:bg-teal-700 transition-colors"

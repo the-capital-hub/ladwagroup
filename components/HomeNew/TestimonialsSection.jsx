@@ -64,9 +64,9 @@ export default function TestimonialsSection() {
 	const visibleTestimonials = getVisibleTestimonials();
 
 	return (
-		<section className="py-16 lg:py-24">
-			<div className="container mx-auto px-10 lg:px-10">
-				<div className="max-w-screen mx-auto overflow-hidden">
+		<section className="mt-5">
+			<div className="container mx-auto px-4 lg:px-6">
+				<div className="max-w-7xl mx-auto">
 					<motion.div
 						className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start"
 						initial="hidden"
@@ -90,9 +90,7 @@ export default function TestimonialsSection() {
 							>
 								TESTIMONIAL
 							</p>
-							<h2
-								className={`${raleway.className} text-3xl md:text-4xl lg:text-[40px] font-bold mb-6 text-gray-900 leading-tight`}
-							>
+							<h2 className={`${raleway.className} text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight`}>
 								We've built trust with reviews from real users
 							</h2>
 							<p className={`${outfit.className} text-gray-600 mb-8 text-base`}>

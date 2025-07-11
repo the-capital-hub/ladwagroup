@@ -133,10 +133,10 @@ const KeyOfferings = () => {
       `}</style>
 
       <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-        <h2 className="text-2xl sm:text-4xl md:text-[85px] font-bold text-gray-800 mb-2 sm:mb-4">
+        <h2 className="text-3xl  md:text-5xl font-bold text-gray-800 mb-2 sm:mb-4">
           Key Offerings
         </h2>
-        <p className={`text-gray-600 max-w-5xl mx-auto text-sm sm:text-base md:text-[20px] px-2 sm:px-0 ${manrope.className}`}>
+        <p className={`text-gray-600 max-w-5xl mx-auto text-xs md:text-base px-2 sm:px-0 ${manrope.className}`}>
           At LADWA, we deliver a comprehensive suite of safety solutions designed to protect lives, assets, and environments across industries.
         </p>
       </div>
