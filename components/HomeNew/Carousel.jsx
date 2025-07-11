@@ -42,7 +42,7 @@ const Carousel = () => {
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true, amount: 0.3 }}
-			className="relative w-full max-w-7xl mx-auto bg-white"
+			className="relative w-full max-w-screen mx-auto bg-white overflow-hidden"
 		>
 			<div className="relative py-8 px-4">
 				<div className="relative flex items-center justify-center gap-5 lg:gap-12 min-h-[300px] lg:min-h-[450px] transition-all duration-300">

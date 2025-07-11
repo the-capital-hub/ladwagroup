@@ -85,13 +85,13 @@ export default function SectorsSection() {
 		<section className={`relative p-1 w-full  max-w-7xl mx-auto rounded-3xl bg-gradient-to-b z-10 from-[#CAFFF9] to-white`}>
 			<div className="p-10 bg-gradient-to-b  from-[#E3FFFB] to-[#C7EBFF]/80 rounded-3xl z-10 relative">
 				<motion.div
-					className="text-center mb-16 relative z-10"
+					className="text-center lg:mb-16 relative z-10"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
 				>
-					<h2 className="text-6xl font-bold text-gray-900 mb-8">
+					<h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-8">
 						Sectors we cater
 					</h2>
 				</motion.div>

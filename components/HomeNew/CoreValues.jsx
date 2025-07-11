@@ -76,10 +76,10 @@ export default function CoreValues() {
     <section className="py-10 bg-gray-50">
       <div className="px-10">
         <div className="text-left mb-16">
-          <h2 className="text-[64px] font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl text-center lg:text-start lg:text-[64px] font-bold text-gray-900 mb-4">
             Our Core Values
           </h2>
-          <p className={`${manrope.className} text-xl text-gray-600 max-w-3xl`}>
+          <p className={`${manrope.className} text-xl text-center lg:text-start text-gray-600 max-w-3xl`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
             massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
             sit amet.
