@@ -102,7 +102,7 @@ const CoreValues = () => {
   };
 
   return (
-    <div className={`${ outfit.className} min-h-screen p-8 relative overflow-hidden`}>
+    <div className={`${ outfit.className} min-h-screen md:p-8 p-4 relative overflow-hidden`}>
       <div className="absolute inset-0 md:flex items-center hidden justify-center">
         <div className="w-full h-full bg-gradient-to-b from-[#009D84] to-white rounded-full opacity-30"></div>
       </div>
@@ -110,7 +110,7 @@ const CoreValues = () => {
         <div className="w-[80%] h-[80%] bg-gradient-to-b from-[#009D84] border-6 border-white to-white rounded-full opacity-40"></div>
       </div>
       
-      <div className="relative z-10 mt-15 max-w-6xl mx-auto">
+      <div className="relative z-10 md:mt-15 mt-5 max-w-6xl mx-auto">
         <motion.div 
           className="text-center mb-12"
           initial="hidden"
@@ -118,7 +118,7 @@ const CoreValues = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={titleVariants}
         >
-          <h1 className="text-4xl font-bold text-black mb-4">Core Brand Values</h1>
+          <h1 className="md:text-5xl text-3xl font-bold text-black mb-4">Core Brand Values</h1>
         </motion.div>
 
         <motion.div 

@@ -123,7 +123,7 @@ export default function ContactUsPage() {
 					transition={{ duration: 0.8, ease: "easeOut" }}
 				>
 					<motion.h1 
-						className="text-3xl md:text-4xl font-bold mb-2"
+						className="text-3xl md:text-5xl font-bold mb-2"
 						initial={{ opacity: 0, scale: 0.8 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.6, delay: 0.2 }}
@@ -131,7 +131,7 @@ export default function ContactUsPage() {
 						Contact Us
 					</motion.h1>
 					<motion.p 
-						className="text-gray-600"
+						className="text-gray-600 md:text-base text-sm"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.6, delay: 0.4 }}
@@ -158,7 +158,7 @@ export default function ContactUsPage() {
 							animate="animate"
 						>
 							<motion.h2 
-								className="text-xl font-bold mb-4"
+								className="md:text-xl text-center md:text-left text-lg font-bold mb-4"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.3 }}
@@ -166,7 +166,7 @@ export default function ContactUsPage() {
 								Contact Information
 							</motion.h2>
 							<motion.p 
-								className="mb-8 text-teal-100"
+								className="mb-8 text-teal-100 text-sm md:text-base text-center md:text-left"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.4 }}
@@ -210,28 +210,7 @@ export default function ContactUsPage() {
 										States
 									</p>
 								</motion.div>
-							</motion.div>
-
-							{/* Decorative Circle */}
-							<motion.div 
-								className="relative mt-16"
-								initial={{ opacity: 0, scale: 0 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{ duration: 0.8, delay: 0.8 }}
-							>
-								<motion.div 
-									className="absolute bottom-0 right-0 w-32 h-32 bg-teal-600 rounded-full opacity-50"
-									animate={{ 
-										scale: [1, 1.1, 1],
-										rotate: [0, 180, 360]
-									}}
-									transition={{ 
-										duration: 4,
-										repeat: Infinity,
-										ease: "linear"
-									}}
-								/>
-							</motion.div>
+							</motion.div>							
 						</motion.div>
 
 						{/* Contact Form */}

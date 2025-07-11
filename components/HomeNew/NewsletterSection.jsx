@@ -39,7 +39,7 @@ const fadeUp = {
 
 export default function NewsletterSection() {
 	return (
-		<section className="py-10 bg-white w-full max-w-7xl mx-auto my-12">
+		<section className="py-10 bg-white w-full max-w-7xl mx-auto ">
 			<motion.div
 				className="max-w-8xl mx-auto text-center"
 				variants={containerVariants}
@@ -48,14 +48,14 @@ export default function NewsletterSection() {
 				viewport={{ once: true, amount: 0.2 }}
 			>
 				<motion.h2
-					className="text-[64px] font-bold text-gray-900 mb-6"
+					className="md:text-5xl text-2xl font-bold text-gray-900 md:mb-6 mb-3"
 					variants={fadeUp}
 				>
 					Join the LADWA Movement ( Newsletter )
 				</motion.h2>
 
 				<motion.p
-					className={`text-[18px] text-gray-600 mb-12 max-w-5xl mx-auto ${outfit.className}`}
+					className={`md:text-base text-sm text-gray-600 md:mb-6 mb-4 max-w-5xl mx-auto ${outfit.className}`}
 					variants={fadeUp}
 				>
 					Whether you're a safety officer, city planner, industry head, or
@@ -64,7 +64,7 @@ export default function NewsletterSection() {
 				</motion.p>
 
 				<motion.div
-					className="max-w-5xl mx-auto relative mb-12"
+					className="max-w-5xl mx-auto relative md:mb-6 mb-6"
 					variants={fadeUp}
 				>
 					<Image
@@ -77,7 +77,7 @@ export default function NewsletterSection() {
 				</motion.div>
 
 				<motion.h3
-					className={`text-2xl lg:text-[40px] font-bold text-gray-900 ${inter.className}`}
+					className={`text-xl lg:text-4xl font-bold text-gray-900 ${inter.className}`}
 					variants={fadeUp}
 				>
 					LADWA – Making the World Safer.

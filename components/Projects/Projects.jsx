@@ -93,7 +93,7 @@ const Project1 = () => {
     }
 
     return (
-        <div className={`${outfit.className} w-full max-w-full py-12 px-4 relative`}>
+        <div className={`${outfit.className} w-full max-w-full  px-4 relative`}>
             <div className='max-w-7xl mx-auto'>
                 {/* Main Title */}
                 <motion.h1 
@@ -124,7 +124,7 @@ const Project1 = () => {
                                 className='flex-1 w-full max-w-lg'
                                 variants={fadeInUp}
                             >
-                                <h2 className='text-2xl md:text-[37px] font-semibold text-black'>
+                                <h2 className='text-2xl md:text-4xl font-semibold text-black'>
                                     Vaishnavi Tech Park<br /> Parking Safety Works by<br /> LADWA
                                 </h2>
                             </motion.div>
@@ -133,7 +133,7 @@ const Project1 = () => {
                             className='pl-6 w-full max-w-xl'
                             variants={fadeInUp}
                         >
-                            <p className='text-gray-600 md:text-[20px] leading-relaxed'>
+                            <p className='text-gray-600 md:text-[20px] text-sm leading-relaxed'>
                                 At LADWA, we are dedicated to redefining safety through cutting-edge road safety solutions, industrial protection, and PPE innovation. As a pioneer in the EHS industry, we combine global compliance with local insight to protect lives and promote road safety awareness across communities.
                             </p>
                         </motion.div>
@@ -206,7 +206,7 @@ const Project1 = () => {
 
                 {/* Divider */}
                 <motion.div 
-                    className='border border-[#097362] my-12'
+                    className='border border-[#097362] my-8'
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
@@ -240,7 +240,7 @@ const Project1 = () => {
                                     className='flex-1 w-full max-w-lg'
                                     variants={fadeInUp}
                                 >
-                                    <h2 className='text-2xl md:text-[37px] font-semibold text-black'>
+                                    <h2 className='text-2xl md:text-4xl font-semibold text-black'>
                                         Solar Energy Implementation at Green Valley Residential Complex
                                     </h2>
                                 </motion.div>
@@ -249,7 +249,7 @@ const Project1 = () => {
                                 className='pl-6 w-full max-w-xl'
                                 variants={fadeInUp}
                             >
-                                <p className='text-gray-600 md:text-[20px] leading-relaxed'>
+                                <p className='text-gray-600 md:text-xl text-sm leading-relaxed'>
                                     This project showcases LADWA's commitment to sustainability and innovation, integrating solar solutions to enhance energy efficiency for residents.
                                 </p>
                             </motion.div>
@@ -323,7 +323,7 @@ const Project1 = () => {
 
                 {/* Divider */}
                 <motion.div 
-                    className='border border-[#097362] my-12'
+                    className='border border-[#097362] my-8'
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
@@ -349,7 +349,7 @@ const Project1 = () => {
                                 className='flex-1 w-full max-w-lg'
                                 variants={fadeInUp}
                             >
-                                <h2 className='text-2xl md:text-[37px] font-semibold text-black'>
+                                <h2 className='text-2xl md:text-4xl  font-semibold text-black'>
                                     Smart Water Management System for Urban City
                                 </h2>
                             </motion.div>
@@ -358,7 +358,7 @@ const Project1 = () => {
                             className='pl-6 w-full max-w-xl'
                             variants={fadeInUp}
                         >
-                            <p className='text-gray-600 md:text-[20px] leading-relaxed'>
+                            <p className='text-gray-600 md:text-xl text-sm leading-relaxed'>
                                 At LADWA, we are dedicated to redefining safety through cutting-edge road safety solutions, industrial protection, and PPE innovation. As a pioneer in the EHS industry, we combine global compliance with local insight to protect lives and promote road safety awareness across communities.
                             </p>
                         </motion.div>

@@ -165,8 +165,8 @@ const TopManagement = () => {
                         </a>
                     </div>
                     <div className="text-center">
-                        <h3 className="text-gray-800 font-bold text-[25px] mb-2">{member.name}</h3>
-                        <p className="text-[#097362] text-[20px] font-medium  leading-relaxed">{member.position}</p>
+                        <h3 className="text-gray-800 font-bold md:text-2xl text-xl mb-2">{member.name}</h3>
+                        <p className="text-[#097362] md:text-xl text-sm font-medium  leading-relaxed">{member.position}</p>
                     </div>
                 </div>
             </CardWrapper>
@@ -178,7 +178,7 @@ const TopManagement = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="mb-16" ref={topManagementRef}>
                     <motion.h2 
-                        className="text-4xl font-bold text-gray-800 text-center mb-12"
+                        className="md:text-5xl text-3xl font-bold text-gray-800 text-center mb-12"
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ 
                             opacity: animatedTopManagement.has('title') ? 1 : 0,
@@ -205,7 +205,7 @@ const TopManagement = () => {
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">
+                    <h2 className="md:text-5xl text-3xl font-bold text-gray-800 text-center mb-12">
                         Our Team
                     </h2>
                     <div className="grid md:grid-cols-3 gap-8 mb-12">

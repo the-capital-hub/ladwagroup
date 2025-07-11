@@ -41,14 +41,14 @@ export default function HeroSection() {
         <div className="relative w-full h-full z-10 flex">
           {/* Left Side - Vertical Navigation */}
           <motion.div
-            className="flex flex-col justify-center items-center py-8 px-4 sm:px-8"
+            className="flex flex-col justify-center items-center py-8 px-4 "
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <div
-              className={`${outfit.className} flex flex-col items-center relative left-5 lg:left-12 space-y-8 lg:space-y-12`}
+              className={`${outfit.className} flex flex-col items-center relative left-5 lg:left-12 space-y-5 lg:space-y-12`}
             >
               <div className="relative flex flex-col items-center  top-12">
                 <div className="w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center text-black font-bold text-sm sm:text-lg border-2 border-white border-opacity-40 backdrop-blur-sm">
@@ -61,11 +61,11 @@ export default function HeroSection() {
                 <div className="w-8 h-8  rounded-full  bg-opacity-10 flex items-center justify-center text-white font-bold text-sm sm:text-lg border-2 border-white border-opacity-20 backdrop-blur-sm">
                   2
                 </div>
-                <div className="w-0.5 h-14 sm:h-20 bg-white bg-opacity-30 "></div>
+                <div className="w-0.5 h-14 md:h-20 bg-white bg-opacity-30 "></div>
               </div>
 
               <div className="relative flex flex-col items-center bottom-12">
-                <div className="w-8 h-8  rounded-full  bg-opacity-10 flex items-center justify-center text-white font-bold text-sm sm:text-lg border-2 border-white border-opacity-20 backdrop-blur-sm">
+                <div className="w-8 h-8  rounded-full  bg-opacity-10 flex items-center justify-center text-white font-bold text-sm md:text-lg border-2 border-white border-opacity-20 backdrop-blur-sm">
                   3
                 </div>
               </div>
@@ -73,7 +73,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Main Content */}
-          <div className="flex-1 flex items-center justify-start px-4 sm:px-8 lg:px-16 py-8">
+          <div className="flex-1 flex items-center justify-start px-4 lg:px-16 md:py-8 py-3">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function HeroSection() {
               className="w-full max-w-4xl"
             >
               <motion.h1
-                className="text-2xl md:text-5xl lg:text-[80px] font-bold text-white mb-4 sm:mb-6 leading-tight"
+                className="text-3xl md:text-5xl lg:text-[80px] font-bold text-white mb-4 md:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,11 +90,11 @@ export default function HeroSection() {
               >
                 LADWA
                 <br />
-                <span className="font-thin">Making The World Safer.</span>
+                <span className="font-thin text-2xl md:text-7xl">Making The World Safer.</span>
               </motion.h1>
 
               <motion.p
-                className={`text-base md:text-lg md:text-[22px] text-gray-200 mb-6 sm:mb-8 max-w-2xl ${inter.className}`}
+                className={`text-xs md:text-lg md:text-[22px] text-gray-200 mb-6 md:mb-8 max-w-2xl ${inter.className}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -112,7 +112,7 @@ export default function HeroSection() {
                 <Button
                   size="lg"
                   onClick={() => {navigate.push('/contact-us')}}
-                  className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white md:px-6 px-3 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   Get Started
                 </Button>

@@ -74,12 +74,12 @@ export default function CoreValues() {
 
   return (
     <section className="py-10 bg-gray-50">
-      <div className="px-10">
-        <div className="text-left mb-16">
-          <h2 className="text-[64px] font-bold text-gray-900 mb-4">
+      <div className="md:px-10 px-5"> 
+        <div className="text-left md:mb-16 mb-8">
+          <h2 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4">
             Our Core Values
           </h2>
-          <p className={`${manrope.className} text-xl text-gray-600 max-w-3xl`}>
+          <p className={`${manrope.className} md:text-base text-sm text-gray-600 max-w-3xl`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
             massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
             sit amet.
@@ -102,15 +102,8 @@ export default function CoreValues() {
                   : "col-span-1"
               }`}
               variants={cardVariants}
-              // Hover only on desktop
               onHoverStart={!isMobile ? () => setHoveredCard(index) : undefined}
               onHoverEnd={!isMobile ? () => setHoveredCard(null) : undefined}
-              // Click only on mobile
-              onClick={
-                isMobile
-                  ? () => setHoveredCard(hoveredCard === index ? null : index)
-                  : undefined
-              }
               animate={{
                 scale:
                   hoveredCard !== null && hoveredCard !== index
@@ -123,8 +116,7 @@ export default function CoreValues() {
               }}
               transition={{ duration: 0.3 }}
             >
-              {/* Brief view */}
-              {hoveredCard !== index && (
+              {!isMobile && hoveredCard !== index && (
                 <div
                   className={`${outfit.className} flex flex-col items-center justify-center h-full text-center`}
                 >
@@ -144,8 +136,7 @@ export default function CoreValues() {
                 </div>
               )}
 
-              {/* Expanded view */}
-              {hoveredCard === index && (
+              {(isMobile || hoveredCard === index) && (
                 <motion.div
                   className="flex flex-col h-full"
                   initial={{ opacity: 0 }}
