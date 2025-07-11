@@ -472,10 +472,10 @@ const Project1 = () => {
                                     className='max-w-lg text-center lg:text-left mx-auto lg:mx-0'
                                     variants={staggerItem}
                                 >
-                                    <h3 className='text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight'>
+                                    <h3 className='text-lg  md:text-3xl font-bold text-white mb-3 leading-tight'>
                                         Subscribe to our newsletter for the latest updates and insights.
                                     </h3>
-                                    <p className='text-white/80 text-base leading-relaxed'>
+                                    <p className='text-white/80 text-sm md:text-base leading-relaxed'>
                                         Stay ahead with the latest updates, insights, and events from Meqaul Magazine.
                                     </p>
                                 </motion.div>
@@ -560,7 +560,7 @@ const Project1 = () => {
                                                     }}
                                                     transition={{ duration: 0.3 }}
                                                 >
-                                                    <span className='absolute left-4 top-1/2 transform -translate-y-1/2 text-white'>
+                                                    <span className='absolute md:text-3xl text-2xl md:left-4 left-3 top-1/2 transform -translate-y-1/2 text-white'>
                                                         @
                                                     </span>
                                                     <input
@@ -568,7 +568,7 @@ const Project1 = () => {
                                                         value={email}
                                                         onChange={(e) => setEmail(e.target.value)}
                                                         placeholder='Enter your email'
-                                                        className='w-full h-full pl-12 pr-28 bg-transparent text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white rounded-full'
+                                                        className='w-full h-full md:pl-12 pl-8 pr-28 bg-transparent text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white rounded-full'
                                                         required
                                                         disabled={isLoading || showSuccess}
                                                     />

@@ -39,7 +39,7 @@ const fadeUp = {
 
 export default function NewsletterSection() {
 	return (
-		<section className="py-10 bg-white w-full max-w-7xl mx-auto ">
+		<section className="py-10 bg-white w-full max-w-7xl mx-auto md:mt-14">
 			<motion.div
 				className="max-w-8xl mx-auto text-center"
 				variants={containerVariants}
