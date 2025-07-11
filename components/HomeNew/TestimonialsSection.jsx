@@ -8,11 +8,11 @@ import { Outfit, Raleway } from "next/font/google";
 
 const outfit = Outfit({
 	variable: "--font-outfit",
-	subsets: ["latin"]
+	subsets: ["latin"],
 });
 const raleway = Raleway({
 	variable: "--font-raleway",
-	subsets: ["latin"]
+	subsets: ["latin"],
 });
 
 export default function TestimonialsSection() {
@@ -24,22 +24,22 @@ export default function TestimonialsSection() {
 			role: "Digital Marketing Specialist",
 			rating: 5,
 			text: "Experience a payment app built on simplicity and transparency. No hidden fees, just a seamless user experience that makes transactions easy and stress-free. Say goodbye to confusion and hello to straightforward payments.",
-			avatar: "/placeholder.svg?height=60&width=60"
+			avatar: "/placeholder.svg?height=60&width=60",
 		},
 		{
 			name: "Daniel Thompson",
 			role: "Product Designer",
 			rating: 5,
 			text: "Discover a payment app focused on transparency. Enjoy a seamless experience with no hidden fees, providing clarity and ease in every transaction. It's designed to put your peace of mind first with your payments.",
-			avatar: "/placeholder.svg?height=60&width=60"
+			avatar: "/placeholder.svg?height=60&width=60",
 		},
 		{
 			name: "Sarah Johnson",
 			role: "Safety Manager",
 			rating: 5,
 			text: "LADWA's safety equipment has transformed our workplace safety standards. The quality and reliability of their products is unmatched in the industry. Highly recommended for all safety needs.",
-			avatar: "/placeholder.svg?height=60&width=60"
-		}
+			avatar: "/placeholder.svg?height=60&width=60",
+		},
 	];
 
 	const nextSlide = () => {
@@ -47,7 +47,9 @@ export default function TestimonialsSection() {
 	};
 
 	const prevSlide = () => {
-		setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+		setCurrentIndex(
+			(prev) => (prev - 1 + testimonials.length) % testimonials.length
+		);
 	};
 
 	const getVisibleTestimonials = () => {
@@ -72,7 +74,7 @@ export default function TestimonialsSection() {
 						viewport={{ once: true }}
 						variants={{
 							hidden: {},
-							visible: { transition: { staggerChildren: 0.2 } }
+							visible: { transition: { staggerChildren: 0.2 } },
 						}}
 					>
 						{/* Left Content */}
@@ -80,17 +82,21 @@ export default function TestimonialsSection() {
 							className="lg:col-span-2 lg:sticky lg:top-8"
 							variants={{
 								hidden: { opacity: 0, y: 20 },
-								visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+								visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 							}}
 						>
-							<p className={`text-black text-[16px] font-semibold mb-3 text-sm uppercase tracking-wider ${outfit.className}`}>
+							<p
+								className={`text-black text-[16px] font-semibold mb-3 text-sm uppercase tracking-wider ${outfit.className}`}
+							>
 								TESTIMONIAL
 							</p>
 							<h2 className={`${raleway.className} text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight`}>
 								We've built trust with reviews from real users
 							</h2>
 							<p className={`${outfit.className} text-gray-600 mb-8 text-base`}>
-								Boost your credibility by featuring genuine testimonials from real users, showcasing their positive experiences and establishing trust with Monks Pay services.
+								Boost your credibility by featuring genuine testimonials from
+								real users, showcasing their positive experiences and
+								establishing trust with Monks Pay services.
 							</p>
 							<div className="flex gap-3">
 								<button
@@ -112,7 +118,9 @@ export default function TestimonialsSection() {
 
 						{/* Right Content */}
 						<div className="lg:col-span-3">
-							<div className={`${outfit.className} grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-[18rem]`}>
+							<div
+								className={`${outfit.className} grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-[18rem]`}
+							>
 								{visibleTestimonials.map((testimonial, index) => (
 									<motion.div
 										key={`${currentIndex}-${index}`}
@@ -122,13 +130,16 @@ export default function TestimonialsSection() {
 											visible: {
 												opacity: 1,
 												y: 0,
-												transition: { duration: 0.6, delay: index * 0.2 }
-											}
+												transition: { duration: 0.6, delay: index * 0.2 },
+											},
 										}}
 									>
 										<div className="flex mb-4">
 											{[...Array(testimonial.rating)].map((_, i) => (
-												<Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+												<Star
+													key={i}
+													className="w-5 h-5 text-yellow-400 fill-current"
+												/>
 											))}
 										</div>
 										<p className="mb-6 leading-relaxed text-gray-700 text-sm lg:text-base">
@@ -141,7 +152,10 @@ export default function TestimonialsSection() {
 													alt={`${testimonial.name} avatar`}
 												/>
 												<AvatarFallback className="bg-teal-100 text-teal-600 font-semibold">
-													{testimonial.name.split(' ').map(n => n[0]).join('')}
+													{testimonial.name
+														.split(" ")
+														.map((n) => n[0])
+														.join("")}
 												</AvatarFallback>
 											</Avatar>
 											<div>

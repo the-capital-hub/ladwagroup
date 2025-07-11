@@ -187,7 +187,7 @@ export default function ContactUsPage() {
 									transition={{ duration: 0.2 }}
 								>
 									<Phone className="h-5 w-5 mr-4 mt-1" />
-									<p>+1(123)456-789</p>
+									<p>+91-9945234161</p>
 								</motion.div>
 								<motion.div 
 									className="flex items-start"
@@ -196,7 +196,7 @@ export default function ContactUsPage() {
 									transition={{ duration: 0.2 }}
 								>
 									<Mail className="h-5 w-5 mr-4 mt-1" />
-									<p>demo@gmail.com</p>
+									<p>sales@ladwas.com</p>
 								</motion.div>
 								<motion.div 
 									className="flex items-start"
@@ -206,8 +206,9 @@ export default function ContactUsPage() {
 								>
 									<MapPin size={40} className="mr-4 mt-1" />
 									<p>
-										132 Dartmouth Street Boston, Massachusetts 02156 United
-										States
+										NO. 3,4 AND 9, Khata No. 37/1,
+										Singasandra Village, Begur Hobli,
+										Bengaluru-560068
 									</p>
 								</motion.div>
 							</motion.div>							

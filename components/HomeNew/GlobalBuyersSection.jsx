@@ -14,7 +14,8 @@ const benefits = [
 	{
 		icon: Logo2,
 		title: "Wide Export Portfolio",
-		description: "Road safety, industrial safety, PPE, emergency kits, smart traffic systems, and more.",
+		description:
+			"Road safety, industrial safety, PPE, emergency kits, smart traffic systems, and more.",
 	},
 	{
 		icon: Logo3,
