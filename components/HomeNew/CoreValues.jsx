@@ -87,7 +87,7 @@ export default function CoreValues() {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-8 md:mb-12 mb-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -96,7 +96,7 @@ export default function CoreValues() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className={`bg-gradient-to-b from-[#EEFFFD] to-[#fff] p-6 lg:p-8 rounded-2xl border-2 border-teal-200 cursor-pointer transition-all duration-500 min-h-[300px] lg:min-h-[350px] flex flex-col ${
+              className={`bg-gradient-to-b from-[#EEFFFD] to-[#fff] p-6 lg:p-8 rounded-2xl border-2 border-teal-200 cursor-pointer transition-all duration-500 min-h-[220px] lg:min-h-[350px] flex flex-col ${
                 hoveredCard === index
                   ? "col-span-1 sm:col-span-2 lg:col-span-1"
                   : "col-span-1"
@@ -121,7 +121,7 @@ export default function CoreValues() {
                   className={`${outfit.className} flex flex-col items-center justify-center h-full text-center`}
                 >
                   <motion.div
-                    className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold text-black mb-4"
+                    className="text-[32px] lg:text-[48px] font-bold text-black mb-4"
                     initial={{ scale: 1, opacity: 1 }}
                   >
                     {value.number}
@@ -143,9 +143,9 @@ export default function CoreValues() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`${outfit.className} flex items-center gap-4 mb-6`}>
+                  <div className={`${outfit.className} flex items-center gap-4 md:mb-6 mb-3`}>
                     <motion.div
-                      className="text-[38px] font-bold text-[#1F9885]"
+                      className="text-4xl font-bold text-[#1F9885]"
                       initial={{ scale: 1 }}
                       animate={{ scale: 0.8 }}
                       transition={{ duration: 0.2 }}
@@ -153,7 +153,7 @@ export default function CoreValues() {
                       {value.number}
                     </motion.div>
                     <motion.h3
-                      className="text-[1.125rem] font-bold text-teal-600"
+                      className="text-lg md:text-4xl font-bold text-teal-600"
                       initial={{ fontSize: "2.25rem" }}
                       animate={{ fontSize: "1.125rem" }}
                       transition={{ duration: 0.2 }}
@@ -169,7 +169,7 @@ export default function CoreValues() {
                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
                     <p
-                      className={`${manrope.className} text-gray-600 mb-4 text-sm leading-relaxed`}
+                      className={`${manrope.className} text-gray-600 md:mb-4 text-sm leading-relaxed`}
                     >
                       {value.description}
                     </p>

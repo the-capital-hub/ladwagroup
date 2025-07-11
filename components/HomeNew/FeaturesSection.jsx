@@ -120,7 +120,7 @@ export default function FeaturesSection() {
 							variants={cardVariants}
 							className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full"
 						>
-							<div className="flex justify-center items-center md:gap-5  bg-gradient-to-r from-[#fff] to-[#9FFFF0] md:p-4 p-4 rounded-2xl">
+							<div className="flex justify-center items-center md:gap-5 gap-5 bg-gradient-to-r from-[#fff] to-[#9FFFF0] md:p-4 p-4 rounded-2xl">
 								<img
 									src={feature.icon.src}
 									alt={feature.title}
