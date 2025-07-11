@@ -64,7 +64,7 @@ export default function TestimonialsSection() {
 	const visibleTestimonials = getVisibleTestimonials();
 
 	return (
-		<section className="my-5">
+		<section className="my-5 overflow-hidden">
 			<div className="container mx-auto px-4 lg:px-6">
 				<div className="max-w-7xl mx-auto">
 					<motion.div
