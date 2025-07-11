@@ -31,7 +31,7 @@ export default function PartnersSection() {
 
 				<motion.div
 					variants={fadeInUp}
-					className="flex flex-wrap justify-center items-center gap-4 md:gap-12"
+					className="flex flex-wrap justify-center items-center gap-4 md:gap-12 overflow-hidden"
 				>
 					<Image
 						src={logo}
