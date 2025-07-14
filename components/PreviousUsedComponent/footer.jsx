@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Github } from "lucide-react";
 import AppStore from "@/public/images/footer/AppStore.png";
 import GooglePlay from "@/public/images/footer/GooglePlay.png";
+import { Facebook, Twitter, Instagram, Github } from "lucide-react";
 
 export default function Footer() {
 	return (
