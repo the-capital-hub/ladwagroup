@@ -1,138 +1,182 @@
+import React from "react";
+import { Facebook, Twitter, Instagram, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Globe } from "lucide-react";
-import Logo from "@/public/images/LadwaLogo.png";
+import AppStore from "@/public/images/footer/AppStore.png";
+import GooglePlay from "@/public/images/footer/GooglePlay.png";
 
-export default function Footer() {
-	const footerSections = [
-		{
-			title: "Pricing",
-			links: [
-				"Product Tours",
-				"Help Center Articles",
-				"Live Chat",
-				"Surveys",
-			],
-		},{
-			title: "Features",
-			links: [
-				"Product Tours",
-				"Help Center Articles",
-				"Live Chat",
-				"Surveys",
-			],
-		},
-		{
-			title: "Resources",
-			links: [
-				"Blog",
-				"Watch a Demo",
-				"Webinars",
-				"Docs",
-				"Security",
-				"Services",
-			],
-		},
-		{
-			title: "Company",
-			links: [
-				"About",
-				"Careers",
-				"Newsroom",
-				"Contact Us",
-				"Terms",
-				"Privacy",
-			],
-		},
-		
+export default function ModernFooter() {
+	const companyLinks = [
+		{ name: "About Us", href: "/about" },
+		{ name: "Features", href: "/features" },
+		{ name: "Services", href: "/services" },
+		{ name: "Works", href: "/works" },
+		{ name: "Career", href: "/career" },
+		{ name: "Contact Us", href: "/contact" },
 	];
 
-	const languages = [
-		"English (United States)",
+	const resourcesLinks = [
+		{ name: "Free eBooks", href: "/ebooks" },
+		{ name: "How to - Blog", href: "/blog" },
+		{ name: "Watch a Demo", href: "/demo" },
+		{ name: "Webinars", href: "/webinars" },
+		{ name: "Youtube Playlist", href: "/youtube" },
+		{ name: "Security", href: "/security" },
 	];
 
-	const bottomLinks = [
-		"Terms",
-		"Privacy",
-		"Security",
-		"Do not share my personal information",
+	const supportLinks = [
+		{ name: "Customer Support", href: "/support" },
+		{ name: "Help Center", href: "/help" },
+		{ name: "Delivery Details", href: "/delivery" },
+		{ name: "Live Chat", href: "/chat" },
 	];
+
+	const featuresLinks = [
+		{ name: "Product Tours", href: "/product-tours" },
+		{ name: "Analytics", href: "/analytics" },
+		{ name: "Integrations", href: "/integrations" },
+		{ name: "Mobile App", href: "/mobile-app" },
+		{ name: "API Access", href: "/api-access" },
+		{ name: "Security", href: "/security" },
+	];
+
+	const socialLinks = [
+		{ icon: Facebook, href: "https://facebook.com/ladwa", label: "Facebook" },
+		{ icon: Twitter, href: "https://twitter.com/ladwa", label: "Twitter" },
+		{
+			icon: Instagram,
+			href: "https://instagram.com/ladwa",
+			label: "Instagram",
+		},
+		{
+			icon: Linkedin,
+			href: "https://linkedin.com/company/ladwa",
+			label: "LinkedIn",
+		},
+		// { icon: Github, href: "https://github.com/ladwa", label: "GitHub" },
+	];
+
+	const LinkSection = ({ title, links }) => (
+		<div className="space-y-4">
+			<h3 className="text-lg font-semibold  mb-4">{title}</h3>
+			<ul className="space-y-2">
+				{links.map((link, index) => (
+					<li key={index}>
+						<Link
+							href={link.href}
+							className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
+						>
+							{link.name}
+						</Link>
+					</li>
+				))}
+			</ul>
+		</div>
+	);
 
 	return (
-		<footer className="bg-gradient-to-b w-full max-w-screen mx-auto from-teal-50 to-teal-400 text-gray-800 font-semibold">
-			<div className="container mx-auto px-4 sm:px-6 lg:px-10 py-16 ">
-				<div className="mb-12">
-					<div className="mb-8 lg:mb-12">
-						<div className="flex items-start justify-start">
-							{/* <Image
-							src={Logo.src}
-							className="w-28 h-auto text-white object-cover"
-							width={200}
-							height={200}
-							alt="Certifications"
-						/> */}
+		<footer className="bg-gradient-to-br from-teal-50 to-teal-400 text-black font-semibold">
+			<div className="container mx-auto px-10 py-12">
+				{/* Main Footer Content */}
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+					{/* Company Brand & Description */}
+					<div className="lg:col-span-4 space-y-6">
+						<div className="flex items-center space-x-3">
 							<span className="text-3xl lg:text-4xl font-bold text-teal-700 md:mt-12  mt-16">
 								LADWA
 							</span>
 						</div>
+
+						<p className="text-gray-700 text-sm leading-relaxed max-w-md">
+							Ladwa is a thriving community where innovators, professionals, and
+							enthusiasts come together to share knowledge, collaborate, and
+							grow. Building the future of technology together.
+						</p>
+
+						{/* Social Links */}
+						<div className="flex space-x-4">
+							{socialLinks.map((social, index) => (
+								<Link
+									key={index}
+									href={social.href}
+									className="bg-teal-600 hover:bg-teal-500 p-2 rounded-full transition-colors duration-200"
+									aria-label={social.label}
+								>
+									<social.icon className="w-4 h-4 text-white" />
+								</Link>
+							))}
+						</div>
 					</div>
 
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-						{footerSections.map((section, index) => (
-							<div key={index} className="space-y-4">
-								<h3 className="font-bold text-gray-900 mb-4 text-base lg:text-lg">
-									{section.title}
-								</h3>
-								<ul className="space-y-2">
-									{section.links.map((link, linkIndex) => (
-										<li key={linkIndex}>
-											<Link
-												href="#"
-												className="text-gray-700 hover:text-gray-900 text-sm lg:text-base transition-colors duration-200 block"
-											>
-												{link}
-											</Link>
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
+					{/* Navigation Links */}
+					<div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+						<LinkSection title="Company" links={companyLinks} />
+						<LinkSection title="Resources" links={resourcesLinks} />
+						<LinkSection title="Features" links={featuresLinks} />
+						<LinkSection title="Support" links={supportLinks} />
+					</div>
+
+					{/* App Download Section */}
+					<div className="lg:col-span-2">
+						<h3 className="text-lg font-semibold mb-4">Install App</h3>
+						<div className="space-y-4">
+							<Link href="#" className="block">
+								<Image
+									src={AppStore.src}
+									alt="App Store"
+									width={170}
+									height={50}
+									className="rounded-lg"
+								/>
+							</Link>
+							<Link href="#" className="block">
+								<Image
+									src={GooglePlay.src}
+									alt="Google Play"
+									width={170}
+									height={50}
+									className="rounded-lg"
+								/>
+							</Link>
+						</div>
 					</div>
 				</div>
 
-				{/* Language selector */}
-				<div className="mb-8">
-					<div className="flex items-center space-x-2 mb-4">
-						<Globe className="w-5 h-5 text-gray-700" />
-						<span className="font-semibold text-gray-900 text-sm lg:text-base">
-							Choose your language
-						</span>
-					</div>
-					<div className="flex flex-wrap gap-4">
-						{languages.map((language, index) => (
-							<Link
-								key={index}
-								href="#"
-								className="text-gray-700 hover:text-gray-900 text-sm lg:text-base transition-colors duration-200"
-							>
-								{language}
-							</Link>
-						))}
-					</div>
-				</div>
+				{/* Bottom Bar */}
+				<div className="pt-8 border-t border-teal-600">
+					<div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+						<div className="text-center md:text-left">
+							<p className="text-gray-700 text-sm">
+								© 2025 All rights reserved by LADWA
+							</p>
+						</div>
 
-				{/* Bottom links */}
-				<div className="pt-8 border-t border-teal-300">
-					<div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6">
-						{bottomLinks.map((link, index) => (
+						<div className="flex flex-wrap justify-center md:justify-end gap-6">
 							<Link
-								key={index}
-								href="#"
-								className="text-gray-700 hover:text-gray-900 text-sm lg:text-base transition-colors duration-200"
+								href="/terms"
+								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
-								{link}
+								Terms of Use
 							</Link>
-						))}
+							<Link
+								href="/privacy"
+								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
+							>
+								Privacy Policy
+							</Link>
+							<Link
+								href="/legal"
+								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
+							>
+								Legal
+							</Link>
+							<Link
+								href="/sitemap"
+								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
+							>
+								Site Map
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>

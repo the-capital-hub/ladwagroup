@@ -11,55 +11,55 @@ import { Phone, Mail, MapPin } from "lucide-react";
 const fadeInUp = {
 	initial: { opacity: 0, y: 60 },
 	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.6, ease: "easeOut" }
+	transition: { duration: 0.6, ease: "easeOut" },
 };
 
 const fadeInLeft = {
 	initial: { opacity: 0, x: -60 },
 	animate: { opacity: 1, x: 0 },
-	transition: { duration: 0.6, ease: "easeOut" }
+	transition: { duration: 0.6, ease: "easeOut" },
 };
 
 const fadeInRight = {
 	initial: { opacity: 0, x: 60 },
 	animate: { opacity: 1, x: 0 },
-	transition: { duration: 0.6, ease: "easeOut" }
+	transition: { duration: 0.6, ease: "easeOut" },
 };
 
 const scaleIn = {
 	initial: { opacity: 0, scale: 0.8 },
 	animate: { opacity: 1, scale: 1 },
-	transition: { duration: 0.6, ease: "easeOut" }
+	transition: { duration: 0.6, ease: "easeOut" },
 };
 
 const staggerContainer = {
 	initial: {},
 	animate: {
 		transition: {
-			staggerChildren: 0.1
-		}
-	}
+			staggerChildren: 0.1,
+		},
+	},
 };
 
 const staggerItem = {
 	initial: { opacity: 0, y: 30 },
 	animate: { opacity: 1, y: 0 },
-	transition: { duration: 0.5, ease: "easeOut" }
+	transition: { duration: 0.5, ease: "easeOut" },
 };
 
 const contactInfoStagger = {
 	initial: {},
 	animate: {
 		transition: {
-			staggerChildren: 0.2
-		}
-	}
+			staggerChildren: 0.2,
+		},
+	},
 };
 
 const contactInfoItem = {
 	initial: { opacity: 0, x: -30 },
 	animate: { opacity: 1, x: 0 },
-	transition: { duration: 0.5, ease: "easeOut" }
+	transition: { duration: 0.5, ease: "easeOut" },
 };
 
 export default function ContactUsPage() {
@@ -83,13 +83,13 @@ export default function ContactUsPage() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsSubmitting(true);
-		
+
 		// Simulate API call
 		setTimeout(() => {
 			setIsSubmitting(false);
 			setShowSuccess(true);
 			console.log("Form submitted:", formData);
-			
+
 			// Reset form and show success for 3 seconds
 			setTimeout(() => {
 				setShowSuccess(false);
@@ -122,7 +122,7 @@ export default function ContactUsPage() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8, ease: "easeOut" }}
 				>
-					<motion.h1 
+					<motion.h1
 						className="text-3xl md:text-5xl font-bold mb-2"
 						initial={{ opacity: 0, scale: 0.8 }}
 						animate={{ opacity: 1, scale: 1 }}
@@ -130,7 +130,7 @@ export default function ContactUsPage() {
 					>
 						Contact Us
 					</motion.h1>
-					<motion.p 
+					<motion.p
 						className="text-gray-600 md:text-base text-sm"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -151,13 +151,13 @@ export default function ContactUsPage() {
 				>
 					<div className="flex flex-col md:flex-row">
 						{/* Contact Information */}
-						<motion.div 
+						<motion.div
 							className="bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-2xl text-white p-8 md:w-2/5"
 							variants={fadeInLeft}
 							initial="initial"
 							animate="animate"
 						>
-							<motion.h2 
+							<motion.h2
 								className="md:text-xl text-center md:text-left text-lg font-bold mb-4"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
@@ -165,22 +165,22 @@ export default function ContactUsPage() {
 							>
 								Contact Information
 							</motion.h2>
-							<motion.p 
+							<motion.p
 								className="mb-8 text-teal-100 text-sm md:text-base text-center md:text-left"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.4 }}
 							>
-								Say something to start a live chat!
+								Let us know how we can assist you.
 							</motion.p>
 
-							<motion.div 
+							<motion.div
 								className="space-y-6"
 								variants={contactInfoStagger}
 								initial="initial"
 								animate="animate"
 							>
-								<motion.div 
+								<motion.div
 									className="flex items-start"
 									variants={contactInfoItem}
 									whileHover={{ x: 5 }}
@@ -189,7 +189,7 @@ export default function ContactUsPage() {
 									<Phone className="h-5 w-5 mr-4 mt-1" />
 									<p>+91-9945234161</p>
 								</motion.div>
-								<motion.div 
+								<motion.div
 									className="flex items-start"
 									variants={contactInfoItem}
 									whileHover={{ x: 5 }}
@@ -198,7 +198,7 @@ export default function ContactUsPage() {
 									<Mail className="h-5 w-5 mr-4 mt-1" />
 									<p>sales@ladwas.com</p>
 								</motion.div>
-								<motion.div 
+								<motion.div
 									className="flex items-start"
 									variants={contactInfoItem}
 									whileHover={{ x: 5 }}
@@ -206,16 +206,15 @@ export default function ContactUsPage() {
 								>
 									<MapPin size={40} className="mr-4 mt-1" />
 									<p>
-										NO. 3,4 AND 9, Khata No. 37/1,
-										Singasandra Village, Begur Hobli,
-										Bengaluru-560068
+										NO. 3,4 AND 9, Khata No. 37/1, Singasandra Village, Begur
+										Hobli, Bengaluru-560068
 									</p>
 								</motion.div>
-							</motion.div>							
+							</motion.div>
 						</motion.div>
 
 						{/* Contact Form */}
-						<motion.div 
+						<motion.div
 							className="p-8 md:w-3/5"
 							variants={fadeInRight}
 							initial="initial"
@@ -223,7 +222,7 @@ export default function ContactUsPage() {
 						>
 							<form onSubmit={handleSubmit} className="space-y-6">
 								{/* Name Fields */}
-								<motion.div 
+								<motion.div
 									className="grid grid-cols-1 md:grid-cols-2 gap-6"
 									variants={staggerContainer}
 									initial="initial"
@@ -245,12 +244,16 @@ export default function ContactUsPage() {
 												name="firstName"
 												value={formData.firstName}
 												onChange={handleChange}
-												onFocus={() => handleFocus('firstName')}
+												onFocus={() => handleFocus("firstName")}
 												onBlur={handleBlur}
 												className="w-full transition-all duration-300"
 												style={{
-													borderColor: focusedField === 'firstName' ? '#097362' : '',
-													boxShadow: focusedField === 'firstName' ? '0 0 0 2px rgba(9, 115, 98, 0.2)' : ''
+													borderColor:
+														focusedField === "firstName" ? "#097362" : "",
+													boxShadow:
+														focusedField === "firstName"
+															? "0 0 0 2px rgba(9, 115, 98, 0.2)"
+															: "",
 												}}
 												disabled={isSubmitting || showSuccess}
 											/>
@@ -272,12 +275,16 @@ export default function ContactUsPage() {
 												name="lastName"
 												value={formData.lastName}
 												onChange={handleChange}
-												onFocus={() => handleFocus('lastName')}
+												onFocus={() => handleFocus("lastName")}
 												onBlur={handleBlur}
 												className="w-full transition-all duration-300"
 												style={{
-													borderColor: focusedField === 'lastName' ? '#097362' : '',
-													boxShadow: focusedField === 'lastName' ? '0 0 0 2px rgba(9, 115, 98, 0.2)' : ''
+													borderColor:
+														focusedField === "lastName" ? "#097362" : "",
+													boxShadow:
+														focusedField === "lastName"
+															? "0 0 0 2px rgba(9, 115, 98, 0.2)"
+															: "",
 												}}
 												disabled={isSubmitting || showSuccess}
 											/>
@@ -286,7 +293,7 @@ export default function ContactUsPage() {
 								</motion.div>
 
 								{/* Email and Phone Fields */}
-								<motion.div 
+								<motion.div
 									className="grid grid-cols-1 md:grid-cols-2 gap-6"
 									variants={staggerContainer}
 									initial="initial"
@@ -309,12 +316,16 @@ export default function ContactUsPage() {
 												type="email"
 												value={formData.email}
 												onChange={handleChange}
-												onFocus={() => handleFocus('email')}
+												onFocus={() => handleFocus("email")}
 												onBlur={handleBlur}
 												className="w-full transition-all duration-300"
 												style={{
-													borderColor: focusedField === 'email' ? '#097362' : '',
-													boxShadow: focusedField === 'email' ? '0 0 0 2px rgba(9, 115, 98, 0.2)' : ''
+													borderColor:
+														focusedField === "email" ? "#097362" : "",
+													boxShadow:
+														focusedField === "email"
+															? "0 0 0 2px rgba(9, 115, 98, 0.2)"
+															: "",
 												}}
 												disabled={isSubmitting || showSuccess}
 											/>
@@ -336,12 +347,16 @@ export default function ContactUsPage() {
 												name="phone"
 												value={formData.phone}
 												onChange={handleChange}
-												onFocus={() => handleFocus('phone')}
+												onFocus={() => handleFocus("phone")}
 												onBlur={handleBlur}
 												className="w-full transition-all duration-300"
 												style={{
-													borderColor: focusedField === 'phone' ? '#097362' : '',
-													boxShadow: focusedField === 'phone' ? '0 0 0 2px rgba(9, 115, 98, 0.2)' : ''
+													borderColor:
+														focusedField === "phone" ? "#097362" : "",
+													boxShadow:
+														focusedField === "phone"
+															? "0 0 0 2px rgba(9, 115, 98, 0.2)"
+															: "",
 												}}
 												disabled={isSubmitting || showSuccess}
 											/>
@@ -371,12 +386,16 @@ export default function ContactUsPage() {
 											placeholder="Write your message..."
 											value={formData.message}
 											onChange={handleChange}
-											onFocus={() => handleFocus('message')}
+											onFocus={() => handleFocus("message")}
 											onBlur={handleBlur}
 											className="w-full h-32 transition-all duration-300"
 											style={{
-												borderColor: focusedField === 'message' ? '#097362' : '',
-												boxShadow: focusedField === 'message' ? '0 0 0 2px rgba(9, 115, 98, 0.2)' : ''
+												borderColor:
+													focusedField === "message" ? "#097362" : "",
+												boxShadow:
+													focusedField === "message"
+														? "0 0 0 2px rgba(9, 115, 98, 0.2)"
+														: "",
 											}}
 											disabled={isSubmitting || showSuccess}
 										/>
@@ -384,7 +403,7 @@ export default function ContactUsPage() {
 								</motion.div>
 
 								{/* Submit Button */}
-								<motion.div 
+								<motion.div
 									className="flex justify-end"
 									variants={staggerItem}
 									initial="initial"
@@ -392,7 +411,9 @@ export default function ContactUsPage() {
 								>
 									<motion.div
 										className="relative"
-										whileHover={{ scale: isSubmitting || showSuccess ? 1 : 1.05 }}
+										whileHover={{
+											scale: isSubmitting || showSuccess ? 1 : 1.05,
+										}}
 										whileTap={{ scale: isSubmitting || showSuccess ? 1 : 0.95 }}
 									>
 										<motion.div
@@ -403,16 +424,20 @@ export default function ContactUsPage() {
 											<motion.div
 												className="absolute inset-0 flex items-center justify-center"
 												initial={{ opacity: 0, scale: 0.8 }}
-												animate={{ 
+												animate={{
 													opacity: isSubmitting ? 1 : 0,
-													scale: isSubmitting ? 1 : 0.8
+													scale: isSubmitting ? 1 : 0.8,
 												}}
 												transition={{ duration: 0.3 }}
 											>
 												<motion.div
 													className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
 													animate={{ rotate: 360 }}
-													transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+													transition={{
+														duration: 1,
+														repeat: Infinity,
+														ease: "linear",
+													}}
 												/>
 											</motion.div>
 
@@ -420,20 +445,28 @@ export default function ContactUsPage() {
 											<motion.div
 												className="absolute inset-0 flex items-center justify-center"
 												initial={{ opacity: 0, scale: 0.5 }}
-												animate={{ 
+												animate={{
 													opacity: showSuccess ? 1 : 0,
-													scale: showSuccess ? 1 : 0.5
+													scale: showSuccess ? 1 : 0.5,
 												}}
-												transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+												transition={{
+													duration: 0.4,
+													type: "spring",
+													stiffness: 200,
+												}}
 											>
 												<motion.div
 													className="w-6 h-6 bg-white rounded-full flex items-center justify-center"
 													initial={{ scale: 0, rotate: -180 }}
-													animate={{ 
+													animate={{
 														scale: showSuccess ? 1 : 0,
-														rotate: showSuccess ? 0 : -180
+														rotate: showSuccess ? 0 : -180,
 													}}
-													transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
+													transition={{
+														duration: 0.5,
+														type: "spring",
+														stiffness: 300,
+													}}
 												>
 													<motion.svg
 														className="w-4 h-4 text-[#097362]"
@@ -458,9 +491,9 @@ export default function ContactUsPage() {
 											<motion.div
 												className="absolute inset-0"
 												initial={{ opacity: 1 }}
-												animate={{ 
-													opacity: (isSubmitting || showSuccess) ? 0 : 1,
-													scale: (isSubmitting || showSuccess) ? 0.9 : 1
+												animate={{
+													opacity: isSubmitting || showSuccess ? 0 : 1,
+													scale: isSubmitting || showSuccess ? 0.9 : 1,
 												}}
 												transition={{ duration: 0.3 }}
 											>
@@ -469,7 +502,7 @@ export default function ContactUsPage() {
 													className="w-full h-full bg-transparent hover:bg-white/10 text-white border-0 rounded-full transition-all duration-200"
 													disabled={isSubmitting || showSuccess}
 												>
-													{isSubmitting ? 'Sending...' : 'Send Message'}
+													{isSubmitting ? "Sending..." : "Send Message"}
 												</Button>
 											</motion.div>
 										</motion.div>
