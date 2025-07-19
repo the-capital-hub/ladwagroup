@@ -17,13 +17,21 @@ const outfit = Outfit({
 });
 
 export default function Navbar() {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const pathname = usePathname();
-	const navigate = useRouter();
+        const [isMenuOpen, setIsMenuOpen] = useState(false);
+        const [categories, setCategories] = useState([]);
+        const pathname = usePathname();
+        const navigate = useRouter();
 	// Close mobile menu when changing route
-	useEffect(() => {
-		setIsMenuOpen(false);
-	}, [pathname]);
+        useEffect(() => {
+                setIsMenuOpen(false);
+        }, [pathname]);
+
+        useEffect(() => {
+                fetch('/api/categories')
+                        .then((res) => res.json())
+                        .then(setCategories)
+                        .catch(() => {});
+        }, []);
 
 
 
@@ -54,17 +62,28 @@ export default function Navbar() {
 					<Link href="/" className={`text-sm font-medium ${isActive("/")} cursor-pointer`}>
 						Home
 					</Link>
-					<Link
-						href="/projects"
-						className={`text-sm font-medium ${isActive("/projects")} cursor-pointer`}
-					>
-						Projects
-					</Link>
-					{/* <Link
-						href="/solutions"
-						className={`text-sm font-medium ${isActive("/solutions")}`}
-					>
-						Solutions
+                                        <Link
+                                                href="/projects"
+                                                className={`text-sm font-medium ${isActive("/projects")} cursor-pointer`}
+                                        >
+                                                Projects
+                                        </Link>
+                                        <div className="relative group">
+                                                <button className="text-sm font-medium text-gray-600 hover:text-teal-700">Products</button>
+                                                <div className="absolute left-0 z-50 hidden group-hover:block bg-white shadow rounded mt-2 min-w-40">
+                                                        <Link href="/products" className="block px-4 py-2 hover:bg-gray-100">All Products</Link>
+                                                        {categories.map((c) => (
+                                                                <Link key={c._id} href={`/category/${c.slug}`} className="block px-4 py-2 hover:bg-gray-100">
+                                                                        {c.name}
+                                                                </Link>
+                                                        ))}
+                                                </div>
+                                        </div>
+                                        {/* <Link
+                                                href="/solutions"
+                                                className={`text-sm font-medium ${isActive("/solutions")}`}
+                                        >
+                                                Solutions
 					</Link> */}
 					<Link
 						href="/about"
@@ -112,12 +131,23 @@ export default function Navbar() {
 						<Link href="/" className={`text-sm font-medium ${isActive("/")}`}>
 							Home
 						</Link>
-						<Link
-							href="/projects"
-							className={`text-sm font-medium ${isActive("/projects")}`}
-						>
-							Projects
-						</Link>
+                                               <Link
+                                                        href="/projects"
+                                                        className={`text-sm font-medium ${isActive("/projects")}`}
+                                                >
+                                                        Projects
+                                                </Link>
+                                                <details>
+                                                        <summary className="list-none text-sm font-medium text-gray-600 hover:text-teal-700">Products</summary>
+                                                        <div className="pl-4 flex flex-col space-y-2 mt-2">
+                                                                <Link href="/products" className="text-sm text-gray-600 hover:text-teal-700">All Products</Link>
+                                                                {categories.map((c) => (
+                                                                        <Link key={c._id} href={`/category/${c.slug}`} className="text-sm text-gray-600 hover:text-teal-700">
+                                                                                {c.name}
+                                                                        </Link>
+                                                                ))}
+                                                        </div>
+                                                </details>
 						{/* <Link
 							href="/solutions"
 							className={`text-sm font-medium ${isActive("/solutions")}`}
