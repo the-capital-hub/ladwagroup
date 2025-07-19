@@ -4,12 +4,14 @@ import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getData(slug) {
   const baseUrl = getBaseUrl();
-  const resCat = await fetch(`${baseUrl}/api/categories?slug=${slug}`, { cache: 'no-store' });
-  const category = await resCat.json();
+  const resCat = await fetch(
+    `${baseUrl}/api/categories?slug=${encodeURIComponent(slug)}`,
+    { cache: 'no-store' }
+  );
+  const category = resCat.ok && resCat.headers.get('content-type')?.includes('application/json') ? await resCat.json() : null;
   if (!category) return null;
   const resProd = await fetch(`${baseUrl}/api/products?category=${category._id}`, { cache: 'no-store' });
-
-  const products = await resProd.json();
+  const products = resProd.ok && resProd.headers.get('content-type')?.includes('application/json') ? await resProd.json() : [];
   return { category, products };
 }
 
