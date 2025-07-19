@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProduct(slug) {
@@ -7,6 +8,7 @@ async function getProduct(slug) {
   const res = await fetch(`${baseUrl}/api/products?slug=${slug}`, {
     cache: 'no-store',
   });
+
   return await res.json();
 }
 

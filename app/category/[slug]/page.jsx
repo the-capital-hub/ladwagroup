@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getData(slug) {
@@ -7,6 +8,7 @@ async function getData(slug) {
   const category = await resCat.json();
   if (!category) return null;
   const resProd = await fetch(`${baseUrl}/api/products?category=${category._id}`, { cache: 'no-store' });
+
   const products = await resProd.json();
   return { category, products };
 }

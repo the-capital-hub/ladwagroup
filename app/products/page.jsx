@@ -1,9 +1,11 @@
 import Image from 'next/image';
+
 import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProducts() {
   const baseUrl = getBaseUrl();
   const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
+
   return res.json();
 }
 

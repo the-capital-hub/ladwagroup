@@ -63,6 +63,7 @@ export default function CategoryForm() {
     }
   };
 
+
   return (
     <div className="max-w-3xl mx-auto p-6 my-5 bg-white shadow-md border rounded-xl space-y-6">
       <h2 className="text-2xl font-semibold text-[#097362]">{editId ? 'Edit Category' : 'Add Category'}</h2>
@@ -86,6 +87,7 @@ export default function CategoryForm() {
           {form.image && (
             <p className="text-sm mt-1 break-all">{form.image}</p>
           )}
+
         </div>
         <Button type="submit" className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]">
           {editId ? 'Update' : 'Create'}

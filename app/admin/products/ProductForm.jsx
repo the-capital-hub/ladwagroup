@@ -25,6 +25,7 @@ export default function ProductForm() {
   const [editId, setEditId] = useState(null);
   const [uploading, setUploading] = useState(false);
 
+
   const fetchData = async () => {
     const [catRes, prodRes] = await Promise.all([
       fetch('/api/categories'),
@@ -179,6 +180,7 @@ export default function ProductForm() {
           {form.gallery && (
             <Textarea id="galleryUrls" rows={3} value={form.gallery} readOnly />
           )}
+
         </div>
         <div>
           <Label htmlFor="keyFeatures" className="text-[#097362]">Key Features (one per line)</Label>
