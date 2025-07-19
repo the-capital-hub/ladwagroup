@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useProductStore, useInquiryStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
-import ProductCard from "@/components/Solutions/ProductCard.jsx";
+import ProductCard from "@/components/PreviousUsedComponent/Solutions/ProductCard.jsx";
 
 export default function ProductGrid() {
 	const { products, currentPage, setCurrentPage } = useProductStore();

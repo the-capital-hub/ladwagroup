@@ -39,7 +39,7 @@ export default function VisionMission() {
 	};
 
 	return (
-		<section className="md:py-10 py-4 bg-white w-full max-w-7xl lg:mt-12 mx-auto">
+		<section className="md:py-10 py-4 bg-white w-full max-w-7xl mx-auto">
 			<div className="md:px-10 px-3">
 				<motion.div
 					className="max-w-4xl mx-auto flex flex-col justify-center items-center gap-4 text-center md:mb-8 mb-4"

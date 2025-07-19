@@ -173,9 +173,9 @@ const Carousel = () => {
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true, amount: 0.3 }}
-			className="relative w-full max-w-screen mx-auto bg-white overflow-hidden"
+			className="relative w-full max-w-screen mx-auto bg-white overflow-hidden pb-14"
 		>
-			<div className="relative py-8 px-4">
+			<div className="relative p-8 px-4">
 				<div className="relative flex items-center justify-center gap-5 lg:gap-4 lg:min-h-[450px]">
 					{displayedImages.map((img, index) => {
 						const isCenter = index === 2;
