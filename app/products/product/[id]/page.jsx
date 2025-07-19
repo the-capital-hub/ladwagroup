@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import MainNav from "@/components/Solutions/MainNav.jsx";
-import SearchBar from "@/components/Solutions/SearchBar.jsx";
+import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";
+import SearchBar from "@/components/PreviousUsedComponent/Solutions/SearchBar.jsx";
 import Products from "@/Constant/Products.js";
 
 // This would normally come from a database or API
