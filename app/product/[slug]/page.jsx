@@ -5,11 +5,19 @@ import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProduct(slug) {
   const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/api/products?slug=${slug}`, {
-    cache: 'no-store',
-  });
-
-  return await res.json();
+  try {
+    const res = await fetch(`${baseUrl}/api/products?slug=${slug}`, {
+      cache: 'no-store',
+    });
+    if (!res.ok || !res.headers.get('content-type')?.includes('application/json')) {
+      // Return null when the API does not respond with JSON
+      return null;
+    }
+    return await res.json();
+  } catch (err) {
+    console.error('Failed to fetch product', err);
+    return null;
+  }
 }
 
 export default async function ProductPage({ params }) {

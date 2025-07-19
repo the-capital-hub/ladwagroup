@@ -4,9 +4,16 @@ import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProducts() {
   const baseUrl = getBaseUrl();
-  const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
-
-  return res.json();
+  try {
+    const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
+    if (!res.ok || !res.headers.get('content-type')?.includes('application/json')) {
+      return [];
+    }
+    return await res.json();
+  } catch (err) {
+    console.error('Failed to fetch products', err);
+    return [];
+  }
 }
 
 export default async function ProductsPage() {
