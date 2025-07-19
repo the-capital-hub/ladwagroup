@@ -28,7 +28,8 @@ export default function Navbar() {
 
         useEffect(() => {
                 fetch('/api/products')
-                        .then((res) => res.json())
+                        .then((res) => (res.ok ? res.json() : []))
+
                         .then(setProducts)
                         .catch(() => {});
         }, []);
