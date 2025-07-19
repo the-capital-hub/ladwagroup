@@ -7,37 +7,33 @@ import GooglePlay from "@/public/images/footer/GooglePlay.png";
 
 export default function ModernFooter() {
 	const companyLinks = [
+		{ name: "Home", href: "/" },
 		{ name: "About Us", href: "/about" },
-		{ name: "Features", href: "/features" },
-		{ name: "Services", href: "/services" },
-		{ name: "Works", href: "/works" },
-		{ name: "Career", href: "/career" },
+		{ name: "Projects", href: "/projects" },
+		{ name: "Solutions", href: "/solutions" },
 		{ name: "Contact Us", href: "/contact" },
 	];
 
 	const resourcesLinks = [
-		{ name: "Free eBooks", href: "/ebooks" },
-		{ name: "How to - Blog", href: "/blog" },
-		{ name: "Watch a Demo", href: "/demo" },
-		{ name: "Webinars", href: "/webinars" },
-		{ name: "Youtube Playlist", href: "/youtube" },
-		{ name: "Security", href: "/security" },
+		{ name: "Blogs", href: "/blogs" },
+		{ name: "Certificates", href: "/certificates" },
+		{ name: "Terms and Conditions", href: "/terms" },
+		{ name: "Privacy Policy", href: "/privacy" },
 	];
 
 	const supportLinks = [
-		{ name: "Customer Support", href: "/support" },
-		{ name: "Help Center", href: "/help" },
-		{ name: "Delivery Details", href: "/delivery" },
-		{ name: "Live Chat", href: "/chat" },
+		{ name: "Mandatory Signs", href: "/product-category/road-signs/mandatory-road-signs" },
+		{ name: "Informatory Signs", href: "/product-category/road-signs/informatory-sign-board" },
+		{ name: "Floor Marking Tapes", href: "/product-category/road-traffic-safety/floor-marking-tapes" },
+		{ name: "Traffic Cones & Accessories", href: "/product-category/road-traffic-safety/traffic-cone" },
+		{ name: "Road Humps / Speed Breakers", href: "/product-category/road-traffic-safety/road-humps-speed-breakers" },
 	];
 
 	const featuresLinks = [
-		{ name: "Product Tours", href: "/product-tours" },
-		{ name: "Analytics", href: "/analytics" },
-		{ name: "Integrations", href: "/integrations" },
-		{ name: "Mobile App", href: "/mobile-app" },
-		{ name: "API Access", href: "/api-access" },
-		{ name: "Security", href: "/security" },
+		{ name: "Road Signs", href: "/product-category/road-signs" },
+		{ name: "Road Safety Equipment & Traffic Safety Product", href: "/product-category/road-traffic-safety" },
+		{ name: "Industrial Safety", href: "/product-category/industrial-safety-products" },
+		{ name: "First Aid Kit Box", href: "/product-category/first-aid-kit-box" },
 	];
 
 	const socialLinks = [
@@ -82,10 +78,15 @@ export default function ModernFooter() {
 					{/* Company Brand & Description */}
 					<div className="lg:col-span-4 space-y-6">
 						<div className="flex items-center space-x-3">
-							<span className="text-3xl lg:text-4xl font-bold text-teal-700 md:mt-12  mt-16">
-								LADWA
-							</span>
+							<Image
+								src="/images/logo.png"
+								alt="Ladwa Logo"
+								width={160}
+								height={50}
+								className="md:mt-12 mt-16"
+							/>
 						</div>
+
 
 						<p className="text-gray-700 text-sm leading-relaxed max-w-md">
 							Ladwa is a thriving community where innovators, professionals, and

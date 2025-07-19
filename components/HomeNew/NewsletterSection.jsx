@@ -51,7 +51,7 @@ export default function NewsletterSection() {
 					className="md:text-5xl text-2xl font-bold text-gray-900 md:mb-6 mb-3"
 					variants={fadeUp}
 				>
-					Join the LADWA Movement ( Newsletter )
+					Join the LADWA Movement
 				</motion.h2>
 
 				<motion.p

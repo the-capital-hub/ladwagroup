@@ -80,9 +80,8 @@ export default function CoreValues() {
             Our Core Values
           </h2>
           <p className={`${manrope.className} md:text-base text-sm text-gray-600 max-w-3xl`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-            massa et amet nibh blandit vel adipiscing elit. Lorem ipsum dolor
-            sit amet.
+            At LADWA, our core values shape who we are and how we work.
+            They drive our decisions, inspire innovation, and ensure we deliver excellence and trust at every step.
           </p>
         </div>
 
