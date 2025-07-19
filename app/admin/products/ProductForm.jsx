@@ -23,6 +23,8 @@ export default function ProductForm() {
     specifications: '',
   });
   const [editId, setEditId] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
 
   const fetchData = async () => {
     const [catRes, prodRes] = await Promise.all([
@@ -99,6 +101,43 @@ export default function ProductForm() {
     fetchData();
   };
 
+  const uploadFile = async (file) => {
+    const fd = new FormData();
+    fd.append('file', file);
+    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+    const data = await res.json();
+    return data.url;
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadFile(file);
+      if (url) setForm({ ...form, image: url });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleGalleryUpload = async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    setUploading(true);
+    try {
+      const uploaded = [];
+      for (const f of files) {
+        const url = await uploadFile(f);
+        if (url) uploaded.push(url);
+      }
+      setForm({ ...form, gallery: uploaded.join('\n') });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+
   return (
     <div className="max-w-4xl mx-auto p-6 my-5 bg-white shadow-md border rounded-xl space-y-6 overflow-auto">
       <h2 className="text-2xl font-semibold text-[#097362]">{editId ? 'Edit Product' : 'Add Product'}</h2>
@@ -129,12 +168,20 @@ export default function ProductForm() {
           <Textarea id="longDescription" rows={4} value={form.longDescription} onChange={(e) => setForm({ ...form, longDescription: e.target.value })} />
         </div>
         <div>
-          <Label htmlFor="image" className="text-[#097362]">Image URL</Label>
-          <Input id="image" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+          <Label htmlFor="image" className="text-[#097362]">Image</Label>
+          <Input id="image" type="file" onChange={handleImageUpload} />
+          {form.image && (
+            <p className="text-sm mt-1 break-all">{form.image}</p>
+          )}
         </div>
         <div>
-          <Label htmlFor="gallery" className="text-[#097362]">Gallery URLs (one per line)</Label>
-          <Textarea id="gallery" rows={3} value={form.gallery} onChange={(e) => setForm({ ...form, gallery: e.target.value })} />
+          <Label htmlFor="gallery" className="text-[#097362]">Gallery Images</Label>
+          <Input id="gallery" type="file" multiple onChange={handleGalleryUpload} />
+          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+          {form.gallery && (
+            <Textarea id="galleryUrls" rows={3} value={form.gallery} readOnly />
+          )}
+
         </div>
         <div>
           <Label htmlFor="keyFeatures" className="text-[#097362]">Key Features (one per line)</Label>
