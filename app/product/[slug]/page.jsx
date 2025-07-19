@@ -11,6 +11,7 @@ async function getProduct(slug) {
       { cache: 'no-store' }
     );
     if (!res.headers.get('content-type')?.includes('application/json')) {
+
       return null;
     }
     return await res.json();

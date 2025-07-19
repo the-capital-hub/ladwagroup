@@ -8,6 +8,7 @@ async function getData(slug) {
     `${baseUrl}/api/categories?slug=${encodeURIComponent(slug)}`,
     { cache: 'no-store' }
   );
+  
   const category = resCat.ok && resCat.headers.get('content-type')?.includes('application/json') ? await resCat.json() : null;
   if (!category) return null;
   const resProd = await fetch(`${baseUrl}/api/products?category=${category._id}`, { cache: 'no-store' });
