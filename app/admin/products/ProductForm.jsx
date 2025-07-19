@@ -137,7 +137,6 @@ export default function ProductForm() {
     }
   };
 
-
   return (
     <div className="max-w-4xl mx-auto p-6 my-5 bg-white shadow-md border rounded-xl space-y-6 overflow-auto">
       <h2 className="text-2xl font-semibold text-[#097362]">{editId ? 'Edit Product' : 'Add Product'}</h2>
