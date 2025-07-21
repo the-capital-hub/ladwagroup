@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-
 import { getBaseUrl } from '@/lib/baseUrl';
-
-const ProductCard = dynamic(() => import('@/components/ProductListCard.jsx'), { ssr: false });
-const InquiryForm = dynamic(() => import('@/components/Solutions/InquiryForm.jsx'), { ssr: false });
+import ProductCard from '@/components/ProductListCard.jsx';
+import InquiryForm from '@/components/Solutions/InquiryForm.jsx';
 
 async function getData(slug) {
   const baseUrl = getBaseUrl();
