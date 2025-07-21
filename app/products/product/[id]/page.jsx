@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = 'force-dynamic';
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";
@@ -12,8 +14,9 @@ const getProductById = (id) => {
 	return Products.find((product) => product.id === id);
 };
 
-export function generateMetadata({ params }) {
-	const product = getProductById(params.id);
+export async function generateMetadata(context) {
+        const { params } = await context;
+        const product = getProductById(params.id);
 
 	if (!product) {
 		return {
@@ -28,8 +31,9 @@ export function generateMetadata({ params }) {
 	};
 }
 
-export default function ProductPage({ params }) {
-	const product = getProductById(params.id);
+export default async function ProductPage(context) {
+        const { params } = await context;
+        const product = getProductById(params.id);
 
 	if (!product) {
 		notFound();

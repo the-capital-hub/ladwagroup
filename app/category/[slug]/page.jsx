@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 import { getBaseUrl } from '@/lib/baseUrl';
 import ProductCard from '@/components/ProductListCard.jsx';
 import InquiryForm from '@/components/Solutions/InquiryForm.jsx';
@@ -18,7 +20,8 @@ async function getData(slug) {
   return { category, products };
 }
 
-export default async function CategoryPage({ params }) {
+export default async function CategoryPage(context) {
+  const { params } = await context;
   const data = await getData(params.slug);
   if (!data) return <div className="p-10">Category not found</div>;
   const { category, products } = data;

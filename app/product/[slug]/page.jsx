@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProduct(slug) {
@@ -21,7 +23,8 @@ async function getProduct(slug) {
   }
 }
 
-export default async function ProductPage({ params }) {
+export default async function ProductPage(context) {
+  const { params } = await context;
   const product = await getProduct(params.slug);
   if (!product) return <div className="p-10">Product not found</div>;
 

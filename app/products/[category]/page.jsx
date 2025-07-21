@@ -1,12 +1,15 @@
 import { Suspense } from "react";
 import ProductFilters from "@/components/PreviousUsedComponent/Solutions/ProductFilters.jsx";
 import ProductGrid from "@/components/PreviousUsedComponent/Solutions/ProductGrid.jsx";
+
+export const dynamic = 'force-dynamic';
 import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";
 import SearchBar from "@/components/PreviousUsedComponent/Solutions/SearchBar.jsx";
 import { ProductSkeleton } from "@/components/PreviousUsedComponent/Solutions/ProductSkeleton.jsx";
 import { notFound } from "next/navigation";
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(context) {
+        const { params } = await context;
 	// Map category slug to display name
 	const categoryMap = {
 		"first-aid-kit": "First Aid Kit",
@@ -17,7 +20,7 @@ export function generateMetadata({ params }) {
 		"shop-safety": "Shop Safety",
 	};
 
-	const category = categoryMap[params.category];
+        const category = categoryMap[params.category];
 
 	if (!category) {
 		return {
@@ -32,7 +35,8 @@ export function generateMetadata({ params }) {
 	};
 }
 
-export default function CategoryPage({ params }) {
+export default async function CategoryPage(context) {
+        const { params } = await context;
 	// Validate category exists
 	const validCategories = [
 		"first-aid-kit",
