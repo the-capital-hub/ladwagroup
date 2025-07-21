@@ -92,10 +92,12 @@ const InquiryForm = () => {
 											/>
 										</div>
 										<div className="bg-teal-700/30 p-3 rounded-lg">
-											<p className="text-sm">
-												<span className="font-medium">Price: </span>₹{" "}
-												{store.product.price.toLocaleString()}
-											</p>
+                                                                               <p className="text-sm">
+                                                                               <span className="font-medium">Price: </span>₹{" "}
+                                                                               {store.product?.price !== undefined && store.product?.price !== null
+                                                                                       ? store.product.price.toLocaleString()
+                                                                                       : "N/A"}
+                                                                               </p>
 										</div>
 									</div>
 								)}
