@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Project from '@/Models/Project';
+import { requireAdmin } from '@/lib/auth';
 
 // POST: Create new project
 export async function POST(req) {
+  if (!requireAdmin()) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
   await dbConnect();
 
   try {
