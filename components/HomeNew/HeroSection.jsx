@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import heroimg from "../../public/images/NewHome/HeroImg.png";
 
@@ -19,6 +20,7 @@ const inter = Inter({
 });
 
 export default function HeroSection() {
+  const navigate = useRouter();
   return (
     <motion.section
       initial="hidden"
@@ -129,7 +131,10 @@ export default function HeroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 1 }}
         >
-          <div className="w-12 h-12 lg:w-22 lg:h-22 bg-gradient-to-r from-[#1A907D] to-[#029981]  rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-xl hover:bg-teal-700 transition-all duration-300 cursor-pointer hover:scale-110">
+          <div
+            onClick={() => navigate.push('/contact-us')}
+            className="w-12 h-12 lg:w-22 lg:h-22 bg-gradient-to-r from-[#1A907D] to-[#029981]  rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-xl hover:bg-teal-700 transition-all duration-300 cursor-pointer hover:scale-110"
+          >
             <ArrowUpRight className="w-6 h-6 lg:w-12 lg:h-12" />
           </div>
         </motion.div>

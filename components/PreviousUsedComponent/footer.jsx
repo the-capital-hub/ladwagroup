@@ -18,17 +18,17 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/features" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Features
 								</Link>
 							</li>
 							<li>
-								<Link href="/works" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Works
 								</Link>
 							</li>
 							<li>
-								<Link href="/career" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Career
 								</Link>
 							</li>
@@ -38,22 +38,22 @@ export default function Footer() {
 						<h3 className="text-lg font-semibold mb-4">Help</h3>
 						<ul className="space-y-2">
 							<li>
-								<Link href="/support" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Customer Support
 								</Link>
 							</li>
 							<li>
-								<Link href="/delivery" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Delivery Details
 								</Link>
 							</li>
 							<li>
-								<Link href="/terms" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Terms & Conditions
 								</Link>
 							</li>
 							<li>
-								<Link href="/privacy" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Privacy Policy
 								</Link>
 							</li>
@@ -63,12 +63,12 @@ export default function Footer() {
 						<h3 className="text-lg font-semibold mb-4">Resources</h3>
 						<ul className="space-y-2">
 							<li>
-								<Link href="/ebooks" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Free eBooks
 								</Link>
 							</li>
 							<li>
-								<Link href="/tutorials" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Development Tutorial
 								</Link>
 							</li>
@@ -78,7 +78,7 @@ export default function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/youtube" className="hover:underline">
+								<Link href="/contact-us" className="hover:underline">
 									Youtube Playlist
 								</Link>
 							</li>
@@ -87,7 +87,7 @@ export default function Footer() {
 					<div>
 						<h3 className="text-lg font-semibold mb-4">Install App</h3>
 						<div className="space-y-4">
-							<Link href="#" className="block">
+							<Link href="/contact-us" className="block">
 								<Image
 									src={AppStore.src}
 									alt="App Store"
@@ -96,7 +96,7 @@ export default function Footer() {
 									className="rounded-lg"
 								/>
 							</Link>
-							<Link href="#" className="block">
+							<Link href="/contact-us" className="block">
 								<Image
 									src={GooglePlay.src}
 									alt="Google Play"
@@ -114,16 +114,16 @@ export default function Footer() {
 							© Copyright 2022. All Rights Reserved by LADWA
 						</p>
 						<div className="flex space-x-4 mt-4 md:mt-0">
-							<Link href="#" className="hover:text-teal-300">
+							<Link href="/contact-us" className="hover:text-teal-300">
 								<Twitter className="h-5 w-5" />
 							</Link>
-							<Link href="#" className="hover:text-teal-300">
+							<Link href="/contact-us" className="hover:text-teal-300">
 								<Facebook className="h-5 w-5" />
 							</Link>
-							<Link href="#" className="hover:text-teal-300">
+							<Link href="/contact-us" className="hover:text-teal-300">
 								<Instagram className="h-5 w-5" />
 							</Link>
-							<Link href="#" className="hover:text-teal-300">
+							<Link href="/contact-us" className="hover:text-teal-300">
 								<Github className="h-5 w-5" />
 							</Link>
 						</div>
