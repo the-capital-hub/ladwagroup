@@ -18,7 +18,7 @@ const outfit = Outfit({
 
 export default function Navbar() {
         const [isMenuOpen, setIsMenuOpen] = useState(false);
-        const [products, setProducts] = useState([]);
+        const [categories, setCategories] = useState([]);
         const pathname = usePathname();
         const navigate = useRouter();
 	// Close mobile menu when changing route
@@ -27,10 +27,10 @@ export default function Navbar() {
         }, [pathname]);
 
         useEffect(() => {
-                fetch('/api/products')
+                fetch('/api/categories')
                         .then((res) => (res.ok ? res.json() : []))
 
-                        .then(setProducts)
+                        .then(setCategories)
                         .catch(() => {});
         }, []);
 
@@ -70,12 +70,12 @@ export default function Navbar() {
                                                 Projects
                                         </Link>
                                         <div className="relative group">
-                                                <button className="text-sm font-medium text-gray-600 hover:text-teal-700">Products</button>
+                                                <button className="text-sm font-medium text-gray-600 hover:text-teal-700">Product Categories</button>
                                                 <div className="absolute left-0 z-50 hidden group-hover:block bg-white shadow rounded mt-2 min-w-40">
                                                         <Link href="/products" className="block px-4 py-2 hover:bg-gray-100">All Products</Link>
-                                                        {products.map((p) => (
-                                                                <Link key={p._id} href={`/product/${p.slug}`} className="block px-4 py-2 hover:bg-gray-100">
-                                                                        {p.name}
+                                                        {categories.map((c) => (
+                                                                <Link key={c._id} href={`/category/${c.slug}`} className="block px-4 py-2 hover:bg-gray-100">
+                                                                        {c.name}
                                                                 </Link>
                                                         ))}
                                                 </div>
@@ -139,12 +139,12 @@ export default function Navbar() {
                                                         Projects
                                                 </Link>
                                                 <details>
-                                                        <summary className="list-none text-sm font-medium text-gray-600 hover:text-teal-700">Products</summary>
+                                                        <summary className="list-none text-sm font-medium text-gray-600 hover:text-teal-700">Product Categories</summary>
                                                         <div className="pl-4 flex flex-col space-y-2 mt-2">
                                                                 <Link href="/products" className="text-sm text-gray-600 hover:text-teal-700">All Products</Link>
-                                                                  {products.map((p) => (
-                                                                        <Link key={p._id} href={`/product/${p.slug}`} className="text-sm text-gray-600 hover:text-teal-700">
-                                                                                {p.name}
+                                                                   {categories.map((c) => (
+                                                                        <Link key={c._id} href={`/category/${c.slug}`} className="text-sm text-gray-600 hover:text-teal-700">
+                                                                                {c.name}
                                                                         </Link>
                                                                   ))}
                                                         </div>

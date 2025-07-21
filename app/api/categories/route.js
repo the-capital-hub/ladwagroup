@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import ProductCategory from '@/Models/ProductCategory';
+import { requireAdmin } from '@/lib/auth';
 
 export async function GET(req) {
   await dbConnect();
@@ -15,6 +16,9 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
+  if (!requireAdmin()) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
   await dbConnect();
   const body = await req.json();
   try {
