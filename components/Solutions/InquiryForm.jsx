@@ -10,13 +10,12 @@ import { useInquiryStore } from "@/components/Solutions/Inquiry.js";
 
 const InquiryForm = () => {
 	const [store, setStore] = useState(useInquiryStore.getState());
-	const [formData, setFormData] = useState({
-		firstName: "",
-		lastName: "",
-		email: "",
-		phone: "",
-		message: "",
-	});
+        const [formData, setFormData] = useState({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+        });
 
 	React.useEffect(() => {
 		const unsubscribe = useInquiryStore.subscribe(setStore);
@@ -31,19 +30,26 @@ const InquiryForm = () => {
 		}));
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log("Form submitted:", { product: store.product, ...formData });
-		useInquiryStore.closeInquiry();
-		alert("Your inquiry has been submitted successfully!");
-		setFormData({
-			firstName: "",
-			lastName: "",
-			email: "",
-			phone: "",
-			message: "",
-		});
-	};
+        const handleSubmit = async (e) => {
+                e.preventDefault();
+                try {
+                        await fetch("/api/inquiry", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                        ...formData,
+                                        productId: store.product?._id,
+                                        productName: store.product?.name,
+                                }),
+                        });
+                        alert("Your inquiry has been submitted successfully!");
+                } catch (err) {
+                        console.error("Failed to send inquiry", err);
+                        alert("Failed to send inquiry. Please try again later.");
+                }
+                useInquiryStore.closeInquiry();
+                setFormData({ name: "", email: "", phone: "", message: "" });
+        };
 
 	return (
 		<AnimatePresence>
@@ -107,32 +113,30 @@ const InquiryForm = () => {
 									Send Inquiry
 								</h3>
 								<form onSubmit={handleSubmit} className="space-y-4">
-									<div className="grid grid-cols-2 gap-4">
-										<div>
-											<label className="block text-sm font-medium text-gray-700 mb-1">
-												First Name *
-											</label>
-											<Input
-												name="firstName"
-												value={formData.firstName}
-												onChange={handleChange}
-												required
-												className="w-full"
-											/>
-										</div>
-										<div>
-											<label className="block text-sm font-medium text-gray-700 mb-1">
-												Last Name *
-											</label>
-											<Input
-												name="lastName"
-												value={formData.lastName}
-												onChange={handleChange}
-												required
-												className="w-full"
-											/>
-										</div>
-									</div>
+                                                                        <div className="space-y-4">
+                                                                               <div>
+                                                                               <label className="block text-sm font-medium text-gray-700 mb-1">
+                                                                               Name *
+                                                                               </label>
+                                                                               <Input
+                                                                               name="name"
+                                                                               value={formData.name}
+                                                                               onChange={handleChange}
+                                                                               required
+                                                                               className="w-full"
+                                                                               />
+                                                                               </div>
+                                                                               <div>
+                                                                               <label className="block text-sm font-medium text-gray-700 mb-1">
+                                                                               Product Interested
+                                                                               </label>
+                                                                               <Input
+                                                                               value={store.product?.name || ""}
+                                                                               disabled
+                                                                               className="w-full bg-gray-100"
+                                                                               />
+                                                                               </div>
+                                                                        </div>
 									<div>
 										<label className="block text-sm font-medium text-gray-700 mb-1">
 											Email *
