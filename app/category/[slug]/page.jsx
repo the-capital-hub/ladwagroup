@@ -18,7 +18,8 @@ async function getData(slug) {
   return { category, products };
 }
 
-export default async function CategoryPage({ params }) {
+export default async function CategoryPage(context) {
+  const { params } = await context;
   const data = await getData(params.slug);
   if (!data) return <div className="p-10">Category not found</div>;
   const { category, products } = data;

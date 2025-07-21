@@ -12,8 +12,9 @@ const getProductById = (id) => {
 	return Products.find((product) => product.id === id);
 };
 
-export function generateMetadata({ params }) {
-	const product = getProductById(params.id);
+export async function generateMetadata(context) {
+        const { params } = await context;
+        const product = getProductById(params.id);
 
 	if (!product) {
 		return {
@@ -28,8 +29,9 @@ export function generateMetadata({ params }) {
 	};
 }
 
-export default function ProductPage({ params }) {
-	const product = getProductById(params.id);
+export default async function ProductPage(context) {
+        const { params } = await context;
+        const product = getProductById(params.id);
 
 	if (!product) {
 		notFound();
