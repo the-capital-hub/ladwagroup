@@ -11,29 +11,29 @@ export default function ModernFooter() {
 		{ name: "About Us", href: "/about" },
 		{ name: "Projects", href: "/projects" },
 		{ name: "Solutions", href: "/solutions" },
-		{ name: "Contact Us", href: "/contact" },
+		{ name: "Contact Us", href: "/contact-us" },
 	];
 
 	const resourcesLinks = [
-		{ name: "Blogs", href: "/blogs" },
-		{ name: "Certificates", href: "/certificates" },
-		{ name: "Terms and Conditions", href: "/terms" },
-		{ name: "Privacy Policy", href: "/privacy" },
+		{ name: "Blogs", href: "/blog" },
+		{ name: "Certificates", href: "/contact-us" },
+		{ name: "Terms and Conditions", href: "/contact-us" },
+		{ name: "Privacy Policy", href: "/contact-us" },
 	];
 
 	const supportLinks = [
-		{ name: "Mandatory Signs", href: "/product-category/road-signs/mandatory-road-signs" },
-		{ name: "Informatory Signs", href: "/product-category/road-signs/informatory-sign-board" },
-		{ name: "Floor Marking Tapes", href: "/product-category/road-traffic-safety/floor-marking-tapes" },
-		{ name: "Traffic Cones & Accessories", href: "/product-category/road-traffic-safety/traffic-cone" },
-		{ name: "Road Humps / Speed Breakers", href: "/product-category/road-traffic-safety/road-humps-speed-breakers" },
+		{ name: "Mandatory Signs", href: "/contact-us" },
+		{ name: "Informatory Signs", href: "/contact-us" },
+		{ name: "Floor Marking Tapes", href: "/contact-us" },
+		{ name: "Traffic Cones & Accessories", href: "/contact-us" },
+		{ name: "Road Humps / Speed Breakers", href: "/contact-us" },
 	];
 
 	const featuresLinks = [
-		{ name: "Road Signs", href: "/product-category/road-signs" },
-		{ name: "Road Safety Equipment & Traffic Safety Product", href: "/product-category/road-traffic-safety" },
-		{ name: "Industrial Safety", href: "/product-category/industrial-safety-products" },
-		{ name: "First Aid Kit Box", href: "/product-category/first-aid-kit-box" },
+		{ name: "Road Signs", href: "/category/road-signs" },
+		{ name: "Road Safety Equipment & Traffic Safety Product", href: "/category/road-traffic-safety" },
+		{ name: "Industrial Safety", href: "/category/industrial-safety-products" },
+		{ name: "First Aid Kit Box", href: "/category/first-aid-kit-box" },
 	];
 
 	const socialLinks = [
@@ -121,7 +121,7 @@ export default function ModernFooter() {
 					<div className="lg:col-span-2">
 						<h3 className="text-lg font-semibold mb-4">Install App</h3>
 						<div className="space-y-4">
-							<Link href="#" className="block">
+							<Link href="/contact-us" className="block">
 								<Image
 									src={AppStore.src}
 									alt="App Store"
@@ -130,7 +130,7 @@ export default function ModernFooter() {
 									className="rounded-lg"
 								/>
 							</Link>
-							<Link href="#" className="block">
+							<Link href="/contact-us" className="block">
 								<Image
 									src={GooglePlay.src}
 									alt="Google Play"
@@ -154,25 +154,25 @@ export default function ModernFooter() {
 
 						<div className="flex flex-wrap justify-center md:justify-end gap-6">
 							<Link
-								href="/terms"
+								href="/contact-us"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Terms of Use
 							</Link>
 							<Link
-								href="/privacy"
+								href="/contact-us"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Privacy Policy
 							</Link>
 							<Link
-								href="/legal"
+								href="/contact-us"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Legal
 							</Link>
 							<Link
-								href="/sitemap"
+								href="/contact-us"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Site Map

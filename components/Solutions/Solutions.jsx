@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Shield, AlertTriangle, HardHat, Navigation } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 // Lazy load components for better performance
 const HeroSection = dynamic(
@@ -31,7 +32,8 @@ const InquiryForm = dynamic(
 );
 
 const SolutionsPage = () => {
-	const solutions = [
+        const navigate = useRouter();
+        const solutions = [
 		{
 			id: "road-traffic-safety",
 			title: "Road Traffic Safety",
@@ -252,10 +254,11 @@ const SolutionsPage = () => {
 							solutions tailored to your specific requirements and industry
 							needs.
 						</p>
-						<Button
-							size="lg"
-							className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-						>
+                                                <Button
+                                                        size="lg"
+                                                        onClick={() => navigate.push('/contact-us')}
+                                                        className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                                                >
 							Contact Our Experts
 						</Button>
 					</motion.div>

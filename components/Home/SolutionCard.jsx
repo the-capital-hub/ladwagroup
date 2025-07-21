@@ -24,7 +24,7 @@
 // 					{description}
 // 				</p>
 // 				<Link
-// 					href="#"
+// 					href="/solutions"
 // 					className="text-teal-700 text-xs font-medium hover:underline mt-auto block"
 // 				>
 // 					VIEW MORE
@@ -60,7 +60,7 @@ export default function SolutionCard({
 					{description}
 				</p>
 				<Link
-					href="#"
+					href="/solutions"
 					className="text-teal-700 text-xs font-medium hover:underline mt-auto block md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
 				>
 					VIEW MORE
