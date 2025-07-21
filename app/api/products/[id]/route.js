@@ -3,14 +3,16 @@ import dbConnect from '@/lib/db';
 import Product from '@/Models/Product';
 import ProductCategory from '@/Models/ProductCategory';
 
-export async function GET(req, { params }) {
+export async function GET(req, context) {
+  const { params } = await context;
   await dbConnect();
   const product = await Product.findById(params.id).populate('category');
   if (!product) return NextResponse.json({ message: 'Not found' }, { status: 404 });
   return NextResponse.json(product);
 }
 
-export async function PUT(req, { params }) {
+export async function PUT(req, context) {
+  const { params } = await context;
   await dbConnect();
   const body = await req.json();
   const product = await Product.findByIdAndUpdate(params.id, body, { new: true });
@@ -18,7 +20,8 @@ export async function PUT(req, { params }) {
   return NextResponse.json(product);
 }
 
-export async function DELETE(req, { params }) {
+export async function DELETE(req, context) {
+  const { params } = await context;
   await dbConnect();
   await Product.findByIdAndDelete(params.id);
   return NextResponse.json({ message: 'Deleted' });
