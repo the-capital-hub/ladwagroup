@@ -23,9 +23,9 @@ async function getProduct(slug) {
   }
 }
 
-export default async function ProductPage(context) {
-  const { params } = await context;
-  const product = await getProduct(params.slug);
+export default async function ProductPage({ params }) {
+  const { slug } = await params;
+  const product = await getProduct(slug);
   if (!product) return <div className="p-10">Product not found</div>;
 
   return (

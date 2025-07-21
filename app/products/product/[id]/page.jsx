@@ -14,9 +14,9 @@ const getProductById = (id) => {
 	return Products.find((product) => product.id === id);
 };
 
-export async function generateMetadata(context) {
-        const { params } = await context;
-        const product = getProductById(params.id);
+export async function generateMetadata({ params }) {
+        const { id } = await params;
+        const product = getProductById(id);
 
 	if (!product) {
 		return {
@@ -31,9 +31,9 @@ export async function generateMetadata(context) {
 	};
 }
 
-export default async function ProductPage(context) {
-        const { params } = await context;
-        const product = getProductById(params.id);
+export default async function ProductPage({ params }) {
+        const { id } = await params;
+        const product = getProductById(id);
 
 	if (!product) {
 		notFound();

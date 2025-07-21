@@ -8,8 +8,8 @@ import SearchBar from "@/components/PreviousUsedComponent/Solutions/SearchBar.js
 import { ProductSkeleton } from "@/components/PreviousUsedComponent/Solutions/ProductSkeleton.jsx";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata(context) {
-        const { params } = await context;
+export async function generateMetadata({ params }) {
+        const { category: categorySlug } = await params;
 	// Map category slug to display name
 	const categoryMap = {
 		"first-aid-kit": "First Aid Kit",
@@ -20,7 +20,7 @@ export async function generateMetadata(context) {
 		"shop-safety": "Shop Safety",
 	};
 
-        const category = categoryMap[params.category];
+        const category = categoryMap[categorySlug];
 
 	if (!category) {
 		return {
@@ -29,14 +29,14 @@ export async function generateMetadata(context) {
 		};
 	}
 
-	return {
-		title: `${category} | Safety Solutions`,
-		description: `Browse our range of ${category.toLowerCase()} products for all your safety needs`,
-	};
+        return {
+                title: `${category} | Safety Solutions`,
+                description: `Browse our range of ${category.toLowerCase()} products for all your safety needs`,
+        };
 }
 
-export default async function CategoryPage(context) {
-        const { params } = await context;
+export default async function CategoryPage({ params }) {
+        const { category: categorySlug } = await params;
 	// Validate category exists
 	const validCategories = [
 		"first-aid-kit",
@@ -47,9 +47,9 @@ export default async function CategoryPage(context) {
 		"shop-safety",
 	];
 
-	if (!validCategories.includes(params.category)) {
-		notFound();
-	}
+        if (!validCategories.includes(categorySlug)) {
+                notFound();
+        }
 
 	return (
 		<div className="min-h-screen bg-gray-50">
@@ -65,10 +65,10 @@ export default async function CategoryPage(context) {
 
 			<main className="container mx-auto px-4 py-8">
 				<h1 className="text-3xl font-bold mb-8">
-					{params.category
-						.split("-")
-						.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-						.join(" ")}
+                                        {categorySlug
+                                                .split("-")
+                                                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                                .join(" ")}
 				</h1>
 
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
