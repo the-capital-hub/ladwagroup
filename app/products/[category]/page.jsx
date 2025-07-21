@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import ProductFilters from "@/components/PreviousUsedComponent/Solutions/ProductFilters.jsx";
 import ProductGrid from "@/components/PreviousUsedComponent/Solutions/ProductGrid.jsx";
+
+export const dynamic = 'force-dynamic';
 import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";
 import SearchBar from "@/components/PreviousUsedComponent/Solutions/SearchBar.jsx";
 import { ProductSkeleton } from "@/components/PreviousUsedComponent/Solutions/ProductSkeleton.jsx";

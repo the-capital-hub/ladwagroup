@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = 'force-dynamic';
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";

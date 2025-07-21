@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Product from '@/Models/Product';
 import ProductCategory from '@/Models/ProductCategory';
+import { revalidatePath } from 'next/cache';
 
 export async function GET(req, context) {
   const { params } = await context;
@@ -17,6 +18,14 @@ export async function PUT(req, context) {
   const body = await req.json();
   const product = await Product.findByIdAndUpdate(params.id, body, { new: true });
   if (!product) return NextResponse.json({ message: 'Not found' }, { status: 404 });
+  revalidatePath(`/product/${product.slug}`);
+  revalidatePath('/products');
+  if (product.category) {
+    const cat = await ProductCategory.findById(product.category);
+    if (cat?.slug) {
+      revalidatePath(`/category/${cat.slug}`);
+    }
+  }
   return NextResponse.json(product);
 }
 

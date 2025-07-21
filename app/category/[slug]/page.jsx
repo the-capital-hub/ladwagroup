@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 import { getBaseUrl } from '@/lib/baseUrl';
 import ProductCard from '@/components/ProductListCard.jsx';
 import InquiryForm from '@/components/Solutions/InquiryForm.jsx';

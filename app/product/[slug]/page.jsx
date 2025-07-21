@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 import { getBaseUrl } from '@/lib/baseUrl';
 
 async function getProduct(slug) {
