@@ -6,7 +6,12 @@ import sunil from "../../public/images/aboutus/SunilLadwaPic.png"
 import sumithra from "../../public/images/aboutus/SumithraLadwaPic.png"
 import chethan from "../../public/images/aboutus/ChethanKumarPic.png"
 import Nagraj from "../../public/images/aboutus/NagrajPic.png"
-import deepak from "../../public/images/aboutus/DeepakPic.png"
+import deepak from "../../public/images/aboutus/Deepak.jpg"
+import Hemant from "../../public/images/aboutus/Hemant.jpg"
+import Kunal from "../../public/images/aboutus/Kunal.jpg"
+import Megha from "../../public/images/aboutus/Megha.jpg"
+import nilmani from "../../public/images/aboutus/nilmani.jpg"
+import Pradeep from "../../public/images/aboutus/Pradeep.jpg"
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
 
@@ -58,6 +63,42 @@ const TopManagement = () => {
             name: "Deepak",
             position: "Customer support executive",
             image: deepak,
+            linkedIn: "#"
+        },
+        {
+            id: 4,
+            name: "Hemant",
+            position: "",
+            image: Hemant,
+            linkedIn: "#"
+        },
+        
+        {
+            id:5 ,
+            name: "Kunal",
+            position: "",
+            image: Kunal,
+            linkedIn: "#"
+        },
+        {
+            id:6 ,
+            name: "Megha",
+            position: "",
+            image: Megha,
+            linkedIn: "#"
+        },
+        {
+            id:7 ,
+            name: "Nilmani",
+            position: "",
+            image: nilmani,
+            linkedIn: "#"
+        },
+        {
+            id:8 ,
+            name: "Pradeep",
+            position: "",
+            image: Pradeep,
             linkedIn: "#"
         }
     ];
