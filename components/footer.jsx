@@ -113,8 +113,8 @@ export default function ModernFooter() {
 					<div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-8">
 						<LinkSection title="Company" links={companyLinks} />
 						<LinkSection title="Resources" links={resourcesLinks} />
-						<LinkSection title="Features" links={featuresLinks} />
-						<LinkSection title="Support" links={supportLinks} />
+						<LinkSection title="Popular Categories" links={featuresLinks} />
+						<LinkSection title="Popular Products" links={supportLinks} />
 					</div>
 
 					{/* App Download Section */}

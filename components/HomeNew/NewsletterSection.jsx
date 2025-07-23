@@ -63,10 +63,10 @@ export default function NewsletterSection() {
                                 viewport={{ once: true, amount: 0.3 }}
                         >
                                 <motion.h2
-                                        className="md:text-5xl text-3xl font-bold text-gray-900 md:mb-6 mb-4"
+                                        className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight"
                                         variants={fadeUp}
                                 >
-                                        Join the LADWA Movement
+                                        Join Our Movement
                                 </motion.h2>
 
                                 <motion.p
@@ -78,32 +78,10 @@ export default function NewsletterSection() {
                                         sustainable future.
                                 </motion.p>
 
-                                <motion.div
-                                        className="max-w-5xl mx-auto relative md:mb-8 mb-6"
-                                        variants={imageVariants}
-                                >
-                                        <Image
-                                                src={Picture}
-                                                alt="Team collaboration"
-                                                width={700}
-                                                height={400}
-                                                className="w-full aspect-video rounded-[30px] mx-auto shadow-xl"
-                                        />
-                                </motion.div>
-
-                                <motion.h3
-                                        className={`text-xl lg:text-4xl font-bold text-gray-900 ${inter.className}`}
-                                        variants={fadeUp}
-                                >
-                                        LADWA – Making the World Safer.
-                                </motion.h3>
-
-                                <motion.div className="mt-6" variants={fadeUp}>
-                                        <Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-8 py-3 rounded-full">
+								<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white px-8 py-3 rounded-full">
                                                 Join Now
-                                        </Button>
-                                </motion.div>
-
+                                </Button>
+                                
 				{/* Optional Subscription Form (currently commented) */}
 				{/* <motion.div className="max-w-md mx-auto mt-8" variants={fadeUp}>
 					<div className="flex gap-4">

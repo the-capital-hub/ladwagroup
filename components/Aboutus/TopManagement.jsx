@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion'
-import sunil from "../../public/images/aboutus/SunilLadwaPic.png"
-import sumithra from "../../public/images/aboutus/SumithraLadwaPic.png"
+import sunil from "../../public/images/aboutus/sunil.jpg"
+import sumithra from "../../public/images/aboutus/sumithra.jpg"
 import chethan from "../../public/images/aboutus/ChethanKumarPic.png"
 import Nagraj from "../../public/images/aboutus/NagrajPic.png"
 import deepak from "../../public/images/aboutus/Deepak.jpg"
@@ -44,65 +44,51 @@ const TopManagement = () => {
     ];
 
     const teamData = [
+        
         {
             id: 1,
-            name: "Chethan Kumar M",
-            position: "Inventory specialist",
-            image: chethan,
-            linkedIn: "#"
-        },
-        {
-            id: 2,
-            name: "Nagraj",
-            position: "Asst Manager - Sales",
-            image: Nagraj,
-            linkedIn: "#"
-        },
-        {
-            id: 3,
             name: "Deepak",
-            position: "Customer support executive",
+            position: "Manager - Operations",
             image: deepak,
             linkedIn: "#"
         },
         {
-            id: 4,
+            id: 2,
             name: "Hemant",
-            position: "",
+            position: "Asst. Manager - Products",
             image: Hemant,
             linkedIn: "#"
         },
         
         {
-            id:5 ,
+            id:3 ,
             name: "Kunal",
-            position: "",
+            position: "Team Lead - Communication",
             image: Kunal,
             linkedIn: "#"
         },
         {
-            id:6 ,
+            id:4 ,
             name: "Megha",
-            position: "",
+            position: "Manager - Tech Sync",
             image: Megha,
             linkedIn: "#"
         },
         {
-            id:7 ,
-            name: "Nilmani",
-            position: "",
+            id:5 ,
+            name: "Nityananada",
+            position: "Assistant Manager - Sales",
             image: nilmani,
             linkedIn: "#"
         },
         {
-            id:8 ,
+            id:6 ,
             name: "Pradeep",
-            position: "",
+            position: "Assistant Manager - Operations",
             image: Pradeep,
             linkedIn: "#"
         }
     ];
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -255,11 +241,11 @@ const TopManagement = () => {
                         ))}
                     </div>
 
-                    <div className="text-center">
+                    {/* <div className="text-center">
                         <button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] cursor-pointer hover:bg-teal-700 text-white px-8 py-3 rounded-full font-medium transition-colors duration-200 shadow-lg hover:shadow-xl">
                             See all team members
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
