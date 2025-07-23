@@ -4,14 +4,13 @@ import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion'
 import sunil from "../../public/images/aboutus/sunil.jpg"
 import sumithra from "../../public/images/aboutus/sumithra.jpg"
-import chethan from "../../public/images/aboutus/ChethanKumarPic.png"
-import Nagraj from "../../public/images/aboutus/NagrajPic.png"
 import deepak from "../../public/images/aboutus/Deepak.jpg"
 import Hemant from "../../public/images/aboutus/Hemant.jpg"
 import Kunal from "../../public/images/aboutus/Kunal.jpg"
 import Megha from "../../public/images/aboutus/Megha.jpg"
 import nilmani from "../../public/images/aboutus/nilmani.jpg"
 import Pradeep from "../../public/images/aboutus/Pradeep.jpg"
+import Zaki from "../../public/images/aboutus/zaki.png"
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
 
@@ -86,6 +85,13 @@ const TopManagement = () => {
             name: "Pradeep",
             position: "Assistant Manager - Operations",
             image: Pradeep,
+            linkedIn: "#"
+        },
+        {
+            id:6 ,
+            name: "Zaki",
+            position: "Assistant Manager - Inside Sales",
+            image: Zaki,
             linkedIn: "#"
         }
     ];
