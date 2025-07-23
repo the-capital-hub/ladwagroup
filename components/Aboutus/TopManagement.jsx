@@ -4,12 +4,12 @@ import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion'
 import sunil from "../../public/images/aboutus/sunil.jpg"
 import sumithra from "../../public/images/aboutus/sumithra.jpg"
-import deepak from "../../public/images/aboutus/Deepak.jpg"
-import Hemant from "../../public/images/aboutus/Hemant.jpg"
-import Kunal from "../../public/images/aboutus/Kunal.jpg"
-import Megha from "../../public/images/aboutus/Megha.jpg"
-import nilmani from "../../public/images/aboutus/nilmani.jpg"
-import Pradeep from "../../public/images/aboutus/Pradeep.jpg"
+import deepak from "../../public/images/aboutus/Deepak.png"
+import Hemant from "../../public/images/aboutus/Hemant.png"
+import Kunal from "../../public/images/aboutus/Kunal.png"
+import Megha from "../../public/images/aboutus/Megha.png"
+import nilmani from "../../public/images/aboutus/nilmani.png"
+import Pradeep from "../../public/images/aboutus/Pradeep.png"
 import Zaki from "../../public/images/aboutus/zaki.png"
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
@@ -52,48 +52,49 @@ const TopManagement = () => {
             linkedIn: "#"
         },
         {
-            id: 2,
-            name: "Hemant",
-            position: "Asst. Manager - Products",
-            image: Hemant,
-            linkedIn: "#"
-        },
-        
-        {
-            id:3 ,
-            name: "Kunal",
-            position: "Team Lead - Communication",
-            image: Kunal,
-            linkedIn: "#"
-        },
-        {
-            id:4 ,
+            id: 2 ,
             name: "Megha",
             position: "Manager - Tech Sync",
             image: Megha,
             linkedIn: "#"
         },
+        
+        
         {
-            id:5 ,
+            id: 4,
+            name: "Hemant",
+            position: "Assistant Manager - Products",
+            image: Hemant,
+            linkedIn: "#"
+        },
+        {
+            id: 5 ,
             name: "Nityananada",
             position: "Assistant Manager - Sales",
             image: nilmani,
             linkedIn: "#"
         },
         {
-            id:6 ,
+            id: 6 ,
             name: "Pradeep",
             position: "Assistant Manager - Operations",
             image: Pradeep,
             linkedIn: "#"
         },
         {
-            id:6 ,
+            id: 7 ,
             name: "Zaki",
             position: "Assistant Manager - Inside Sales",
             image: Zaki,
             linkedIn: "#"
-        }
+        },
+        {
+            id: 3 ,
+            name: "Kunal",
+            position: "Team Lead - Communication",
+            image: Kunal,
+            linkedIn: "#"
+        },
     ];
     useEffect(() => {
         const observer = new IntersectionObserver(
