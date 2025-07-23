@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import Picture from "@/public/images/NewHome/Picture7.png";
+import Picture from "@/public/images/NewHome/picture8.png";
 import { Inter, Outfit } from "next/font/google";
 
 const inter = Inter({
@@ -48,10 +48,10 @@ export default function NewsletterSection() {
 				viewport={{ once: true, amount: 0.2 }}
 			>
 				<motion.h2
-					className="md:text-5xl text-2xl font-bold text-gray-900 md:mb-6 mb-3"
+					className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight"
 					variants={fadeUp}
 				>
-					Join the LADWA Movement
+					Join our Movement
 				</motion.h2>
 
 				<motion.p
@@ -59,9 +59,12 @@ export default function NewsletterSection() {
 					variants={fadeUp}
 				>
 					Whether you're a safety officer, city planner, industry head, or
-					concerned citizen—partner with us to build a safer, smarter, and more
+					concerned citizen - partner with us to build a safer, smarter, and more
 					sustainable future.
 				</motion.p>
+				<Button className="bg-teal-600 hover:bg-teal-700 text-white px-8">
+							Join
+				</Button>
 
 				<motion.div
 					className="max-w-5xl mx-auto relative md:mb-6 mb-6"
@@ -70,18 +73,18 @@ export default function NewsletterSection() {
 					<Image
 						src={Picture}
 						alt="Team collaboration"
-						width={700}
-						height={400}
+						width={300}
+						height={100}
 						className="w-full aspect-video rounded-[30px] mx-auto"
 					/>
 				</motion.div>
 
-				<motion.h3
+				{/* <motion.h3
 					className={`text-xl lg:text-4xl font-bold text-gray-900 ${inter.className}`}
 					variants={fadeUp}
 				>
 					LADWA – Making the World Safer.
-				</motion.h3>
+				</motion.h3> */}
 
 				{/* Optional Subscription Form (currently commented) */}
 				{/* <motion.div className="max-w-md mx-auto mt-8" variants={fadeUp}>
