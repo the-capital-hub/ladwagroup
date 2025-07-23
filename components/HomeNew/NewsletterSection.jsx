@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Picture from "@/public/images/NewHome/picture8.png";
 import { Inter, Outfit } from "next/font/google";
 import { useRouter } from "next/navigation";
 
