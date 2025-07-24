@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion'
 import sunil from "../../public/images/aboutus/sunil.jpg"
-import sumithra from "../../public/images/aboutus/sumithra.jpg"
+import sumithra from "../../public/images/aboutus/sumithra.png"
 import deepak from "../../public/images/aboutus/Deepak.png"
 import Hemant from "../../public/images/aboutus/Hemant.png"
 import Kunal from "../../public/images/aboutus/Kunal.png"
