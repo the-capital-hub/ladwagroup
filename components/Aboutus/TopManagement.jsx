@@ -63,7 +63,7 @@ const TopManagement = () => {
         {
             id: 4,
             name: "Hemant",
-            position: "Assistant Manager - Products",
+            position: "Assistant Manager - Projects",
             image: Hemant,
             linkedIn: "#"
         },
