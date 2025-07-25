@@ -38,7 +38,7 @@ export default function ModernFooter() {
 
 	const socialLinks = [
 		{ icon: Facebook, href: "https://www.facebook.com/ladwa.Inc/", label: "Facebook" },
-		{ icon: X, href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09", label: "X" },
+		{ icon: Twitter, href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09", label: "X" },
 		{ icon: Youtube, href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ", label: "Youtube" },
 		{
 			icon: Instagram,
