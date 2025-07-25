@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Twitter, Instagram, Github, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Github, Linkedin, Youtube } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import AppStore from "@/public/images/footer/AppStore.png";
