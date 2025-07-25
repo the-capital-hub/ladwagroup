@@ -11,6 +11,7 @@ import Megha from "../../public/images/aboutus/Megha.png"
 import nilmani from "../../public/images/aboutus/nilmani.png"
 import Pradeep from "../../public/images/aboutus/Pradeep.png"
 import Zaki from "../../public/images/aboutus/zaki.png"
+import Suresh from "../../public/images/aboutus/Suresh.png"
 import Image from 'next/image';
 import { Outfit } from 'next/font/google';
 
@@ -62,7 +63,7 @@ const TopManagement = () => {
             id: 3 ,
             name: "Suresh",
             position: "Manager - Corporate Sales",
-            image: Megha,
+            image: Suresh,
             linkedIn: "#"
         },
         
