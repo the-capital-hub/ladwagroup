@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion'
 import sunil from "../../public/images/aboutus/sunil.jpg"
-import sumithra from "../../public/images/aboutus/sumithra.png"
+import sumithra from "../../public/images/aboutus/sumithra1.png"
 import deepak from "../../public/images/aboutus/Deepak.png"
 import Hemant from "../../public/images/aboutus/Hemant.png"
 import Kunal from "../../public/images/aboutus/Kunal.png"
@@ -58,6 +58,13 @@ const TopManagement = () => {
             image: Megha,
             linkedIn: "#"
         },
+        {
+            id: 3 ,
+            name: "Suresh",
+            position: "Manager - Corporate Sales",
+            image: Megha,
+            linkedIn: "#"
+        },
         
         
         {
@@ -89,7 +96,7 @@ const TopManagement = () => {
             linkedIn: "#"
         },
         {
-            id: 3 ,
+            id: 8 ,
             name: "Kunal",
             position: "Team Lead - Communication",
             image: Kunal,
