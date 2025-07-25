@@ -37,16 +37,17 @@ export default function ModernFooter() {
 	];
 
 	const socialLinks = [
-		{ icon: Facebook, href: "https://facebook.com/ladwa", label: "Facebook" },
-		{ icon: Twitter, href: "https://twitter.com/ladwa", label: "Twitter" },
+		{ icon: Facebook, href: "https://www.facebook.com/ladwa.Inc/", label: "Facebook" },
+		{ icon: X, href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09", label: "X" },
+		{ icon: Youtube, href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ", label: "Youtube" },
 		{
 			icon: Instagram,
-			href: "https://instagram.com/ladwa",
+			href: "https://www.instagram.com/ladwa_solutions?igsh=ZmN0NGJuOWJ4bzR2",
 			label: "Instagram",
 		},
 		{
 			icon: Linkedin,
-			href: "https://linkedin.com/company/ladwa",
+			href: "https://www.linkedin.com/company/ladwa-solutions-inc/",
 			label: "LinkedIn",
 		},
 		// { icon: Github, href: "https://github.com/ladwa", label: "GitHub" },
