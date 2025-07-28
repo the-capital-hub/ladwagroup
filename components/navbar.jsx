@@ -74,25 +74,28 @@ export default function Navbar() {
                                         >
                                                 Projects
                                         </Link>
-                                        <div className="relative group pb-2">
-                                                <button className="text-sm font-medium text-gray-600 hover:text-teal-700">Product Categories</button>
-                                                <div
-                                                        className="absolute left-0 z-50 top-full mt-2 min-w-40 bg-white shadow rounded transform transition-all duration-300 opacity-0 translate-y-1 invisible pointer-events-none group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto"
-                                                >
-                                                        <Link href="/products" className="block px-4 py-2 hover:bg-gray-100">All Products</Link>
-                                                        {loading ? (
-                                                                <div className="py-2">
-                                                                        <LoadingSpinner />
-                                                                </div>
-                                                        ) : (
-                                                                categories.map((c) => (
-                                                                        <Link key={c._id} href={`/category/${c.slug}`} className="block px-4 py-2 hover:bg-gray-100">
-                                                                                {c.name}
-                                                                        </Link>
-                                                                ))
-                                                        )}
-                                                </div>
-                                        </div>
+                                        <div className="relative group">
+										<button className="text-sm font-medium text-gray-600 hover:text-teal-700">
+											Product Categories
+										</button>
+	<div
+    	className="absolute left-0 z-50 top-full min-w-40 bg-white shadow rounded transform transition-all duration-300 opacity-0 translate-y-1 invisible pointer-events-none group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto"
+  	>
+    <Link href="/products" className="block px-4 py-2 hover:bg-gray-100">All Products</Link>
+    {loading ? (
+      <div className="py-2">
+        <LoadingSpinner />
+      </div>
+    ) : (
+      categories.map((c) => (
+        <Link key={c._id} href={`/category/${c.slug}`} className="block px-4 py-2 hover:bg-gray-100">
+          {c.name}
+        </Link>
+      ))
+    )}
+  </div>
+</div>
+
                                         {/* <Link
                                                 href="/solutions"
                                                 className={`text-sm font-medium ${isActive("/solutions")}`}
