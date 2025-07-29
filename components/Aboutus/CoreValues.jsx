@@ -102,7 +102,7 @@ const CoreValues = () => {
   };
 
   return (
-    <div className={`${ outfit.className} min-h-screen md:p-8 p-4 relative overflow-hidden`}>
+    <div className={`${ outfit.className} min-h-screen md:p-8 p-4 relative overflow-hidden`} id="values">
       <div className="absolute inset-0 md:flex items-center hidden justify-center">
         <div className="w-full h-full bg-gradient-to-b from-[#009D84] to-white rounded-full opacity-30"></div>
       </div>

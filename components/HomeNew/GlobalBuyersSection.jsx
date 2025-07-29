@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Logo1, Logo2, Logo3, Logo4, Logo5 } from "@/public/images/NewHome";
 import { Button } from "@/components/ui/button";
@@ -60,6 +61,8 @@ const itemVariants = {
 };
 
 export default function GlobalBuyersSection() {
+	const navigate = useRouter();
+
 	return (
 		<section className="bg-white mx-auto relative md:my-10 my-5 ">
 			<div className="absolute inset-0 md:flex items-center hidden justify-center">
@@ -94,14 +97,22 @@ export default function GlobalBuyersSection() {
 								CE, ISO, ANSI, and OSHA compliance ensures global market
 								readiness, seamless integration, and trust.
 							</p>
-							<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#029981] hover:bg-teal-700 text-white rounded-full">
+							<Button
+								onClick={() => {
+									navigate.push("/certifications");
+								}}
+								className="bg-gradient-to-b from-[#097362] to-[#029981] hover:bg-teal-700 text-white rounded-full cursor-pointer"
+							>
 								Know More
 							</Button>
 						</div>
 					</motion.div>
 
 					{/* Right Benefits List */}
-					<motion.div variants={itemVariants} className="col-span-1 lg:col-span-2">
+					<motion.div
+						variants={itemVariants}
+						className="col-span-1 lg:col-span-2"
+					>
 						<h2 className="md:text-5xl text-3xl md:text-left text-center font-bold text-black mb-8">
 							Why Global Buyers Choose LADWA
 						</h2>
@@ -123,7 +134,9 @@ export default function GlobalBuyersSection() {
 												<h4 className="font-medium text-xl md:text-2xl text-gray-900 mb-2">
 													{benefit.title}
 												</h4>
-												<p className="text-gray-600 md:text-sm text-xs">{benefit.description}</p>
+												<p className="text-gray-600 md:text-sm text-xs">
+													{benefit.description}
+												</p>
 											</div>
 										</div>
 									</div>
