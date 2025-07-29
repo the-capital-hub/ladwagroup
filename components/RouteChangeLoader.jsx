@@ -25,6 +25,7 @@ export default function RouteChangeLoader() {
     setLoading(false);
   }, [pathname]);
 
+
   if (!loading) return null;
 
   return (

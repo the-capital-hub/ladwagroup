@@ -2,6 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Award, CheckCircle, Globe, Shield } from "lucide-react";
+import iso from "@/public/images/certificates/ISO.png"
+import coa from "@/public/images/certificates/COA.png"
+import cor from "@/public/images/certificates/COR.png"
+import amazon from "@/public/images/certificates/amzon.jpg"
+import amazon1 from "@/public/images/certificates/Amazon1.png"
+import amazon2 from "@/public/images/certificates/Amazon2.png"
+import amazon3 from "@/public/images/certificates/Amazon3.png"
+import amazon4 from "@/public/images/certificates/Amazon4.png"
+
 
 // Animation variants
 const fadeInUp = {
@@ -38,49 +47,49 @@ export default function CertificationsPage() {
 			id: 1,
 			title: "ISO 9001:2015",
 			description: "Quality Management System",
-			image: "/placeholder.svg?height=300&width=400",
+			image: iso.src,
 		},
 		{
 			id: 2,
-			title: "CE Marking",
-			description: "European Conformity",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "COA",
+			description: "Certificate of Achievement",
+			image: coa.src,
 		},
 		{
 			id: 3,
-			title: "ANSI Compliance",
-			description: "American National Standards",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "COR",
+			description: "Certificate of Recognition",
+			image: cor.src,
 		},
 		{
 			id: 4,
-			title: "OSHA Standards",
-			description: "Occupational Safety & Health",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "Amazon",
+			description: "Certificate of Achievement",
+			image: amazon.src,
 		},
 		{
 			id: 5,
-			title: "ISO 14001",
-			description: "Environmental Management",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "Amazon",
+			description: "Certificate of Achievement",
+			image: amazon1.src,
 		},
 		{
 			id: 6,
-			title: "ISO 45001",
-			description: "Occupational Health & Safety",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "Amazon",
+			description: "Certificate of Achievement",
+			image: amazon2.src,
 		},
 		{
 			id: 7,
-			title: "Export License",
-			description: "International Trade Authorization",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "Amazon",
+			description: "Certificate of Achievement",
+			image: amazon3.src,
 		},
 		{
 			id: 8,
-			title: "BIS Certification",
-			description: "Bureau of Indian Standards",
-			image: "/placeholder.svg?height=300&width=400",
+			title: "Amazon",
+			description: "Certificate of Achievement",
+			image: amazon4.src,
 		},
 	];
 
