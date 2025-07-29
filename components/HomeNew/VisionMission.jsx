@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import bulb from "../../public/images/aboutus/bulb.png";
 import { Outfit, Manrope } from "next/font/google";
@@ -16,6 +17,8 @@ const manrope = Manrope({
 });
 
 export default function VisionMission() {
+	const router = useRouter();
+
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -36,6 +39,10 @@ export default function VisionMission() {
 				ease: "easeOut",
 			},
 		},
+	};
+
+	const handleNavigate = (section) => {
+		router.push(`/about#${section}`);
 	};
 
 	return (
@@ -63,9 +70,9 @@ export default function VisionMission() {
 					</p>
 
 					<Button
-						onClick={() => {navigate.push('/contact-us')}}
+						onClick={() => handleNavigate("ladwa")}
 						size="sm"
-						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] text-white rounded-full"
+						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] text-white rounded-full cursor-pointer"
 					>
 						Know More
 					</Button>
@@ -94,14 +101,12 @@ export default function VisionMission() {
 									<h1 className="text-lg md:text-2xl font-semibold mb-2">
 										Our Vision
 									</h1>
-									<p
-										className={`text-xs md:text-base ${outfit.className}`}
-									>
+									<p className={`text-xs md:text-base ${outfit.className}`}>
 										To be the leading Indian brand with a global footprint in
 										Environment, Health, and Safety solutions—championing
 										innovation, setting safety standards, and shaping a world
-										where every workplace, road, and community is safer and
-										more sustainable.
+										where every workplace, road, and community is safer and more
+										sustainable.
 									</p>
 								</div>
 							</div>
@@ -122,9 +127,7 @@ export default function VisionMission() {
 									<h1 className="text-lg  md:text-2xl font-semibold mb-2">
 										Our Mision
 									</h1>
-									<p
-										className={`text-xs md:text-base ${outfit.className}`}
-									>
+									<p className={`text-xs md:text-base ${outfit.className}`}>
 										LADWA is dedicated to delivering reliable, innovative, and
 										affordable EHS solutions. We strive to safeguard lives
 										through high-quality products, service excellence, and

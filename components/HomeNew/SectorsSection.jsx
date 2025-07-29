@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
 	Logo6,
@@ -14,13 +15,13 @@ import {
 import ball from "@/public/images/NewHome/3d ball.png";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-const inter = Inter ({
-	variable:"--font-inter",
-    subsets:["latin"]
-
- })
+const inter = Inter({
+	variable: "--font-inter",
+	subsets: ["latin"],
+});
 
 export default function SectorsSection() {
+	const navigate = useRouter();
 	const sectors = [
 		{ icon: Logo8, title: "Road Safety Equipment" },
 		{ icon: Logo9, title: "Industrial Safety Gear" },
@@ -81,8 +82,14 @@ export default function SectorsSection() {
 		},
 	};
 
+	const handleNavigate = (section) => {
+		navigate.push(`/about#${section}`);
+	};
+
 	return (
-		<section className={`relative p-1 w-full  max-w-7xl mx-auto rounded-3xl bg-gradient-to-b z-10 from-[#CAFFF9] to-white`}>
+		<section
+			className={`relative p-1 w-full  max-w-7xl mx-auto rounded-3xl bg-gradient-to-b z-10 from-[#CAFFF9] to-white`}
+		>
 			<div className="md:p-10 p-5 bg-gradient-to-b from-[#E3FFFB] to-[#C7EBFF]/80 backdrop-blur  rounded-3xl z-10 relative">
 				<motion.div
 					className="text-center md:mb-16 mb-5 relative z-10"
@@ -121,7 +128,9 @@ export default function SectorsSection() {
 												className="w-12 h-12 text-teal-600"
 											/>
 										</motion.div>
-										<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
+										<h3 className="font-semibold text-sm md:text-base text-black">
+											{sector.title}
+										</h3>
 									</div>
 								</motion.div>
 							</div>
@@ -146,7 +155,9 @@ export default function SectorsSection() {
 												className="w-12 h-12 text-teal-600"
 											/>
 										</motion.div>
-										<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
+										<h3 className="font-semibold text-sm md:text-base text-black">
+											{sector.title}
+										</h3>
 									</div>
 								</motion.div>
 							</div>
@@ -172,7 +183,9 @@ export default function SectorsSection() {
 													className="w-12 h-12 text-teal-600"
 												/>
 											</motion.div>
-											<h3 className="font-semibold text-sm md:text-base text-black">{sector.title}</h3>
+											<h3 className="font-semibold text-sm md:text-base text-black">
+												{sector.title}
+											</h3>
 										</div>
 									</motion.div>
 								</div>
@@ -208,7 +221,10 @@ export default function SectorsSection() {
 							</p>
 						</div>
 						<div className="flex justify-between">
-							<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
+							<Button
+								onClick={() => handleNavigate("offerings")}
+								className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full cursor-pointer"
+							>
 								Know More
 							</Button>
 							<img src={Logo6.src} />
@@ -229,7 +245,12 @@ export default function SectorsSection() {
 							government procurement agency — LADWA is your strategic ally for
 							compliant, innovative, and scalable EHS products.
 						</p>
-						<Button onClick={() => {navigate.push('/contact-us')}} className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full">
+						<Button
+							onClick={() => {
+								navigate.push("/contact-us");
+							}}
+							className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full cursor-pointer"
+						>
 							Know More
 						</Button>
 					</motion.div>
@@ -270,12 +291,12 @@ export default function SectorsSection() {
 
 				{/* Centered button */}
 				<div className="flex justify-center relative z-10">
-					<Button 
-						onClick={() => {navigate.push('/contact-us')}}
+					<Button
+						onClick={() => handleNavigate("presence")}
 						size="sm"
-						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full"
+						className="bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-700 text-white rounded-full cursor-pointer"
 					>
-						View all
+						Know More
 					</Button>
 				</div>
 			</div>

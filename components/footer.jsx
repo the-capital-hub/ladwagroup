@@ -1,5 +1,12 @@
 import React from "react";
-import { Facebook, Twitter, Instagram, Github, Linkedin, Youtube } from "lucide-react";
+import {
+	Facebook,
+	Twitter,
+	Instagram,
+	Github,
+	Linkedin,
+	Youtube,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import AppStore from "@/public/images/footer/AppStore.png";
@@ -16,9 +23,9 @@ export default function ModernFooter() {
 
 	const resourcesLinks = [
 		{ name: "Blogs", href: "/blog" },
-		{ name: "Certificates", href: "/contact-us" },
-		{ name: "Terms and Conditions", href: "/contact-us" },
-		{ name: "Privacy Policy", href: "/contact-us" },
+		{ name: "Certificates", href: "/certifications" },
+		{ name: "Terms and Conditions", href: "/terms-privacy" },
+		{ name: "Privacy Policy", href: "/terms-privacy" },
 	];
 
 	const supportLinks = [
@@ -31,15 +38,30 @@ export default function ModernFooter() {
 
 	const featuresLinks = [
 		{ name: "Road Signs", href: "/category/road-signs" },
-		{ name: "Road Safety Equipment & Traffic Safety Product", href: "/category/road-traffic-safety" },
+		{
+			name: "Road Safety Equipment & Traffic Safety Product",
+			href: "/category/road-traffic-safety",
+		},
 		{ name: "Industrial Safety", href: "/category/industrial-safety-products" },
 		{ name: "First Aid Kit Box", href: "/category/first-aid-kit-box" },
 	];
 
 	const socialLinks = [
-		{ icon: Facebook, href: "https://www.facebook.com/ladwa.Inc/", label: "Facebook" },
-		{ icon: Twitter, href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09", label: "X" },
-		{ icon: Youtube, href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ", label: "Youtube" },
+		{
+			icon: Facebook,
+			href: "https://www.facebook.com/ladwa.Inc/",
+			label: "Facebook",
+		},
+		{
+			icon: Twitter,
+			href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09",
+			label: "X",
+		},
+		{
+			icon: Youtube,
+			href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ",
+			label: "Youtube",
+		},
 		{
 			icon: Instagram,
 			href: "https://www.instagram.com/ladwa_solutions?igsh=ZmN0NGJuOWJ4bzR2",
@@ -88,7 +110,6 @@ export default function ModernFooter() {
 							/>
 						</div>
 
-
 						<p className="text-gray-700 text-sm leading-relaxed max-w-md">
 							Ladwa is a thriving community where innovators, professionals, and
 							enthusiasts come together to share knowledge, collaborate, and
@@ -119,7 +140,7 @@ export default function ModernFooter() {
 					</div>
 
 					{/* App Download Section */}
-					<div className="lg:col-span-2">
+					{/* <div className="lg:col-span-2">
 						<h3 className="text-lg font-semibold mb-4">Install App</h3>
 						<div className="space-y-4">
 							<Link href="/contact-us" className="block">
@@ -141,7 +162,7 @@ export default function ModernFooter() {
 								/>
 							</Link>
 						</div>
-					</div>
+					</div> */}
 				</div>
 
 				{/* Bottom Bar */}
@@ -155,19 +176,19 @@ export default function ModernFooter() {
 
 						<div className="flex flex-wrap justify-center md:justify-end gap-6">
 							<Link
-								href="/contact-us"
+								href="/terms-privacy"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Terms of Use
 							</Link>
 							<Link
-								href="/contact-us"
+								href="/terms-privacy"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Privacy Policy
 							</Link>
 							<Link
-								href="/contact-us"
+								href="/terms-privacy"
 								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
 							>
 								Legal
