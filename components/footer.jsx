@@ -17,7 +17,7 @@ export default function ModernFooter() {
 		{ name: "Home", href: "/" },
 		{ name: "About Us", href: "/about" },
 		{ name: "Projects", href: "/projects" },
-		{ name: "Solutions", href: "/solutions" },
+		// { name: "Solutions", href: "/solutions" },
 		{ name: "Contact Us", href: "/contact-us" },
 	];
 
