@@ -1,32 +1,48 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 import { cn } from "@/lib/utils";
+import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function HtmlEditor({ value, onChange, className, placeholder }) {
-  const divRef = useRef(null);
+  const modules = useMemo(
+    () => ({
+      toolbar: [
+        [{ header: [1, 2, 3, false] }],
+        ["bold", "italic", "underline", "strike"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["link", "image"],
+        ["clean"],
+      ],
+    }),
+    []
+  );
 
-  useEffect(() => {
-    if (divRef.current && divRef.current.innerHTML !== (value || "")) {
-      divRef.current.innerHTML = value || "";
-    }
-  }, [value]);
-
-  const handleInput = (e) => {
-    if (onChange) onChange(e.currentTarget.innerHTML);
-  };
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "list",
+    "bullet",
+    "link",
+    "image",
+  ];
 
   return (
-    <div
-      ref={divRef}
-      contentEditable
-      onInput={handleInput}
-      className={cn(
-        "min-h-40 w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#097362] focus:border-transparent prose",
-        className
-      )}
-      style={{ whiteSpace: "pre-wrap" }}
-      data-placeholder={placeholder}
+    <ReactQuill
+      theme="snow"
+      value={value}
+      onChange={onChange}
+      modules={modules}
+      formats={formats}
+      placeholder={placeholder}
+      className={cn("min-h-40", className)}
+
     />
   );
 }
