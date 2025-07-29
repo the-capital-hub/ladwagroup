@@ -1,101 +1,112 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, RefreshCw } from "lucide-react";
 import BlogCard from "@/components/Blog/BlogCard.jsx";
+import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
 import Image from "next/image";
 import BannerImg from "@/public/images/blog/banner.png";
 
 const Blogs = () => {
 	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [searchTerm, setSearchTerm] = useState("");
+	const [blogs, setBlogs] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [loadingMore, setLoadingMore] = useState(false);
+	const [page, setPage] = useState(1);
+	const [hasMore, setHasMore] = useState(true);
+	const [categories, setCategories] = useState(["All"]);
+	const [stats, setStats] = useState({
+		total: 0,
+		published: 0,
+	});
 
-	const blogPosts = [
-		{
-			id: 1,
-			title:
-				"Stay Safe and Visible: Ladwa's Reflective Jacket – Perfect for India's Workplaces",
-			description:
-				"Stay Safe and Visible: Ladwa's Reflective Jacket – Perfect for India's Workplaces In a fast-paced country like India, safety often gets overlooked in the hustle and bustle of daily work life.",
-			image:
-				"https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&h=300&fit=crop",
-			category: "Safety Equipment",
-			date: "March 24, 2025",
-			comments: 5,
-		},
-		{
-			id: 2,
-			title:
-				"Enhancing Road Safety with High-Quality Speed Breakers: A Comprehensive Guide",
-			description:
-				"Enhancing Road Safety with High-Quality Speed Breakers: A Comprehensive Guide by Ladwa Solutions Road safety is a critical concern in today's fast-paced world, where vehicular traffic continues to grow exponentially.",
-			image:
-				"https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop",
-			category: "Road Safety",
-			date: "March 18, 2025",
-			comments: 8,
-		},
-		{
-			id: 3,
-			title:
-				"Traffic Cones & Accessories in India: Ultimate Guide to Road Safety & Usage",
-			description:
-				"The Ultimate Guide to Traffic Cones & Accessories: Ensuring Safety on Indian Roads When it comes to road safety, traffic cones and accessories play a crucial role in maintaining order and preventing accidents.",
-			image:
-				"https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=300&fit=crop",
-			category: "Traffic Management",
-			date: "February 25, 2025",
-			comments: 12,
-		},
-		{
-			id: 4,
-			title: "Advanced Personal Protective Equipment for Industrial Safety",
-			description:
-				"Discover the latest innovations in personal protective equipment designed specifically for industrial environments. Learn about the importance of proper safety gear and how it can prevent workplace accidents.",
-			image:
-				"https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&h=300&fit=crop",
-			category: "Safety Equipment",
-			date: "March 20, 2025",
-			comments: 6,
-		},
-		{
-			id: 5,
-			title: "Smart Traffic Management Systems: The Future of Urban Planning",
-			description:
-				"Explore how smart traffic management systems are revolutionizing urban transportation. From AI-powered traffic lights to real-time monitoring, discover the technologies shaping our cities.",
-			image:
-				"https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=300&fit=crop",
-			category: "Technology",
-			date: "March 15, 2025",
-			comments: 15,
-		},
-		{
-			id: 6,
-			title: "Workplace Safety Culture: Building a Safer Tomorrow",
-			description:
-				"Learn how to establish and maintain a strong safety culture in your workplace. Discover best practices, employee engagement strategies, and the role of leadership in promoting safety.",
-			image:
-				"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop",
-			category: "Safety Culture",
-			date: "March 10, 2025",
-			comments: 9,
-		},
-	];
+	// Fetch blogs from database
+	const fetchBlogs = async (pageNum = 1, reset = false) => {
+		try {
+			if (pageNum === 1) setLoading(true);
+			else setLoadingMore(true);
 
-	const categories = [
-		"All",
-		"Safety Equipment",
-		"Road Safety",
-		"Traffic Management",
-		"Technology",
-		"Safety Culture",
-	];
+			const params = new URLSearchParams();
+			params.append("status", "published"); // Only show published blogs
+			params.append("page", pageNum.toString());
+			params.append("limit", "6");
 
-	const filteredPosts =
-		selectedCategory === "All"
-			? blogPosts
-			: blogPosts.filter((post) => post.category === selectedCategory);
+			if (selectedCategory !== "All") {
+				params.append("category", selectedCategory);
+			}
+
+			const res = await fetch(`/api/blogs?${params}`);
+			const data = await res.json();
+
+			if (res.ok) {
+				const fetchedBlogs = data.blogs || [];
+
+				if (reset || pageNum === 1) {
+					setBlogs(fetchedBlogs);
+				} else {
+					setBlogs((prev) => [...prev, ...fetchedBlogs]);
+				}
+
+				setHasMore(data.pagination?.page < data.pagination?.pages);
+				setPage(pageNum);
+
+				// Update stats
+				setStats({
+					total: data.pagination?.total || 0,
+					published: data.pagination?.total || 0,
+				});
+
+				// Extract unique categories
+				const uniqueCategories = [
+					"All",
+					...new Set(fetchedBlogs.map((blog) => blog.category)),
+				];
+				setCategories(uniqueCategories);
+			}
+		} catch (error) {
+			console.error("Failed to fetch blogs:", error);
+		} finally {
+			setLoading(false);
+			setLoadingMore(false);
+		}
+	};
+
+	// Initial fetch
+	useEffect(() => {
+		fetchBlogs(1, true);
+	}, [selectedCategory]);
+
+	// Filter blogs based on search term
+	const filteredBlogs = blogs.filter(
+		(blog) =>
+			blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			blog.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			(blog.tags &&
+				blog.tags.some((tag) =>
+					tag.toLowerCase().includes(searchTerm.toLowerCase())
+				))
+	);
+
+	const handleLoadMore = () => {
+		if (!loadingMore && hasMore) {
+			fetchBlogs(page + 1, false);
+		}
+	};
+
+	const handleRefresh = () => {
+		setPage(1);
+		fetchBlogs(1, true);
+	};
+
+	const handleCategoryChange = (category) => {
+		setSelectedCategory(category);
+		setPage(1);
+		setSearchTerm("");
+	};
 
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -125,12 +136,11 @@ const Blogs = () => {
 				{/* Background Image */}
 				<div className="absolute inset-0">
 					<Image
-						src={BannerImg.src}
-            width={1000}
-            height={500}
+						src={BannerImg || "/placeholder.svg"}
 						alt="LADWA Safety Professional"
 						className="w-full h-full object-cover"
 						priority
+						fill
 					/>
 				</div>
 
@@ -151,7 +161,7 @@ const Blogs = () => {
 							}}
 							transition={{
 								duration: 8,
-								repeat: Infinity,
+								repeat: Number.POSITIVE_INFINITY,
 								delay: i * 1.3,
 							}}
 							style={{
@@ -162,7 +172,7 @@ const Blogs = () => {
 					))}
 				</div>
 
-				<div className="relative container mx-auto px-4 text-center">
+				<div className="relative container mx-auto px-4 text-center z-20">
 					<motion.div
 						variants={containerVariants}
 						initial="hidden"
@@ -173,7 +183,10 @@ const Blogs = () => {
 							variants={itemVariants}
 							className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
 						>
-							OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-teal-700 to-emerald-600">BLOGS</span>
+							OUR{" "}
+							<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-teal-700 to-emerald-600">
+								BLOGS
+							</span>
 						</motion.h1>
 						<motion.p
 							variants={itemVariants}
@@ -182,6 +195,26 @@ const Blogs = () => {
 							Discover insights, tips, and innovations in safety, technology,
 							and industry best practices
 						</motion.p>
+
+						{/* Stats Display */}
+						<motion.div
+							variants={itemVariants}
+							className="flex justify-center gap-8 mb-8 text-white"
+						>
+							<div className="text-center">
+								<div className="text-3xl font-bold text-teal-400">
+									{stats.total}
+								</div>
+								<div className="text-sm opacity-80">Articles</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold text-teal-400">
+									{categories.length - 1}
+								</div>
+								<div className="text-sm opacity-80">Categories</div>
+							</div>
+						</motion.div>
+
 						<motion.div
 							variants={itemVariants}
 							className="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -191,9 +224,22 @@ const Blogs = () => {
 								<input
 									type="text"
 									placeholder="Search articles..."
+									value={searchTerm}
+									onChange={(e) => setSearchTerm(e.target.value)}
 									className="pl-10 pr-4 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-teal-500/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-teal-500/50 w-64"
 								/>
 							</div>
+							{/* <Button
+								onClick={handleRefresh}
+								variant="outline"
+								className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+								disabled={loading}
+							>
+								<RefreshCw
+									className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
+								/>
+								Refresh
+							</Button> */}
 						</motion.div>
 					</motion.div>
 				</div>
@@ -211,7 +257,7 @@ const Blogs = () => {
 						{categories.map((category, index) => (
 							<motion.button
 								key={category}
-								onClick={() => setSelectedCategory(category)}
+								onClick={() => handleCategoryChange(category)}
 								className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
 									selectedCategory === category
 										? "bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg"
@@ -222,6 +268,7 @@ const Blogs = () => {
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: index * 0.1 }}
+								disabled={loading}
 							>
 								{category}
 							</motion.button>
@@ -238,32 +285,110 @@ const Blogs = () => {
 				transition={{ duration: 0.8 }}
 			>
 				<div className="max-w-6xl mx-auto px-4">
-					<motion.div
-						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-						variants={containerVariants}
-						initial="hidden"
-						animate="visible"
-					>
-						{filteredPosts.map((blog, index) => (
-							<BlogCard key={blog.id} blog={blog} index={index} />
-						))}
-					</motion.div>
+					{/* Loading State */}
+					{loading ? (
+						<div className="flex flex-col items-center justify-center py-16">
+							<LoadingSpinner size="lg" className="mb-6" />
+							<motion.p
+								className="text-gray-600 text-lg"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.5, delay: 0.2 }}
+							>
+								Loading amazing content...
+							</motion.p>
+						</div>
+					) : filteredBlogs.length === 0 ? (
+						/* Empty State */
+						<motion.div
+							className="text-center py-16"
+							initial={{ opacity: 0, scale: 0.9 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<div className="text-gray-400 mb-6">
+								<Search className="h-20 w-20 mx-auto mb-4" />
+							</div>
+							<h3 className="text-2xl font-bold text-gray-700 mb-4">
+								No Articles Found
+							</h3>
+							<p className="text-gray-600 mb-8 max-w-md mx-auto">
+								{searchTerm
+									? `No articles found for "${searchTerm}". Try different keywords.`
+									: "We're working on creating amazing content for you. Check back soon!"}
+							</p>
+							{searchTerm && (
+								<Button
+									onClick={() => setSearchTerm("")}
+									className="bg-gradient-to-r from-teal-600 to-emerald-600 text-white"
+								>
+									Clear Search
+								</Button>
+							)}
+						</motion.div>
+					) : (
+						/* Blog Cards */
+						<motion.div
+							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+							variants={containerVariants}
+							initial="hidden"
+							animate="visible"
+						>
+							{filteredBlogs.map((blog, index) => (
+								<BlogCard key={blog._id || blog.id} blog={blog} index={index} />
+							))}
+						</motion.div>
+					)}
 
 					{/* Load More Button */}
-					<motion.div
-						className="text-center mt-12"
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.4 }}
-					>
-						<Button
-							size="lg"
-							className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+					{!loading && filteredBlogs.length > 0 && hasMore && !searchTerm && (
+						<motion.div
+							className="text-center mt-12"
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.6, delay: 0.4 }}
 						>
-							Load More Articles
-						</Button>
-					</motion.div>
+							<Button
+								onClick={handleLoadMore}
+								disabled={loadingMore}
+								size="lg"
+								className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+							>
+								{loadingMore ? (
+									<>
+										<LoadingSpinner size="sm" className="mr-2" />
+										Loading More...
+									</>
+								) : (
+									"Load More Articles"
+								)}
+							</Button>
+						</motion.div>
+					)}
+
+					{/* Results Info */}
+					{!loading && (
+						<motion.div
+							className="text-center mt-8 text-gray-600"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							{searchTerm && (
+								<p>
+									Showing {filteredBlogs.length} result
+									{filteredBlogs.length !== 1 ? "s" : ""} for "{searchTerm}"
+								</p>
+							)}
+							{selectedCategory !== "All" && !searchTerm && (
+								<p>
+									Showing {filteredBlogs.length} article
+									{filteredBlogs.length !== 1 ? "s" : ""} in {selectedCategory}
+								</p>
+							)}
+						</motion.div>
+					)}
 				</div>
 			</motion.section>
 
@@ -295,7 +420,7 @@ const Blogs = () => {
 								placeholder="Enter your email"
 								className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
 							/>
-							<Button className="h-[57.6px] bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold cursor-pointer">
+							<Button className="h-[57.6px] bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold">
 								Subscribe
 							</Button>
 						</div>
