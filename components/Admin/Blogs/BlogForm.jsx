@@ -12,17 +12,16 @@ import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
 
 const categories = [
 	"Safety Equipment",
-	"Road Safety",
-	"Traffic Management",
-	"Technology",
-	"Safety Culture",
-	"Technology",
-	"Safety",
-	"Industry News",
-	"Product Updates",
-	"Case Studies",
-	"Tutorials",
-	"Company News",
+        "Road Safety",
+        "Traffic Management",
+        "Technology",
+        "Safety Culture",
+        "Safety",
+        "Industry News",
+        "Product Updates",
+        "Case Studies",
+        "Tutorials",
+        "Company News",
 ];
 
 export default function BlogForm({ blog = null, onClose, onSave }) {
