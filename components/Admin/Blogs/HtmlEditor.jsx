@@ -42,6 +42,7 @@ export default function HtmlEditor({ value, onChange, className, placeholder }) 
       formats={formats}
       placeholder={placeholder}
       className={cn("min-h-40", className)}
+
     />
   );
 }
