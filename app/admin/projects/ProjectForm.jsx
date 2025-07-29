@@ -24,22 +24,30 @@ const ProjectForm = () => {
   const [portfolioPreviews, setPortfolioPreviews] = useState([]);
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
-  // Convert file to base64
-  const toBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
+  const uploadFile = async (file) => {
+    const fd = new FormData();
+    fd.append('file', file);
+    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+    const data = await res.json();
+    return data.url;
+  };
 
   const handleMainImageChange = async (e) => {
     const file = e.target.files[0];
-    if (file && /\.(jpe?g|png)$/i.test(file.name)) {
-      const base64 = await toBase64(file);
-      setFormData((prev) => ({ ...prev, mainImage: base64 }));
-      setMainImagePreview(base64);
+    if (!file) return;
+    if (/\.(jpe?g|png)$/i.test(file.name)) {
+      setUploading(true);
+      try {
+        const url = await uploadFile(file);
+        setFormData((prev) => ({ ...prev, mainImage: url }));
+        setMainImagePreview(url);
+      } catch (err) {
+        setErrors('Image upload failed.');
+      } finally {
+        setUploading(false);
+      }
     } else {
       setErrors('Main image must be a JPG, JPEG, or PNG file.');
     }
@@ -65,16 +73,29 @@ const ProjectForm = () => {
       allowedFiles.splice(availableSlots);
     }
 
-    const base64Images = await Promise.all(allowedFiles.map(toBase64));
+    if (!allowedFiles.length) return;
 
-    setFormData((prev) => ({
-      ...prev,
-      portfolioImages: [...prev.portfolioImages, ...base64Images].slice(0, 3),
-    }));
+    setUploading(true);
+    try {
+      const uploaded = [];
+      for (const f of allowedFiles) {
+        const url = await uploadFile(f);
+        uploaded.push(url);
+      }
 
-    setPortfolioPreviews((prev) =>
-      [...prev, ...base64Images].slice(0, 3)
-    );
+      setFormData((prev) => ({
+        ...prev,
+        portfolioImages: [...prev.portfolioImages, ...uploaded].slice(0, 3),
+      }));
+
+      setPortfolioPreviews((prev) =>
+        [...prev, ...uploaded].slice(0, 3)
+      );
+    } catch (err) {
+      setErrors('Image upload failed.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -184,6 +205,7 @@ const ProjectForm = () => {
               e.target.value = null;
             }}
           />
+          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           {mainImagePreview && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 mb-1">Preview:</p>
@@ -210,6 +232,7 @@ const ProjectForm = () => {
               e.target.value = null;
             }}
           />
+          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           <p className="text-sm text-gray-500">You can upload a total of 3 images (JPG, JPEG, PNG).</p>
 
           {portfolioPreviews.length > 0 && (
