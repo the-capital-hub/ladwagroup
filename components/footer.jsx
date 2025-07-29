@@ -37,13 +37,13 @@ export default function ModernFooter() {
 	];
 
 	const featuresLinks = [
-		{ name: "Road Signs", href: "/category/road-signs" },
+		{ name: "Fire Safety Equipments", href: "/category/fire-safety-equipments" },
 		{
-			name: "Road Safety Equipment & Traffic Safety Product",
-			href: "/category/road-traffic-safety",
+			name: "Home Safety Products",
+			href: "/category/home-safety-products",
 		},
-		{ name: "Industrial Safety", href: "/category/industrial-safety-products" },
-		{ name: "First Aid Kit Box", href: "/category/first-aid-kit-box" },
+		{ name: "Road & Parking Safety Products", href: "/category/road-traffic-safety" },
+		{ name: "Retro Reflective Signs", href: "/category/retro-reflective-sign" },
 	];
 
 	const socialLinks = [
