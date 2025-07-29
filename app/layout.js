@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import RouteChangeLoader from "@/components/RouteChangeLoader";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
                                         `}
                                 </Script>
                                 <div className="flex flex-col min-h-screen">
+                                        <RouteChangeLoader />
                                         <Navbar />
                                         <main className="flex-1">{children}</main>
                                         <Footer />
