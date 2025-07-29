@@ -53,9 +53,10 @@ export default async function BlogDetailsPage({ params }) {
         <nav className="text-sm text-gray-600">
           <Link href="/blog">Blog</Link> / {blog.title}
         </nav>
-        <article className="prose max-w-none" style={{ whiteSpace: 'pre-line' }}>
-          {blog.content}
-        </article>
+        <article
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
       </div>
     </div>
   );

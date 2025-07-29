@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import HtmlEditor from "@/components/Admin/Blogs/HtmlEditor.jsx";
 import { X, Save } from "lucide-react";
 import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
 
@@ -349,22 +350,19 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 						</div>
 
 						{/* Content */}
-						<div>
-							<Label htmlFor="content" className="text-[#097362] font-medium">
-								Content *
-							</Label>
-							<Textarea
-								id="content"
-								value={form.content}
-								onChange={(e) =>
-									setForm((prev) => ({ ...prev, content: e.target.value }))
-								}
-								placeholder="Write your blog content here..."
-								rows={12}
-								required
-								className="mt-1"
-							/>
-						</div>
+                                                <div>
+                                                        <Label htmlFor="content" className="text-[#097362] font-medium">
+                                                                Content *
+                                                        </Label>
+                                                        <HtmlEditor
+                                                                value={form.content}
+                                                                onChange={(html) =>
+                                                                        setForm((prev) => ({ ...prev, content: html }))
+                                                                }
+                                                                className="mt-1"
+                                                                placeholder="Write your blog content here..."
+                                                        />
+                                                </div>
 
 						{/* Actions */}
 						<div className="flex gap-3 justify-end pt-4 border-t">
