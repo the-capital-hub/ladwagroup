@@ -42,10 +42,10 @@ export default function PartnersSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-10 bg-white"
+      className="lg:py-6 bg-white"
     >
-      <motion.div variants={fadeInUp} className="pb-6">
-        <h2 className="text-center text-3xl font-semibold text-gray-800 mb-8">
+      <motion.div variants={fadeInUp} className="">
+        <h2 className="text-center text-3xl font-semibold text-gray-800 -mb-1 lg:mb-2">
           Our Partners
         </h2>
 
@@ -60,7 +60,6 @@ export default function PartnersSection() {
                   src={logo}
                   alt={`Partner logo ${index + 1}`}
                   width={120}
-                  height={60}
                   className="object-contain"
                 />
               </div>
