@@ -11,6 +11,7 @@ const links = [
   { href: '/admin/categories', label: 'Categories' },
   { href: '/admin/blogs', label: 'Blogs' },
   { href: '/admin/contacts', label: 'Contacts' },
+  { href: '/admin/subscribers', label: 'Subscribers' },
 ]
 
 export default function AdminSidebar() {
