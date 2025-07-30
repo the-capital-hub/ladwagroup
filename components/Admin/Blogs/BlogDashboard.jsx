@@ -11,18 +11,18 @@ import ConfirmDialog from "@/components/Admin/Blogs/ConfirmDialog.jsx";
 import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
 
 const categories = [
-        "All",
-        "Safety Equipment",
-        "Road Safety",
-        "Traffic Management",
-        "Technology",
-        "Safety Culture",
-        "Safety",
-        "Industry News",
-        "Product Updates",
-        "Case Studies",
-        "Tutorials",
-        "Company News",
+	"All",
+	"Safety Equipment",
+	"Road Safety",
+	"Traffic Management",
+	"Technology",
+	"Safety Culture",
+	"Safety",
+	"Industry News",
+	"Product Updates",
+	"Case Studies",
+	"Tutorials",
+	"Company News",
 ];
 
 const statuses = ["All", "draft", "published"];

@@ -9,19 +9,20 @@ import { Textarea } from "@/components/ui/textarea";
 import HtmlEditor from "@/components/Admin/Blogs/HtmlEditor.jsx";
 import { X, Save } from "lucide-react";
 import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
+import RichTextEditor from "@/components/Admin/Blogs/DynamicRichTextEditor.jsx";
 
 const categories = [
 	"Safety Equipment",
-        "Road Safety",
-        "Traffic Management",
-        "Technology",
-        "Safety Culture",
-        "Safety",
-        "Industry News",
-        "Product Updates",
-        "Case Studies",
-        "Tutorials",
-        "Company News",
+	"Road Safety",
+	"Traffic Management",
+	"Technology",
+	"Safety Culture",
+	"Safety",
+	"Industry News",
+	"Product Updates",
+	"Case Studies",
+	"Tutorials",
+	"Company News",
 ];
 
 export default function BlogForm({ blog = null, onClose, onSave }) {
@@ -97,6 +98,10 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 		}
 	};
 
+	const handleContentChange = (content) => {
+		setForm((prev) => ({ ...prev, content }));
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setSaving(true);
@@ -139,7 +144,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 			exit={{ opacity: 0 }}
 		>
 			<motion.div
-				className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+				className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden"
 				initial={{ scale: 0.8, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
 				exit={{ scale: 0.8, opacity: 0 }}
@@ -161,7 +166,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 				</div>
 
 				{/* Form */}
-				<div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+				<div className="p-6 overflow-y-auto max-h-[calc(95vh-120px)]">
 					<form onSubmit={handleSubmit} className="space-y-6">
 						{/* Title and Slug */}
 						<div className="grid md:grid-cols-2 gap-4">
@@ -175,7 +180,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 									onChange={handleTitleChange}
 									placeholder="Enter blog title"
 									required
-									className="mt-1"
+									className="mt-1 px-3 py-2"
 								/>
 							</div>
 							<div>
@@ -190,7 +195,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 									}
 									placeholder="blog-url-slug"
 									required
-									className="mt-1"
+									className="mt-1 px-3 py-2"
 								/>
 							</div>
 						</div>
@@ -255,7 +260,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 										}))
 									}
 									min="1"
-									className="mt-1"
+									className="mt-1 px-3 py-2"
 								/>
 							</div>
 						</div>
@@ -273,7 +278,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 										setForm((prev) => ({ ...prev, author: e.target.value }))
 									}
 									placeholder="Author name"
-									className="mt-1"
+									className="mt-1 px-3 py-2"
 								/>
 							</div>
 							<div>
@@ -287,7 +292,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 										setForm((prev) => ({ ...prev, tags: e.target.value }))
 									}
 									placeholder="tag1, tag2, tag3"
-									className="mt-1"
+									className="mt-1 px-3 py-2"
 								/>
 							</div>
 						</div>
@@ -307,6 +312,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 									accept="image/*"
 									onChange={handleImageUpload}
 									disabled={uploading}
+									className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#097362] focus:border-transparent"
 								/>
 								{uploading && (
 									<div className="flex items-center text-sm text-gray-500">
@@ -326,7 +332,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 							</div>
 						</div>
 
-						{/* Excerpt */}
+						{/* Excerpt - short description */}
 						<div>
 							<Label htmlFor="excerpt" className="text-[#097362] font-medium">
 								Excerpt *
@@ -348,20 +354,20 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 							</div>
 						</div>
 
-						{/* Content */}
-                                                <div>
-                                                        <Label htmlFor="content" className="text-[#097362] font-medium">
-                                                                Content *
-                                                        </Label>
-                                                        <HtmlEditor
-                                                                value={form.content}
-                                                                onChange={(html) =>
-                                                                        setForm((prev) => ({ ...prev, content: html }))
-                                                                }
-                                                                className="mt-1"
-                                                                placeholder="Write your blog content here..."
-                                                        />
-                                                </div>
+						{/* Rich Text Content Editor */}
+						<div>
+							<Label
+								htmlFor="content"
+								className="text-[#097362] font-medium mb-2 block"
+							>
+								Content *
+							</Label>
+							<RichTextEditor
+								value={form.content}
+								onChange={handleContentChange}
+								placeholder="Write your blog content here..."
+							/>
+						</div>
 
 						{/* Actions */}
 						<div className="flex gap-3 justify-end pt-4 border-t">
