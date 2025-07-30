@@ -22,7 +22,7 @@ export default function ModernFooter() {
 	];
 
 	const resourcesLinks = [
-		// { name: "Blogs", href: "/blog" },
+		{ name: "Blogs", href: "/blog" },
 		{ name: "Certificates", href: "/certifications" },
 		{ name: "Terms and Conditions", href: "/terms-privacy" },
 		{ name: "Privacy Policy", href: "/terms-privacy" },
