@@ -6,9 +6,12 @@ import { cn } from '@/lib/utils'
 
 const links = [
   { href: '/admin/projects', label: 'Projects' },
-  { href: '/admin/products', label: 'Products' },
+  { href: '/admin/products', label: 'Create Products' },
+  { href: '/admin/list-products', label: 'Product List' },
   { href: '/admin/categories', label: 'Categories' },
   { href: '/admin/blogs', label: 'Blogs' },
+  { href: '/admin/contacts', label: 'Contacts' },
+  { href: '/admin/subscribers', label: 'Subscribers' },
 ]
 
 export default function AdminSidebar() {

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { DEFAULT_PRODUCT_DESCRIPTION } from '@/lib/defaults';
 
 const specSchema = new mongoose.Schema({
   key: String,
@@ -10,7 +11,10 @@ const productSchema = new mongoose.Schema(
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'ProductCategory', required: true },
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
-    description: String,
+    description: {
+      type: String,
+      default: DEFAULT_PRODUCT_DESCRIPTION,
+    },
     longDescription: String,
     image: String,
     gallery: [String],
