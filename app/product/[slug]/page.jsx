@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 
 import { getBaseUrl } from '@/lib/baseUrl';
+import { DEFAULT_PRODUCT_DESCRIPTION } from '@/lib/defaults';
 
 async function getProduct(slug) {
   const baseUrl = getBaseUrl();
@@ -51,7 +52,7 @@ export default async function ProductPage({ params }) {
         </div>
         <div>
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-          <p className="text-gray-700 mb-4">{product.description}</p>
+          <p className="text-gray-700 mb-4">{product.description || DEFAULT_PRODUCT_DESCRIPTION}</p>
           <h2 className="font-semibold mb-1">Key Features</h2>
           <ul className="list-disc pl-5 mb-4">
             {product.keyFeatures.map((f, i) => (

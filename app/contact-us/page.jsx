@@ -80,29 +80,31 @@ export default function ContactUsPage() {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setIsSubmitting(true);
+        const handleSubmit = async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
 
-		// Simulate API call
-		setTimeout(() => {
-			setIsSubmitting(false);
-			setShowSuccess(true);
-			console.log("Form submitted:", formData);
-
-			// Reset form and show success for 3 seconds
-			setTimeout(() => {
-				setShowSuccess(false);
-				setFormData({
-					firstName: "",
-					lastName: "",
-					email: "",
-					phone: "",
-					message: "",
-				});
-			}, 3000);
-		}, 2000);
-	};
+                try {
+                        await fetch("/api/contacts", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(formData),
+                        });
+                        setShowSuccess(true);
+                        setFormData({
+                                firstName: "",
+                                lastName: "",
+                                email: "",
+                                phone: "",
+                                message: "",
+                        });
+                } catch (err) {
+                        console.error("Failed to submit form", err);
+                } finally {
+                        setIsSubmitting(false);
+                        setTimeout(() => setShowSuccess(false), 3000);
+                }
+        };
 
 	const handleFocus = (fieldName) => {
 		setFocusedField(fieldName);

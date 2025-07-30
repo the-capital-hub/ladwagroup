@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { DEFAULT_PRODUCT_DESCRIPTION } from "@/lib/defaults";
 import {
   Table,
   TableBody,
@@ -231,7 +232,7 @@ export default function ProductTable() {
                         className="max-w-[280px] truncate"
                         title={product.description}
                       >
-                        {product.description || "No description"}
+                        {product.description || DEFAULT_PRODUCT_DESCRIPTION}
                       </div>
                     </TableCell>
                     <TableCell>

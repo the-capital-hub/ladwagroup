@@ -19,28 +19,29 @@ export default function TestimonialsSection() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const testimonials = [
-		{
-			name: "Ethan Williams",
-			role: "Digital Marketing Specialist",
-			rating: 5,
-			text: "Experience a payment app built on simplicity and transparency. No hidden fees, just a seamless user experience that makes transactions easy and stress-free. Say goodbye to confusion and hello to straightforward payments.",
-			avatar: "/placeholder.svg?height=60&width=60",
-		},
-		{
-			name: "Daniel Thompson",
-			role: "Product Designer",
-			rating: 5,
-			text: "Discover a payment app focused on transparency. Enjoy a seamless experience with no hidden fees, providing clarity and ease in every transaction. It's designed to put your peace of mind first with your payments.",
-			avatar: "/placeholder.svg?height=60&width=60",
-		},
-		{
-			name: "Sarah Johnson",
-			role: "Safety Manager",
-			rating: 5,
-			text: "LADWA's safety equipment has transformed our workplace safety standards. The quality and reliability of their products is unmatched in the industry. Highly recommended for all safety needs.",
-			avatar: "/placeholder.svg?height=60&width=60",
-		},
-	];
+  {
+    name: "MV KRISHNA",
+    role: "Head of Administration at Greenwood High International School",
+    rating: 5,
+    text: "LADWA has been a good vendor and service provider. We have been going back to them time and again for quality products and services",
+    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
+  },
+  {
+    name: "KUSHALA KUSH",
+    role: "Contracts, Purchase, QS, Billing",
+    rating: 5,
+    text: "Experience working with LADWA has been good, and they are proficient in traffic safety products.",
+    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
+  },
+  {
+    name: "GIRISH PANDEY",
+    role: "Assistant Manager in Godrej & Boyce",
+    rating: 5,
+    text: "Ladwa delivers good Quality and commitment to works. My experience with Ladwa has been good.",
+    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
+  }
+];
+
 
 	const nextSlide = () => {
 		setCurrentIndex((prev) => (prev + 1) % testimonials.length);

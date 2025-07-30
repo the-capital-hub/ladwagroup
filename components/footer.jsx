@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import LadwaLogo from "@/public/images/Ladwa_Logo.png";
 import AppStore from "@/public/images/footer/AppStore.png";
 import GooglePlay from "@/public/images/footer/GooglePlay.png";
 
@@ -22,7 +23,7 @@ export default function ModernFooter() {
 	];
 
 	const resourcesLinks = [
-		// { name: "Blogs", href: "/blog" },
+		{ name: "Blogs", href: "/blog" },
 		{ name: "Certificates", href: "/certifications" },
 		{ name: "Terms and Conditions", href: "/terms-privacy" },
 		{ name: "Privacy Policy", href: "/terms-privacy" },
@@ -102,7 +103,7 @@ export default function ModernFooter() {
 					<div className="lg:col-span-4 space-y-6">
 						<div className="flex items-center space-x-3">
 							<Image
-								src="/images/logo.png"
+								src={LadwaLogo.src}
 								alt="Ladwa Logo"
 								width={160}
 								height={50}
@@ -170,8 +171,8 @@ export default function ModernFooter() {
 					<div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
 						<div className="text-center md:text-left">
 							<p className="text-gray-700 text-sm">
-								© 2025 All rights reserved by LADWA
-							</p>
+								© 2025 All rights reserved by LADWA | Made in &#x1F496; with CapitalHUB
+							</p> 
 						</div>
 
 						<div className="flex flex-wrap justify-center md:justify-end gap-6">
