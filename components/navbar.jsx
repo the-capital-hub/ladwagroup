@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import LoadingSpinner from "@/components/HomeNew/LoadingSpinner.jsx";
-import LadwaLogo from "@/public/images/LadwaLogo.png";
+import LadwaLogo from "@/public/images/Ladwa_Logo.png";
 import { Outfit } from "next/font/google";
 import { useRouter } from "next/navigation";
 
@@ -53,13 +53,13 @@ export default function Navbar() {
 			<div className={`${outfit.className} flex h-16 items-center mx-auto max-w-7xl w-full justify-between`}>
 				<div className="flex items-center">
 					<Link href="/" className="flex items-center">
-						<span className="text-xl font-bold text-black">LADWA</span>
-						{/* <Image
+						{/* <span className="text-xl font-bold text-black">LADWA</span> */}
+						<Image
 							src={LadwaLogo.src}
 							alt="Ladwa Logo"
-							width={50}
-							height={50}
-						/> */}
+							width={150}
+							height={150}
+						/>
 					</Link>
 				</div>
 
