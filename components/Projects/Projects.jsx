@@ -73,24 +73,30 @@ export default function ProjectList() {
 			});
 	}, []);
 
-	const handleSubscribe = async (e) => {
-		e.preventDefault();
-		if (!email) return;
+        const handleSubscribe = async (e) => {
+                e.preventDefault();
+                if (!email) return;
 
-		setIsLoading(true);
-		setShowSuccess(false);
+                setIsLoading(true);
+                setShowSuccess(false);
 
-		try {
-			await new Promise((res) => setTimeout(res, 1500));
-			setShowSuccess(true);
-			setEmail("");
-			setTimeout(() => setShowSuccess(false), 2000);
-		} catch (err) {
-			console.error("Subscription failed:", err);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+                try {
+                        const res = await fetch("/api/subscribers", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ email }),
+                        });
+                        if (res.ok) {
+                                setShowSuccess(true);
+                                setEmail("");
+                                setTimeout(() => setShowSuccess(false), 2000);
+                        }
+                } catch (err) {
+                        console.error("Subscription failed:", err);
+                } finally {
+                        setIsLoading(false);
+                }
+        };
 
 	if (loading) {
 		return (
