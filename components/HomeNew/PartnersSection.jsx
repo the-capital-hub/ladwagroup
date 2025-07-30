@@ -45,21 +45,21 @@ export default function PartnersSection() {
       className="lg:py-6 bg-white"
     >
       <motion.div variants={fadeInUp} className="">
-        <h2 className="text-center text-3xl font-semibold text-gray-800 -mb-1 lg:mb-2">
+        <h2 className="text-center text-3xl font-semibold text-gray-800 -mb-2 lg:mb-2">
           Our Partners
         </h2>
 
         <div className="relative overflow-hidden">
-          <div className="flex animate-marquee min-w-[200%] whitespace-nowrap">
+          <div className="flex animate-marquee min-w-[100%] whitespace-nowrap">
             {[...partnerLogos, ...partnerLogos].map((logo, index) => (
               <div
                 key={index}
-                className="mx-8 flex items-center justify-center min-w-[120px]"
+                className="mx-8 flex items-center justify-center min-w-[80px]"
               >
                 <Image
                   src={logo}
                   alt={`Partner logo ${index + 1}`}
-                  width={120}
+                  width={100}
                   className="object-contain"
                 />
               </div>
