@@ -312,7 +312,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 									accept="image/*"
 									onChange={handleImageUpload}
 									disabled={uploading}
-									className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#097362] focus:border-transparent"
+									className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#097362] focus:border-transparent"
 								/>
 								{uploading && (
 									<div className="flex items-center text-sm text-gray-500">

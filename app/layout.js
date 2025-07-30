@@ -16,39 +16,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-        title: "LADWA",
-        description: "LADWA - Safety Equipment and Solutions",
-        other: {
-                "google-site-verification":
-                        "GcF-us4zDEx1Bi0GjMnPnc_VYyGAyqHKzULT_HjX5wQ",
-        },
+	title: "LADWA",
+	description: "LADWA - Safety Equipment and Solutions",
+	other: {
+		"google-site-verification": "GcF-us4zDEx1Bi0GjMnPnc_VYyGAyqHKzULT_HjX5wQ",
+	},
 };
 
 export default function RootLayout({ children }) {
-        return (
-                <html lang="en">
-                        <body
-                                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-                        >
-                                <Script
-                                        async
-                                        src="https://www.googletagmanager.com/gtag/js?id=G-3E0QVM3JHM"
-                                />
-                                <Script id="ga-init" strategy="afterInteractive">
-                                        {`
+	return (
+		<html lang="en">
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
+				<Script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-3E0QVM3JHM"
+				/>
+				<Script id="ga-init" strategy="afterInteractive">
+					{`
                                                 window.dataLayer = window.dataLayer || [];
                                                 function gtag(){dataLayer.push(arguments);}
                                                 gtag('js', new Date());
                                                 gtag('config', 'G-3E0QVM3JHM');
                                         `}
-                                </Script>
-                                <div className="flex flex-col min-h-screen">
-                                        <RouteChangeLoader />
-                                        <Navbar />
-                                        <main className="flex-1">{children}</main>
-                                        <Footer />
-                                </div>
-                        </body>
-                </html>
-        );
+				</Script>
+				<div className="flex flex-col min-h-screen">
+					<RouteChangeLoader />
+					<Navbar />
+					<main className="flex-1">{children}</main>
+					<Footer />
+				</div>
+			</body>
+		</html>
+	);
 }
