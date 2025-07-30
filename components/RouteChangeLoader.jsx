@@ -10,15 +10,24 @@ export default function RouteChangeLoader() {
 
   useEffect(() => {
     const handleClick = (e) => {
-      const anchor = e.target.closest('a');
+      const anchor = e.target.closest("a");
       if (!anchor) return;
+
       const href = anchor.href;
-      if (href && href.startsWith(window.location.origin) && href !== window.location.href) {
-        setLoading(true);
+      if (
+        href &&
+        href.startsWith(window.location.origin) &&
+        href !== window.location.href
+      ) {
+        const url = new URL(href);
+        if (!url.pathname.startsWith("/admin")) {
+          setLoading(true);
+        }
       }
     };
-    document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   useEffect(() => {
@@ -26,7 +35,7 @@ export default function RouteChangeLoader() {
   }, [pathname]);
 
 
-  if (!loading) return null;
+  if (pathname?.startsWith("/admin") || !loading) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/75">
