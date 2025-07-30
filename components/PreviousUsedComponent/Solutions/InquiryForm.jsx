@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useInquiryStore } from "@/lib/store";
 import Image from "next/image";
+import { DEFAULT_PRODUCT_DESCRIPTION } from "@/lib/defaults";
 
 export default function InquiryForm() {
 	const { isOpen, product, closeInquiry } = useInquiryStore();
@@ -61,7 +62,7 @@ export default function InquiryForm() {
 									<div className="space-y-4">
 										<h3 className="font-medium">{product.name}</h3>
 										<p className="text-sm text-teal-100">
-											{product.description}
+                                                                              {product.description || DEFAULT_PRODUCT_DESCRIPTION}
 										</p>
 										<div className="relative h-48 bg-teal-800/50 rounded-lg">
 											<Image

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { DEFAULT_PRODUCT_DESCRIPTION } from "@/lib/defaults";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
@@ -43,9 +44,9 @@ const ProductCard = ({ product, variants }) => {
 				<h3 className="font-semibold text-lg text-gray-900 mb-2">
 					{product.name}
 				</h3>
-				<p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
-					{product.description}
-				</p>
+                                <p className="text-sm text-gray-600 mb-3 line-clamp-2 leading-relaxed">
+                                        {product.description || DEFAULT_PRODUCT_DESCRIPTION}
+                                </p>
 				<div className="flex items-center justify-between">
 					<span className="font-bold text-teal-600 text-lg">
 						₹ {product.price.toLocaleString()}
