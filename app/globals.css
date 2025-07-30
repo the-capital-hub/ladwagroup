@@ -136,18 +136,174 @@
 	box-shadow: 0px 0px 59px 0px #c4c4c4;
 }
 
+/* Add to your global CSS file or component styles */
+.ProseMirror {
+	outline: none;
+}
+
+.ProseMirror blockquote {
+	border-left: 4px solid #e5e7eb;
+	padding-left: 1rem;
+	margin: 1rem 0;
+	font-style: italic;
+}
+
+.ProseMirror pre {
+	background: #f3f4f6;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	font-family: "Courier New", monospace;
+	overflow-x: auto;
+}
+
+.ProseMirror code {
+	background: #f3f4f6;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-family: "Courier New", monospace;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+	font-weight: bold;
+}
+
+.ProseMirror h1 {
+	font-size: 2rem;
+}
+.ProseMirror h2 {
+	font-size: 1.75rem;
+}
+.ProseMirror h3 {
+	font-size: 1.5rem;
+}
+.ProseMirror h4 {
+	font-size: 1.25rem;
+}
+.ProseMirror h5 {
+	font-size: 1.125rem;
+}
+.ProseMirror h6 {
+	font-size: 1rem;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+	padding-left: 1.5rem;
+	margin: 1rem 0;
+}
+
+.ProseMirror li {
+	margin: 0.25rem 0;
+}
+
+.ProseMirror p {
+	margin: 1rem 0;
+}
+
+/* Add to your global CSS file or component styles */
+.ProseMirror {
+	outline: none;
+}
+
+.ProseMirror blockquote {
+	border-left: 4px solid #e5e7eb;
+	padding-left: 1rem;
+	margin: 1rem 0;
+	font-style: italic;
+}
+
+.ProseMirror pre {
+	background: #f3f4f6;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	font-family: "Courier New", monospace;
+	overflow-x: auto;
+}
+
+.ProseMirror code {
+	background: #f3f4f6;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-family: "Courier New", monospace;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+	font-weight: bold;
+}
+
+.ProseMirror h1 {
+	font-size: 2rem;
+}
+.ProseMirror h2 {
+	font-size: 1.75rem;
+}
+.ProseMirror h3 {
+	font-size: 1.5rem;
+}
+.ProseMirror h4 {
+	font-size: 1.25rem;
+}
+.ProseMirror h5 {
+	font-size: 1.125rem;
+}
+.ProseMirror h6 {
+	font-size: 1rem;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+	padding-left: 1.5rem;
+	margin: 1rem 0;
+}
+
+.ProseMirror li {
+	margin: 0.25rem 0;
+}
+
+.ProseMirror p {
+	margin: 1rem 0;
+}
+
 @keyframes marquee {
 	0% {
-	  transform: translateX(0%);
+		transform: translateX(0%);
 	}
 	100% {
-	  transform: translateX(-50%);
+		transform: translateX(-50%);
 	}
-  }
-  
-  .animate-marquee {
+}
+
+.animate-marquee {
 	animation: marquee 25s linear infinite;
 	display: flex;
 	width: 200%;
-  }
-  
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-marquee {
+	animation: marquee 25s linear infinite;
+	display: flex;
+	width: 200%;
+}
