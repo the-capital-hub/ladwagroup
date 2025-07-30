@@ -17,7 +17,6 @@ const categories = [
 	"Traffic Management",
 	"Technology",
 	"Safety Culture",
-	"Technology",
 	"Safety",
 	"Industry News",
 	"Product Updates",
