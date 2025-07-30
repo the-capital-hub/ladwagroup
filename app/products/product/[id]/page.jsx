@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import MainNav from "@/components/PreviousUsedComponent/Solutions/MainNav.jsx";
 import SearchBar from "@/components/PreviousUsedComponent/Solutions/SearchBar.jsx";
 import Products from "@/Constant/Products.js";
+import { DEFAULT_PRODUCT_DESCRIPTION } from "@/lib/defaults";
 
 // This would normally come from a database or API
 const getProductById = (id) => {
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }) {
 
 	return {
 		title: `${product.name} | Safety Solutions`,
-		description: product.description,
+                description: product.description || DEFAULT_PRODUCT_DESCRIPTION,
 	};
 }
 

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { useInquiryStore } from "@/components/Solutions/Inquiry.js";
+import { DEFAULT_PRODUCT_DESCRIPTION } from "@/lib/defaults";
 
 const InquiryForm = () => {
 	const [store, setStore] = useState(useInquiryStore.getState());
@@ -79,7 +80,7 @@ const InquiryForm = () => {
 											{store.product.name}
 										</h3>
 										<p className="text-sm text-teal-100 leading-relaxed">
-											{store.product.description}
+                                                                              {store.product.description || DEFAULT_PRODUCT_DESCRIPTION}
 										</p>
 										<div className="relative h-48 bg-teal-700/50 rounded-lg overflow-hidden">
 											<img
