@@ -74,7 +74,7 @@ export default function Navbar() {
                                         >
                                                 Projects
                                         </Link>
-                                        <div className="relative group">
+                                        {/* <div className="relative group">
 										<button className="text-sm font-medium text-gray-600 hover:text-teal-700">
 											Product Categories
 										</button>
@@ -94,7 +94,7 @@ export default function Navbar() {
 									))
 									)}
 								</div>
-								</div>
+								</div> */}
 
                                         {/* <Link
                                                 href="/solutions"
