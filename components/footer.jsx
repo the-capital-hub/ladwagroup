@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
 	Facebook,
 	Twitter,
@@ -76,7 +77,36 @@ export default function ModernFooter() {
 		// { icon: Github, href: "https://github.com/ladwa", label: "GitHub" },
 	];
 
-	const LinkSection = ({ title, links }) => (
+        const [email, setEmail] = useState("");
+        const [isLoading, setIsLoading] = useState(false);
+        const [showSuccess, setShowSuccess] = useState(false);
+
+        const handleSubscribe = async (e) => {
+                e.preventDefault();
+                if (!email) return;
+
+                setIsLoading(true);
+                setShowSuccess(false);
+
+                try {
+                        const res = await fetch("/api/subscribers", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ email }),
+                        });
+                        if (res.ok) {
+                                setShowSuccess(true);
+                                setEmail("");
+                                setTimeout(() => setShowSuccess(false), 2000);
+                        }
+                } catch (err) {
+                        console.error("Subscription failed:", err);
+                } finally {
+                        setIsLoading(false);
+                }
+        };
+
+        const LinkSection = ({ title, links }) => (
 		<div className="space-y-4">
 			<h3 className="text-lg font-semibold  mb-4">{title}</h3>
 			<ul className="space-y-2">
@@ -140,30 +170,30 @@ export default function ModernFooter() {
 						{/* <LinkSection title="Popular Products" links={supportLinks} /> */}
 					</div>
 
-					{/* App Download Section */}
-					{/* <div className="lg:col-span-2">
-						<h3 className="text-lg font-semibold mb-4">Install App</h3>
-						<div className="space-y-4">
-							<Link href="/contact-us" className="block">
-								<Image
-									src={AppStore.src}
-									alt="App Store"
-									width={170}
-									height={50}
-									className="rounded-lg"
-								/>
-							</Link>
-							<Link href="/contact-us" className="block">
-								<Image
-									src={GooglePlay.src}
-									alt="Google Play"
-									width={170}
-									height={50}
-									className="rounded-lg"
-								/>
-							</Link>
-						</div>
-					</div> */}
+                                        {/* Newsletter Section */}
+                                        <div className="lg:col-span-2 space-y-4">
+                                                <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
+                                                <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+                                                        <input
+                                                                type="email"
+                                                                value={email}
+                                                                onChange={(e) => setEmail(e.target.value)}
+                                                                placeholder="Enter your email"
+                                                                required
+                                                                className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
+                                                        />
+                                                        <button
+                                                                type="submit"
+                                                                className="bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-md text-sm"
+                                                                disabled={isLoading}
+                                                        >
+                                                                {isLoading ? "Subscribing..." : "Subscribe"}
+                                                        </button>
+                                                        {showSuccess && (
+                                                                <p className="text-sm text-teal-700">Thanks for subscribing!</p>
+                                                        )}
+                                                </form>
+                                        </div>
 				</div>
 
 				{/* Bottom Bar */}
