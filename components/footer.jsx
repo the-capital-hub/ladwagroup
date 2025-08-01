@@ -1,239 +1,201 @@
 "use client";
-import React, { useState } from "react";
-import {
-	Facebook,
-	Twitter,
-	Instagram,
-	Github,
-	Linkedin,
-	Youtube,
-} from "lucide-react";
+
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+
 import LadwaLogo from "@/public/images/Ladwa_Logo.png";
 import AppStore from "@/public/images/footer/AppStore.png";
 import GooglePlay from "@/public/images/footer/GooglePlay.png";
 
+const companyLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact Us", href: "/contact-us" },
+];
+
+const resourcesLinks = [
+  { name: "Blogs", href: "/blog" },
+  { name: "Certificates", href: "/certifications" },
+  { name: "Terms and Conditions", href: "/terms-privacy" },
+  { name: "Privacy Policy", href: "/terms-privacy" },
+];
+
+const socialLinks = [
+  { icon: Facebook, href: "https://www.facebook.com/ladwa.Inc/", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09", label: "X" },
+  { icon: Youtube, href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ", label: "Youtube" },
+  { icon: Instagram, href: "https://www.instagram.com/ladwa_solutions?igsh=ZmN0NGJuOWJ4bzR2", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/ladwa-solutions-inc/", label: "LinkedIn" },
+];
+
+function LinkSection({ title, links }) {
+  return (
+    <div className="space-y-3">
+      <h3 className="text-base lg:text-lg font-semibold">{title}</h3>
+      <ul className="space-y-2">
+        {links.map((link, i) => (
+          <li key={i}>
+            <Link
+              href={link.href}
+              className="text-gray-700 hover:text-gray-900 transition-colors text-sm"
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function ModernFooter() {
-	const companyLinks = [
-		{ name: "Home", href: "/" },
-		{ name: "About Us", href: "/about" },
-		{ name: "Projects", href: "/projects" },
-		// { name: "Solutions", href: "/solutions" },
-		{ name: "Contact Us", href: "/contact-us" },
-	];
+  const [email, setEmail] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
 
-	const resourcesLinks = [
-		{ name: "Blogs", href: "/blog" },
-		{ name: "Certificates", href: "/certifications" },
-		{ name: "Terms and Conditions", href: "/terms-privacy" },
-		{ name: "Privacy Policy", href: "/terms-privacy" },
-	];
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email) return;
 
-	const supportLinks = [
-		{ name: "Mandatory Signs", href: "/contact-us" },
-		{ name: "Informatory Signs", href: "/contact-us" },
-		{ name: "Floor Marking Tapes", href: "/contact-us" },
-		{ name: "Traffic Cones & Accessories", href: "/contact-us" },
-		{ name: "Road Humps / Speed Breakers", href: "/contact-us" },
-	];
+    try {
+      setIsLoading(true);
+      setShowSuccess(false);
 
-	const featuresLinks = [
-		{ name: "Fire Safety Equipments", href: "/category/fire-safety-equipments" },
-		{
-			name: "Home Safety Products",
-			href: "/category/home-safety-products",
-		},
-		{ name: "Road & Parking Safety Products", href: "/category/road-traffic-safety" },
-		{ name: "Retro Reflective Signs", href: "/category/retro-reflective-sign" },
-	];
+      const res = await fetch("/api/subscribers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-	const socialLinks = [
-		{
-			icon: Facebook,
-			href: "https://www.facebook.com/ladwa.Inc/",
-			label: "Facebook",
-		},
-		{
-			icon: Twitter,
-			href: "https://x.com/Ladwa_solutions?t=XSd2oXxlWQJRNbpZZGxelg&s=09",
-			label: "X",
-		},
-		{
-			icon: Youtube,
-			href: "https://www.youtube.com/channel/UC5QKEkNyiib6_ATyO5aTCRQ",
-			label: "Youtube",
-		},
-		{
-			icon: Instagram,
-			href: "https://www.instagram.com/ladwa_solutions?igsh=ZmN0NGJuOWJ4bzR2",
-			label: "Instagram",
-		},
-		{
-			icon: Linkedin,
-			href: "https://www.linkedin.com/company/ladwa-solutions-inc/",
-			label: "LinkedIn",
-		},
-		// { icon: Github, href: "https://github.com/ladwa", label: "GitHub" },
-	];
+      if (res.ok) {
+        setEmail("");
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 2000);
+      }
+    } catch (err) {
+      console.error("Subscription failed:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-        const [email, setEmail] = useState("");
-        const [isLoading, setIsLoading] = useState(false);
-        const [showSuccess, setShowSuccess] = useState(false);
+  return (
+    <footer className="bg-gradient-to-br from-teal-50 to-teal-400 text-black">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+        {/* Top: brand + newsletter */}
+        <div className="grid gap-6 md:gap-8 lg:grid-cols-12 items-start">
+          {/* Brand */}
+          <div className="lg:col-span-5 space-y-4">
+            <Image src={LadwaLogo} alt="Ladwa Logo" width={170} height={52} priority />
+            <p className="text-gray-700 text-sm leading-relaxed">
+              Ladwa is a thriving community where innovators, professionals, and
+              enthusiasts come together to share knowledge, collaborate, and grow.
+            </p>
 
-        const handleSubscribe = async (e) => {
-                e.preventDefault();
-                if (!email) return;
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((s, i) => (
+                <Link
+                  key={i}
+                  aria-label={s.label}
+                  href={s.href}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-600/50"
+                >
+                  <s.icon className="h-5 w-5 text-white" />
+                </Link>
+              ))}
+            </div>
 
-                setIsLoading(true);
-                setShowSuccess(false);
+            {/* Optional app badges */}
+            <div className="flex gap-3 pt-1">
+              <Image src={AppStore} alt="App Store" className="h-10 w-auto" />
+              <Image src={GooglePlay} alt="Google Play" className="h-10 w-auto" />
+            </div>
+          </div>
 
-                try {
-                        const res = await fetch("/api/subscribers", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ email }),
-                        });
-                        if (res.ok) {
-                                setShowSuccess(true);
-                                setEmail("");
-                                setTimeout(() => setShowSuccess(false), 2000);
-                        }
-                } catch (err) {
-                        console.error("Subscription failed:", err);
-                } finally {
-                        setIsLoading(false);
-                }
-        };
+          {/* Newsletter */}
+          <div className="lg:col-span-7">
+            <div className="rounded-xl border border-teal-300/60 bg-white/60 backdrop-blur p-4 sm:p-5">
+              <h3 className="text-base lg:text-lg font-semibold mb-2">
+                Subscribe to our newsletter
+              </h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Insights, product news, and updates. No spam—unsubscribe anytime.
+              </p>
 
-        const LinkSection = ({ title, links }) => (
-		<div className="space-y-4">
-			<h3 className="text-lg font-semibold  mb-4">{title}</h3>
-			<ul className="space-y-2">
-				{links.map((link, index) => (
-					<li key={index}>
-						<Link
-							href={link.href}
-							className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-sm"
-						>
-							{link.name}
-						</Link>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 px-3 py-2 rounded-md text-sm bg-teal-50 border border-teal-400 placeholder-teal-400/70
+                             focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/60"
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-4 py-2 rounded-md bg-teal-600 text-white hover:bg-teal-500 disabled:opacity-70"
+                >
+                  {isLoading ? "Subscribing..." : "Subscribe"}
+                </button>
+              </form>
 
-	return (
-		<footer className="bg-gradient-to-br from-teal-50 to-teal-400 text-black font-semibold">
-			<div className="container mx-auto px-10 py-12">
-				{/* Main Footer Content */}
-				<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-					{/* Company Brand & Description */}
-					<div className="lg:col-span-4 space-y-6">
-						<div className="flex items-center space-x-3">
-							<Image
-								src={LadwaLogo.src}
-								alt="Ladwa Logo"
-								width={160}
-								height={50}
-								className="md:mt-12 mt-16"
-							/>
-						</div>
+              {showSuccess && (
+                <p className="mt-2 text-sm text-teal-700">Thanks for subscribing!</p>
+              )}
+            </div>
+          </div>
+        </div>
 
-						<p className="text-gray-700 text-sm leading-relaxed max-w-md">
-							Ladwa is a thriving community where innovators, professionals, and
-							enthusiasts come together to share knowledge, collaborate, and
-							grow. Building the future of technology together.
-						</p>
+        {/* Divider */}
+        <div className="my-8 border-t border-teal-300/70" />
 
-						{/* Social Links */}
-						<div className="flex space-x-4">
-							{socialLinks.map((social, index) => (
-								<Link
-									key={index}
-									href={social.href}
-									className="bg-teal-600 hover:bg-teal-500 p-2 rounded-full transition-colors duration-200"
-									aria-label={social.label}
-								>
-									<social.icon className="w-4 h-4 text-white" />
-								</Link>
-							))}
-						</div>
-					</div>
+        {/* Link columns + contact */}
+        <div className="grid gap-6 md:gap-8 [grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
+          <LinkSection title="Company" links={companyLinks} />
+          <LinkSection title="Resources" links={resourcesLinks} />
 
-					{/* Navigation Links */}
-					<div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-						<LinkSection title="Company" links={companyLinks} />
-						<LinkSection title="Resources" links={resourcesLinks} />
-						{/* <LinkSection title="Popular Categories" links={featuresLinks} /> */}
-						{/* <LinkSection title="Popular Products" links={supportLinks} /> */}
-					</div>
+          <div className="space-y-3">
+            <h3 className="text-base lg:text-lg font-semibold">Contact</h3>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>
+                <span className="block">NO. 3,4 AND 9, Khata No. 37/1,</span>
+                <span className="block">Singasandra Village, Begur Hobli,</span>
+                <span className="block">Bengaluru-560068</span>
+              </li>
+              <li>
+                <a className="hover:text-gray-900" href="tel:+919945234161">
+                  +91-9945234161
+                </a>
+              </li>
+              <li>
+                <a className="hover:text-gray-900" href="mailto:sales@ladwas.com">
+                  sales@ladwas.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                                        {/* Newsletter Section */}
-                                        <div className="lg:col-span-2 space-y-4">
-                                                <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-                                                <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-                                                        <input
-                                                                type="email"
-                                                                value={email}
-                                                                onChange={(e) => setEmail(e.target.value)}
-                                                                placeholder="Enter your email"
-                                                                required
-                                                                className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
-                                                        />
-                                                        <button
-                                                                type="submit"
-                                                                className="bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-md text-sm"
-                                                                disabled={isLoading}
-                                                        >
-                                                                {isLoading ? "Subscribing..." : "Subscribe"}
-                                                        </button>
-                                                        {showSuccess && (
-                                                                <p className="text-sm text-teal-700">Thanks for subscribing!</p>
-                                                        )}
-                                                </form>
-                                        </div>
-				</div>
-
-				{/* Bottom Bar */}
-				<div className="pt-8 border-t border-teal-600">
-					<div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-						<div className="text-center md:text-left">
-							<p className="text-gray-700 text-sm">
-								© 2025 All rights reserved by LADWA | Made in &#x1F496; with CapitalHUB
-							</p> 
-						</div>
-
-						<div className="flex flex-wrap justify-center md:justify-end gap-6">
-							<Link
-								href="/terms-privacy"
-								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
-							>
-								Terms of Use
-							</Link>
-							<Link
-								href="/terms-privacy"
-								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
-							>
-								Privacy Policy
-							</Link>
-							<Link
-								href="/terms-privacy"
-								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
-							>
-								Legal
-							</Link>
-							<Link
-								href="/contact-us"
-								className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-200"
-							>
-								Site Map
-							</Link>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	);
+        {/* Bottom bar */}
+        <div className="mt-8 pt-6 border-t border-teal-300/70">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-700 text-center md:text-left">
+              © {new Date().getFullYear()} LADWA — Made with 💗 by CapitalHUB
+            </p>
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              <Link href="/terms-privacy" className="text-sm text-gray-700 hover:text-gray-900">Terms of Use</Link>
+              <Link href="/terms-privacy" className="text-sm text-gray-700 hover:text-gray-900">Privacy Policy</Link>
+              <Link href="/terms-privacy" className="text-sm text-gray-700 hover:text-gray-900">Legal</Link>
+              <Link href="/contact-us" className="text-sm text-gray-700 hover:text-gray-900">Site Map</Link>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
