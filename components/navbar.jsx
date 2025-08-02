@@ -155,7 +155,7 @@ export default function Navbar() {
                                                         Projects
                                                 </Link>
                                                 <details>
-                                                        <summary className="list-none text-sm font-medium text-gray-600 hover:text-teal-700">Product Categories</summary>
+                                                        {/* <summary className="list-none text-sm font-medium text-gray-600 hover:text-teal-700">Product Categories</summary>/ */}
                                                         <div className="pl-4 flex flex-col space-y-2 mt-2">
                                                                 <Link href="/products" className="text-sm text-gray-600 hover:text-teal-700">All Products</Link>
                                                                 {loading ? (
