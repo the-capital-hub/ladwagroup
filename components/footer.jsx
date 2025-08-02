@@ -109,10 +109,10 @@ export default function ModernFooter() {
             </div>
 
             {/* Optional app badges */}
-            <div className="flex gap-3 pt-1">
+            {/* <div className="flex gap-3 pt-1">
               <Image src={AppStore} alt="App Store" className="h-10 w-auto" />
               <Image src={GooglePlay} alt="Google Play" className="h-10 w-auto" />
-            </div>
+            </div> */}
           </div>
 
           {/* Newsletter */}
