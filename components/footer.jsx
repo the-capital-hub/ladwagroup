@@ -97,14 +97,16 @@ export default function ModernFooter() {
 
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((s, i) => (
-                <Link
+                <a
                   key={i}
                   aria-label={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-600/50"
                 >
                   <s.icon className="h-5 w-5 text-white" />
-                </Link>
+                </a>
               ))}
             </div>
 
