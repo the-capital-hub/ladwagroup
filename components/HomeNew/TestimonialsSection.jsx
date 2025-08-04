@@ -1,139 +1,94 @@
 "use client";
 
+import { useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useState } from "react";
-import { Outfit, Raleway } from "next/font/google";
-
-const outfit = Outfit({
-	variable: "--font-outfit",
-	subsets: ["latin"],
-});
-const raleway = Raleway({
-	variable: "--font-raleway",
-	subsets: ["latin"],
-});
 
 export default function TestimonialsSection() {
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const scrollRef = useRef(null);
+	const cardRef = useRef(null); 
 
 	const testimonials = [
-  {
-    name: "MV KRISHNA",
-    role: "Head of Administration at Greenwood High International School",
-    rating: 5,
-    text: "LADWA has been a good vendor and service provider. We have been going back to them time and again for quality products and services",
-    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
-  },
-  {
-    name: "KUSHALA KUSH",
-    role: "Contracts, Purchase, QS, Billing",
-    rating: 5,
-    text: "Experience working with LADWA has been good, and they are proficient in traffic safety products.",
-    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
-  },
-  {
-    name: "GIRISH PANDEY",
-    role: "Assistant Manager in Godrej & Boyce",
-    rating: 5,
-    text: "Ladwa delivers good Quality and commitment to works. My experience with Ladwa has been good.",
-    avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg"
-  }
-];
+		{
+			name: "MV KRISHNA",
+			role: "Head of Administration at Greenwood High International School",
+			rating: 5,
+			text: "LADWA has been a good vendor and service provider. We have been going back to them time and again for quality products and services",
+			avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg",
+		},
+		{
+			name: "KUSHALA KUSH",
+			role: "Contracts, Purchase, QS, Billing",
+			rating: 5,
+			text: "Experience working with LADWA has been good, and they are proficient in traffic safety products.",
+			avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg",
+		},
+		{
+			name: "GIRISH PANDEY",
+			role: "Assistant Manager in Godrej & Boyce",
+			rating: 5,
+			text: "Ladwa delivers good Quality and commitment to works. My experience with Ladwa has been good.",
+			avatar: "/mnt/data/4b03ee6c-03eb-4ef9-9c8e-cb49e5d09748.jpg",
+		},
+	];
 
-
-	const nextSlide = () => {
-		setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+	const scroll = (direction) => {
+		if (!scrollRef.current || !cardRef.current) return;
+		const scrollAmount = cardRef.current.offsetWidth + 24; // 24px for gap-6
+		scrollRef.current.scrollBy({
+			left: direction === "left" ? -scrollAmount : scrollAmount,
+			behavior: "smooth",
+		});
 	};
-
-	const prevSlide = () => {
-		setCurrentIndex(
-			(prev) => (prev - 1 + testimonials.length) % testimonials.length
-		);
-	};
-
-	const getVisibleTestimonials = () => {
-		const visible = [];
-		for (let i = 0; i < 2; i++) {
-			const index = (currentIndex + i) % testimonials.length;
-			visible.push(testimonials[index]);
-		}
-		return visible;
-	};
-
-	const visibleTestimonials = getVisibleTestimonials();
 
 	return (
 		<section className="my-5 overflow-hidden">
 			<div className="container mx-auto px-4 lg:px-6">
-				<div className="max-w-7xl mx-auto">
-					<motion.div
-						className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start"
-						initial="hidden"
-						whileInView="visible"
-						viewport={{ once: true }}
-						variants={{
-							hidden: {},
-							visible: { transition: { staggerChildren: 0.2 } },
-						}}
-					>
-						{/* Left Content */}
-						<motion.div
-							className="lg:col-span-2 lg:sticky lg:top-8"
-							variants={{
-								hidden: { opacity: 0, y: 20 },
-								visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-							}}
-						>
-							<p
-								className={`text-black text-[16px] font-semibold mb-3 text-sm uppercase tracking-wider ${outfit.className}`}
+				<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+					
+					{/* Left Column */}
+					<div className="lg:col-span-2 lg:sticky lg:top-8">
+						<p className="text-black text-[16px] font-semibold mb-3 text-sm uppercase tracking-wider">
+							TESTIMONIAL
+						</p>
+						<h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight">
+							We've built trust with reviews from real users
+						</h2>
+						<p className="text-gray-600 mb-8 text-base">
+							Boost your credibility by featuring genuine testimonials from real users, showcasing their positive experiences and establishing trust with Monks Pay services.
+						</p>
+						<div className="flex gap-3">
+							<button
+								onClick={() => scroll("left")}
+								className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm"
+								aria-label="Scroll left"
 							>
-								TESTIMONIAL
-							</p>
-							<h2 className={`${raleway.className} text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight`}>
-								We've built trust with reviews from real users
-							</h2>
-							<p className={`${outfit.className} text-gray-600 mb-8 text-base`}>
-								Boost your credibility by featuring genuine testimonials from
-								real users, showcasing their positive experiences and
-								establishing trust with Monks Pay services.
-							</p>
-							<div className="flex gap-3">
-								<button
-									onClick={prevSlide}
-									className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 shadow-sm"
-									aria-label="Previous testimonial"
-								>
-									<ChevronLeft className="w-5 h-5 text-gray-600" />
-								</button>
-								<button
-									onClick={nextSlide}
-									className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1D9481] to-[#029981] flex items-center justify-center hover:bg-teal-700 transition-all duration-200 shadow-sm"
-									aria-label="Next testimonial"
-								>
-									<ChevronRight className="w-5 h-5 text-white" />
-								</button>
-							</div>
-						</motion.div>
+								<ChevronLeft className="w-5 h-5 text-gray-600" />
+							</button>
+							<button
+								onClick={() => scroll("right")}
+								className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1D9481] to-[#029981] flex items-center justify-center hover:bg-teal-700 transition-all duration-200 shadow-sm"
+								aria-label="Scroll right"
+							>
+								<ChevronRight className="w-5 h-5 text-white" />
+							</button>
+						</div>
+					</div>
 
-						{/* Right Content */}
-						<div className="lg:col-span-3">
-							<div
-								className={`${outfit.className} grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-[18rem]`}
-							>
-								{visibleTestimonials.map((testimonial, index) => (
+					{/* Right Column - Scrollable Testimonials */}
+					<div className="lg:col-span-3">
+						<div ref={scrollRef} className="overflow-x-auto scrollbar-hide">
+							<div className="flex gap-6 w-max pr-4">
+								{testimonials.map((testimonial, index) => (
 									<motion.div
-										key={`${currentIndex}-${index}`}
-										className="bg-white p-6 lg:w-[33vw] lg:p-8 rounded-2xl shadow-sm border border-gray-100 transition-shadow duration-200"
-										variants={{
-											hidden: { opacity: 0, y: 30 },
-											visible: {
-												opacity: 1,
-												y: 0,
-												transition: { duration: 0.6, delay: index * 0.2 },
-											},
-										}}
+										key={index}
+										ref={index === 0 ? cardRef : null}
+										className="min-w-[300px] lg:min-w-[33vw] bg-white p-6 lg:p-8 rounded-2xl shadow-sm border border-gray-100"
+										initial={{ opacity: 0, y: 30 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.6, delay: index * 0.2 }}
+										viewport={{ once: true }}
 									>
 										<div className="flex mb-4">
 											{[...Array(testimonial.rating)].map((_, i) => (
@@ -171,24 +126,9 @@ export default function TestimonialsSection() {
 									</motion.div>
 								))}
 							</div>
-
-							{/* Mobile Dots */}
-							<div className="flex justify-center mt-8 md:hidden">
-								<div className="flex gap-2">
-									{testimonials.map((_, index) => (
-										<button
-											key={index}
-											onClick={() => setCurrentIndex(index)}
-											className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-												index === currentIndex ? "bg-teal-600" : "bg-gray-300"
-											}`}
-											aria-label={`Go to testimonial ${index + 1}`}
-										/>
-									))}
-								</div>
-							</div>
 						</div>
-					</motion.div>
+					</div>
+					
 				</div>
 			</div>
 		</section>
