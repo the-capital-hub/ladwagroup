@@ -12,6 +12,7 @@ const ProjectForm = () => {
     title: '',
     description: '',
     mainImage: '',
+    videoLink: '',
     portfolioImages: [],
   });
 
@@ -139,6 +140,7 @@ const ProjectForm = () => {
           title: '',
           description: '',
           mainImage: '',
+          videoLink: '',
           portfolioImages: [],
         });
         setMainImagePreview('');
@@ -188,6 +190,18 @@ const ProjectForm = () => {
             name="description"
             rows={4}
             value={formData.description}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Video Link */}
+        <div className="space-y-2">
+          <Label htmlFor="videoLink" className="text-[#097362] block">YouTube Link</Label>
+          <Input
+            id="videoLink"
+            name="videoLink"
+            type="text"
+            value={formData.videoLink}
             onChange={handleChange}
           />
         </div>

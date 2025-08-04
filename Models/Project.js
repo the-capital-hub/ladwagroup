@@ -16,8 +16,11 @@ const projectSchema = new mongoose.Schema(
       required: true,
     },
     mainImage: {
-      type: String, 
+      type: String,
       required: true,
+    },
+    videoLink: {
+      type: String,
     },
     portfolioImages: {
       type: [String],

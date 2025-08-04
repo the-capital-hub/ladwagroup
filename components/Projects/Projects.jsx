@@ -41,9 +41,17 @@ const staggerItem = {
 	transition: { duration: 0.5, ease: "easeOut" },
 };
 const numberAnimation = {
-	initial: { opacity: 0, scale: 0.5, rotate: -10 },
-	animate: { opacity: 1, scale: 1, rotate: 0 },
-	transition: { duration: 0.8, ease: "easeOut" },
+        initial: { opacity: 0, scale: 0.5, rotate: -10 },
+        animate: { opacity: 1, scale: 1, rotate: 0 },
+        transition: { duration: 0.8, ease: "easeOut" },
+};
+
+const getEmbedUrl = (url) => {
+        if (!url) return "";
+        const match = url.match(
+                /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/
+        );
+        return match ? `https://www.youtube.com/embed/${match[1]}` : url;
 };
 
 export default function ProjectList() {
@@ -171,22 +179,35 @@ export default function ProjectList() {
 									</motion.div>
 								</motion.div>
 
-								<motion.div className="flex-shrink-0" variants={scaleIn}>
-									<motion.div
-										className="border-2 border-[#097362]/20 p-2 rounded-2xl bg-white shadow-lg"
-										whileHover={{ scale: 1.02, y: -5 }}
-										transition={{ duration: 0.3 }}
-									>
-										<Image
-											src={project.mainImage}
-											alt={project.title}
-											width={700}
-											height={500}
-											className="lg:w-[90vh] rounded-xl object-cover"
-											priority
-										/>
-									</motion.div>
-								</motion.div>
+        <motion.div className="flex-shrink-0" variants={scaleIn}>
+                <motion.div
+                        className="border-2 border-[#097362]/20 p-2 rounded-2xl bg-white shadow-lg"
+                        whileHover={{ scale: 1.02, y: -5 }}
+                        transition={{ duration: 0.3 }}
+                >
+                        {project.videoLink ? (
+                                <div className="lg:w-[90vh] w-full rounded-xl overflow-hidden">
+                                        <div className="relative w-full h-0 pb-[56.25%]">
+                                                <iframe
+                                                        src={getEmbedUrl(project.videoLink)}
+                                                        title={project.title}
+                                                        allowFullScreen
+                                                        className="absolute top-0 left-0 w-full h-full rounded-xl"
+                                                />
+                                        </div>
+                                </div>
+                        ) : (
+                                <Image
+                                        src={project.mainImage}
+                                        alt={project.title}
+                                        width={700}
+                                        height={500}
+                                        className="lg:w-[90vh] rounded-xl object-cover"
+                                        priority
+                                />
+                        )}
+                </motion.div>
+        </motion.div>
 							</motion.div>
 
 							<motion.div
