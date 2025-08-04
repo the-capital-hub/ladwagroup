@@ -7,7 +7,7 @@ export async function GET(req, { params }) {
   if (!requireAdmin()) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
-  const { id } = params;
+  const { id } = await params;
   await dbConnect();
   const contact = await ContactForm.findById(id);
   if (!contact) return NextResponse.json({ message: 'Not found' }, { status: 404 });
@@ -18,7 +18,7 @@ export async function DELETE(req, { params }) {
   if (!requireAdmin()) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
-  const { id } = params;
+  const { id } = await params;
   await dbConnect();
   await ContactForm.findByIdAndDelete(id);
   return NextResponse.json({ message: 'Deleted' });
