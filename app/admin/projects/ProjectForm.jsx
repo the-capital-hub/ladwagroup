@@ -15,17 +15,25 @@ const ProjectForm = () => {
     videoLink: '',
     portfolioImages: [],
   });
-
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }, []);
+  const [projects, setProjects] = useState([]);
+  const [editId, setEditId] = useState(null);
 
   const [mainImagePreview, setMainImagePreview] = useState('');
   const [portfolioPreviews, setPortfolioPreviews] = useState([]);
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
+
+  const fetchProjects = async () => {
+    const res = await fetch('/api/project');
+    const data = await res.json();
+    setProjects(data);
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    fetchProjects();
+  }, []);
 
   const uploadFile = async (file) => {
     const fd = new FormData();
@@ -107,6 +115,27 @@ const ProjectForm = () => {
     }));
   };
 
+  const handleEdit = (project) => {
+    setFormData({
+      number: project.number || '',
+      title: project.title || '',
+      description: project.description || '',
+      mainImage: project.mainImage || '',
+      videoLink: project.videoLink || '',
+      portfolioImages: project.portfolioImages || [],
+    });
+    setMainImagePreview(project.mainImage || '');
+    setPortfolioPreviews(project.portfolioImages || []);
+    setEditId(project._id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDelete = async (id) => {
+    if (!confirm('Are you sure you want to delete this project?')) return;
+    await fetch(`/api/project/${id}`, { method: 'DELETE' });
+    fetchProjects();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors('');
@@ -123,8 +152,10 @@ const ProjectForm = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/project', {
-        method: 'POST',
+      const method = editId ? 'PUT' : 'POST';
+      const url = editId ? `/api/project/${editId}` : '/api/project';
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
@@ -134,7 +165,7 @@ const ProjectForm = () => {
       if (!res.ok) {
         setErrors(data.message || 'Something went wrong');
       } else {
-        alert('Project submitted!');
+        alert(editId ? 'Project updated!' : 'Project submitted!');
         setFormData({
           number: '',
           title: '',
@@ -145,6 +176,8 @@ const ProjectForm = () => {
         });
         setMainImagePreview('');
         setPortfolioPreviews([]);
+        setEditId(null);
+        fetchProjects();
       }
     } catch (error) {
       setErrors('Failed to submit project');
@@ -155,7 +188,7 @@ const ProjectForm = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 my-5 bg-white shadow-md border rounded-xl space-y-6">
-      <h2 className="text-2xl font-semibold text-[#097362]">Add New Project</h2>
+      <h2 className="text-2xl font-semibold text-[#097362]">{editId ? 'Edit Project' : 'Add New Project'}</h2>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Project Number */}
@@ -270,9 +303,58 @@ const ProjectForm = () => {
           className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]"
           disabled={loading}
         >
-          {loading ? 'Submitting...' : 'Submit Project'}
+          {loading ? (editId ? 'Updating...' : 'Submitting...') : (editId ? 'Update Project' : 'Submit Project')}
         </Button>
       </form>
+
+      {projects.length > 0 && (
+        <div className="overflow-x-auto pt-6">
+          <table className="min-w-full border">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="border px-2 py-1">No.</th>
+                <th className="border px-2 py-1">Title</th>
+                <th className="border px-2 py-1">Description</th>
+                <th className="border px-2 py-1">Main Image</th>
+                <th className="border px-2 py-1">Video Link</th>
+                <th className="border px-2 py-1">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projects.map((p) => (
+                <tr key={p._id}>
+                  <td className="border px-2 py-1">{p.number}</td>
+                  <td className="border px-2 py-1">{p.title}</td>
+                  <td className="border px-2 py-1 max-w-xs truncate">{p.description}</td>
+                  <td className="border px-2 py-1">
+                    {p.mainImage && (
+                      <img src={p.mainImage} alt={p.title} className="h-12 w-12 object-cover" />
+                    )}
+                  </td>
+                  <td className="border px-2 py-1">
+                    {p.videoLink ? (
+                      <a
+                        href={p.videoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 underline"
+                      >
+                        Link
+                      </a>
+                    ) : (
+                      '-'
+                    )}
+                  </td>
+                  <td className="border px-2 py-1 space-x-2">
+                    <Button size="sm" onClick={() => handleEdit(p)}>Edit</Button>
+                    <Button size="sm" variant="destructive" onClick={() => handleDelete(p._id)}>Delete</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
