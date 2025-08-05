@@ -5,23 +5,129 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
+const singleFields = [
+  { name: 'productType', label: 'Product Type' },
+  { name: 'sellerSku', label: 'Seller SKU' },
+  { name: 'externalProductId', label: 'External Product ID' },
+  { name: 'manufacturer', label: 'Manufacturer' },
+  { name: 'modelName', label: 'Model Name' },
+  { name: 'closureType', label: 'Closure Type' },
+  { name: 'soleMaterial', label: 'Sole Material' },
+  { name: 'heelType', label: 'Heel Type' },
+  { name: 'heelHeight', label: 'Heel Height' },
+  { name: 'outerMaterialType', label: 'Outer Material Type' },
+  { name: 'heelHeightUnitOfMeasure', label: 'Heel Height Unit Of Measure' },
+  { name: 'footwearSizeSystem', label: 'Footwear Size System' },
+  { name: 'shoeSizeAgeGroup', label: 'Shoe Size Age Group' },
+  { name: 'shoeSizeGender', label: 'Shoe Size Gender' },
+  { name: 'shoeSizeClass', label: 'Shoe Size Class' },
+  { name: 'shoeSizeWidth', label: 'Shoe Size Width' },
+  { name: 'shoeSize', label: 'Shoe Size' },
+  { name: 'style', label: 'Style' },
+  { name: 'color', label: 'Color' },
+  { name: 'size', label: 'Size' },
+  { name: 'colourMap', label: 'Colour Map' },
+  { name: 'manufacturerContact', label: 'Manufacturer Contact' },
+  { name: 'sizeMap', label: 'Size Map' },
+  { name: 'unitCountType', label: 'Unit Count Type' },
+  { name: 'unitCount', label: 'Unit Count' },
+  { name: 'itemLengthLongerEdge', label: 'Item Length Longer Edge' },
+  { name: 'itemLengthUnit', label: 'Item Length Unit' },
+  { name: 'itemWidthShorterEdge', label: 'Item Width Shorter Edge' },
+  { name: 'itemWidthUnit', label: 'Item Width Unit' },
+  { name: 'itemWeight', label: 'Item Weight' },
+  { name: 'itemWeightUnit', label: 'Item Weight Unit' },
+  { name: 'hoseLength', label: 'Hose Length' },
+  { name: 'hoseLengthUnitOfMeasure', label: 'Hose Length Unit Of Measure' },
+  { name: 'seatHeight', label: 'Seat Height' },
+  { name: 'seatHeightUnitOfMeasure', label: 'Seat Height Unit Of Measure' },
+  { name: 'shoeHeightMap', label: 'Shoe Height Map' },
+  { name: 'packageHeightUnit', label: 'Package Height Unit' },
+  { name: 'packageLength', label: 'Package Length' },
+  { name: 'packageWidth', label: 'Package Width' },
+  { name: 'packageWeightUnit', label: 'Package Weight Unit' },
+  { name: 'packageHeight', label: 'Package Height' },
+  { name: 'packageWidthUnit', label: 'Package Width Unit' },
+  { name: 'packageLengthUnit', label: 'Package Length Unit' },
+  { name: 'packageWeight', label: 'Package Weight' },
+  { name: 'externalProductInformation', label: 'External Product Information' },
+  { name: 'maximumRetailPrice', label: 'Maximum Retail Price' },
+  { name: 'yourPriceInr', label: 'Your Price INR (IN)' },
+];
+
+const arrayFields = [
+  { name: 'materialTypes', label: 'Material Type' },
+  { name: 'materialFabricRegulations', label: 'Material/Fabric Regulations' },
+];
+
+const initialForm = {
+  category: '',
+  name: '',
+  slug: '',
+  description: '',
+  longDescription: '',
+  image: '',
+  gallery: '',
+  keyFeatures: '',
+  additionalFeatures: '',
+  weight: '',
+  dimension: '',
+  specifications: '',
+  productType: '',
+  sellerSku: '',
+  externalProductId: '',
+  manufacturer: '',
+  modelName: '',
+  closureType: '',
+  soleMaterial: '',
+  heelType: '',
+  heelHeight: '',
+  outerMaterialType: '',
+  heelHeightUnitOfMeasure: '',
+  footwearSizeSystem: '',
+  shoeSizeAgeGroup: '',
+  shoeSizeGender: '',
+  shoeSizeClass: '',
+  shoeSizeWidth: '',
+  shoeSize: '',
+  style: '',
+  color: '',
+  size: '',
+  colourMap: '',
+  manufacturerContact: '',
+  materialTypes: '',
+  sizeMap: '',
+  unitCountType: '',
+  unitCount: '',
+  itemLengthLongerEdge: '',
+  itemLengthUnit: '',
+  itemWidthShorterEdge: '',
+  itemWidthUnit: '',
+  itemWeight: '',
+  itemWeightUnit: '',
+  hoseLength: '',
+  hoseLengthUnitOfMeasure: '',
+  seatHeight: '',
+  seatHeightUnitOfMeasure: '',
+  shoeHeightMap: '',
+  packageHeightUnit: '',
+  packageLength: '',
+  packageWidth: '',
+  packageWeightUnit: '',
+  packageHeight: '',
+  packageWidthUnit: '',
+  packageLengthUnit: '',
+  packageWeight: '',
+  externalProductInformation: '',
+  materialFabricRegulations: '',
+  maximumRetailPrice: '',
+  yourPriceInr: '',
+};
+
 export default function ProductForm() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [form, setForm] = useState({
-    category: '',
-    name: '',
-    slug: '',
-    description: '',
-    longDescription: '',
-    image: '',
-    gallery: '',
-    keyFeatures: '',
-    additionalFeatures: '',
-    weight: '',
-    dimension: '',
-    specifications: '',
-  });
+  const [form, setForm] = useState(initialForm);
   const [editId, setEditId] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -46,6 +152,8 @@ export default function ProductForm() {
       gallery: form.gallery.split('\n').filter(Boolean),
       keyFeatures: form.keyFeatures.split('\n').filter(Boolean),
       additionalFeatures: form.additionalFeatures.split('\n').filter(Boolean),
+      materialTypes: form.materialTypes.split('\n').filter(Boolean),
+      materialFabricRegulations: form.materialFabricRegulations.split('\n').filter(Boolean),
       specifications: form.specifications.split('\n').map((l) => {
         const [key, value] = l.split(':');
         return { key: key?.trim(), value: value?.trim() };
@@ -60,26 +168,14 @@ export default function ProductForm() {
     });
     if (res.ok) {
       await fetchData();
-      setForm({
-        category: '',
-        name: '',
-        slug: '',
-        description: '',
-        longDescription: '',
-        image: '',
-        gallery: '',
-        keyFeatures: '',
-        additionalFeatures: '',
-        weight: '',
-        dimension: '',
-        specifications: '',
-      });
+      setForm(initialForm);
       setEditId(null);
     }
   };
 
   const handleEdit = (p) => {
     setForm({
+      ...initialForm,
       category: p.category?._id || '',
       name: p.name,
       slug: p.slug,
@@ -92,6 +188,55 @@ export default function ProductForm() {
       weight: p.weight || '',
       dimension: p.dimension || '',
       specifications: (p.specifications || []).map((s) => `${s.key}: ${s.value}`).join('\n'),
+      productType: p.productType || '',
+      sellerSku: p.sellerSku || '',
+      externalProductId: p.externalProductId || '',
+      manufacturer: p.manufacturer || '',
+      modelName: p.modelName || '',
+      closureType: p.closureType || '',
+      soleMaterial: p.soleMaterial || '',
+      heelType: p.heelType || '',
+      heelHeight: p.heelHeight || '',
+      outerMaterialType: p.outerMaterialType || '',
+      heelHeightUnitOfMeasure: p.heelHeightUnitOfMeasure || '',
+      footwearSizeSystem: p.footwearSizeSystem || '',
+      shoeSizeAgeGroup: p.shoeSizeAgeGroup || '',
+      shoeSizeGender: p.shoeSizeGender || '',
+      shoeSizeClass: p.shoeSizeClass || '',
+      shoeSizeWidth: p.shoeSizeWidth || '',
+      shoeSize: p.shoeSize || '',
+      style: p.style || '',
+      color: p.color || '',
+      size: p.size || '',
+      colourMap: p.colourMap || '',
+      manufacturerContact: p.manufacturerContact || '',
+      materialTypes: (p.materialTypes || []).join('\n'),
+      sizeMap: p.sizeMap || '',
+      unitCountType: p.unitCountType || '',
+      unitCount: p.unitCount || '',
+      itemLengthLongerEdge: p.itemLengthLongerEdge || '',
+      itemLengthUnit: p.itemLengthUnit || '',
+      itemWidthShorterEdge: p.itemWidthShorterEdge || '',
+      itemWidthUnit: p.itemWidthUnit || '',
+      itemWeight: p.itemWeight || '',
+      itemWeightUnit: p.itemWeightUnit || '',
+      hoseLength: p.hoseLength || '',
+      hoseLengthUnitOfMeasure: p.hoseLengthUnitOfMeasure || '',
+      seatHeight: p.seatHeight || '',
+      seatHeightUnitOfMeasure: p.seatHeightUnitOfMeasure || '',
+      shoeHeightMap: p.shoeHeightMap || '',
+      packageHeightUnit: p.packageHeightUnit || '',
+      packageLength: p.packageLength || '',
+      packageWidth: p.packageWidth || '',
+      packageWeightUnit: p.packageWeightUnit || '',
+      packageHeight: p.packageHeight || '',
+      packageWidthUnit: p.packageWidthUnit || '',
+      packageLengthUnit: p.packageLengthUnit || '',
+      packageWeight: p.packageWeight || '',
+      externalProductInformation: p.externalProductInformation || '',
+      materialFabricRegulations: (p.materialFabricRegulations || []).join('\n'),
+      maximumRetailPrice: p.maximumRetailPrice || '',
+      yourPriceInr: p.yourPriceInr || '',
     });
     setEditId(p._id);
   };
@@ -151,7 +296,7 @@ export default function ProductForm() {
           </select>
         </div>
         <div>
-          <Label htmlFor="name" className="text-[#097362]">Name</Label>
+          <Label htmlFor="name" className="text-[#097362]">Title</Label>
           <Input id="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         </div>
         <div>
@@ -159,7 +304,7 @@ export default function ProductForm() {
           <Input id="slug" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} />
         </div>
         <div>
-          <Label htmlFor="description" className="text-[#097362]">Short Description</Label>
+          <Label htmlFor="description" className="text-[#097362]">Product Description</Label>
           <Input id="description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
         </div>
         <div>
@@ -167,14 +312,14 @@ export default function ProductForm() {
           <Textarea id="longDescription" rows={4} value={form.longDescription} onChange={(e) => setForm({ ...form, longDescription: e.target.value })} />
         </div>
         <div>
-          <Label htmlFor="image" className="text-[#097362]">Image</Label>
+          <Label htmlFor="image" className="text-[#097362]">Main Image URL</Label>
           <Input id="image" type="file" onChange={handleImageUpload} />
           {form.image && (
             <p className="text-sm mt-1 break-all">{form.image}</p>
           )}
         </div>
         <div>
-          <Label htmlFor="gallery" className="text-[#097362]">Gallery Images</Label>
+          <Label htmlFor="gallery" className="text-[#097362]">Other Image URLs</Label>
           <Input id="gallery" type="file" multiple onChange={handleGalleryUpload} />
           {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           {form.gallery && (
@@ -183,7 +328,7 @@ export default function ProductForm() {
 
         </div>
         <div>
-          <Label htmlFor="keyFeatures" className="text-[#097362]">Key Features (one per line)</Label>
+          <Label htmlFor="keyFeatures" className="text-[#097362]">Bullet Points (one per line)</Label>
           <Textarea id="keyFeatures" rows={3} value={form.keyFeatures} onChange={(e) => setForm({ ...form, keyFeatures: e.target.value })} />
         </div>
         <div>
@@ -204,6 +349,18 @@ export default function ProductForm() {
           <Label htmlFor="specifications" className="text-[#097362]">Specifications (key: value per line)</Label>
           <Textarea id="specifications" rows={3} value={form.specifications} onChange={(e) => setForm({ ...form, specifications: e.target.value })} />
         </div>
+        {singleFields.map(({ name, label }) => (
+          <div key={name}>
+            <Label htmlFor={name} className="text-[#097362]">{label}</Label>
+            <Input id={name} value={form[name]} onChange={(e) => setForm({ ...form, [name]: e.target.value })} />
+          </div>
+        ))}
+        {arrayFields.map(({ name, label }) => (
+          <div key={name}>
+            <Label htmlFor={name} className="text-[#097362]">{label} (one per line)</Label>
+            <Textarea id={name} rows={3} value={form[name]} onChange={(e) => setForm({ ...form, [name]: e.target.value })} />
+          </div>
+        ))}
         <Button type="submit" className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]">
           {editId ? 'Update' : 'Create'}
         </Button>

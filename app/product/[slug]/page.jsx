@@ -29,6 +29,56 @@ export default async function ProductPage({ params }) {
   const product = await getProduct(slug);
   if (!product) return <div className="p-10">Product not found</div>;
 
+  const detailFields = [
+    { key: 'productType', label: 'Product Type' },
+    { key: 'sellerSku', label: 'Seller SKU' },
+    { key: 'externalProductId', label: 'External Product ID' },
+    { key: 'manufacturer', label: 'Manufacturer' },
+    { key: 'modelName', label: 'Model Name' },
+    { key: 'closureType', label: 'Closure Type' },
+    { key: 'soleMaterial', label: 'Sole Material' },
+    { key: 'heelType', label: 'Heel Type' },
+    { key: 'heelHeight', label: 'Heel Height' },
+    { key: 'outerMaterialType', label: 'Outer Material Type' },
+    { key: 'heelHeightUnitOfMeasure', label: 'Heel Height Unit Of Measure' },
+    { key: 'footwearSizeSystem', label: 'Footwear Size System' },
+    { key: 'shoeSizeAgeGroup', label: 'Shoe Size Age Group' },
+    { key: 'shoeSizeGender', label: 'Shoe Size Gender' },
+    { key: 'shoeSizeClass', label: 'Shoe Size Class' },
+    { key: 'shoeSizeWidth', label: 'Shoe Size Width' },
+    { key: 'shoeSize', label: 'Shoe Size' },
+    { key: 'style', label: 'Style' },
+    { key: 'color', label: 'Color' },
+    { key: 'size', label: 'Size' },
+    { key: 'colourMap', label: 'Colour Map' },
+    { key: 'manufacturerContact', label: 'Manufacturer Contact' },
+    { key: 'sizeMap', label: 'Size Map' },
+    { key: 'unitCountType', label: 'Unit Count Type' },
+    { key: 'unitCount', label: 'Unit Count' },
+    { key: 'itemLengthLongerEdge', label: 'Item Length Longer Edge' },
+    { key: 'itemLengthUnit', label: 'Item Length Unit' },
+    { key: 'itemWidthShorterEdge', label: 'Item Width Shorter Edge' },
+    { key: 'itemWidthUnit', label: 'Item Width Unit' },
+    { key: 'itemWeight', label: 'Item Weight' },
+    { key: 'itemWeightUnit', label: 'Item Weight Unit' },
+    { key: 'hoseLength', label: 'Hose Length' },
+    { key: 'hoseLengthUnitOfMeasure', label: 'Hose Length Unit Of Measure' },
+    { key: 'seatHeight', label: 'Seat Height' },
+    { key: 'seatHeightUnitOfMeasure', label: 'Seat Height Unit Of Measure' },
+    { key: 'shoeHeightMap', label: 'Shoe Height Map' },
+    { key: 'packageHeightUnit', label: 'Package Height Unit' },
+    { key: 'packageLength', label: 'Package Length' },
+    { key: 'packageWidth', label: 'Package Width' },
+    { key: 'packageWeightUnit', label: 'Package Weight Unit' },
+    { key: 'packageHeight', label: 'Package Height' },
+    { key: 'packageWidthUnit', label: 'Package Width Unit' },
+    { key: 'packageLengthUnit', label: 'Package Length Unit' },
+    { key: 'packageWeight', label: 'Package Weight' },
+    { key: 'externalProductInformation', label: 'External Product Information' },
+    { key: 'maximumRetailPrice', label: 'Maximum Retail Price' },
+    { key: 'yourPriceInr', label: 'Your Price INR (IN)' },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto p-6">
       <nav className="text-sm mb-4 text-gray-600">
@@ -53,12 +103,16 @@ export default async function ProductPage({ params }) {
         <div>
           <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
           <p className="text-gray-700 mb-4">{product.description || DEFAULT_PRODUCT_DESCRIPTION}</p>
-          <h2 className="font-semibold mb-1">Key Features</h2>
-          <ul className="list-disc pl-5 mb-4">
-            {product.keyFeatures.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
+          {product.keyFeatures.length > 0 && (
+            <>
+              <h2 className="font-semibold mb-1">Bullet Points</h2>
+              <ul className="list-disc pl-5 mb-4">
+                {product.keyFeatures.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </>
+          )}
           {product.additionalFeatures.length > 0 && (
             <>
               <h2 className="font-semibold mb-1">Additional Features</h2>
@@ -83,6 +137,38 @@ export default async function ProductPage({ params }) {
               </tbody>
             </table>
           )}
+          {product.materialTypes?.length > 0 && (
+            <>
+              <h2 className="font-semibold mb-1">Material Type</h2>
+              <ul className="list-disc pl-5 mb-4">
+                {product.materialTypes.map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+            </>
+          )}
+          {product.materialFabricRegulations?.length > 0 && (
+            <>
+              <h2 className="font-semibold mb-1">Material/Fabric Regulations</h2>
+              <ul className="list-disc pl-5 mb-4">
+                {product.materialFabricRegulations.map((m, i) => (
+                  <li key={i}>{m}</li>
+                ))}
+              </ul>
+            </>
+          )}
+          <table className="w-full text-sm mb-6 border">
+            <tbody>
+              {detailFields.map(({ key, label }) =>
+                product[key] ? (
+                  <tr key={key} className="border-t">
+                    <td className="p-2 font-semibold w-1/3">{label}</td>
+                    <td className="p-2">{product[key]}</td>
+                  </tr>
+                ) : null
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

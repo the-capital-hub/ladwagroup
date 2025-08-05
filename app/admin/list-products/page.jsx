@@ -27,6 +27,61 @@ import {
 
 const PAGE_SIZE = 10;
 
+const singleFields = [
+  { name: "productType", label: "Product Type" },
+  { name: "sellerSku", label: "Seller SKU" },
+  { name: "externalProductId", label: "External Product ID" },
+  { name: "manufacturer", label: "Manufacturer" },
+  { name: "modelName", label: "Model Name" },
+  { name: "closureType", label: "Closure Type" },
+  { name: "soleMaterial", label: "Sole Material" },
+  { name: "heelType", label: "Heel Type" },
+  { name: "heelHeight", label: "Heel Height" },
+  { name: "outerMaterialType", label: "Outer Material Type" },
+  { name: "heelHeightUnitOfMeasure", label: "Heel Height Unit Of Measure" },
+  { name: "footwearSizeSystem", label: "Footwear Size System" },
+  { name: "shoeSizeAgeGroup", label: "Shoe Size Age Group" },
+  { name: "shoeSizeGender", label: "Shoe Size Gender" },
+  { name: "shoeSizeClass", label: "Shoe Size Class" },
+  { name: "shoeSizeWidth", label: "Shoe Size Width" },
+  { name: "shoeSize", label: "Shoe Size" },
+  { name: "style", label: "Style" },
+  { name: "color", label: "Color" },
+  { name: "size", label: "Size" },
+  { name: "colourMap", label: "Colour Map" },
+  { name: "manufacturerContact", label: "Manufacturer Contact" },
+  { name: "sizeMap", label: "Size Map" },
+  { name: "unitCountType", label: "Unit Count Type" },
+  { name: "unitCount", label: "Unit Count" },
+  { name: "itemLengthLongerEdge", label: "Item Length Longer Edge" },
+  { name: "itemLengthUnit", label: "Item Length Unit" },
+  { name: "itemWidthShorterEdge", label: "Item Width Shorter Edge" },
+  { name: "itemWidthUnit", label: "Item Width Unit" },
+  { name: "itemWeight", label: "Item Weight" },
+  { name: "itemWeightUnit", label: "Item Weight Unit" },
+  { name: "hoseLength", label: "Hose Length" },
+  { name: "hoseLengthUnitOfMeasure", label: "Hose Length Unit Of Measure" },
+  { name: "seatHeight", label: "Seat Height" },
+  { name: "seatHeightUnitOfMeasure", label: "Seat Height Unit Of Measure" },
+  { name: "shoeHeightMap", label: "Shoe Height Map" },
+  { name: "packageHeightUnit", label: "Package Height Unit" },
+  { name: "packageLength", label: "Package Length" },
+  { name: "packageWidth", label: "Package Width" },
+  { name: "packageWeightUnit", label: "Package Weight Unit" },
+  { name: "packageHeight", label: "Package Height" },
+  { name: "packageWidthUnit", label: "Package Width Unit" },
+  { name: "packageLengthUnit", label: "Package Length Unit" },
+  { name: "packageWeight", label: "Package Weight" },
+  { name: "externalProductInformation", label: "External Product Information" },
+  { name: "maximumRetailPrice", label: "Maximum Retail Price" },
+  { name: "yourPriceInr", label: "Your Price INR (IN)" },
+];
+
+const arrayFields = [
+  { name: "materialTypes", label: "Material Type" },
+  { name: "materialFabricRegulations", label: "Material/Fabric Regulations" },
+];
+
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -91,6 +146,55 @@ export default function ProductTable() {
       specifications: (product.specifications || [])
         .map((s) => `${s.key}: ${s.value}`)
         .join("\n"),
+      productType: product.productType || "",
+      sellerSku: product.sellerSku || "",
+      externalProductId: product.externalProductId || "",
+      manufacturer: product.manufacturer || "",
+      modelName: product.modelName || "",
+      closureType: product.closureType || "",
+      soleMaterial: product.soleMaterial || "",
+      heelType: product.heelType || "",
+      heelHeight: product.heelHeight || "",
+      outerMaterialType: product.outerMaterialType || "",
+      heelHeightUnitOfMeasure: product.heelHeightUnitOfMeasure || "",
+      footwearSizeSystem: product.footwearSizeSystem || "",
+      shoeSizeAgeGroup: product.shoeSizeAgeGroup || "",
+      shoeSizeGender: product.shoeSizeGender || "",
+      shoeSizeClass: product.shoeSizeClass || "",
+      shoeSizeWidth: product.shoeSizeWidth || "",
+      shoeSize: product.shoeSize || "",
+      style: product.style || "",
+      color: product.color || "",
+      size: product.size || "",
+      colourMap: product.colourMap || "",
+      manufacturerContact: product.manufacturerContact || "",
+      materialTypes: (product.materialTypes || []).join("\n"),
+      sizeMap: product.sizeMap || "",
+      unitCountType: product.unitCountType || "",
+      unitCount: product.unitCount || "",
+      itemLengthLongerEdge: product.itemLengthLongerEdge || "",
+      itemLengthUnit: product.itemLengthUnit || "",
+      itemWidthShorterEdge: product.itemWidthShorterEdge || "",
+      itemWidthUnit: product.itemWidthUnit || "",
+      itemWeight: product.itemWeight || "",
+      itemWeightUnit: product.itemWeightUnit || "",
+      hoseLength: product.hoseLength || "",
+      hoseLengthUnitOfMeasure: product.hoseLengthUnitOfMeasure || "",
+      seatHeight: product.seatHeight || "",
+      seatHeightUnitOfMeasure: product.seatHeightUnitOfMeasure || "",
+      shoeHeightMap: product.shoeHeightMap || "",
+      packageHeightUnit: product.packageHeightUnit || "",
+      packageLength: product.packageLength || "",
+      packageWidth: product.packageWidth || "",
+      packageWeightUnit: product.packageWeightUnit || "",
+      packageHeight: product.packageHeight || "",
+      packageWidthUnit: product.packageWidthUnit || "",
+      packageLengthUnit: product.packageLengthUnit || "",
+      packageWeight: product.packageWeight || "",
+      externalProductInformation: product.externalProductInformation || "",
+      materialFabricRegulations: (product.materialFabricRegulations || []).join("\n"),
+      maximumRetailPrice: product.maximumRetailPrice || "",
+      yourPriceInr: product.yourPriceInr || "",
     });
   };
 
@@ -120,6 +224,8 @@ export default function ProductTable() {
       gallery: form.gallery.split("\n").filter(Boolean),
       keyFeatures: form.keyFeatures.split("\n").filter(Boolean),
       additionalFeatures: form.additionalFeatures.split("\n").filter(Boolean),
+      materialTypes: form.materialTypes.split("\n").filter(Boolean),
+      materialFabricRegulations: form.materialFabricRegulations.split("\n").filter(Boolean),
       specifications: form.specifications
         .split("\n")
         .map((l) => {
@@ -336,7 +442,7 @@ export default function ProductTable() {
             className="space-y-3"
           >
             <div>
-              <Label>Name</Label>
+              <Label>Title</Label>
               <Input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -350,7 +456,7 @@ export default function ProductTable() {
               />
             </div>
             <div>
-              <Label>Description</Label>
+              <Label>Product Description</Label>
               <Input
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -366,7 +472,7 @@ export default function ProductTable() {
               />
             </div>
             <div>
-              <Label>Image</Label>
+              <Label>Main Image URL</Label>
               <Input type="file" onChange={handleImageUpload} disabled={uploading} />
               {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
               {form.image && (
@@ -381,7 +487,7 @@ export default function ProductTable() {
               )}
             </div>
             <div>
-              <Label>Gallery Images</Label>
+              <Label>Other Image URLs</Label>
               <Input
                 type="file"
                 multiple
@@ -426,7 +532,7 @@ export default function ProductTable() {
               )}
             </div>
             <div>
-              <Label>Key Features</Label>
+              <Label>Bullet Points</Label>
               <Textarea
                 value={form.keyFeatures}
                 onChange={(e) => setForm({ ...form, keyFeatures: e.target.value })}
@@ -469,6 +575,25 @@ export default function ProductTable() {
                 placeholder="Enter specifications as 'Key: Value', one per line"
               />
             </div>
+            {singleFields.map(({ name, label }) => (
+              <div key={name}>
+                <Label>{label}</Label>
+                <Input
+                  value={form[name] || ""}
+                  onChange={(e) => setForm({ ...form, [name]: e.target.value })}
+                />
+              </div>
+            ))}
+            {arrayFields.map(({ name, label }) => (
+              <div key={name}>
+                <Label>{label}</Label>
+                <Textarea
+                  value={form[name] || ""}
+                  onChange={(e) => setForm({ ...form, [name]: e.target.value })}
+                  placeholder="Enter values, one per line"
+                />
+              </div>
+            ))}
             <Button
               type="submit"
               className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]"
