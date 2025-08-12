@@ -6,6 +6,21 @@ const userSchema = new mongoose.Schema(
         type:String,
         required:true,
     },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    mobile: {
+      type: String,
+    },
+    firmName: {
+      type: String,
+    },
+    gstin: {
+      type: String,
+    },
     email: {
       type: String,
       required: true,
@@ -25,7 +40,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['admin', 'user'],
+      enum: ['admin', 'user', 'dealer'],
       default: 'user',
     },
   },
