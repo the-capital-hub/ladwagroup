@@ -124,7 +124,7 @@ export default function Navbar() {
 					>
 						Log in
 					</Link> */}
-					<Button  onClick={() => {navigate.push('/contact-us')}} className="cursor-pointer bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800">Contact Us</Button>
+                                        <Button  onClick={() => {navigate.push('/login')}} className="cursor-pointer bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800">Dealers Login</Button>
 				</div>
 
 				{/* Mobile Menu Button */}
@@ -198,9 +198,9 @@ export default function Navbar() {
 							>
 								Log in
 							</Link> */}
-							<Button onClick={() => {navigate.push('/contact-us')}} className="rounded-full bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-800 w-full">
-								Contact Us
-							</Button>
+                                                        <Button onClick={() => {navigate.push('/login')}} className="rounded-full bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-800 w-full">
+                                                                Dealers Login
+                                                        </Button>
 						</div>
 					</nav>
 				</div>
