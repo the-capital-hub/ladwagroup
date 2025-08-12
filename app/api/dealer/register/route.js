@@ -1,5 +1,6 @@
 import dbConnect from '@/lib/db';
 import User from '@/Models/User';
+import Dealer from '@/Models/Dealer';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
@@ -37,7 +38,7 @@ export async function POST(req) {
 
     try {
       const hashedPassword = await bcrypt.hash(pending.password, 10);
-      await User.create({
+      const newUser = await User.create({
         name: `${pending.firstName} ${pending.lastName}`,
         firstName: pending.firstName,
         lastName: pending.lastName,
@@ -47,6 +48,15 @@ export async function POST(req) {
         email: pending.email,
         password: hashedPassword,
         role: 'dealer',
+      });
+
+      await Dealer.create({
+        user: newUser._id,
+        firstName: pending.firstName,
+        lastName: pending.lastName,
+        mobile: pending.mobile,
+        firmName: pending.firmName,
+        gstin: pending.gstin,
       });
       pendingUsers.delete(email);
       return NextResponse.json({ message: 'User registered successfully' });
@@ -80,22 +90,38 @@ export async function POST(req) {
       expires: Date.now() + 10 * 60 * 1000,
     });
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    let transporter;
+    if (
+      process.env.SMTP_HOST &&
+      process.env.SMTP_USER &&
+      process.env.SMTP_PASS
+    ) {
+      transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587,
+        secure: false,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+    } else {
+      transporter = nodemailer.createTransport({ jsonTransport: true });
+    }
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM || process.env.SMTP_USER,
+    const info = await transporter.sendMail({
+      from:
+        process.env.EMAIL_FROM ||
+        process.env.SMTP_USER ||
+        'no-reply@example.com',
       to: email,
       subject: 'Your verification code',
       text: `Your OTP is ${otpCode}`,
     });
+
+    if (transporter.options.jsonTransport) {
+      console.log('OTP email content:', info.message);
+    }
 
     return NextResponse.json({ message: 'OTP sent to email' });
   } catch (err) {
