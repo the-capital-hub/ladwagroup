@@ -200,9 +200,9 @@ export default function ProductFilters() {
 							</AccordionItem>
 						</Accordion>
 
-						<Button onClick={() => {navigate.push('/contact-us')}} className="w-full bg-teal-700 hover:bg-teal-800 mt-6">
-							Apply Filter
-						</Button>
+						<Button className="w-full bg-teal-700 hover:bg-teal-800 mt-6">
+                                                        Apply Filter
+                                                </Button>
 					</motion.div>
 				)}
 			</AnimatePresence>
