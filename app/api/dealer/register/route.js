@@ -92,24 +92,39 @@ export async function POST(req) {
 
     let transporter;
     if (
-      process.env.SMTP_HOST &&
+      (process.env.SMTP_HOST || process.env.SMTP_SERVICE) &&
       process.env.SMTP_USER &&
       process.env.SMTP_PASS
     ) {
-      transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT) : 587,
-        secure: false,
+      const transportConfig = {
+
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
         },
-      });
+      };
+
+      if (process.env.SMTP_HOST) {
+        transportConfig.host = process.env.SMTP_HOST;
+        transportConfig.port = process.env.SMTP_PORT
+          ? parseInt(process.env.SMTP_PORT)
+          : 587;
+        transportConfig.secure = transportConfig.port === 465;
+      } else if (process.env.SMTP_SERVICE) {
+        transportConfig.service = process.env.SMTP_SERVICE;
+        // Nodemailer sets the correct port/secure for well-known services
+      }
+
+      transporter = nodemailer.createTransport(transportConfig);
     } else {
-      transporter = nodemailer.createTransport({ jsonTransport: true });
+      return NextResponse.json(
+        { message: 'Email service not configured' },
+        { status: 500 }
+      );
     }
 
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
+
       from:
         process.env.EMAIL_FROM ||
         process.env.SMTP_USER ||
