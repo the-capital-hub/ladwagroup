@@ -97,6 +97,7 @@ export async function POST(req) {
       process.env.SMTP_PASS
     ) {
       const transportConfig = {
+
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
@@ -123,6 +124,7 @@ export async function POST(req) {
     }
 
     await transporter.sendMail({
+
       from:
         process.env.EMAIL_FROM ||
         process.env.SMTP_USER ||
@@ -131,6 +133,10 @@ export async function POST(req) {
       subject: 'Your verification code',
       text: `Your OTP is ${otpCode}`,
     });
+
+    if (transporter.options.jsonTransport) {
+      console.log('OTP email content:', info.message);
+    }
 
     return NextResponse.json({ message: 'OTP sent to email' });
   } catch (err) {
