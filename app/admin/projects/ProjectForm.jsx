@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import CloudinaryWidget from '@/components/CloudinaryWidget';
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,6 @@ const ProjectForm = () => {
   const [portfolioPreviews, setPortfolioPreviews] = useState([]);
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const fetchProjects = async () => {
     const res = await fetch('/api/project');
@@ -35,106 +35,18 @@ const ProjectForm = () => {
     fetchProjects();
   }, []);
 
-  const uploadFile = async (file) => {
-    const fd = new FormData();
-    fd.append('file', file);
-
-    let res;
-    try {
-      res = await fetch('/api/upload', { method: 'POST', body: fd });
-    } catch (err) {
-      console.error('Network error during upload:', err);
-      throw new Error('Network error during upload');
-    }
-
-    if (!res.ok) {
-      let message = 'Upload failed';
-      try {
-        const errData = await res.json();
-        message =
-          [errData.error || errData.message, errData.details]
-            .filter(Boolean)
-            .join(': ') || message;
-      } catch {
-        const text = await res.text();
-        message = text || message;
-      }
-      console.error('Upload API responded with error:', message);
-      throw new Error(message);
-    }
-
-    try {
-      const data = await res.json();
-      if (!data.url) throw new Error('Upload failed');
-      return data.url;
-    } catch (err) {
-      console.error('Failed to parse upload response:', err);
-      throw new Error(err.message || 'Invalid server response');
-    }
+  const handleMainImageUpload = (url) => {
+    setFormData((prev) => ({ ...prev, mainImage: url }));
+    setMainImagePreview(url);
   };
 
-  const handleMainImageChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    if (/\.(jpe?g|png)$/i.test(file.name)) {
-      setUploading(true);
-      try {
-        const url = await uploadFile(file);
-        setFormData((prev) => ({ ...prev, mainImage: url }));
-        setMainImagePreview(url);
-      } catch (err) {
-        setErrors(err.message || 'Image upload failed.');
-      } finally {
-        setUploading(false);
-      }
-    } else {
-      setErrors('Main image must be a JPG, JPEG, or PNG file.');
-    }
-  };
-
-  const handlePortfolioImagesChange = async (e) => {
+  const handlePortfolioUpload = (url) => {
     setErrors('');
-    const files = Array.from(e.target.files);
-
-    const allowedFiles = files.filter(file =>
-      /\.(jpe?g|png)$/i.test(file.name)
-    );
-
-    if (allowedFiles.length < files.length) {
-      setErrors('Only JPG, JPEG, and PNG images are allowed.');
-    }
-
-    const existingCount = formData.portfolioImages.length;
-    const availableSlots = 3 - existingCount;
-
-    if (allowedFiles.length > availableSlots) {
-      setErrors(`You can upload a total of 3 portfolio images only.`);
-      allowedFiles.splice(availableSlots);
-    }
-
-    if (!allowedFiles.length) return;
-
-    setUploading(true);
-    try {
-      const uploaded = [];
-      for (const f of allowedFiles) {
-        const url = await uploadFile(f);
-        uploaded.push(url);
-      }
-
-      setFormData((prev) => ({
-        ...prev,
-        portfolioImages: [...prev.portfolioImages, ...uploaded].slice(0, 3),
-      }));
-
-      setPortfolioPreviews((prev) =>
-        [...prev, ...uploaded].slice(0, 3)
-      );
-    } catch (err) {
-      setErrors(err.message || 'Image upload failed.');
-    } finally {
-      setUploading(false);
-    }
+    setFormData((prev) => {
+      const images = [...prev.portfolioImages, url].slice(0, 3);
+      return { ...prev, portfolioImages: images };
+    });
+    setPortfolioPreviews((prev) => [...prev, url].slice(0, 3));
   };
 
   const handleChange = (e) => {
@@ -272,17 +184,10 @@ const ProjectForm = () => {
         {/* Main Image Upload */}
         <div className="space-y-2">
           <Label htmlFor="mainImage" className="text-[#097362] block">Main Image</Label>
-          <Input
-            id="mainImage"
-            name="mainImage"
-            type="file"
-            accept=".jpg,.jpeg,.png"
-            onChange={(e) => {
-              handleMainImageChange(e);
-              e.target.value = null;
-            }}
+          <CloudinaryWidget
+            setSecureUrl={handleMainImageUpload}
+            setPublicid={() => {}}
           />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           {mainImagePreview && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 mb-1">Preview:</p>
@@ -298,18 +203,12 @@ const ProjectForm = () => {
         {/* Portfolio Image Upload */}
         <div className="space-y-2">
           <Label htmlFor="portfolioImages" className="text-[#097362] block">Portfolio Images</Label>
-          <Input
-            id="portfolioImages"
-            name="portfolioImages"
-            type="file"
-            accept=".jpg,.jpeg,.png"
-            multiple
-            onChange={(e) => {
-              handlePortfolioImagesChange(e);
-              e.target.value = null;
-            }}
+          <CloudinaryWidget
+            setSecureUrl={handlePortfolioUpload}
+            setPublicid={() => {}}
+            options={{ multiple: true, maxFiles: 3 }}
+            buttonText="Upload Images"
           />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           <p className="text-sm text-gray-500">You can upload a total of 3 images (JPG, JPEG, PNG).</p>
 
           {portfolioPreviews.length > 0 && (

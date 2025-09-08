@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import CloudinaryWidget from "@/components/CloudinaryWidget";
 import {
   Pagination,
   PaginationContent,
@@ -89,7 +90,6 @@ export default function ProductTable() {
   const [loading, setLoading] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
   const [form, setForm] = useState({});
-  const [uploading, setUploading] = useState(false);
   const [search, setSearch] = useState("");
   const [searchDebounced, setSearchDebounced] = useState("");
 
@@ -198,24 +198,15 @@ export default function ProductTable() {
     });
   };
 
-  const uploadFile = async (file) => {
-    const fd = new FormData();
-    fd.append("file", file);
-    const res = await fetch("/api/upload", { method: "POST", body: fd });
-    const data = await res.json();
-    return data.url;
+  const handleImageUpload = (url) => {
+    setForm({ ...form, image: url });
   };
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const url = await uploadFile(file);
-      if (url) setForm({ ...form, image: url });
-    } finally {
-      setUploading(false);
-    }
+  const handleGalleryUpload = (url) => {
+    setForm((prev) => ({
+      ...prev,
+      gallery: [...prev.gallery.split('\n').filter(Boolean), url].join('\n'),
+    }));
   };
 
   const handleUpdate = async () => {
@@ -473,8 +464,10 @@ export default function ProductTable() {
             </div>
             <div>
               <Label>Main Image URL</Label>
-              <Input type="file" onChange={handleImageUpload} disabled={uploading} />
-              {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+              <CloudinaryWidget
+                setSecureUrl={handleImageUpload}
+                setPublicid={() => {}}
+              />
               {form.image && (
                 <>
                   <p className="text-xs break-all mt-1">{form.image}</p>
@@ -488,35 +481,12 @@ export default function ProductTable() {
             </div>
             <div>
               <Label>Other Image URLs</Label>
-              <Input
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={async (e) => {
-                  const files = Array.from(e.target.files || []);
-                  if (!files.length) return;
-                  setUploading(true);
-                  try {
-                    const urls = [];
-                    for (const file of files) {
-                      const url = await uploadFile(file);
-                      if (url) urls.push(url);
-                    }
-                    setForm((prev) => ({
-                      ...prev,
-                      gallery: [...prev.gallery.split("\n").filter(Boolean), ...urls].join(
-                        "\n"
-                      ),
-                    }));
-                  } finally {
-                    setUploading(false);
-                  }
-                }}
-                disabled={uploading}
+              <CloudinaryWidget
+                setSecureUrl={handleGalleryUpload}
+                setPublicid={() => {}}
+                options={{ multiple: true }}
+                buttonText="Upload Gallery Images"
               />
-              {uploading && (
-                <p className="text-sm text-gray-500">Uploading gallery images...</p>
-              )}
 
               {form.gallery && (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
@@ -597,9 +567,8 @@ export default function ProductTable() {
             <Button
               type="submit"
               className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]"
-              disabled={uploading}
             >
-              {uploading ? "Uploading..." : "Update"}
+              Update
             </Button>
           </form>
         </DialogContent>
