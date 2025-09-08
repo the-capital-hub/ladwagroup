@@ -48,6 +48,7 @@ const ProjectForm = () => {
           [errData.error || errData.message, errData.details]
             .filter(Boolean)
             .join(': ') || message;
+
       } catch {
         const text = await res.text();
         message = text || message;
