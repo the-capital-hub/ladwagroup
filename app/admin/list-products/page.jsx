@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { uploadImage } from "@/lib/upload";
+import CloudinaryWidget from "@/components/CloudinaryWidget";
 import {
   Pagination,
   PaginationContent,
@@ -198,18 +199,10 @@ export default function ProductTable() {
     });
   };
 
-  // Image uploads handled via shared utility
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const url = await uploadImage(file);
-      if (url) setForm({ ...form, image: url });
-    } finally {
-      setUploading(false);
-    }
+  // Image upload handler for Cloudinary widget
+  const handleImageUpload = (url) => {
+    if (!url) return;
+    setForm({ ...form, image: url });
   };
 
   const handleUpdate = async () => {
