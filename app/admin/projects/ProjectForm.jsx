@@ -23,7 +23,6 @@ const ProjectForm = () => {
   const [portfolioPreviews, setPortfolioPreviews] = useState([]);
   const [errors, setErrors] = useState('');
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const fetchProjects = async () => {
     const res = await fetch('/api/project');
@@ -57,7 +56,7 @@ const ProjectForm = () => {
     }
   };
 
-  const handlePortfolioImagesChange = async (e) => {
+  const handlePortfolioUpload = (url) => {
     setErrors('');
     const files = Array.from(e.target.files);
 
@@ -237,17 +236,10 @@ const ProjectForm = () => {
         {/* Main Image Upload */}
         <div className="space-y-2">
           <Label htmlFor="mainImage" className="text-[#097362] block">Main Image</Label>
-          <Input
-            id="mainImage"
-            name="mainImage"
-            type="file"
-            accept=".jpg,.jpeg,.png"
-            onChange={(e) => {
-              handleMainImageChange(e);
-              e.target.value = null;
-            }}
+          <CloudinaryWidget
+            setSecureUrl={handleMainImageUpload}
+            setPublicid={() => {}}
           />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           {mainImagePreview && (
             <div className="mt-2">
               <p className="text-sm text-gray-500 mb-1">Preview:</p>
@@ -263,18 +255,12 @@ const ProjectForm = () => {
         {/* Portfolio Image Upload */}
         <div className="space-y-2">
           <Label htmlFor="portfolioImages" className="text-[#097362] block">Portfolio Images</Label>
-          <Input
-            id="portfolioImages"
-            name="portfolioImages"
-            type="file"
-            accept=".jpg,.jpeg,.png"
-            multiple
-            onChange={(e) => {
-              handlePortfolioImagesChange(e);
-              e.target.value = null;
-            }}
+          <CloudinaryWidget
+            setSecureUrl={handlePortfolioUpload}
+            setPublicid={() => {}}
+            options={{ multiple: true, maxFiles: 3 }}
+            buttonText="Upload Images"
           />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
           <p className="text-sm text-gray-500">You can upload a total of 3 images (JPG, JPEG, PNG).</p>
 
           {portfolioPreviews.length > 0 && (

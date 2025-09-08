@@ -90,7 +90,6 @@ export default function ProductTable() {
   const [loading, setLoading] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
   const [form, setForm] = useState({});
-  const [uploading, setUploading] = useState(false);
   const [search, setSearch] = useState("");
   const [searchDebounced, setSearchDebounced] = useState("");
 
@@ -468,8 +467,10 @@ export default function ProductTable() {
             </div>
             <div>
               <Label>Main Image URL</Label>
-              <Input type="file" onChange={handleImageUpload} disabled={uploading} />
-              {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+              <CloudinaryWidget
+                setSecureUrl={handleImageUpload}
+                setPublicid={() => {}}
+              />
               {form.image && (
                 <>
                   <p className="text-xs break-all mt-1">{form.image}</p>
@@ -592,9 +593,8 @@ export default function ProductTable() {
             <Button
               type="submit"
               className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]"
-              disabled={uploading}
             >
-              {uploading ? "Uploading..." : "Update"}
+              Update
             </Button>
           </form>
         </DialogContent>

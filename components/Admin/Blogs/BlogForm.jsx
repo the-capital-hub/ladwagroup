@@ -40,7 +40,6 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 		readTime: 5,
 	});
 
-	const [uploading, setUploading] = useState(false);
 	const [saving, setSaving] = useState(false);
 
 	useEffect(() => {
@@ -292,40 +291,30 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 							</div>
 						</div>
 
-						{/* Featured Image */}
-						<div>
-							<Label
-								htmlFor="featuredImage"
-								className="text-[#097362] font-medium"
-							>
-								Featured Image
-							</Label>
-							<div className="mt-1 space-y-2">
-								<Input
-									id="featuredImage"
-									type="file"
-									accept="image/*"
-									onChange={handleImageUpload}
-									disabled={uploading}
-									className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#097362] focus:border-transparent"
-								/>
-								{uploading && (
-									<div className="flex items-center text-sm text-gray-500">
-										<LoadingSpinner size="sm" className="mr-2" />
-										Uploading...
-									</div>
-								)}
-								{form.featuredImage && (
-									<div className="relative">
-										<img
-											src={form.featuredImage || "/placeholder.svg"}
-											alt="Featured"
-											className="w-32 h-20 object-cover rounded-lg border"
-										/>
-									</div>
-								)}
-							</div>
-						</div>
+                                                {/* Featured Image */}
+                                                <div>
+                                                        <Label
+                                                                htmlFor="featuredImage"
+                                                                className="text-[#097362] font-medium"
+                                                        >
+                                                                Featured Image
+                                                        </Label>
+                                                        <div className="mt-1 space-y-2">
+                                                                <CloudinaryWidget
+                                                                        setSecureUrl={handleImageUpload}
+                                                                        setPublicid={() => {}}
+                                                                />
+                                                                {form.featuredImage && (
+                                                                        <div className="relative">
+                                                                                <img
+                                                                                        src={form.featuredImage || "/placeholder.svg"}
+                                                                                        alt="Featured"
+                                                                                        className="w-32 h-20 object-cover rounded-lg border"
+                                                                                />
+                                                                        </div>
+                                                                )}
+                                                        </div>
+                                                </div>
 
 						{/* Excerpt - short description */}
 						<div>

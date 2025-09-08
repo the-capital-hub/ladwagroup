@@ -9,7 +9,6 @@ export default function CategoryForm() {
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({ name: '', slug: '', description: '', image: '' });
   const [editId, setEditId] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
   const fetchCategories = async () => {
     const res = await fetch('/api/categories');
@@ -79,13 +78,14 @@ export default function CategoryForm() {
           <Input id="description" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
         </div>
         <div>
-          <Label htmlFor="image" className="text-[#097362]">Image</Label>
-          <Input id="image" type="file" onChange={handleImageUpload} />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+          <Label className="text-[#097362]">Image</Label>
+          <CloudinaryWidget
+            setSecureUrl={(url) => setForm({ ...form, image: url })}
+            setPublicid={() => {}}
+          />
           {form.image && (
             <p className="text-sm mt-1 break-all">{form.image}</p>
           )}
-
         </div>
         <Button type="submit" className="w-full bg-gradient-to-b from-[#097362] to-[#0FA78E]">
           {editId ? 'Update' : 'Create'}

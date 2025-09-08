@@ -130,7 +130,6 @@ export default function ProductForm() {
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState(initialForm);
   const [editId, setEditId] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
 
   const fetchData = async () => {
@@ -308,15 +307,22 @@ export default function ProductForm() {
         </div>
         <div>
           <Label htmlFor="image" className="text-[#097362]">Main Image URL</Label>
-          <Input id="image" type="file" onChange={handleImageUpload} />
+          <CloudinaryWidget
+            setSecureUrl={handleImageUpload}
+            setPublicid={() => {}}
+          />
           {form.image && (
             <p className="text-sm mt-1 break-all">{form.image}</p>
           )}
         </div>
         <div>
           <Label htmlFor="gallery" className="text-[#097362]">Other Image URLs</Label>
-          <Input id="gallery" type="file" multiple onChange={handleGalleryUpload} />
-          {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+          <CloudinaryWidget
+            setSecureUrl={handleGalleryUpload}
+            setPublicid={() => {}}
+            options={{ multiple: true }}
+            buttonText="Upload Gallery Images"
+          />
           {form.gallery && (
             <Textarea id="galleryUrls" rows={3} value={form.gallery} readOnly />
           )}
