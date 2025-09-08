@@ -83,6 +83,7 @@ const ProjectForm = () => {
     }
 
     if (!allowedFiles.length) return;
+    // test
 
     setUploading(true);
     try {
