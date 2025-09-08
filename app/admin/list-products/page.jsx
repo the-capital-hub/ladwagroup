@@ -93,6 +93,7 @@ export default function ProductTable() {
   const [form, setForm] = useState({});
   const [search, setSearch] = useState("");
   const [searchDebounced, setSearchDebounced] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
