@@ -9,6 +9,7 @@ export default function ProductListCard({ product }) {
   const handleInquiry = (e) => {
     e.preventDefault();
     useInquiryStore.openInquiry(product);
+    // test
   };
 
   return (
