@@ -44,7 +44,11 @@ const ProjectForm = () => {
       let message = 'Upload failed';
       try {
         const errData = await res.json();
-        message = errData.error || errData.message || message;
+        message =
+          [errData.error || errData.message, errData.details]
+            .filter(Boolean)
+            .join(': ') || message;
+
       } catch {
         const text = await res.text();
         message = text || message;
