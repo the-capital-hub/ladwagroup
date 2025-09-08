@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import AddToCartForm from '@/components/AddToCartForm';
 
 export const dynamic = 'force-dynamic';
 
@@ -125,6 +126,7 @@ export default async function ProductPage({ params }) {
           )}
           <p className="mb-2">Weight: {product.weight}</p>
           <p className="mb-4">Dimension: {product.dimension}</p>
+          <AddToCartForm slug={product.slug} />
           {product.specifications.length > 0 && (
             <table className="w-full text-sm mb-6 border">
               <tbody>
