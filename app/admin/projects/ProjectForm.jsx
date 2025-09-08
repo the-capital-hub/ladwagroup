@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import CloudinaryWidget from '@/components/CloudinaryWidget';
+import { uploadImage } from '@/lib/upload';
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
@@ -35,18 +35,70 @@ const ProjectForm = () => {
     fetchProjects();
   }, []);
 
-  const handleMainImageUpload = (url) => {
-    setFormData((prev) => ({ ...prev, mainImage: url }));
-    setMainImagePreview(url);
+  // Image upload is handled by shared utility in @/lib/upload
+
+  const handleMainImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (/\.(jpe?g|png)$/i.test(file.name)) {
+      setUploading(true);
+      try {
+        const url = await uploadImage(file);
+        setFormData((prev) => ({ ...prev, mainImage: url }));
+        setMainImagePreview(url);
+      } catch (err) {
+        setErrors(err.message || 'Image upload failed.');
+      } finally {
+        setUploading(false);
+      }
+    } else {
+      setErrors('Main image must be a JPG, JPEG, or PNG file.');
+    }
   };
 
   const handlePortfolioUpload = (url) => {
     setErrors('');
-    setFormData((prev) => {
-      const images = [...prev.portfolioImages, url].slice(0, 3);
-      return { ...prev, portfolioImages: images };
-    });
-    setPortfolioPreviews((prev) => [...prev, url].slice(0, 3));
+    const files = Array.from(e.target.files);
+
+    const allowedFiles = files.filter(file =>
+      /\.(jpe?g|png)$/i.test(file.name)
+    );
+
+    if (allowedFiles.length < files.length) {
+      setErrors('Only JPG, JPEG, and PNG images are allowed.');
+    }
+
+    const existingCount = formData.portfolioImages.length;
+    const availableSlots = 3 - existingCount;
+
+    if (allowedFiles.length > availableSlots) {
+      setErrors(`You can upload a total of 3 portfolio images only.`);
+      allowedFiles.splice(availableSlots);
+    }
+
+    if (!allowedFiles.length) return;
+
+    setUploading(true);
+    try {
+      const uploaded = [];
+      for (const f of allowedFiles) {
+        const url = await uploadImage(f);
+        uploaded.push(url);
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        portfolioImages: [...prev.portfolioImages, ...uploaded].slice(0, 3),
+      }));
+
+      setPortfolioPreviews((prev) =>
+        [...prev, ...uploaded].slice(0, 3)
+      );
+    } catch (err) {
+      setErrors(err.message || 'Image upload failed.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleChange = (e) => {

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import CloudinaryWidget from '@/components/CloudinaryWidget';
+import { uploadImage } from '@/lib/upload';
 
 export default function CategoryForm() {
   const [categories, setCategories] = useState([]);
@@ -45,6 +45,21 @@ export default function CategoryForm() {
     await fetch(`/api/categories/${id}`, { method: 'DELETE' });
     fetchCategories();
   };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadImage(file);
+      setForm({ ...form, image: url });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setUploading(false);
+    }
+  };
+
 
   return (
     <div className="max-w-3xl mx-auto p-6 my-5 bg-white shadow-md border rounded-xl space-y-6">

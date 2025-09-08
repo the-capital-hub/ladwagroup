@@ -16,7 +16,7 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import CloudinaryWidget from "@/components/CloudinaryWidget";
+import { uploadImage } from "@/lib/upload";
 import {
   Pagination,
   PaginationContent,
@@ -198,15 +198,18 @@ export default function ProductTable() {
     });
   };
 
-  const handleImageUpload = (url) => {
-    setForm({ ...form, image: url });
-  };
+  // Image uploads handled via shared utility
 
-  const handleGalleryUpload = (url) => {
-    setForm((prev) => ({
-      ...prev,
-      gallery: [...prev.gallery.split('\n').filter(Boolean), url].join('\n'),
-    }));
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadImage(file);
+      if (url) setForm({ ...form, image: url });
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleUpdate = async () => {
@@ -481,12 +484,35 @@ export default function ProductTable() {
             </div>
             <div>
               <Label>Other Image URLs</Label>
-              <CloudinaryWidget
-                setSecureUrl={handleGalleryUpload}
-                setPublicid={() => {}}
-                options={{ multiple: true }}
-                buttonText="Upload Gallery Images"
+              <Input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={async (e) => {
+                  const files = Array.from(e.target.files || []);
+                  if (!files.length) return;
+                  setUploading(true);
+                  try {
+                    const urls = [];
+                    for (const file of files) {
+                      const url = await uploadImage(file);
+                      if (url) urls.push(url);
+                    }
+                    setForm((prev) => ({
+                      ...prev,
+                      gallery: [...prev.gallery.split("\n").filter(Boolean), ...urls].join(
+                        "\n"
+                      ),
+                    }));
+                  } finally {
+                    setUploading(false);
+                  }
+                }}
+                disabled={uploading}
               />
+              {uploading && (
+                <p className="text-sm text-gray-500">Uploading gallery images...</p>
+              )}
 
               {form.gallery && (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">

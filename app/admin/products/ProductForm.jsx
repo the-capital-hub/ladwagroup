@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import CloudinaryWidget from '@/components/CloudinaryWidget';
+import { uploadImage } from '@/lib/upload';
 
 const singleFields = [
   { name: 'productType', label: 'Product Type' },
@@ -248,15 +248,32 @@ export default function ProductForm() {
 
   // Image uploads handled via shared utility
 
-  const handleImageUpload = (url) => {
-    setForm({ ...form, image: url });
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadImage(file);
+      if (url) setForm({ ...form, image: url });
+    } finally {
+      setUploading(false);
+    }
   };
 
-  const handleGalleryUpload = (url) => {
-    setForm((prev) => ({
-      ...prev,
-      gallery: prev.gallery ? `${prev.gallery}\n${url}` : url,
-    }));
+  const handleGalleryUpload = async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    setUploading(true);
+    try {
+      const uploaded = [];
+      for (const f of files) {
+        const url = await uploadImage(f);
+        if (url) uploaded.push(url);
+      }
+      setForm({ ...form, gallery: uploaded.join('\n') });
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
