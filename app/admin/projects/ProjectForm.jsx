@@ -38,7 +38,14 @@ const ProjectForm = () => {
   const uploadFile = async (file) => {
     const fd = new FormData();
     fd.append('file', file);
-    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+
+    let res;
+    try {
+      res = await fetch('/api/upload', { method: 'POST', body: fd });
+    } catch (err) {
+      console.error('Network error during upload:', err);
+      throw new Error('Network error during upload');
+    }
 
     if (!res.ok) {
       let message = 'Upload failed';
@@ -48,11 +55,11 @@ const ProjectForm = () => {
           [errData.error || errData.message, errData.details]
             .filter(Boolean)
             .join(': ') || message;
-
       } catch {
         const text = await res.text();
         message = text || message;
       }
+      console.error('Upload API responded with error:', message);
       throw new Error(message);
     }
 
@@ -61,6 +68,7 @@ const ProjectForm = () => {
       if (!data.url) throw new Error('Upload failed');
       return data.url;
     } catch (err) {
+      console.error('Failed to parse upload response:', err);
       throw new Error(err.message || 'Invalid server response');
     }
   };
