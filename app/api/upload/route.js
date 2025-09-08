@@ -12,6 +12,17 @@ export async function POST(req) {
   if (!requireAdmin()) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
+  if (
+    !process.env.CLOUDINARY_CLOUD_NAME ||
+    !process.env.CLOUDINARY_API_KEY ||
+    !process.env.CLOUDINARY_API_SECRET
+  ) {
+    console.error('Missing Cloudinary configuration');
+    return NextResponse.json(
+      { error: 'Upload failed', details: 'Cloudinary not configured' },
+      { status: 500 }
+    );
+  }
   const formData = await req.formData();
   const file = formData.get('file');
   if (!file) {
@@ -33,6 +44,7 @@ export async function POST(req) {
     });
     return NextResponse.json({ url: result.secure_url });
   } catch (err) {
+    console.error('Cloudinary upload failed:', err);
     return NextResponse.json({ error: 'Upload failed', details: err.message }, { status: 500 });
   }
 }
