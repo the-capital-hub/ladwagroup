@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { uploadImage } from '@/lib/upload';
 
 export default function CategoryForm() {
   const [categories, setCategories] = useState([]);
@@ -49,15 +50,12 @@ export default function CategoryForm() {
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const fd = new FormData();
-    fd.append('file', file);
     setUploading(true);
     try {
-      const res = await fetch('/api/upload', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (data.url) {
-        setForm({ ...form, image: data.url });
-      }
+      const url = await uploadImage(file);
+      setForm({ ...form, image: url });
+    } catch (err) {
+      console.error(err);
     } finally {
       setUploading(false);
     }

@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { uploadImage } from "@/lib/upload";
 import {
   Pagination,
   PaginationContent,
@@ -198,20 +199,14 @@ export default function ProductTable() {
     });
   };
 
-  const uploadFile = async (file) => {
-    const fd = new FormData();
-    fd.append("file", file);
-    const res = await fetch("/api/upload", { method: "POST", body: fd });
-    const data = await res.json();
-    return data.url;
-  };
+  // Image uploads handled via shared utility
 
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
     try {
-      const url = await uploadFile(file);
+      const url = await uploadImage(file);
       if (url) setForm({ ...form, image: url });
     } finally {
       setUploading(false);
@@ -499,7 +494,7 @@ export default function ProductTable() {
                   try {
                     const urls = [];
                     for (const file of files) {
-                      const url = await uploadFile(file);
+                      const url = await uploadImage(file);
                       if (url) urls.push(url);
                     }
                     setForm((prev) => ({

@@ -10,6 +10,7 @@ import HtmlEditor from "@/components/Admin/Blogs/HtmlEditor.jsx";
 import { X, Save } from "lucide-react";
 import LoadingSpinner from "@/components/Admin/Blogs/LoadingSpinner.jsx";
 import RichTextEditor from "@/components/Admin/Blogs/DynamicRichTextEditor.jsx";
+import { uploadImage } from "@/lib/upload";
 
 const categories = [
 	"Safety Equipment",
@@ -75,13 +76,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 		}));
 	};
 
-	const uploadFile = async (file) => {
-		const fd = new FormData();
-		fd.append("file", file);
-		const res = await fetch("/api/upload", { method: "POST", body: fd });
-		const data = await res.json();
-		return data.url;
-	};
+        // Image upload handled by shared utility
 
 	const handleImageUpload = async (e) => {
 		const file = e.target.files?.[0];
@@ -89,7 +84,7 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 
 		setUploading(true);
 		try {
-			const url = await uploadFile(file);
+                        const url = await uploadImage(file);
 			if (url) setForm((prev) => ({ ...prev, featuredImage: url }));
 		} catch (error) {
 			console.error("Upload failed:", error);
