@@ -39,8 +39,26 @@ const ProjectForm = () => {
     const fd = new FormData();
     fd.append('file', file);
     const res = await fetch('/api/upload', { method: 'POST', body: fd });
-    const data = await res.json();
-    return data.url;
+
+    if (!res.ok) {
+      let message = 'Upload failed';
+      try {
+        const errData = await res.json();
+        message = errData.error || errData.message || message;
+      } catch {
+        const text = await res.text();
+        message = text || message;
+      }
+      throw new Error(message);
+    }
+
+    try {
+      const data = await res.json();
+      if (!data.url) throw new Error('Upload failed');
+      return data.url;
+    } catch (err) {
+      throw new Error(err.message || 'Invalid server response');
+    }
   };
 
   const handleMainImageChange = async (e) => {
@@ -53,7 +71,7 @@ const ProjectForm = () => {
         setFormData((prev) => ({ ...prev, mainImage: url }));
         setMainImagePreview(url);
       } catch (err) {
-        setErrors('Image upload failed.');
+        setErrors(err.message || 'Image upload failed.');
       } finally {
         setUploading(false);
       }
@@ -101,7 +119,7 @@ const ProjectForm = () => {
         [...prev, ...uploaded].slice(0, 3)
       );
     } catch (err) {
-      setErrors('Image upload failed.');
+      setErrors(err.message || 'Image upload failed.');
     } finally {
       setUploading(false);
     }
