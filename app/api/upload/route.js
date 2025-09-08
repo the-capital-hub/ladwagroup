@@ -28,6 +28,7 @@ export async function POST(req) {
   if (!file) {
     return NextResponse.json({ error: 'No file' }, { status: 400 });
   }
+
   try {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
@@ -41,6 +42,7 @@ export async function POST(req) {
         }
       );
       stream.end(buffer);
+
     });
 
     return NextResponse.json({ url: result.secure_url });
