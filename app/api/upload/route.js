@@ -59,9 +59,13 @@ export async function POST(req) {
     return NextResponse.json({ url: result.secure_url });
   } catch (err) {
     const code = err.http_code || err.status || 500;
-    console.error('Upload handler error:', err);
+    const details = err.error?.message || err.message;
+    // Log upstream response body when available for easier debugging
+    const body = err.response?.body || err.body;
+    console.error('Upload handler error:', err, body);
     return NextResponse.json(
-      { error: 'Upload failed', details: err.message },
+      { error: 'Upload failed', details: details },
+
       { status: code }
     );
   }
