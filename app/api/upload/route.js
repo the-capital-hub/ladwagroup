@@ -33,6 +33,7 @@ export async function POST(req) {
     });
     return NextResponse.json({ url: result.secure_url });
   } catch (err) {
+    console.error('Cloudinary upload failed:', err);
     return NextResponse.json({ error: 'Upload failed', details: err.message }, { status: 500 });
   }
 }
