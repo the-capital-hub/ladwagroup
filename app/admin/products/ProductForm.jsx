@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { uploadImage } from '@/lib/upload';
 
 const singleFields = [
   { name: 'productType', label: 'Product Type' },
@@ -246,20 +247,14 @@ export default function ProductForm() {
     fetchData();
   };
 
-  const uploadFile = async (file) => {
-    const fd = new FormData();
-    fd.append('file', file);
-    const res = await fetch('/api/upload', { method: 'POST', body: fd });
-    const data = await res.json();
-    return data.url;
-  };
+  // Image uploads handled via shared utility
 
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
     try {
-      const url = await uploadFile(file);
+      const url = await uploadImage(file);
       if (url) setForm({ ...form, image: url });
     } finally {
       setUploading(false);
@@ -273,7 +268,7 @@ export default function ProductForm() {
     try {
       const uploaded = [];
       for (const f of files) {
-        const url = await uploadFile(f);
+        const url = await uploadImage(f);
         if (url) uploaded.push(url);
       }
       setForm({ ...form, gallery: uploaded.join('\n') });

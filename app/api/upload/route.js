@@ -39,6 +39,23 @@ export async function POST(req) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 });
     }
 
+    if (!file.type?.startsWith('image/')) {
+      console.error('Invalid file type:', file.type);
+      return NextResponse.json({ error: 'Only image uploads are allowed' }, { status: 400 });
+    }
+
+    const allowed = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!allowed.includes(file.type)) {
+      console.error('Unsupported image type:', file.type);
+      return NextResponse.json({ error: 'Unsupported image type' }, { status: 400 });
+    }
+
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (file.size > maxSize) {
+      console.error('File too large:', file.size);
+      return NextResponse.json({ error: 'File too large' }, { status: 400 });
+    }
+
     console.log('Uploading file to Cloudinary:', file.name || 'unknown');
 
     const arrayBuffer = await file.arrayBuffer();

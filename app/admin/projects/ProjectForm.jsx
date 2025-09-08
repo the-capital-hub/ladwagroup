@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { uploadImage } from '@/lib/upload';
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
@@ -35,43 +36,7 @@ const ProjectForm = () => {
     fetchProjects();
   }, []);
 
-  const uploadFile = async (file) => {
-    const fd = new FormData();
-    fd.append('file', file);
-
-    let res;
-    try {
-      res = await fetch('/api/upload', { method: 'POST', body: fd });
-    } catch (err) {
-      console.error('Network error during upload:', err);
-      throw new Error('Network error during upload');
-    }
-
-    if (!res.ok) {
-      let message = 'Upload failed';
-      try {
-        const errData = await res.json();
-        message =
-          [errData.error || errData.message, errData.details]
-            .filter(Boolean)
-            .join(': ') || message;
-      } catch {
-        const text = await res.text();
-        message = text || message;
-      }
-      console.error('Upload API responded with error:', message);
-      throw new Error(message);
-    }
-
-    try {
-      const data = await res.json();
-      if (!data.url) throw new Error('Upload failed');
-      return data.url;
-    } catch (err) {
-      console.error('Failed to parse upload response:', err);
-      throw new Error(err.message || 'Invalid server response');
-    }
-  };
+  // Image upload is handled by shared utility in @/lib/upload
 
   const handleMainImageChange = async (e) => {
     const file = e.target.files[0];
@@ -79,7 +44,7 @@ const ProjectForm = () => {
     if (/\.(jpe?g|png)$/i.test(file.name)) {
       setUploading(true);
       try {
-        const url = await uploadFile(file);
+        const url = await uploadImage(file);
         setFormData((prev) => ({ ...prev, mainImage: url }));
         setMainImagePreview(url);
       } catch (err) {
@@ -118,7 +83,7 @@ const ProjectForm = () => {
     try {
       const uploaded = [];
       for (const f of allowedFiles) {
-        const url = await uploadFile(f);
+        const url = await uploadImage(f);
         uploaded.push(url);
       }
 
