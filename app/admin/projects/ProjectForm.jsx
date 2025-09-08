@@ -38,31 +38,24 @@ const ProjectForm = () => {
   const uploadFile = async (file) => {
     const fd = new FormData();
     fd.append('file', file);
-    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+    fd.append(
+      'upload_preset',
+      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+    );
 
-    if (!res.ok) {
-      let message = 'Upload failed';
-      try {
-        const errData = await res.json();
-        message =
-          [errData.error || errData.message, errData.details]
-            .filter(Boolean)
-            .join(': ') || message;
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+      { method: 'POST', body: fd }
+    );
 
-      } catch {
-        const text = await res.text();
-        message = text || message;
-      }
+    const data = await res.json();
+    if (!res.ok || !data.secure_url) {
+      const message = data.error?.message || 'Upload failed';
       throw new Error(message);
     }
 
-    try {
-      const data = await res.json();
-      if (!data.url) throw new Error('Upload failed');
-      return data.url;
-    } catch (err) {
-      throw new Error(err.message || 'Invalid server response');
-    }
+    return data.secure_url;
   };
 
   const handleMainImageChange = async (e) => {

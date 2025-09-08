@@ -28,23 +28,27 @@ export async function POST(req) {
   if (!file) {
     return NextResponse.json({ error: 'No file' }, { status: 400 });
   }
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-
   try {
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
-        { folder: 'ladwa' },
-        (err, res) => {
-          if (err) return reject(err);
-          resolve(res);
+        { folder: 'ladwa', resource_type: 'auto' },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
         }
       );
       stream.end(buffer);
     });
+
     return NextResponse.json({ url: result.secure_url });
   } catch (err) {
     console.error('Cloudinary upload failed:', err);
-    return NextResponse.json({ error: 'Upload failed', details: err.message }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Upload failed', details: err.message },
+      { status: 500 }
+    );
   }
 }
