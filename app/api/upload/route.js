@@ -65,6 +65,7 @@ export async function POST(req) {
     console.error('Upload handler error:', err, body);
     return NextResponse.json(
       { error: 'Upload failed', details: details },
+
       { status: code }
     );
   }
