@@ -30,21 +30,19 @@ export async function POST(req) {
   }
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
+  const base64 = `data:${file.type};base64,${buffer.toString('base64')}`;
 
   try {
-    const result = await new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        { folder: 'ladwa' },
-        (err, res) => {
-          if (err) return reject(err);
-          resolve(res);
-        }
-      );
-      stream.end(buffer);
+    const result = await cloudinary.uploader.upload(base64, {
+      folder: 'ladwa',
+      resource_type: 'auto',
     });
     return NextResponse.json({ url: result.secure_url });
   } catch (err) {
     console.error('Cloudinary upload failed:', err);
-    return NextResponse.json({ error: 'Upload failed', details: err.message }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Upload failed', details: err.message },
+      { status: 500 }
+    );
   }
 }
