@@ -7,7 +7,7 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
+export const runtime = "nodejs"; 
 export async function POST(req) {
   if (!requireAdmin()) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
