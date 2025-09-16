@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
 							We've built trust with reviews from real users
 						</h2>
 						<p className="text-gray-600 mb-8 text-base">
-							Boost your credibility by featuring genuine testimonials from real users, showcasing their positive experiences and establishing trust with Monks Pay services.
+							Each testimonial comes from genuine people who've experienced our service firsthand, sharing honest feedback about their journey.
 						</p>
 						<div className="flex gap-3">
 							<button
