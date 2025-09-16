@@ -8,20 +8,57 @@ cloudinary.config({
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 export const runtime = "nodejs";
-export async function POST(req) {
-	const admin = await requireAdmin();
-	if (!admin) {
-		return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-	}
-	const formData = await req.formData();
-	const file = formData.get("file");
-	if (!file) {
-		return NextResponse.json({ error: "No file" }, { status: 400 });
-	}
-	const arrayBuffer = await file.arrayBuffer();
-	const buffer = Buffer.from(arrayBuffer);
 
+// export async function POST(req) {
+// 	const admin = await requireAdmin();
+// 	if (!admin) {
+// 		return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+// 	}
+// 	const formData = await req.formData();
+// 	const file = formData.get("file");
+// 	if (!file) {
+// 		return NextResponse.json({ error: "No file" }, { status: 400 });
+// 	}
+// 	const arrayBuffer = await file.arrayBuffer();
+// 	const buffer = Buffer.from(arrayBuffer);
+
+// 	try {
+// 		const result = await new Promise((resolve, reject) => {
+// 			const stream = cloudinary.uploader.upload_stream(
+// 				{ folder: "ladwa" },
+// 				(err, res) => {
+// 					if (err) return reject(err);
+// 					resolve(res);
+// 				}
+// 			);
+// 			stream.end(buffer);
+// 		});
+// 		return NextResponse.json({ url: result.secure_url });
+// 	} catch (err) {
+// 		console.error("Upload error:", err);
+// 		return NextResponse.json(
+// 			{ error: "Upload failed", details: err, message: err.message },
+// 			{ status: 500 }
+// 		);
+// 	}
+// }
+
+export async function POST(req) {
 	try {
+		const admin = await requireAdmin();
+		if (!admin) {
+			return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+		}
+
+		const formData = await req.formData();
+		const file = formData.get("file");
+		if (!file) {
+			return NextResponse.json({ error: "No file" }, { status: 400 });
+		}
+
+		const arrayBuffer = await file.arrayBuffer();
+		const buffer = Buffer.from(arrayBuffer);
+
 		const result = await new Promise((resolve, reject) => {
 			const stream = cloudinary.uploader.upload_stream(
 				{ folder: "ladwa" },
@@ -32,11 +69,12 @@ export async function POST(req) {
 			);
 			stream.end(buffer);
 		});
+
 		return NextResponse.json({ url: result.secure_url });
 	} catch (err) {
 		console.error("Upload error:", err);
 		return NextResponse.json(
-			{ error: "Upload failed", details: err, message: err.message },
+			{ message: "Upload failed", details: err.message, error: err },
 			{ status: 500 }
 		);
 	}
