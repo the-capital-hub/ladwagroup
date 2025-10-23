@@ -91,8 +91,7 @@ export default function ModernFooter() {
           <div className="lg:col-span-5 space-y-4">
             <Image src={LadwaLogo} alt="Ladwa Logo" width={170} height={52} priority />
             <p className="text-gray-700 text-sm leading-relaxed">
-              Ladwa is a thriving community where innovators, professionals, and
-              enthusiasts come together to share knowledge, collaborate, and grow.
+              LADWA is a globally trusted brand in the Environment, Health, and Safety (EHS) sector, delivering world-class products and solutions that protect people, infrastructure, and the environment.
             </p>
 
             <div className="flex flex-wrap gap-3">
