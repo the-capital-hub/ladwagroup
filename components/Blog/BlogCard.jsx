@@ -61,12 +61,12 @@ const BlogCard = ({ blog, index }) => {
 			transition={{ duration: 0.6, delay: index * 0.1 }}
 			onHoverStart={() => setIsHovered(true)}
 			onHoverEnd={() => setIsHovered(false)}
-			className="group cursor-pointer"
-		>
-			<Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl hover:shadow-teal-200 transition-all duration-500 bg-white/80 backdrop-blur-sm py-0 h-full">
-				<div className="relative overflow-hidden">
-					<motion.img
-						src={blogData.image}
+                        className="group cursor-pointer"
+                >
+                        <Card className="relative h-full overflow-hidden rounded-3xl border border-teal-100/70 bg-white/90 p-0 shadow-[0_25px_70px_-45px_rgba(9,115,98,0.45)] backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_35px_90px_-40px_rgba(9,115,98,0.6)]">
+                                <div className="relative overflow-hidden">
+                                        <motion.img
+                                                src={blogData.image}
 						alt={blogData.title}
 						className="w-full h-64 object-cover"
 						animate={{

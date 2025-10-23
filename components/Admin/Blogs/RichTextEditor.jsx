@@ -165,28 +165,28 @@ const RichTextEditor = ({
 		return <div>Loading editor...</div>;
 	}
 
-	const ToolbarButton = ({ onClick, active, disabled, children, title }) => (
-		<button
-			type="button"
-			onClick={onClick}
-			disabled={disabled}
-			title={title}
-			className={`p-2 rounded hover:bg-gray-100 transition-colors ${
-				active ? "bg-gray-200 text-blue-600" : "text-gray-700"
-			} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
-		>
+        const ToolbarButton = ({ onClick, active, disabled, children, title }) => (
+                <button
+                        type="button"
+                        onClick={onClick}
+                        disabled={disabled}
+                        title={title}
+                        className={`rounded-lg p-2 transition-colors hover:bg-gray-100 ${
+                                active ? "bg-gray-200 text-blue-600" : "text-gray-700"
+                        } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
 			{children}
 		</button>
 	);
 
 	const DropdownButton = ({ children, show, onToggle, title }) => (
-		<div className="relative">
-			<button
-				type="button"
-				onClick={onToggle}
-				title={title}
-				className="p-2 rounded hover:bg-gray-100 transition-colors text-gray-700"
-			>
+                <div className="relative">
+                        <button
+                                type="button"
+                                onClick={onToggle}
+                                title={title}
+                                className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100"
+                        >
 				{children}
 			</button>
 			{show && (
@@ -250,10 +250,10 @@ const RichTextEditor = ({
 		</div>
 	);
 
-	return (
-		<div className="border rounded-lg overflow-hidden">
-			{/* Toolbar */}
-			<div className="border-b bg-gray-50 p-2 flex flex-wrap gap-1">
+        return (
+                <div className="overflow-hidden rounded-2xl border-2 border-teal-100/60 bg-white shadow-[0_25px_70px_-55px_rgba(9,115,98,0.35)]">
+                        {/* Toolbar */}
+                        <div className="flex flex-wrap gap-1 border-b border-teal-100/60 bg-gradient-to-r from-teal-50 to-emerald-50 p-2">
 				{/* Text Formatting */}
 				<div className="flex items-center gap-1 border-r pr-2 mr-2">
 					<ToolbarButton
