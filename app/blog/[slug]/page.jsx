@@ -1,40 +1,44 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { getBaseUrl } from "@/lib/baseUrl";
+import { notFound } from "next/navigation";
+import dbConnect from "@/lib/db";
+import Blog from "@/Models/Blog";
 import "./blog-styles.css";
 
 export const dynamic = "force-dynamic";
 
 async function getBlog(slug) {
-	const baseUrl = getBaseUrl();
-	try {
-		const res = await fetch(
-			`${baseUrl}/api/blogs?slug=${encodeURIComponent(slug)}`,
-			{ cache: "no-store" }
-		);
-		if (
-			!res.ok ||
-			!res.headers.get("content-type")?.includes("application/json")
-		) {
-			return null;
-		}
-		return await res.json();
-	} catch (err) {
-		console.error("Failed to fetch blog", err);
-		return null;
-	}
+        try {
+                await dbConnect();
+                const blog = await Blog.findOne({ slug, status: "published" }).lean();
+                if (!blog) {
+                        return null;
+                }
+
+                return {
+                        ...blog,
+                        _id: blog._id?.toString(),
+                        createdAt: blog.createdAt?.toISOString() ?? null,
+                        updatedAt: blog.updatedAt?.toISOString() ?? null,
+                        publishedAt: blog.publishedAt?.toISOString() ?? null,
+                };
+        } catch (err) {
+                console.error("Failed to load blog", err);
+                return null;
+        }
 }
 
 export default async function BlogDetailsPage({ params }) {
-	const { slug } = params;
-	const blog = await getBlog(slug);
-	if (!blog) return <div className="p-10">Blog not found</div>;
+        const { slug } = params;
+        const blog = await getBlog(slug);
 
-	const publishDate = new Date(
-		blog.publishedAt || blog.createdAt
-	).toLocaleDateString("en-US", {
+        if (!blog) {
+                notFound();
+        }
+
+        const publishDate = new Date(
+                blog.publishedAt || blog.createdAt
+        ).toLocaleDateString("en-US", {
 		year: "numeric",
 		month: "long",
 		day: "numeric",
