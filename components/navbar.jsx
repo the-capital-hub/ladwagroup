@@ -108,24 +108,18 @@ export default function Navbar() {
 					>
 						About
 					</Link>
-					<Link
-						href="/contact-us"
-						className={`text-sm font-medium ${isActive("/contact-us")} cursor-pointer`}
-					>
-						Contact Us
-					</Link>
-				</nav>
+                                </nav>
 
-				{/* Desktop Auth Controls */}
-				<div className="hidden md:flex items-center gap-4">
+                                {/* Desktop Auth Controls */}
+                                <div className="hidden md:flex items-center gap-4">
 					{/* <Link
 						href="/login"
 						className={`text-sm font-medium ${isActive("/login")}`}
 					>
 						Log in
 					</Link> */}
-                                        <Button  onClick={() => {navigate.push('/login')}} className="cursor-pointer bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800">Dealers Login</Button>
-				</div>
+                                        <Button  onClick={() => {navigate.push('/contact-us')}} className="cursor-pointer bg-gradient-to-b from-[#097362] to-[#0FA78E] rounded-full hover:bg-teal-800">Contact Us</Button>
+                                </div>
 
 				{/* Mobile Menu Button */}
 				<button
@@ -183,25 +177,18 @@ export default function Navbar() {
 						>
 							About
 						</Link>
-						<Link
-							href="/contact-us"
-							className={`text-sm font-medium ${isActive("/contact-us")}`}
-						>
-							Contact Us
-						</Link>
-
-						{/* Auth links for mobile */}
-						<div className="pt-4  flex flex-col space-y-4">
+                                                {/* Auth links for mobile */}
+                                                <div className="pt-4  flex flex-col space-y-4">
 							{/* <Link
 								href="/login"
 								className={`text-sm font-medium ${isActive("/login")}`}
 							>
 								Log in
 							</Link> */}
-                                                        <Button onClick={() => {navigate.push('/login')}} className="rounded-full bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-800 w-full">
-                                                                Dealers Login
+                                                        <Button onClick={() => {navigate.push('/contact-us')}} className="rounded-full bg-gradient-to-b from-[#097362] to-[#0FA78E] hover:bg-teal-800 w-full">
+                                                                Contact Us
                                                         </Button>
-						</div>
+                                                </div>
 					</nav>
 				</div>
 			)}
