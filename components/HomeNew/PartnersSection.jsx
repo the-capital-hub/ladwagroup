@@ -12,6 +12,7 @@ import logo5 from "@/public/images/NewHome/partner5.png";
 import logo6 from "@/public/images/NewHome/partner6.png";
 import logo7 from "@/public/images/NewHome/partner7.png";
 import logo8 from "@/public/images/NewHome/partner8.png";
+import logo9 from "@/public/images/logos/ikea.png";
 
 const partnerLogos = [
   logo1,
@@ -22,6 +23,7 @@ const partnerLogos = [
   logo6,
   logo7,
   logo8,
+  logo9,
 ];
 
 export default function PartnersSection() {
