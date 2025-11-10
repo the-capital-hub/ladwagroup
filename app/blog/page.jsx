@@ -1,18 +1,19 @@
 import Blogs from "@/components/Blog/Blog.jsx";
 
 export const metadata = {
-	title: "Blog | LADWA - Latest Industry Insights & News",
-	description:
-		"Stay updated with the latest insights, industry news, and expert knowledge about safety, technology, and innovation from LADWA.",
-	keywords: "blog, industry news, safety, technology, innovation, LADWA",
+        title: "LADWA Blog | Safety Insights & Industry News",
+        description:
+                "Stay updated with expert commentary on workplace safety, regulatory changes, and innovation from LADWA's thought leaders.",
+        keywords: "blog, industry news, safety, technology, innovation, LADWA",
+        alternates: { canonical: "/blog" },
 };
 
 const BlogPage = () => {
-	return (
-		<div className="min-h-screen">
-			<Blogs />
-		</div>
-	);
+        return (
+                <div className="min-h-screen">
+                        <Blogs />
+                </div>
+        );
 };
 
 export default BlogPage;

@@ -12,12 +12,29 @@ async function getData(slug) {
     `${baseUrl}/api/categories?slug=${encodeURIComponent(slug)}`,
     { cache: 'no-store' }
   );
-  
+
   const category = resCat.ok && resCat.headers.get('content-type')?.includes('application/json') ? await resCat.json() : null;
   if (!category) return null;
   const resProd = await fetch(`${baseUrl}/api/products?category=${category._id}`, { cache: 'no-store' });
   const products = resProd.ok && resProd.headers.get('content-type')?.includes('application/json') ? await resProd.json() : [];
   return { category, products };
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const data = await getData(slug);
+  if (!data) {
+    return {
+      title: 'Category Not Found',
+      description: 'The requested LADWA category could not be located.',
+    };
+  }
+  const { category } = data;
+  return {
+    title: `${category.name} Safety Products`,
+    description: category.description || `Explore LADWA's curated selection of ${category.name} equipment and compliance-ready safety gear.`,
+    alternates: { canonical: `/category/${category.slug}` },
+  };
 }
 
 export default async function CategoryPage({ params }) {

@@ -28,13 +28,9 @@ export default function BlogCard({ blog, onEdit, onDelete, onView }) {
 			transition={{ duration: 0.3 }}
 		>
 			{/* Featured Image */}
-			{blog.featuredImage && (
-				<div className="relative h-48 overflow-hidden">
-					<img
-						src={blog.featuredImage || "/placeholder.svg"}
-						alt={blog.title}
-						className="w-full h-full object-cover"
-					/>
+                        {blog.featuredImage && (
+                                <div className="relative h-48 overflow-hidden">
+                                        <img src={blog.featuredImage || "/placeholder.svg"} alt={blog.title} className="w-full h-full object-cover" />
 					<div className="absolute top-3 right-3">
 						<span
 							className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(

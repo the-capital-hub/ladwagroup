@@ -163,11 +163,7 @@ export default function ImageGallerySection({ images = [] }) {
 									className="flex-[0_0_80%] md:flex-[0_0_60%] lg:flex-[0_0_40%] px-4"
 								>
 									<div className="relative">
-										<img
-											className="gallery-image w-full h-[300px] md:h-[400px] object-cover rounded-2xl shadow-lg transition-all duration-500 ease-out"
-											src={image.src.src}
-											alt={image.alt || `Gallery image ${index + 1}`}
-										/>
+                                                                                <img className="gallery-image w-full h-[300px] md:h-[400px] object-cover rounded-2xl shadow-lg transition-all duration-500 ease-out" src={image.src.src} alt={image.alt || `Gallery image ${index + 1}`} />
 
 										{/* Overlay with title */}
 										<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl">

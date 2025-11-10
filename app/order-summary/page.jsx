@@ -4,6 +4,13 @@ import { getBaseUrl } from "@/lib/baseUrl";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+        title: "LADWA Order Summary | Secure Checkout Overview",
+        description:
+                "Review your selected LADWA safety product, quantity, and pricing before completing a secure payment or inquiry submission.",
+        alternates: { canonical: "/order-summary" },
+};
+
 async function getProduct(slug) {
   const baseUrl = getBaseUrl();
   try {

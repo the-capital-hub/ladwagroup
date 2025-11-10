@@ -33,11 +33,7 @@ const ProductCard = ({ product, variants }) => {
 			whileTap={{ scale: 0.98 }}
 		>
 			<div className="relative h-48 bg-gray-100 overflow-hidden">
-				<img
-					src={product.image || "/placeholder.svg?height=300&width=400"}
-					alt={product.name}
-					className="w-full h-full object-cover"
-				/>
+                                <img src={product.image || "/placeholder.svg?height=300&width=400"} alt={product.name} className="w-full h-full object-cover" />
 				<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 			</div>
 			<div className="p-4">

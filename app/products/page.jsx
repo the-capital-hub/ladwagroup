@@ -2,6 +2,13 @@ import ProductsClient from "@/components/Products/ProductsClient.jsx";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+        title: "LADWA Product Catalogue | Industrial Safety Gear",
+        description:
+                "Filter and explore LADWA's full portfolio of certified industrial safety equipment, PPE, and hazard mitigation products tailored for every sector.",
+        alternates: { canonical: "/products" },
+};
+
 import { getBaseUrl } from "@/lib/baseUrl";
 
 async function getProducts() {
