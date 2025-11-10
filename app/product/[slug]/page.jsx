@@ -15,7 +15,6 @@ async function getProduct(slug) {
       { cache: 'no-store' }
     );
     if (!res.headers.get('content-type')?.includes('application/json')) {
-
       return null;
     }
     return await res.json();
@@ -23,6 +22,25 @@ async function getProduct(slug) {
     console.error('Failed to fetch product', err);
     return null;
   }
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+      description: 'The requested LADWA safety product could not be located.',
+    };
+  }
+
+  const description = product.description?.slice(0, 155) || DEFAULT_PRODUCT_DESCRIPTION;
+
+  return {
+    title: `${product.name} Specifications`,
+    description,
+    alternates: { canonical: `/product/${product.slug}` },
+  };
 }
 
 export default async function ProductPage({ params }) {
@@ -96,7 +114,7 @@ export default async function ProductPage({ params }) {
           <div className="grid grid-cols-3 gap-2">
             {product.gallery.map((img, i) => (
               <div key={i} className="relative h-20 border rounded">
-                <Image src={img} alt={`${product.name}-${i}`} fill className="object-contain" />
+                <Image src={img} alt={`${product.name}-${i + 1}`} fill className="object-contain" />
               </div>
             ))}
           </div>

@@ -82,15 +82,8 @@ const InquiryForm = () => {
 										<p className="text-sm text-teal-100 leading-relaxed">
                                                                               {store.product.description || DEFAULT_PRODUCT_DESCRIPTION}
 										</p>
-										<div className="relative h-48 bg-teal-700/50 rounded-lg overflow-hidden">
-											<img
-												src={
-													store.product.image ||
-													"/placeholder.svg?height=300&width=400"
-												}
-												alt={store.product.name}
-												className="w-full h-full object-cover"
-											/>
+                                                                                <div className="relative h-48 bg-teal-700/50 rounded-lg overflow-hidden">
+                                                                                        <img src={store.product.image || "/placeholder.svg?height=300&width=400"} alt={store.product.name} className="w-full h-full object-cover" />
 										</div>
 										<div className="bg-teal-700/30 p-3 rounded-lg">
                                                                                <p className="text-sm">

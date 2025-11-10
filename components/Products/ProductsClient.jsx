@@ -24,6 +24,13 @@ export default function ProductsClient({ products }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
+        <header className="mb-8 text-center md:text-left">
+          <h1 className="text-3xl font-bold text-gray-900">Industrial Safety Product Catalogue</h1>
+          <p className="mt-2 text-gray-600 max-w-3xl">
+            Browse LADWA&apos;s certified safety gear, personal protective equipment, and hazard mitigation tools filtered by
+            industry, compliance, and price range.
+          </p>
+        </header>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <aside className="md:col-span-1 md:sticky md:top-24 md:h-[calc(100vh-6rem)] md:overflow-auto">
             <ProductFilters products={products} onChange={setFilters} />

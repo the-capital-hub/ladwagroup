@@ -75,20 +75,12 @@ export default function WorkProcessCircularSection() {
 						{/* Step Icon */}
 						<div className="relative z-10 mb-6">
 							{processSteps.step1.number === "01" ? (
-								<div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step1.icon}
-										alt={processSteps.step1.title}
-										className="w-16 h-16 text-white"
-									/>
+                                                                <div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step1.icon} alt={processSteps.step1.title} className="w-16 h-16 text-white" />
 								</div>
 							) : (
-								<div className="border-2 border-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step1.icon}
-										alt={processSteps.step1.title}
-										className="w-16 h-16 text-teal-600"
-									/>
+                                                                <div className="border-2 border-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step1.icon} alt={processSteps.step1.title} className="w-16 h-16 text-teal-600" />
 								</div>
 							)}
 						</div>
@@ -116,20 +108,12 @@ export default function WorkProcessCircularSection() {
 						{/* Step Icon */}
 						<div className="relative z-10 mb-6">
 							{processSteps.step2.number === "01" ? (
-								<div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step2.icon}
-										alt={processSteps.step2.title}
-										className="w-16 h-16 text-white"
-									/>
+                                                                <div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step2.icon} alt={processSteps.step2.title} className="w-16 h-16 text-white" />
 								</div>
 							) : (
-								<div className="border-4 border-transparent shadow-lg border-b-teal-600 rounded-t-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step2.icon}
-										alt={processSteps.step2.title}
-										className="w-16 h-16 text-teal-600"
-									/>
+                                                                <div className="border-4 border-transparent shadow-lg border-b-teal-600 rounded-t-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step2.icon} alt={processSteps.step2.title} className="w-16 h-16 text-teal-600" />
 								</div>
 							)}
 						</div>
@@ -165,20 +149,12 @@ export default function WorkProcessCircularSection() {
 						{/* Step Icon */}
 						<div className="relative z-10 mb-6">
 							{processSteps.step1.number === "03" ? (
-								<div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step3.icon}
-										alt={processSteps.step3.title}
-										className="w-16 h-16 text-white"
-									/>
+                                                                <div className="bg-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step3.icon} alt={processSteps.step3.title} className="w-16 h-16 text-white" />
 								</div>
 							) : (
-								<div className="border-4 border-transparent shadow-lg border-t-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
-									<img
-										src={processSteps.step3.icon}
-										alt={processSteps.step3.title}
-										className="w-16 h-16 text-teal-600"
-									/>
+                                                                <div className="border-4 border-transparent shadow-lg border-t-teal-600 rounded-b-full h-32 w-32 mx-auto flex items-center justify-center custom-shadow">
+                                                                        <img src={processSteps.step3.icon} alt={processSteps.step3.title} className="w-16 h-16 text-teal-600" />
 								</div>
 							)}
 						</div>

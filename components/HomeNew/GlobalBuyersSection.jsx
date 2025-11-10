@@ -85,11 +85,7 @@ export default function GlobalBuyersSection() {
 						<div
 							className={`flex flex-col mx-3 mt-3 bg-white justify-center items-center border-2 border-teal-200 p-8 rounded-2xl ${inter.className}`}
 						>
-							<img
-								src={Logo1.src}
-								className="w-28 h-28 text-white object-cover"
-								alt="Certifications"
-							/>
+                                                        <img src={Logo1.src} className="w-28 h-28 text-white object-cover" alt="Certifications" />
 							<h3 className="md:text-2xl text-xl text-center font-medium text-black mb-4">
 								International Certifications
 							</h3>
@@ -125,11 +121,7 @@ export default function GlobalBuyersSection() {
 								<motion.div key={index} variants={itemVariants}>
 									<div className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full h-full">
 										<div className="flex items-center justify-center md:space-x-5 md:p-3 p-3 space-x-4 h-full bg-gradient-to-r from-white to-teal-200 rounded-3xl">
-											<img
-												src={benefit.icon.src}
-												alt={benefit.title}
-												className="w-12 h-12 text-teal-600"
-											/>
+                                                                                        <img src={benefit.icon.src} alt={benefit.title} className="w-12 h-12 text-teal-600" />
 											<div>
 												<h4 className="font-medium text-xl md:text-2xl text-gray-900 mb-2">
 													{benefit.title}

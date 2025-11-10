@@ -89,11 +89,7 @@ export default function FeaturesSection() {
 							className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full max-w-screen"
 						>
 							<div className="flex justify-center items-center gap-5 bg-gradient-to-r from-[#fff] to-[#9FFFF0] md:p-4 p-4 rounded-2xl">
-								<img
-									src={feature.icon.src}
-									alt={feature.title}
-									className="w-16 h-16 object-cover"
-								/>
+                                                                <img src={feature.icon.src} alt={feature.title} className="w-16 h-16 object-cover" />
 								<div>
 									<h3 className="lg:text-xl text-lg font-medium text-gray-900">
 										{feature.title}
@@ -121,11 +117,7 @@ export default function FeaturesSection() {
 							className="bg-gradient-to-b from-[#A2FFF0] to-white p-1 rounded-3xl w-full"
 						>
 							<div className="flex justify-center items-center md:gap-5 gap-5 bg-gradient-to-r from-[#fff] to-[#9FFFF0] md:p-4 p-4 rounded-2xl">
-								<img
-									src={feature.icon.src}
-									alt={feature.title}
-									className="w-12 h-12 object-cover"
-								/>
+                                                                <img src={feature.icon.src} alt={feature.title} className="w-12 h-12 object-cover" />
 								<div>
 									<h3 className="text-xl font-bold text-gray-900">
 										{feature.title}

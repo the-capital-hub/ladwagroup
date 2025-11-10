@@ -320,15 +320,11 @@ export default function BlogForm({ blog = null, onClose, onSave }) {
 										Uploading...
 									</div>
 								)}
-								{form.featuredImage && (
-									<div className="relative">
-										<img
-											src={form.featuredImage || "/placeholder.svg"}
-											alt="Featured"
-											className="w-32 h-20 object-cover rounded-lg border"
-										/>
-									</div>
-								)}
+                                                                {form.featuredImage && (
+                                                                        <div className="relative">
+                                                                                <img src={form.featuredImage || "/placeholder.svg"} alt="Featured" className="w-32 h-20 object-cover rounded-lg border" />
+                                                                        </div>
+                                                                )}
 							</div>
 						</div>
 
