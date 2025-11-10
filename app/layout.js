@@ -29,16 +29,16 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<Script
-					async
-					src="https://www.googletagmanager.com/gtag/js?id=G-3E0QVM3JHM"
-				/>
+                                <Script
+                                        async
+                                        src="https://www.googletagmanager.com/gtag/js?id=G-QV7Q2PV6Y6"
+                                />
 				<Script id="ga-init" strategy="afterInteractive">
 					{`
                                                 window.dataLayer = window.dataLayer || [];
                                                 function gtag(){dataLayer.push(arguments);}
                                                 gtag('js', new Date());
-                                                gtag('config', 'G-3E0QVM3JHM');
+                                                gtag('config', 'G-QV7Q2PV6Y6');
                                         `}
 				</Script>
 				<div className="flex flex-col min-h-screen">
