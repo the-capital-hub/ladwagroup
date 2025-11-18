@@ -200,6 +200,30 @@ export default function ContactUsContent() {
                                                                                         </p>
                                                                                 </div>
                                                                         </div>
+                                                                        <div className="flex items-start gap-3">
+                                                                                <MapPin className="h-5 w-5 mt-1" />
+                                                                                <div>
+                                                                                        <p className="font-medium">Branch Office - New Delhi</p>
+                                                                                        <p className="text-teal-100 text-sm">
+                                                                                                LADWA SOLUTIONS INC<br />
+                                                                                                A-19, Ground Floor, FIEE Complex,<br />
+                                                                                                Suite No.1029<br />
+                                                                                                Okhla Industrial Area Phase - 2, New Delhi - 110020
+                                                                                        </p>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div className="flex items-start gap-3">
+                                                                                <MapPin className="h-5 w-5 mt-1" />
+                                                                                <div>
+                                                                                        <p className="font-medium">Branch Office - Kolkata</p>
+                                                                                        <p className="text-teal-100 text-sm">
+                                                                                                LADWA SOLUTIONS INC<br />
+                                                                                                #7, 15th Floor Suite No.1019, Aurora Waterfront<br />
+                                                                                                GN 34/1, GN Block, Salt Lake, Sector 5<br />
+                                                                                                Bidhannagar, Kolkata - 700091
+                                                                                        </p>
+                                                                                </div>
+                                                                        </div>
                                                                 </motion.div>
 
                                                                 <motion.div variants={contactInfoItem}>
